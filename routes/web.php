@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Guru;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,8 @@ Route::get('/', function () {
 // raport
 Route::get('/raport', function () {
     return view('raport');
+});
+// guru
+Route::get('/guru', function () {
+    return view('guru');
 });
