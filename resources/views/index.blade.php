@@ -249,7 +249,7 @@
 
   {{-- hal 2 --}}
 
-  <section style="background: url('pictures/bg.jpg'); background-size: cover; padding-top: 80px;"
+  <section style="background: url('pictures/bg.jpg'); background-size: cover;"
     class="vh-100 d-flex" id="section2">
     {{-- nav --}}
       <nav id="navbar" class="navbar fixed-top">
@@ -263,40 +263,40 @@
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
     {{-- main --}}
-    <div class="container">
-      <div class="row">
-        <img src="{{ url('pictures/h11.png') }}" alt="">
-      </div>
-      <div class="row">
-        {{-- carousel  --}}
-        <div class="col">
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="{{ url('pictures/1.png') }}" class="img-fluid text-center" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url('pictures/1.png') }}" class="img-fluid text-center" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url('pictures/1.png') }}" class="img-fluid text-center" alt="...">
-            </div>
+<div class="container d-flex flex-column justify-content-center align-items-center h-100">
+  <div class="row d-flex flex-column justify-content-center align-items-center" >
+    {{-- head --}}
+    <img src="{{ url('pictures/h11.png') }}" alt="" class="img-fluid">
+    {{-- carousel  --}}
+    <div class="col">
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{{ url('pictures/1.png') }}" class="img-fluid text-center" alt="...">
           </div>
-          {{-- btn --}}
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
-            <span class="carousel-control-prevs-icon" style="font-size: 8rem" aria-hidden="true"><</span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
-            <span class="carousel-control-nexst-icon" style="font-size: 8rem"aria-hidden="true">></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+          <div class="carousel-item">
+            <img src="{{ url('pictures/1.png') }}" class="img-fluid text-center" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url('pictures/1.png') }}" class="img-fluid text-center" alt="...">
+          </div>
         </div>
-      </div>
+        {{-- btn --}}
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev">
+          <span class="carousel-control-prevs-icon" style="font-size: 8rem" aria-hidden="true"><</span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+          data-bs-slide="next">
+          <span class="carousel-control-nexst-icon" style="font-size: 8rem"aria-hidden="true">></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </div>
+  </div>
+</div>
+
   </section>
 
   {{-- script --}}

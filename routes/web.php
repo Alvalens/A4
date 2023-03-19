@@ -25,3 +25,8 @@ Route::get('/raport', function () {
 Route::get('/guru', function () {
     return view('guru');
 });
+
+// about
+Route::get('/about', function () {
+    return view('about');
+});
