@@ -119,7 +119,7 @@
     height: 50px;
     position: fixed;
     bottom: 0;
-    left: 50%;
+    left: 49%;
     transform: translateX(-50%);
     animation: moveUpDown 4s ease-in-out infinite alternate;
   }
@@ -227,7 +227,7 @@
           {{-- button --}}
           <div class="button text-center">
             <a href="lojin" type="button" class="buthon mx-3"> Mulai!</a>
-            <a href="lojin" type="button" class="buthon2"> lebih lanjut</a>
+            <a href="/about" type="button" class="buthon2"> lebih lanjut</a>
 
           </div>
         </div>
@@ -242,7 +242,7 @@
   </section>
   {{-- create a fixed button in the middle bottom functionm to scroll down --}}
 <div class=" text-center">
-  <a href="#scroll-down" class="btn-down">
+  <a class="btn-down">
     <i class="fa-solid fa-arrow-down"></i>
   </a>
 </div>
