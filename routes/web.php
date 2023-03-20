@@ -52,6 +52,10 @@ Route::get('/index2', function () {
     return view('index2');
 });
 
+// teka-teki
+Route::get('/teka-teki', function () {
+    return view('teka-teki');
+});
 // bermain controller
 Route::get('/bermain', 'App\Http\Controllers\Siswa@bermain');
 
