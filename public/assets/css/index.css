@@ -1,0 +1,125 @@
+  .navbar {
+    background-color: #add8e683;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .cardf {
+    background-color: #DBF2FA;
+    height: 50px;
+  }
+
+  .cardf2 {
+    background-color: #DBF2FA;
+    height: 40px;
+    width: 80%;
+    border-radius: 20px
+  }
+
+  .cardf3 {
+    background-color: #DBF2FA;
+    height: 70px;
+    width: 70%;
+    border-radius: 40px
+  }
+
+  .cardf4 {
+    background-color: #DBF2FA;
+    height: 30px;
+    width: 50%;
+    border-radius: 20px
+  }
+
+  .subh {
+    font-size: 20px;
+    color: #2f9400;
+  }
+
+  .desc {
+    font-size: 15px;
+    color: #4b4b4b;
+    text-align: justify;
+  }
+
+  /* anim */
+  .img-main {
+    animation: moveUpDown 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes moveUpDown {
+    0% {
+      transform: translateY(0);
+    }
+
+    100% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .buthon {
+    background-color: #50b68f;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: 'Potta One', cursive;
+    text-decoration: none;
+    transition: all 0.5s ease;
+  }
+
+  .buthon:hover {
+    background-color: #2f940000;
+    color: #50b68f;
+  }
+
+  .buthon2 {
+    /* revrse before use outline  */
+    background-color: #50b68f00;
+    color: #50b68f;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: 'Potta One', cursive;
+    outline: #50b68f solid 2px;
+    text-decoration: none;
+    transition: all 0.5s ease;
+  }
+
+  .buthon2:hover {
+    background-color: #50b68f;
+    color: white;
+  }
+
+  .btn-down {
+    /* color */
+    background-color: #50b68f;
+    /* make it round */
+    border-radius: 50%;
+    /* size */
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 49%;
+    transform: translateX(-50%);
+    animation: moveUpDown 4s ease-in-out infinite alternate;
+  }
+  .btn-down i {
+    font-size: 30px;
+    color: white;
+    /* center */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  /* s2 */
+  #navbar {
+    transition: top 0.3s ease-in-out;
+  }
+
+  #navbar.navbar-hide {
+    top: -100px;
+  }
+  .carousel-item {
+  text-align: center;
+}
