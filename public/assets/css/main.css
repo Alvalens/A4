@@ -1,9 +1,127 @@
+/*--------------------------------------------------------------
+# Font & Root
+--------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Irish+Grover');
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One');
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
 
-/* Colors */
+:root {
+  --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-primary: "Montserrat", sans-serif;
+  --font-secondary: "Poppins", sans-serif;
+}
+
 :root {
   --color-default: #006E7F;
   --color-primary: #96BB7C;
   --color-secondary: #99C4C8;
+}
+
+:root {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #e9f2fa; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#006E7F,#99C4C8); 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff; 
+}
+
+/*--------------------------------------------------------------
+# Scroll top button
+--------------------------------------------------------------*/
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: -15px;
+  z-index: 99999;
+  background: var(--color-secondary);
+  width: 44px;
+  height: 44px;
+  border-radius: 50px;
+  transition: all 0.4s;
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: #fff;
+  line-height: 0;
+}
+
+.scroll-top:hover {
+  background: rgba(248, 90, 64, 0.8);
+  color: #fff;
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+  bottom: 15px;
+}
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  background: #fff;
+  transition: all 0.6s ease-out;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: animate-preloader 1.5s linear infinite;
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.header {
+  transition: all 0.5s;
+  z-index: 997;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.686);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.352);
 }
 
 /*--------------------------------------------------------------
@@ -136,7 +254,7 @@
     inset: 0;
     padding: 50px 0 10px 0;
     margin: 0;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(0, 131, 116, 0.9);
     overflow-y: auto;
     transition: 0.3s;
     z-index: 9998;
@@ -159,8 +277,15 @@
   .navbar a:focus i {
     font-size: 12px;
     line-height: 0;
+    margin-left: 5px;
   }
 
+  .navbar a:hover,
+  .navbar .active,
+  .navbar .active:focus,
+  .navbar li:hover>a {
+    color: #fff;
+  }
 
   .navbar .getstarted,
   .navbar .getstarted:focus {
@@ -168,10 +293,12 @@
     padding: 8px 20px;
     border-radius: 4px;
     margin: 15px;
+    color: #fff;
   }
 
   .navbar .getstarted:hover,
   .navbar .getstarted:focus:hover {
+    color: #fff;
     background: rgba(0, 131, 116, 0.8);
   }
 
@@ -202,6 +329,7 @@
   }
 
   .mobile-nav-hide {
+    color: #fff;
     font-size: 32px;
     cursor: pointer;
     line-height: 0;
@@ -236,42 +364,61 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    }
-
-    .menu li {
+  }
+    
+  .menu li {
     margin: 20px 0; /* change horizontal margin to vertical margin */
-    }
-
-    .menu li a {
+  }
+    
+  .menu li a {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-decoration: none;
     color: #333;
-    }
-
-    .menu li a img {
+  }
+    
+  .menu li a img {
     max-width: 100%;
     height: auto;
     border-radius: 50%;
     margin-bottom: 10px; /* increase margin-bottom for more space between images */
-    }
-
-    .menu li a span {
+  }
+    
+  .menu li a span {
     font-size: 16px;
     font-weight: bold;
     text-align: center;
-    }
-
-    .menu li a:before {
+  }
+    
+  .menu li a:before {
     content: '';
     display: block;
     width: 60px;
     height: 60px;
     border-radius: 50%;
+    background-color: white;
     position: absolute;
     top: -5px;
+    left: 50%;
     transform: translateX(-50%);
-    z-index:-1;
-    }
+    z-index: -1;
+  }
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+footer {
+  box-shadow: none;
+}
+
+footer:hover, footer:active {
+  box-shadow: 0 2px 10px rgba(156, 172, 196, 0.474);
+}
+
+@media only screen and (max-width: 768px) {
+  footer {
+    padding: 20px;
+  }
 }
