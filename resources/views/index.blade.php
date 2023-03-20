@@ -3,7 +3,23 @@
 @section('css', 'index')
 
 @section('content')
+<style>
+  .clouds-img{
+    /* move the cloud */
+    animation: moveclouds 15s linear infinite;
+    /* fix the position of the clouds */
+    margin-top: -100px;
 
+  }
+  @keyframes moveclouds {
+    0% {
+      margin-left: 1000px;
+    }
+    100% {
+      margin-left: -1000px;
+    }
+  }
+</style>
   <body style="overflow-x: hidden">
     <section data-bss-parallax-bg="true" style="background: url('assets/img/bg-sky.jpg'); background-size: cover;"
       class="vh-100" class="img-hero2">
@@ -27,7 +43,7 @@
             </div>
             {{-- button --}}
             <div class="button text-start text-md-start">
-              <a href="lojin" type="button" class="buthon mx-3"> Mulai!</a>
+              <a href="login" type="button" class="buthon mx-3"> Mulai!</a>
               <a href="/about" type="button" class="buthon2"> lebih lanjut</a>
 
             </div>
@@ -50,7 +66,7 @@
     </div>
 
     {{-- hal 2 --}}
-    <section style="background: url('pictures/bg.jpg'); background-size: cover;" class="vh-100 d-flex" id="section2">
+    <section style="background: url('assets/img/bg.jpg'); background-size: cover;" class="vh-100 d-flex" id="section2">
       {{-- main --}}
       <div class="container d-flex flex-column justify-content-center align-items-center h-100">
         <div class="row d-flex flex-column justify-content-center align-items-center">

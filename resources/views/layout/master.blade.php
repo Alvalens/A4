@@ -35,16 +35,19 @@
 
   <!-- Make Body CSS Style -->
   <style>
-      #navbar {
-    transition: top 0.3s ease-in-out;
-  }
-  .navbar {
-    background-color: #add8e683;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
-  #navbar.navbar-hide {
-    top: -100px;
-  }
+    #navbar {
+      transition: top 0.3s ease-in-out;
+    }
+
+    .navbar {
+      background-color: #add8e683;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    #navbar.navbar-hide {
+      top: -100px;
+    }
+
     body {
       @yield('body-style')
     }
@@ -56,18 +59,18 @@
   {{-- navbar s --}}
   <nav id="navbar" class="navbar fixed-top">
     <ul class="menu">
-      <li><a href="#services"><img src="pictures/navbar/beranda.png" alt="Home"></a></li>
-      <li><a href="#services"><img src="pictures/navbar/belajar.png" alt="Home"></a></li>
-      <li><a href="#services"><img src="pictures/navbar/bermain.png" alt="Home"></a></li>
-      <li><a href="#services"><img src="pictures/navbar/teka-teki.png" alt="Home"></a></li>
+      <li><a href="/"><img src="pictures/navbar/beranda.png" alt="Home"></a></li>
+      <li><a href="/belajar"><img src="pictures/navbar/belajar.png" alt="Home"></a></li>
+      <li><a href="/bermain"><img src="pictures/navbar/bermain.png" alt="Home"></a></li>
+      <li><a href="/teka-teki"><img src="pictures/navbar/teka-teki.png" alt="Home"></a></li>
     </ul>
   </nav>
+
   @section('content')
 
   @show
 
-
-
+  {{-- footer --}}
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
@@ -95,20 +98,19 @@
   <script src="assets/js/@yield('js', 'main').js"></script>
 
   <script>
-          
-      $(document).ready(function() {
-        var lastScrollTop = 0;
-        $(window).scroll(function() {
-          var scrollTop = $(this).scrollTop();
-          if (scrollTop > lastScrollTop) {
-            $('#navbar').slideDown('slow');
+    $(document).ready(function() {
+      var lastScrollTop = 0;
+      $(window).scroll(function() {
+        var scrollTop = $(this).scrollTop();
+        if (scrollTop > lastScrollTop) {
+          $('#navbar').slideDown('slow');
 
-          } else {
-            $('#navbar').slideUp('slow');
-          }
-          lastScrollTop = scrollTop;
-        });
+        } else {
+          $('#navbar').slideUp('slow');
+        }
+        lastScrollTop = scrollTop;
       });
+    });
   </script>
 </body>
 

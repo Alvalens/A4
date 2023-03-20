@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Guru;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Siswa;
+use App\Http\Controllers\Ortu;
+use App\Http\Controllers\ContentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,10 +34,8 @@ Route::get('/about', function () {
     return view('about');
 });
 
-// about
-Route::get('/belajar', function () {
-    return view('belajar');
-});
+// belajar controller
+Route::get('/belajar', 'App\Http\Controllers\Siswa@belajar');
 
 // about
 Route::get('/gurubelajar', function () {
@@ -51,11 +52,9 @@ Route::get('/index2', function () {
     return view('index2');
 });
 
-Route::get('/bermain', function () {
-    return view('bermain');
-});
+// bermain controller
+Route::get('/bermain', 'App\Http\Controllers\Siswa@bermain');
 
-use App\Http\Controllers\ContentController;
-
+// adc
 Route::post('/add-content', 'App\Http\Controllers\ContentController@addContent')->name('addContent');
 
