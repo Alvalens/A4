@@ -78,13 +78,16 @@
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img src="{{ url('assets/img/belajar1.png') }}" class="img-fluid text-center img-c" alt="...">
+                  <a href="/belajar">
+                  <img src="{{ url('assets/img/belajar1.png') }}" class="img-fluid text-center img-c" alt="..."></a>
                 </div>
                 <div class="carousel-item">
-                  <img src="{{ url('assets/img/bermain1.png') }}" class="img-fluid text-center img-c" alt="...">
+                  <a href="/bermain">
+                  <img src="{{ url('assets/img/bermain1.png') }}" class="img-fluid text-center img-c" alt="..."></a>
                 </div>
                 <div class="carousel-item">
-                  <img src="{{ url('assets/img/tekateki1.png') }}" class="img-fluid text-center img-c" alt="...">
+                  <a href="/teka-teki">
+                  <img src="{{ url('assets/img/tekateki1.png') }}" class="img-fluid text-center img-c" alt="..."></a>
                 </div>
               </div>
               {{-- btn --}}
