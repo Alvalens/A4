@@ -1,8 +1,10 @@
-@extends('layout.head')
+@extends('layout.master')
 @section('title', 'Masuk Dulu Yaa!')
 @section('css', 'login')
 
 @section('body-style')
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.3) 100%, rgba(255, 255, 255, 0.3) 100%),
+  url(assets/img/bg.jpg);
   font-family: 'Fredoka One', sans-serif;
   letter-spacing: 1px;
   font-weight: 200;
@@ -21,8 +23,9 @@
       <div class="row full-height justify-content-center">
         <div class="col-12 text-center align-self-center py-5">
           <div class="section pb-5 pt-5 pt-sm-2 text-center">
-            <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
-            <label for="reg-log"></label>
+            <input type="checkbox" id="reg-log" class="checkbox">
+            <label for="reg-log">
+            </label>
             <div class="card-3d-wrap mx-auto">
               <div class="card-3d-wrapper">
 
@@ -43,11 +46,11 @@
                           autocomplete="off">
                         <i class="input-icon uil uil-lock-alt"></i>
                       </div>
-                      <div class="form-group mt-2">
+                      {{-- <div class="form-group mt-2">
                         <input type="email" name="logemail" style="display: none;" class="form-style"
                           placeholder="Alamat Email" id="logemail" autocomplete="off">
                         <i class="input-icon uil uil-at"></i>
-                      </div>
+                      </div> --}}
                       <div class="form-group mt-2">
                         <input type="password" name="logpass" class="form-style" placeholder="Kata Sandi" id="logpass"
                           autocomplete="off">
