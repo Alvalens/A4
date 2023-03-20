@@ -99,7 +99,7 @@
     height: 50px;
     position: fixed;
     bottom: 0;
-    left: 49%;
+    left: 50%;
     transform: translateX(-50%);
     animation: moveUpDown 4s ease-in-out infinite alternate;
   }
@@ -122,4 +122,154 @@
   }
   .carousel-item {
   text-align: center;
+}
+
+/* temporary */
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+
+@keyframes moveUpDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-30px);
+    }
+}
+
+.img-hero2 {
+    position: absolute;
+    width: 100%;
+    animation: movezoom 2s ease-in-out infinite alternate;
+    z-index: -1; /* Set a negative z-index to place it behind other elements */
+}
+
+@keyframes movezoom {
+    0% {
+        transform: translateX(0) scale(2);
+    }
+    50% {
+        transform: translateX(20px) translateY(5px) scale(2);
+    }
+    100% {
+        transform: translateX(-30px) translateY(-5px) scale(2);
+        -webkit-transform: translateX(-30px) translateY(-5px) scale(2);
+        -moz-transform: translateX(-30px) translateY(-5px) scale(2);
+        -ms-transform: translateX(-30px) translateY(-5px) scale(2);
+        -o-transform: translateX(-30px) translateY(-5px) scale(2);
+}
+}
+
+.img-hero3 {
+    width: 70%;
+}
+
+.img-hero3:hover {
+    animation: rubber 2s ease-in-out infinite alternate;
+}
+
+@keyframes rubber {
+    0% {
+      transform: scale(1);
+    }
+    25% {
+      transform: scale(1, 0.9);
+    }
+    50% {
+      transform: scale(1, 1.05);
+    }
+    75% {
+      transform: scale(1.15, 1);
+    }
+    100% {
+      transform: scale(1);
+    }
+}
+
+@keyframes zoom {
+    0% {
+      transform: scale(1);
+    }
+    25% {
+      transform: scale(0.9);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    75% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0.8);
+    }
+}
+
+@media (max-width: 640px) {
+    .hero h2 {
+        font-size: 36px;
+    }
+    .img-main {
+        display: none;
+    }
+    .fa-chevron-left{
+        font-size: 2rem;
+    }
+    .fa-chevron-right{
+        font-size: 2rem;
+    }
+}
+
+
+.img-sec,
+.img-sec2,
+.img-sec3 {
+    animation: moveUpDown 3s ease-in-out infinite alternate;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-animation: moveUpDown 3s ease-in-out infinite alternate;
+}
+
+.img-sec {
+    width: 70%;
+}
+
+.img-sec2 {
+    width: 50%;
+}
+
+.img-sec3 {
+    animation: rubber 5s ease-in-out infinite alternate;
+    width: 150%;
+}
+@keyframes moveUpDownc {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-10px);
+        -webkit-transform: translateY(-10px);
+        -moz-transform: translateY(-10px);
+        -ms-transform: translateY(-10px);
+        -o-transform: translateY(-10px);
+}
+}
+.img-c {
+    animation: moveUpDownc 2.7s ease-in-out infinite alternate;
+    -webkit-animation: moveUpDownc 2.7s ease-in-out infinite alternate;
+}
+
+.carousel {
+    /* make it smaller */
+    width: 70%;
+    padding-top: 20px;
+    margin: 0 auto;
+
 }

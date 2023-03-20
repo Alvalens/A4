@@ -9,8 +9,20 @@
   {{-- css --}}
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    @include('layout.asset')
 </head>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
+
+  h1, h2, h3, h4, h5 {
+    /* potta one */
+    font-family: 'Potta One', cursive;
+  }
+  h2 {
+    color : #ffffff;
+    /* shadow */
+    text-shadow: 2px 2px 4px #000000;
+  }
   .navbar.scrolled {
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -95,7 +107,7 @@
     </div>
   </nav>
 
-  <section style="background: url('pictures/bg.jpg'); background-size: cover; padding-top: 80px;" class="vh-100">
+  <section style="background: url('assets/img/bg.jpg'); background-size: cover; padding-top: 80px;" class="vh-100">
     <!-- Your content goes here -->
     <div class="container-fluid">
       <div class="row">

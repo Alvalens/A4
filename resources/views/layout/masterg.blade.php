@@ -23,6 +23,7 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
@@ -47,7 +48,6 @@
     #navbar.navbar-hide {
       top: -100px;
     }
-
     body {
       @yield('body-style')
     }
@@ -63,6 +63,7 @@
       <li><a href="/belajar"><img src="pictures/navbar/belajar.png" alt="Home"></a></li>
       <li><a href="/bermain"><img src="pictures/navbar/bermain.png" alt="Home"></a></li>
       <li><a href="/teka-teki"><img src="pictures/navbar/teka-teki.png" alt="Home"></a></li>
+      <li><a href="/guru"><img src="assets/img/navbar/edit.png" alt="" style="height: 32px"></a></li>
     </ul>
   </nav>
 
@@ -96,6 +97,11 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/@yield('js', 'main').js"></script>
+
+  {{-- jq --}}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  {{-- navbar --}}
 
   <script>
     $(document).ready(function() {

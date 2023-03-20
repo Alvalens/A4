@@ -9,7 +9,7 @@
   overflow-x: hidden;
 @endsection
 
-@section('content') 
+@section('content')
 
 <!-- ======= Hero Section ======= -->
 <img src="assets/img/bg-sky.jpg" class="img-hero2">
@@ -33,9 +33,6 @@
   </div>
 </section>
 <!-- End Hero Section -->
-
-
-
   <!-- ======= About Us Section ======= -->
   <section id="about" class="about">
     <div class="container" data-aos="fade-up">

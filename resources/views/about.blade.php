@@ -2,26 +2,27 @@
 @section('title', 'Tentang')
 @section('css', 'belajar')
 
-@section('content')    
-  {{-- fixed button  --}}
-  <div class="text-center">
-    <a class="btn-down">
-      <i class="fa-solid fa-arrow-down"></i>
-    </a>
-  </div>
-
+@section('content')
   {{-- hal 2 --}}
+<style>
+    .buthon {
+    background-color: #d8aa47;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 22px;
+    font-size: 20px;
+    font-family: 'Potta One', cursive;
+    text-decoration: none;
+    transition: all 0.5s ease;
+  }
 
+  .buthon:hover {
+    background-color: #2f940000;
+    color: #e0c734;
+  }
+
+</style>
   <section style="background: url('pictures/bgdes.png'); background-size: cover;" class="vh-100 d-flex" id="section2">
-    {{-- nav --}}
-    <nav id="navbar" class="navbar fixed-top">
-      <ul class="menu">
-        <li><a href="/"><img src="pictures/navbar/beranda.png" alt="Home"></a></li>
-        <li><a href="/belajar"><img src="pictures/navbar/belajar.png" alt="Home"></a></li>
-        <li><a href="/bermain"><img src="pictures/navbar/bermain.png" alt="Home"></a></li>
-        <li><a href="/teka-teki"><img src="pictures/navbar/teka-teki.png" alt="Home"></a></li>
-      </ul>
-    </nav>
     <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
     <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
     {{-- main --}}
@@ -70,46 +71,5 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   {{-- paralax --}}
   <script src="{{ url('js/parallax.js') }}"></script>
-  <script>
-    // hide navbar, then reveal on scroll
-    $(document).ready(function() {
-      var lastScrollTop = 0;
-      $(window).scroll(function() {
-        var scrollTop = $(this).scrollTop();
-        if (scrollTop > lastScrollTop) {
-          $('#navbar').addClass('scrolled')
-
-        } else {
-          $('#navbar').removeClass('scrolled');
-        }
-        lastScrollTop = scrollTop;
-      });
-    });
-
-    // hide btn-down on scroll
-    $(document).ready(function() {
-      var lastScrollTop = 0;
-      $(window).scroll(function() {
-        var scrollTop = $(this).scrollTop();
-        if (scrollTop > lastScrollTop) {
-          $('.btn-down').fadeOut('slow');
-
-        } else {
-          $('.btn-down').fadeIn('slow');
-
-        }
-        lastScrollTop = scrollTop;
-      });
-    });
-    // make btn-down scroll to the next section
-    const btnDown = $('.btn-down');
-    const section2 = document.getElementById('section2');
-
-    btnDown.on('click', () => {
-      section2.scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  </script>
 
 @endsection
