@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.masterg')
+@section('title', 'Bermain itu Seru!')
+@section('css', 'guru')
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  {{-- css --}}
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  {{-- font --}}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
-</head>
+@section('content')
 <style>
-  .navbar {
-    background-color: #add8e683;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
 
   .tex {
     font-family: 'Potta One', cursive;
@@ -61,13 +46,6 @@
 </style>
 
 <body>
-  {{-- nav --}}
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top mx-5 mt-1">
-    <div class="container">
-      <a class="navbar-brand mx-auto" href="#">Home</a>
-      <a class="navbar-brand mx-auto" href="#">Halaman guru</a>
-    </div>
-  </nav>
 
   <section style="background: url('pictures/bg.jpg'); background-size: cover; padding-top: 80px;"
     class="vh-100 d-flex flex-column justify-content-center align-items-center">
@@ -75,10 +53,14 @@
       <div class="row">
         <h1 class="text-center tex">Menu</h1>
         <div class="col">
+          <a href="/gurubelajar">
           <img src="{{ url('/pictures/f1.png') }}" alt="">
+          </a>
         </div>
         <div class="col">
+          <a href="raport">
           <img src="{{ url('/pictures/f2.png') }}" alt="">
+          </a>
         </div>
         {{-- logout button --}}
         <div class="button my-3 text-center">
@@ -92,9 +74,4 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
-  <script>
-    // add class scrolled to navbar wehn page is scrolled
-  </script>
-</body>
-
-</html>
+    @endsection

@@ -1,6 +1,7 @@
-@extends('layout.navbar')
+@extends('layout.master')
 @section('title', 'Bermain itu Seru!')
 @section('css', 'bermain')
+
 
 @section('body-style')
   background: linear-gradient(to top, rgba(255, 255, 255, 0.3) 100%, rgba(255, 255, 255, 0.3) 100%), url(assets/img/bg.jpg);
@@ -39,6 +40,7 @@
       <span id="time">Time: 100</span>
     </div>
   </div>
+
 
   <div id="game1" style="display: none; margin-top: 5%">
     <div id="center">
@@ -88,4 +90,9 @@ function toggleFormMaze() {
 <script src="assets/js/bermain.js"></script>
 <script src="assets/js/bermain2.js"></script>
 
+
+  </section>
+
+@section('js', 'bermain')
 @endsection
+
