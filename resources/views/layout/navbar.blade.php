@@ -66,14 +66,6 @@
     
   <div id="preloader"></div>
   
-      <footer>
-        <div class="text-center p-3">
-          © 2023 Copyright:
-          <p><strong>A4 Team | S1 TI A | Universitas Negeri Malang</strong></p>
-        </div>
-        <!-- Copyright -->
-      </footer>
-  
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>

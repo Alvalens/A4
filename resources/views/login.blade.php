@@ -10,8 +10,8 @@
     line-height: 1.7;
     color: #ffffff;
     overflow: hidden;
-    background: linear-gradient(to top, rgba(255, 255, 255, 0.3) 100%, rgba(255, 255, 255, 0.3) 100%), url(assets/img/bg.jpg) center no-repeat;
     background-size: cover;
+
 @endsection
 
 @section('content') 
