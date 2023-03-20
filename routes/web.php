@@ -30,3 +30,23 @@ Route::get('/guru', function () {
 Route::get('/about', function () {
     return view('about');
 });
+
+// about
+Route::get('/belajar', function () {
+    return view('belajar');
+});
+
+// about
+Route::get('/gurubelajar', function () {
+    return view('gurubelajar');
+});
+
+// about
+Route::get('/login', function () {
+    return view('login');
+});
+
+use App\Http\Controllers\ContentController;
+
+Route::post('/add-content', 'App\Http\Controllers\ContentController@addContent')->name('addContent');
+
