@@ -46,6 +46,15 @@ Route::get('/login', function () {
     return view('login');
 });
 
+// about
+Route::get('/index2', function () {
+    return view('index2');
+});
+
+Route::get('/bermain', function () {
+    return view('bermain');
+});
+
 use App\Http\Controllers\ContentController;
 
 Route::post('/add-content', 'App\Http\Controllers\ContentController@addContent')->name('addContent');
