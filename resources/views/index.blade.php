@@ -52,7 +52,7 @@
             {{-- main img --}}
             <div class="img-main text-center">
               <img src="{{ url('pictures/pensilterbang.png') }}" alt="pensil" draggable="false" class="img-fluid"
-                style="height:700px; ">
+                style="height:700px; width:700px;">
             </div>
           </div>
         </div>

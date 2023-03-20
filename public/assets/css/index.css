@@ -208,11 +208,11 @@
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 900px) {
     .hero h2 {
         font-size: 36px;
     }
-    .img-main {
+    .img-main{
         display: none;
     }
     .fa-chevron-left{
