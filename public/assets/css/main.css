@@ -245,7 +245,6 @@
     max-width: 80px;
     bottom: 0;
     transition: 0.3s;
-    z-index: 9997;
     padding: 20px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   }
@@ -281,25 +280,16 @@
     margin-left: 5px;
   }
 
-  .navbar a:hover,
-  .navbar .active,
-  .navbar .active:focus,
-  .navbar li:hover>a {
-    color: #fff;
-  }
-
   .navbar .getstarted,
   .navbar .getstarted:focus {
     background: var(--color-primary);
     padding: 8px 20px;
     border-radius: 4px;
     margin: 15px;
-    color: #fff;
   }
 
   .navbar .getstarted:hover,
   .navbar .getstarted:focus:hover {
-    color: #fff;
     background: rgba(0, 131, 116, 0.8);
   }
 
@@ -330,7 +320,6 @@
   }
 
   .mobile-nav-hide {
-    color: #fff;
     font-size: 32px;
     cursor: pointer;
     line-height: 0;
@@ -398,7 +387,6 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: white;
     position: absolute;
     top: -5px;
     left: 50%;

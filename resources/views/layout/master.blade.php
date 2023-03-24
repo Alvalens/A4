@@ -93,25 +93,42 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/@yield('js', 'main').js"></script>
-
   <script>
     $(document).ready(function() {
       var lastScrollTop = 0;
+      var navbarTimeout;
+      $('#navbar').hover(
+        function() {
+          clearTimeout(navbarTimeout);
+          $('#navbar').slideDown('slow');
+        },
+        function() {
+          navbarTimeout = setTimeout(function() {
+            $('#navbar').slideUp('slow');
+          }, 2000);
+        }
+      );
+
       $(window).scroll(function() {
         var scrollTop = $(this).scrollTop();
         if (scrollTop > lastScrollTop) {
           $('#navbar').slideDown('slow');
-
         } else {
           $('#navbar').slideUp('slow');
         }
         lastScrollTop = scrollTop;
+        clearTimeout(navbarTimeout);
+        navbarTimeout = setTimeout(function() {
+          $('#navbar').slideUp('slow');
+        }, 2000);
       });
     });
   </script>
+  
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/@yield('js', 'main').js"></script>
+  
 </body>
 
 </html>
