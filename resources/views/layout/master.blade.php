@@ -162,17 +162,6 @@
   </nav>
 
 
-
-
-  {{-- <nav id="navbar" class="navbar fixed-top">
-    <ul>
-      <li><a href="/"><img src="pictures/navbar/beranda.png" alt="Home"></a></li>
-      <li><a href="/belajar"><img src="pictures/navbar/belajar.png" alt="Home"></a></li>
-      <li><a href="/bermain"><img src="pictures/navbar/bermain.png" alt="Home"></a></li>
-      <li><a href="/teka-teki"><img src="pictures/navbar/teka-teki.png" alt="Home"></a></li>
-    </ul>
-  </nav> --}}
-
   @section('content')
 
   @show

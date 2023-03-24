@@ -56,15 +56,60 @@
 </head>
 
 <body>
-  {{-- navbar s --}}
-  <nav id="navbar" class="navbar fixed-top">
-    <ul class="menu">
-      <li><a href="/"><img src="pictures/navbar/beranda.png" alt="Home"></a></li>
-      <li><a href="/belajar"><img src="pictures/navbar/belajar.png" alt="Home"></a></li>
-      <li><a href="/bermain"><img src="pictures/navbar/bermain.png" alt="Home"></a></li>
-      <li><a href="/teka-teki"><img src="pictures/navbar/teka-teki.png" alt="Home"></a></li>
-      <li><a href="/guru"><img src="assets/img/navbar/edit.png" alt="" style="height: 32px"></a></li>
-    </ul>
+    {{-- navbar s --}}
+  <nav class="navbar navbar-expand-md fixed-top">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarNav" aria-labelledby="navbarNavLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="navbarNavLabel">Menu</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex justify-content-center">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <img src="pictures/navbar/beranda.png" alt="Home">
+                <span class="caption d-block d-md-none">Beranda</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/belajar">
+                <img src="pictures/navbar/belajar.png" alt="Belajar">
+                <span class="caption d-block d-md-none">Belajar</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/bermain">
+                <img src="pictures/navbar/bermain.png" alt="Bermain">
+                <span class="caption d-block d-md-none">Bermain</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/teka-teki">
+                <img src="pictures/navbar/teka-teki.png" alt="Teka-teki">
+                <span class="caption d-block d-md-none">Teka-teki</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/guru">
+                <img src="assets/img/navbar/edit.png" alt="" style="height: 32px">
+                <span class="caption d-block d-md-none">Guru</span>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+      {{-- cicrle account icon --}}
+      <div class="d-flex justify-content-center align-items-center profile">
+        <div class="circle rounded-circle">
+          <i class="fas fa-user"></i>
+        </div>
+      </div>
   </nav>
 
   @section('content')
