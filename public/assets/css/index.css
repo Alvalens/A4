@@ -210,11 +210,11 @@
 }
 
 .img-sec {
-    width: 70%;
+    width: 70% !important;
 }
 
 .img-sec2 {
-    width: 50%;
+    width: 50% !important;
 }
 
 .img-sec3 {

@@ -81,8 +81,10 @@
       <div class="container d-flex flex-column justify-content-center align-items-center h-100">
         <div class="row d-flex flex-column justify-content-center align-items-center">
           {{-- head --}}
+          <div class="head">
           <img src="{{ url('assets/img/h11.png') }}" alt="" class="img-fluid img-sec">
           <img src="assets/img/geser.png" alt="" class="img-fluid img-sec2">
+          </div>
           {{-- carousel  --}}
           <div class="col">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
