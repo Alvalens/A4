@@ -25,15 +25,15 @@
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px #e9f2fa; 
+  box-shadow: inset 0 0 5px #e9f2fa;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(#006E7F,#99C4C8); 
+  background: linear-gradient(#006E7F,#99C4C8);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffffff; 
+  background: #ffffff;
 }
 
 /*--------------------------------------------------------------
@@ -114,286 +114,16 @@
 }
 
 /*--------------------------------------------------------------
-# Header
---------------------------------------------------------------*/
-.header {
-  transition: all 0.5s;
-  z-index: 997;
-  height: 70px;
-  background-color: rgba(255, 255, 255, 0.686);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.352);
-}
-
-/*--------------------------------------------------------------
 # Desktop Navigation
 --------------------------------------------------------------*/
-@media (min-width: 1280px) {
-  .navbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: top 0.3s ease-in-out;
-  }
 
-  .navbar>ul>li {
-    white-space: nowrap;
-    padding: 10px 0 10px 90px;
-  }
 
-  .navbar a,
-  .navbar a:focus {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 3px;
-    font-family: var(--font-secondary);
-    font-size: 16px;
-    font-weight: 600;
-    color: #006E7F;
-    white-space: nowrap;
-    transition: 0.3s;
-    position: relative;
-  }
-
-  .navbar a i,
-  .navbar a:focus i {
-    font-size: 12px;
-    line-height: 0;
-  }
-
-  .navbar>ul>li>a:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: -6px;
-    left: 0;
-    background-color: var(--color-secondary);
-    visibility: hidden;
-    width: 0px;
-    transition: all 0.3s ease-in-out 0s;
-  }
-
-  .navbar a:hover:before,
-  .navbar li:hover>a:before,
-  .navbar .active:before {
-    visibility: visible;
-    width: 100%;
-  }
-
-  .navbar a:hover,
-  .navbar .active,
-  .navbar .active:focus,
-  .navbar li:hover>a {
-    color: #fff;
-  }
-}
-
-@media (min-width: 1280px) {
-  .mobile-nav-show,
-  .mobile-nav-hide {
-    display: none;
-  }
-}
-
-.menu {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.menu li a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #333;
-}
-
-.menu li a img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 60%;
-  margin-bottom: 5px;
-}
-
-.menu li a span {
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-}
-
-.menu li a.active img {
-  background-color: #006E7F;
-  filter: brightness(0.8);
-}
 
 /*--------------------------------------------------------------
 # Mobile Navigation
 --------------------------------------------------------------*/
-@media (max-width: 1279px) {
-  .navbar {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    top: 0;
-    right: -100%;
-    width: 100%;
-    max-width: 80px;
-    bottom: 0;
-    transition: 0.3s;
-    padding: 20px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  }
 
-  .navbar ul {
-    position: absolute;
-    inset: 0;
-    padding: 50px 0 10px 0;
-    margin: 0;
-    background: rgba(0, 131, 116, 0.9);
-    overflow-y: auto;
-    transition: 0.3s;
-    z-index: 9998;
-  }
 
-  .navbar a,
-  .navbar a:focus {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    font-family: var(--font-primary);
-    font-size: 15px;
-    font-weight: 600;
-    white-space: nowrap;
-    transition: 0.3s;
-  }
-
-  .navbar a i,
-  .navbar a:focus i {
-    font-size: 12px;
-    line-height: 0;
-    margin-left: 5px;
-  }
-
-  .navbar .getstarted,
-  .navbar .getstarted:focus {
-    background: var(--color-primary);
-    padding: 8px 20px;
-    border-radius: 4px;
-    margin: 15px;
-  }
-
-  .navbar .getstarted:hover,
-  .navbar .getstarted:focus:hover {
-    background: rgba(0, 131, 116, 0.8);
-  }
-
-  .navbar .dropdown ul,
-  .navbar .dropdown .dropdown ul {
-    position: static;
-    display: none;
-    padding: 10px 0;
-    margin: 10px 20px;
-    transition: all 0.5s ease-in-out;
-    background-color: #007466;
-    border: 1px solid #006459;
-  }
-
-  .navbar .dropdown>.dropdown-active,
-  .navbar .dropdown .dropdown>.dropdown-active {
-    display: block;
-  }
-
-  .mobile-nav-show {
-    color: #006459;
-    font-size: 28px;
-    cursor: pointer;
-    line-height: 0;
-    transition: 0.5s;
-    z-index: 9999;
-    margin-right: 10px;
-  }
-
-  .mobile-nav-hide {
-    font-size: 32px;
-    cursor: pointer;
-    line-height: 0;
-    transition: 0.5s;
-    position: fixed;
-    right: 20px;
-    top: 20px;
-    z-index: 9999;
-  }
-
-  .mobile-nav-active {
-    overflow: hidden;
-  }
-
-  .mobile-nav-active .navbar {
-    right: 0;
-  }
-
-  .mobile-nav-active .navbar:before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 106, 93, 0.8);
-    z-index: 9996;
-  }
-
-  .menu {
-    display: flex;
-    flex-direction: column; /* add this /
-    justify-content: center;
-    align-items: center; / change to center */
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-    
-  .menu li {
-    margin: 20px 0; /* change horizontal margin to vertical margin */
-  }
-    
-  .menu li a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: #333;
-  }
-    
-  .menu li a img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 10px; /* increase margin-bottom for more space between images */
-  }
-    
-  .menu li a span {
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-  }
-    
-  .menu li a:before {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: -1;
-  }
-}
 
 /*--------------------------------------------------------------
 # Footer

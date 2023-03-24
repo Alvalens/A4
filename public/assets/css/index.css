@@ -1,61 +1,30 @@
-  .navbar {
-    background-color: #add8e683;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
-
-  .cardf {
-    background-color: #DBF2FA;
-    height: 50px;
-  }
-
-  .cardf2 {
-    background-color: #DBF2FA;
-    height: 40px;
-    width: 80%;
-    border-radius: 20px
-  }
-
-  .cardf3 {
-    background-color: #DBF2FA;
-    height: 70px;
-    width: 70%;
-    border-radius: 40px
-  }
-
-  .cardf4 {
-    background-color: #DBF2FA;
-    height: 30px;
-    width: 50%;
-    border-radius: 20px
-  }
-
-  .subh {
+.subh {
     font-size: 20px;
     color: #2f9400;
-  }
+}
 
-  .desc {
+.desc {
     font-size: 15px;
     color: #4b4b4b;
     text-align: justify;
-  }
+}
 
-  /* anim */
-  .img-main {
+/* anim */
+.img-main {
     animation: moveUpDown 4s ease-in-out infinite alternate;
-  }
+}
 
-  @keyframes moveUpDown {
+@keyframes moveUpDown {
     0% {
-      transform: translateY(0);
+        transform: translateY(0);
     }
 
     100% {
-      transform: translateY(-20px);
+        transform: translateY(-20px);
     }
-  }
+}
 
-  .buthon {
+.buthon {
     background-color: #50b68f;
     color: white;
     border-radius: 20px;
@@ -64,14 +33,14 @@
     font-family: 'Potta One', cursive;
     text-decoration: none;
     transition: all 0.5s ease;
-  }
+}
 
-  .buthon:hover {
+.buthon:hover {
     background-color: #2f940000;
     color: #50b68f;
-  }
+}
 
-  .buthon2 {
+.buthon2 {
     /* revrse before use outline  */
     background-color: #50b68f00;
     color: #50b68f;
@@ -82,14 +51,14 @@
     outline: #50b68f solid 2px;
     text-decoration: none;
     transition: all 0.5s ease;
-  }
+}
 
-  .buthon2:hover {
+.buthon2:hover {
     background-color: #50b68f;
     color: white;
-  }
+}
 
-  .btn-down {
+.btn-down {
     /* color */
     background-color: #50b68f;
     /* make it round */
@@ -102,8 +71,9 @@
     left: 50%;
     transform: translateX(-50%);
     animation: moveUpDown 4s ease-in-out infinite alternate;
-  }
-  .btn-down i {
+}
+
+.btn-down i {
     font-size: 30px;
     color: white;
     /* center */
@@ -111,20 +81,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-  /* s2 */
-  #navbar {
-    transition: top 0.3s ease-in-out;
-  }
-
-  #navbar.navbar-hide {
-    top: -100px;
-  }
-  .carousel-item {
-  text-align: center;
 }
 
-/* temporary */
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
@@ -133,9 +92,11 @@
     0% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(10px);
     }
+
     100% {
         transform: translateY(-30px);
     }
@@ -145,23 +106,26 @@
     position: absolute;
     width: 100%;
     animation: movezoom 2s ease-in-out infinite alternate;
-    z-index: -1; /* Set a negative z-index to place it behind other elements */
+    z-index: -1;
+    /* Set a negative z-index to place it behind other elements */
 }
 
 @keyframes movezoom {
     0% {
         transform: translateX(0) scale(2);
     }
+
     50% {
         transform: translateX(20px) translateY(5px) scale(2);
     }
+
     100% {
         transform: translateX(-30px) translateY(-5px) scale(2);
         -webkit-transform: translateX(-30px) translateY(-5px) scale(2);
         -moz-transform: translateX(-30px) translateY(-5px) scale(2);
         -ms-transform: translateX(-30px) translateY(-5px) scale(2);
         -o-transform: translateX(-30px) translateY(-5px) scale(2);
-}
+    }
 }
 
 .img-hero3 {
@@ -174,37 +138,45 @@
 
 @keyframes rubber {
     0% {
-      transform: scale(1);
+        transform: scale(1);
     }
+
     25% {
-      transform: scale(1, 0.9);
+        transform: scale(1, 0.9);
     }
+
     50% {
-      transform: scale(1, 1.05);
+        transform: scale(1, 1.05);
     }
+
     75% {
-      transform: scale(1.15, 1);
+        transform: scale(1.15, 1);
     }
+
     100% {
-      transform: scale(1);
+        transform: scale(1);
     }
 }
 
 @keyframes zoom {
     0% {
-      transform: scale(1);
+        transform: scale(1);
     }
+
     25% {
-      transform: scale(0.9);
+        transform: scale(0.9);
     }
+
     50% {
-      transform: scale(1.05);
+        transform: scale(1.05);
     }
+
     75% {
-      transform: scale(1);
+        transform: scale(1);
     }
+
     100% {
-      transform: scale(0.8);
+        transform: scale(0.8);
     }
 }
 
@@ -212,13 +184,16 @@
     .hero h2 {
         font-size: 36px;
     }
-    .img-main{
+
+    .img-main {
         display: none;
     }
-    .fa-chevron-left{
+
+    .fa-chevron-left {
         font-size: 2rem;
     }
-    .fa-chevron-right{
+
+    .fa-chevron-right {
         font-size: 2rem;
     }
 }
@@ -246,21 +221,25 @@
     animation: rubber 5s ease-in-out infinite alternate;
     width: 150%;
 }
+
 @keyframes moveUpDownc {
     0% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(10px);
     }
+
     100% {
         transform: translateY(-10px);
         -webkit-transform: translateY(-10px);
         -moz-transform: translateY(-10px);
         -ms-transform: translateY(-10px);
         -o-transform: translateY(-10px);
+    }
 }
-}
+
 .img-c {
     animation: moveUpDownc 2.7s ease-in-out infinite alternate;
     -webkit-animation: moveUpDownc 2.7s ease-in-out infinite alternate;
@@ -268,7 +247,7 @@
 
 .carousel {
     /* make it smaller */
-    width: 70%;
+    width: 80%;
     padding-top: 20px;
     margin: 0 auto;
 
