@@ -34,13 +34,15 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   {{-- bootstrap --}}
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <!-- Make Body CSS Style -->
   <style>
-      .navbar {
-    background-color: #add8e683;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
+    .navbar {
+      background-color: #add8e683;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
     #navbar {
       transition: top 0.3s ease-in-out;
     }
@@ -57,106 +59,107 @@
     body {
       @yield('body-style')
     }
+
     @media (min-width: 768px) {
-  .navbar-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-  }
-  .navbar-nav .nav-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 1rem;
-    /* gap each  item*/
-    margin: 0 3rem;
-  }
-}
-.profile {
-  margin-right: 30px !important;
-}
-/* gap each  item y in mobie view*/
-@media (max-width: 768px) {
+      .navbar-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+      }
 
-  .navbar-nav .nav-item {
-    margin: 3rem 3rem;
+      .navbar-nav .nav-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 1rem;
+        /* gap each  item*/
+        margin: 0 3rem;
+      }
+    }
 
-  }
-}
-.caption {
-  display: none;
-}
+    .profile {
+      margin-right: 30px !important;
+    }
 
-@media (max-width: 767.98px) {
-  .caption {
-    display: block;
-    text-align: center;
-    font-size: 14px;
-  }
-}
+    /* gap each  item y in mobie view*/
+    @media (max-width: 768px) {
 
-  /* fix for non-clickable links in offcanvas menu */
-  .navbar-nav .nav-link {
-    pointer-events: none;
-  }
+      .navbar-nav .nav-item {
+        margin: 3rem 3rem;
 
-  /* fix for background color in offcanvas menu */
-  .offcanvas {
-    background-color: #add8e683;
-  }
+      }
+    }
+
+    .caption {
+      display: none;
+    }
+
+    @media (max-width: 767.98px) {
+      .caption {
+        display: block;
+        text-align: center;
+        font-size: 14px;
+      }
+    }
+    /* fix for background color in offcanvas menu */
+    .offcanvas {
+      background-color: #add8e6;
+    }
   </style>
 
 </head>
 
 <body>
   {{-- navbar s --}}
-<nav class="navbar navbar-expand-md fixed-top">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarNav" aria-labelledby="navbarNavLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="navbarNavLabel">Menu</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  <nav class="navbar navbar-expand-md fixed-top">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarNav" aria-labelledby="navbarNavLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="navbarNavLabel">Menu</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex justify-content-center">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <img src="pictures/navbar/beranda.png" alt="Home">
+                <span class="caption d-block d-md-none">Beranda</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/belajar">
+                <img src="pictures/navbar/belajar.png" alt="Belajar">
+                <span class="caption d-block d-md-none">Belajar</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/bermain">
+                <img src="pictures/navbar/bermain.png" alt="Bermain">
+                <span class="caption d-block d-md-none">Bermain</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/teka-teki">
+                <img src="pictures/navbar/teka-teki.png" alt="Teka-teki">
+                <span class="caption d-block d-md-none">Teka-teki</span>
+              </a>
+            </li>
+          </ul>
+
+        </div>
       </div>
-      <div class="offcanvas-body d-flex justify-content-center">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <div class="nav-link">
-              <img src="pictures/navbar/beranda.png" alt="Home">
-              <span class="caption d-block d-md-none">Beranda</span>
-            </div>
-          </li>
-          <li class="nav-item">
-            <div class="nav-link">
-              <img src="pictures/navbar/belajar.png" alt="Belajar">
-              <span class="caption d-block d-md-none">Belajar</span>
-            </div>
-          </li>
-          <li class="nav-item">
-            <div class="nav-link">
-              <img src="pictures/navbar/bermain.png" alt="Bermain">
-              <span class="caption d-block d-md-none">Bermain</span>
-            </div>
-          </li>
-          <li class="nav-item">
-            <div class="nav-link">
-              <img src="pictures/navbar/teka-teki.png" alt="Teka-teki">
-              <span class="caption d-block d-md-none">Teka-teki</span>
-            </div>
-          </li>
-        </ul>
+      {{-- cicrle account icon --}}
+      <div class="d-flex justify-content-center align-items-center profile">
+        <div class="circle rounded-circle">
+          <i class="fas fa-user"></i>
+        </div>
       </div>
-    </div>
-    {{-- cicrle account icon --}}
-    <div class="d-flex justify-content-center align-items-center profile">
-      <div class="circle rounded-circle">
-        <i class="fas fa-user"></i>
-      </div>
-  </div>
-</nav>
+  </nav>
 
 
 
@@ -189,7 +192,8 @@
   </footer>
 
   <!-- Vendor JS Files -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   {{-- jq --}}
   <script src="{{ url('js/jq.js') }}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -203,9 +207,7 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <script>
-
-  </script>
+  <script></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>

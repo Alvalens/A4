@@ -12,7 +12,6 @@
   --joystick-color: black;
   --joystick-head-color: var(--color-secondary);
   --ball-color: #f06449;
-  --end-color: #7d82b8;
 @endsection
 
 @section('content')
