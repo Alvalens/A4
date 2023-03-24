@@ -6,7 +6,6 @@
 @section('body-style')
   background: linear-gradient(to top, rgba(255, 255, 255, 0.3) 100%, rgba(255, 255, 255, 0.3) 100%), url(assets/img/bg.jpg);
   background-size: cover;
-  height: 100%;
   justify-content: center;
   align-items: center;
   --wall-color: var(--color-default);
@@ -16,7 +15,10 @@
   --end-color: #7d82b8;
 @endsection
 
-@section('content') 
+@section('content')
+<section class="container d-flex flex-column justify-content-center align-items-center vh-100">
+
+
   <img id="ikon-rumah" src="assets/img/ikon-rumah.png" alt="Ikon Rumah">
   <a href="#" class="btn mt-4 d-flex justify-content-center" name="puzzle" onclick="toggleFormPuzzle()">Puzzle</a>
   <a href="#" class="btn mt-4 d-flex justify-content-center" name="maze" onclick="toggleFormMaze()">Maze</a>
@@ -60,7 +62,7 @@
       </div>
     </div>
   </div>
-
+</section>
 <script>
 function toggleFormPuzzle() {
   var puzzle = document.querySelector(".game");
