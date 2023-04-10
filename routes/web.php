@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Siswa;
 use App\Http\Controllers\Ortu;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\MaterialsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,10 +48,13 @@ Route::get('/login', function () {
     return view('login');
 });
 
-// about
-Route::get('/index2', function () {
-    return view('index2');
-});
+// ! crud materi
+Route::post('/kirim', 'App\Http\Controllers\MaterialsController@store')->name('kirim');
+Route::get('/gurubelajar', 'App\Http\Controllers\MaterialsController@index')->name('gurubelajar');
+Route::delete('/materi/{materi}', 'App\Http\Controllers\MaterialsController@destroy')->name('materi.destroy');
+Route::put('/materials/{material}', [MaterialsController::class, 'update'])->name('materials.update');
+
+
 
 // teka-teki
 Route::get('/teka-teki', function () {
@@ -59,6 +63,5 @@ Route::get('/teka-teki', function () {
 // bermain controller
 Route::get('/bermain', 'App\Http\Controllers\Siswa@bermain');
 
-// adc
-Route::post('/add-content', 'App\Http\Controllers\ContentController@addContent')->name('addContent');
+
 
