@@ -83,16 +83,15 @@
         <div class="row row-cols-2 row-cols-md-2 row-cols-lg-3" data-aos="fade-up" data-aos-delay="100">
           <!-- Youtube links -->
           @foreach ($materies as $materi)
-          @extends('layout.modal')
+            @extends('layout.modal')
             <div class="col-lg-4 col-md-6">
               <div class="service-item">
-                {{-- delete btn --}}
+                {{-- btn --}}
                 <div class="btn-con d-flex flex-row justify-content-center align-items-center">
                   <div class="edit">
-                    <a role="button"data-bs-toggle="modal"
-                      data-bs-target="#editModal">
+                    <a role="button"data-bs-toggle="modal" data-bs-target="#editModal">
                       <div class="circle-edit">
-                      <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-pen"></i>
                       </div>
                     </a>
                   </div>
@@ -117,32 +116,29 @@
                 <p>{{ $materi->deskripsi }}</p>
                 <iframe width="350" height="196.875" src="{{ $materi->link }}" frameborder="0"
                   allowfullscreen></iframe>
-                <a href="#" class="btn mt-4">selesai</a>
                 <div class="feedback1" style="display: none;">
                 </div>
               </div>
             </div>
-        </div>
-      </div>
-      @endforeach
-      {{-- add materi --}}
-      <div class="col-lg-4 col-md-6">
-        <div class="service-item">
-          <div class="d-flex flex-column justify-content-center align-items-center h-100">
-            <a role="button" data-bs-toggle="modal" data-bs-target="#fileModal">
-              <div class="circle">
-                <i class="fa-solid fa-plus"></i>
+          @endforeach
+          {{-- add materi --}}
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item">
+              <div class="d-flex flex-column justify-content-center align-items-center h-100">
+                <a role="button" data-bs-toggle="modal" data-bs-target="#fileModal">
+                  <div class="circle">
+                    <i class="fa-solid fa-plus"></i>
+                  </div>
+                </a>
               </div>
-            </a>
+            </div>
           </div>
+          {{-- end add --}}
         </div>
       </div>
-      <!-- End Our Services Section -->
-    </div>
-    </div>
     </div>
   </section>
-  <!-- Modal -->
+  <!-- Modal input -->
   <div class="modal fade " id="fileModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="fileModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
