@@ -19,8 +19,29 @@
 
 
   <img id="ikon-rumah" src="assets/img/ikon-rumah.png" alt="Ikon Rumah">
-  <a href="#" class="btn mt-4 d-flex justify-content-center" name="puzzle" onclick="toggleFormPuzzle()">Puzzle</a>
-  <a href="#" class="btn mt-4 d-flex justify-content-center" name="maze" onclick="toggleFormMaze()">Maze</a>
+  <div class="book">
+    <div class="button-group">
+      <a href="#" class="btn-book mt-4 d-flex justify-content-center" name="puzzle" onclick="toggleFormPuzzle()">Level 1</a>
+      <a href="#" class="btn-book mt-4 d-flex justify-content-center" name="maze" onclick="toggleFormMaze()">Level 2</a>
+    </div>
+      <div class="cover">
+      <div class="image-group d-flex justify-content-center">
+      <img src="assets/img/mainpuzzle.png" width="90%">
+    </div>
+   </div>
+  </div>
+
+  <div class="book">
+    <div class="button-group">
+      <a href="#" class="btn-book mt-4 d-flex justify-content-center" name="puzzle" onclick="toggleFormPuzzle()">Level 1</a>
+      <a href="#" class="btn-book mt-4 d-flex justify-content-center" name="maze" onclick="toggleFormMaze()">Level 2</a>
+    </div>
+      <div class="cover">
+      <div class="image-group d-flex justify-content-center">
+      <img src="assets/img/mainmaze.png" width="90%">
+    </div>
+   </div>
+  </div>
 
   <div class="game" style="display: none">
     <div class="grid">
