@@ -48,10 +48,21 @@ class MaterialsController extends Controller
     // update
     public function update(Request $request, Materials $material)
     {
-        $material->update($request->all());
+        // validate first
+        $validatedData = $request->validate([
+            'judul' => 'required|max:255',
+            'deskripsi' => 'required',
+            'link' => 'required|url',
+            'level' => 'required',
+        ]);
 
-        return redirect()->back()->with('success', 'Material updated successfully.');
+        // Update the material model with the validated data
+        $material->update($validatedData);
+        // Redirect to a success page or return a response
+        // You can customize this according to your application logic
+        return redirect()->route('gurubelajar')->with('success', 'Material updated successfully.');
     }
+
 
 
 

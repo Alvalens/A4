@@ -52,8 +52,7 @@ Route::get('/login', function () {
 Route::post('/kirim', 'App\Http\Controllers\MaterialsController@store')->name('kirim');
 Route::get('/gurubelajar', 'App\Http\Controllers\MaterialsController@index')->name('gurubelajar');
 Route::delete('/materi/{materi}', 'App\Http\Controllers\MaterialsController@destroy')->name('materi.destroy');
-Route::put('/materials/{material}', [MaterialsController::class, 'update'])->name('materials.update');
-
+Route::patch('/materials/{id}', 'App\Http\Controllers\MaterialsController@update')->name('materials.update');
 
 
 // teka-teki
