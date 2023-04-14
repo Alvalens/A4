@@ -102,15 +102,16 @@
         font-size: 14px;
       }
     }
+
     /* fix for background color in offcanvas menu */
     .offcanvas {
       background-color: #add8e6;
     }
-    .profile .dropdown-menu-end {
-  left: auto;
-  right: 0;
-}
 
+    .profile .dropdown-menu-end {
+      left: auto;
+      right: 0;
+    }
   </style>
 
 </head>
@@ -142,21 +143,28 @@
       {{-- cicrle account icon --}}
       <div class="d-flex justify-content-center align-items-center profile">
         <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <div class="circle rounded-circle">
-          <i class="fas fa-user"></i>
-        </div>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end">
+          <div class="circle rounded-circle">
+            <i class="fas fa-user"></i>
+          </div>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          @auth
             <li><a class="dropdown-item" href="#">Profile</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
             <li>
               <form action="{{ route('logout') }}" method="post">
-                @csrf <!-- Include CSRF token for security -->
+                @csrf
+                <!-- Include CSRF token for security -->
                 <button type="submit" class="dropdown-item">Logout</button>
-            </form>
+              </form>
             </li>
-          </ul>
+          @else
+            <li><a class="dropdown-item" href="{{ route('loginpage') }}">Login</a></li>
+          @endauth
+        </ul>
       </div>
   </nav>
 

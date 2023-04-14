@@ -37,6 +37,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <!-- Make Body CSS Style -->
+
   <style>
     .navbar {
       background-color: #add8e683;
@@ -102,9 +103,15 @@
         font-size: 14px;
       }
     }
+
     /* fix for background color in offcanvas menu */
     .offcanvas {
       background-color: #add8e6;
+    }
+
+    .profile .dropdown-menu-end {
+      left: auto;
+      right: 0;
     }
   </style>
 
@@ -155,9 +162,29 @@
       </div>
       {{-- cicrle account icon --}}
       <div class="d-flex justify-content-center align-items-center profile">
-        <div class="circle rounded-circle">
-          <i class="fas fa-user"></i>
-        </div>
+        <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <div class="circle rounded-circle">
+            <i class="fas fa-user"></i>
+          </div>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          @auth
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <!-- Include CSRF token for security -->
+                <button type="submit" class="dropdown-item">Logout</button>
+              </form>
+            </li>
+          @else
+            <li><a class="dropdown-item" href="{{ route('loginpage') }}">Login</a></li>
+          @endauth
+        </ul>
       </div>
   </nav>
 

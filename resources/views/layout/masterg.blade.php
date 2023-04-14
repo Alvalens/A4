@@ -23,7 +23,7 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
@@ -48,6 +48,7 @@
     #navbar.navbar-hide {
       top: -100px;
     }
+
     body {
       @yield('body-style')
     }
@@ -56,7 +57,7 @@
 </head>
 
 <body>
-    {{-- navbar s --}}
+  {{-- navbar s --}}
   <nav class="navbar navbar-expand-md fixed-top">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
@@ -105,9 +106,29 @@
       </div>
       {{-- cicrle account icon --}}
       <div class="d-flex justify-content-center align-items-center profile">
-        <div class="circle rounded-circle">
-          <i class="fas fa-user"></i>
-        </div>
+        <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <div class="circle rounded-circle">
+            <i class="fas fa-user"></i>
+          </div>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          @auth
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <!-- Include CSRF token for security -->
+                <button type="submit" class="dropdown-item">Logout</button>
+              </form>
+            </li>
+          @else
+            <li><a class="dropdown-item" href="{{ route('loginpage') }}">Login</a></li>
+          @endauth
+        </ul>
       </div>
   </nav>
 
