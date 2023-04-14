@@ -62,7 +62,7 @@
         {{-- main container --}}
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-2" data-aos="fade-up" data-aos-delay="100">
           <!-- Youtube links -->
-          @foreach ($materies as $materi)
+          @forelse ($materies as $materi)
             @extends('layout.modal')
             <div class="col-lg-4 col-md-6">
               <div class="service-item">
@@ -98,7 +98,9 @@
                   allowfullscreen></iframe>
               </div>
             </div>
-          @endforeach
+            @empty
+            <p>kosong</p>
+          @endforelse
           {{-- add materi --}}
           <div class="col-lg-4 col-md-6">
             <div class="service-item">
