@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('users_progress', function (Blueprint $table) {
             //contains id id_user id_materi progress waktu_belajar
             $table->id();
-            $table->string('id_user');
-            $table->string('id_materi');
+            $table->string('nama_user');
+            $table->string('nama_materi');
+            $table->integer('level');
             $table->string('progress');
             $table->string('waktu_belajar');
         });

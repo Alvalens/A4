@@ -6,6 +6,8 @@ use App\Http\Controllers\Siswa;
 use App\Http\Controllers\Ortu;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\MaterialsController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +24,9 @@ Route::get('/', function () {
     return view('index');
 });
 // raport
-Route::get('/raport', function () {
-    return view('raport');
-});
+// Route::get('/raport', function () {
+//     return view('raport');
+// });
 // guru
 Route::get('/guru', function () {
     return view('guru');
@@ -62,5 +64,17 @@ Route::get('/teka-teki', function () {
 // bermain controller
 Route::get('/bermain', 'App\Http\Controllers\Siswa@bermain');
 
+// account
+// register user controlelr
+Route::get('/register', 'App\Http\Controllers\UsersController@index')->name('loginpage');
+Route::post('/register', 'App\Http\Controllers\UsersController@store')->name('register.store');
+Route::post('/loginuser', 'App\Http\Controllers\AuthController@login')->name('login');
+Route::post('/logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
+
+
+// sementara
+Route::get('/sementara','App\Http\Controllers\Ortu@index')->name('ortu.index');
+// show raport
+Route::get('/raport/{nama}', 'App\Http\Controllers\Ortu@show')->name('raport');
 
 

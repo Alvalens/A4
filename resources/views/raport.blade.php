@@ -9,20 +9,26 @@
   {{-- css --}}
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    @include('layout.asset')
+  @include('layout.asset')
 </head>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
 
-  h1, h2, h3, h4, h5 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     /* potta one */
     font-family: 'Potta One', cursive;
   }
+
   h2 {
-    color : #ffffff;
+    color: #ffffff;
     /* shadow */
     text-shadow: 2px 2px 4px #000000;
   }
+
   .navbar.scrolled {
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -50,6 +56,7 @@
     max-width: 800px;
 
   }
+
   .cardl {
     min-width: 700px;
     margin-top: 150px
@@ -59,11 +66,13 @@
     .card {
       min-width: auto;
     }
+
     .cardl {
-      margin-top: 0 ;
+      margin-top: 0;
 
     }
   }
+
   .progress-bar .progress-bar {
     background-color: #00ff00;
   }
@@ -94,6 +103,7 @@
   ul li {
     margin-bottom: 18px;
   }
+
   ul li:last-child {
     margin-bottom: 40px;
   }
@@ -150,88 +160,37 @@
           </div>
         </div>
         <div class="col-md-5 m-2 m-md-0">
-          <div class="card cardr">
-            <div class="container">
-              <div class="judul mb-4 mt-3">
-                <h3 class="text-center">Raport 1</h3>
-              </div>
-              <div class="progress-bar mx-5 mb-5 mt-2">
-                <h4>
-                  progress
-                </h4>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-                    aria-valuemax="100"></div>
-                </div>
-                <h5>25%</h5>
-              </div>
-              <div class="materi">
-                <h5 class="text-center">Materi</h5>
-                <div
-                  class="materies row row-cols-3 row-cols-md-3 justify-content-center align-items-center gy-5 p-md-5">
-                  <div class="mat rounded-circle text-center">
-                    {{-- svg 1x1 white circle fill green --}}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="green"
-                      class="bi bi-circle-fill" viewBox="0 0 16 16">
-                      <circle cx="8" cy="8" r="8" />
-                      <text x="51%" y="58%" text-anchor="middle" fill="white"
-                        font-size="25%">100%</text>
-                      <h5 class="text-center">Belajar Angka</h5>
-                  </div>
-                  <div class="mat rounded-circle text-center">
-                    {{-- svg 1x1 white circle fill green --}}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="green"
-                      class="bi bi-circle-fill" viewBox="0 0 16 16">
-                      <circle cx="8" cy="8" r="8" />
-                      <text x="51%" y="58%" text-anchor="middle" fill="white"
-                        font-size="25%">100%</text>
-                      <h5 class="text-center">Belajar Angka</h5>
-                  </div>
-                  <div class="mat rounded-circle text-center">
-                    {{-- svg 1x1 white circle fill green --}}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="orange"
-                      class="bi bi-circle-fill" viewBox="0 0 16 16">
-                      <circle cx="8" cy="8" r="8" />
-                      <text x="51%" y="58%" text-anchor="middle" fill="white"
-                        font-size="25%">50%</text>
-                      <h5 class="text-center">Belajar Angka</h5>
-                  </div>
-                  <div class="mat rounded-circle text-center">
-                    {{-- svg 1x1 white circle fill green --}}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="green"
-                      class="bi bi-circle-fill" viewBox="0 0 16 16">
-                      <circle cx="8" cy="8" r="8" />
-                      <text x="51%" y="58%" text-anchor="middle" fill="white"
-                        font-size="25%">100%</text>
-                      <h5 class="text-center">Belajar Kimia</h5>
-                  </div>
-                  <div class="mat rounded-circle text-center">
-                    {{-- svg 1x1 white circle fill green --}}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="red"
-                      class="bi bi-circle-fill" viewBox="0 0 16 16">
-                      <circle cx="8" cy="8" r="8" />
-                      <text x="51%" y="58%" text-anchor="middle" fill="white"
-                        font-size="25%">1%</text>
-                      <h5 class="text-center">Belajar Huruf</h5>
-                  </div>
-                  <div class="mat rounded-circle text-center">
-                    {{-- svg 1x1 white circle fill green --}}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="green"
-                      class="bi bi-circle-fill" viewBox="0 0 16 16">
-                      <circle cx="8" cy="8" r="8" />
-                      <text x="51%" y="58%" text-anchor="middle" fill="white"
-                        font-size="25%">100%</text>
-                      <h5 class="text-center">Belajar Angka</h5>
-                  </div>
-                </div>
-              </div>
-              {{-- grey more button --}}
-              <div class="more text-center mb-3">
-                <button type="button" class="btn btn-outline-secondary btn-lg btn-block">More</button>
-              </div>
+          <!-- Carousel section -->
+          <div id="raportCarousel" class="carousel slide" data-bs-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-bs-target="#raportCarousel" data-bs-slide-to="0" class="active"></li>
+              <li data-bs-target="#raportCarousel" data-bs-slide-to="1"></li>
+              <li data-bs-target="#raportCarousel" data-bs-slide-to="2"></li>
+              <!-- Add more indicators as needed based on your database -->
+            </ol>
 
-            </div>
+            <!-- Slides -->
+            <div class="carousel-inner">
+              <!-- Raport 1 card -->
+              <div class="carousel-item active">
+                    @include('layout.raportcard')
+              </div>
+              <!-- Raport 2 card -->
+              <div class="carousel-item">
+                    @include('layout.raportcard')
+              </div>
+            <!-- Controls -->
+            <a class="carousel-control-prev" href="#raportCarousel" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#raportCarousel" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </a>
           </div>
+
         </div>
       </div>
   </section>

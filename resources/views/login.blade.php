@@ -33,35 +33,33 @@
                 <div class="card-front">
                   <div class="center-wrap">
                     <div class="section text-center">
-                      <h4 class="m-2 pb-3 animated">Masuk</h4>
-                      <label for="user-type" class="mt-2">Aku Adalah:</label>
-                      <select class="form-style" id="user-type" name="user-type" onchange="toggleForm()">
-                        <option class="form-style" value="murid">Murid</option>
-                        <option class="form-style" value="guru">Guru</option>
-                        <option class="form-style" value="orangtua">Orang Tua</option>
-                      </select>
-                      <label for="user-type" class="mt-2">Masukkan:</label>
-                      <div class="form-group mt-2">
-                        <input type="username" name="logusername" class="form-style" placeholder="Nama" id="logpass"
-                          autocomplete="off">
-                        <i class="input-icon uil uil-lock-alt"></i>
-                      </div>
-                      {{-- <div class="form-group mt-2">
-                        <input type="email" name="logemail" style="display: none;" class="form-style"
-                          placeholder="Alamat Email" id="logemail" autocomplete="off">
-                        <i class="input-icon uil uil-at"></i>
-                      </div> --}}
-                      <div class="form-group mt-2">
-                        <input type="password" name="logpass" class="form-style" placeholder="Kata Sandi" id="logpass"
-                          autocomplete="off">
-                        <i class="input-icon uil uil-lock-alt"></i>
-                      </div>
-                      <div class="form-group mt-2">
+                      <form action="{{ route('login') }}" method="POST">
+                        @csrf
+                        <h4 class="m-2 pb-3 animated">Masuk</h4>
+                        <label for="user-type" class="mt-2">Aku Adalah:</label>
+                        <select class="form-style" id="user-type" name="user-type" onchange="toggleForm()">
+                          <option class="form-style" value="murid">Murid</option>
+                          <option class="form-style" value="orangtua">Orang Tua</option>
+                        </select>
+                        <label for="user-type" class="mt-2">Masukkan:</label>
+                        <div class="form-group mt-2">
+                          <input type="username" name="logusername" class="form-style" placeholder="Nama" id="logpass"
+                            autocomplete="off">
+                          <i class="input-icon uil uil-lock-alt"></i>
+                        </div>
+                        <div class="form-group mt-2">
+                          <input type="password" name="logpass" class="form-style" placeholder="Kata Sandi" id="logpass"
+                            autocomplete="off">
+                          <i class="input-icon uil uil-lock-alt"></i>
+                        </div>
+                        {{-- <div class="form-group mt-2">
                         <input type="username" name="logukids" style="display: none;" class="form-style"
                           placeholder="Nama Anak" id="logukids" autocomplete="off">
                         <i class="input-icon uil uil-lock-alt"></i>
-                      </div>
-                      <a href="#" class="btn mt-4">kirim</a>
+                      </div> --}}
+                        {{-- button --}}
+                        <button type="submit" class="btn mt-4">Masuk</button>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -71,35 +69,43 @@
                 <div class="card-back">
                   <div class="center-wrap">
                     <div class="section text-center">
-                      <h4 class="m-2 pb-3 animated">Daftar</h4>
-                      <label for="user-type" class="mt-2">Aku Adalah:</label>
-                      <select class="form-style" id="user-type-back" name="user-type-back" onchange="toggleFormBack()">
-                        <option class="form-style" value="murid2">Murid</option>
-                        <option class="form-style" value="guru2">Guru</option>
-                        <option class="form-style" value="orangtua2">Orang Tua</option>
-                      </select>
-                      <label for="user-type" class="mt-2">Masukkan:</label>
-                      <div class="form-group mt-2">
-                        <input type="username" name="logusername" class="form-style" placeholder="Nama" id="logpass"
-                          autocomplete="off">
-                        <i class="input-icon uil uil-lock-alt"></i>
-                      </div>
-                      <div class="form-group mt-2">
-                        <input type="email" name="logemail" style="display: none;" class="form-style"
-                          placeholder="Alamat Email" id="logemail2" autocomplete="off">
-                        <i class="input-icon uil uil-at"></i>
-                      </div>
-                      <div class="form-group mt-2">
-                        <input type="password" name="logpass" class="form-style" placeholder="Kata Sandi"
-                          id="logpass" autocomplete="off">
-                        <i class="input-icon uil uil-lock-alt"></i>
-                      </div>
-                      <div class="form-group mt-2">
+                      <form action="{{ route('register.store') }}" method="POST">
+                        @csrf
+                        <h4 class="m-2 pb-3 animated">Daftar</h4>
+                        <label for="user-type" class="mt-2">Aku Adalah:</label>
+                        <select class="form-style" id="user-type-back" name="user-type-back" onchange="toggleFormBack()">
+                          <option class="form-style" value="murid2">Murid</option>
+                          <option class="form-style" value="orangtua2">Orang Tua</option>
+                        </select>
+                        <label for="user-type" class="mt-2">Masukkan:</label>
+                        <div class="form-group mt-2">
+                          <input type="username" name="logusername" class="form-style" placeholder="Nama" id="logpass"
+                            autocomplete="off">
+                          <i class="input-icon uil uil-lock-alt"></i>
+                        </div>
+                        <div class="form-group mt-2">
+                          <input type="email" name="logemail" style="display: none;" class="form-style"
+                            placeholder="Alamat Email" id="logemail2" autocomplete="off">
+                          <i class="input-icon uil uil-at"></i>
+                        </div>
+                        <div class="form-group mt-2">
+                          <input type="password" name="logpass" class="form-style" placeholder="Kata Sandi" id="logpass"
+                            autocomplete="off">
+                          <i class="input-icon uil uil-lock-alt"></i>
+                        </div>
+                        <div class="form-group mt-2">
+                          <input type="password" name="confirmpass" class="form-style" placeholder="Konfirmasi Sandi"
+                            id="logpass" autocomplete="off">
+                          <i class="input-icon uil uil-lock-alt"></i>
+                        </div>
+                        {{-- <div class="form-group mt-2">
                         <input type="username" name="logukids" style="display: none;" class="form-style"
                           placeholder="Nama Anak" id="logukids2" autocomplete="off">
                         <i class="input-icon uil uil-lock-alt"></i>
-                      </div>
-                      <a href="#" class="btn mt-4">kirim</a>
+                      </div> --}}
+                        {{-- button --}}
+                        <button type="submit" class="btn mt-4">Kirim</button>
+                      </form>
                     </div>
                   </div>
                 </div>
