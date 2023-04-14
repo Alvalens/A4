@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Materials;
 use Illuminate\Http\Request;
 
 class Siswa extends Controller
 {
-
-    //retu
     //return view belajar
     public function belajar()
     {
-        return view('belajar');
+        // get all data from materies
+        $materies = Materials::all();
+        return view('belajar',
+            compact('materies')
+        );
     }
+
     //return view bermain
     public function bermain()
     {
