@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 class Siswa extends Controller
 {
+
+    //retu
     //return view belajar
     public function belajar()
     {
@@ -16,5 +18,5 @@ class Siswa extends Controller
     {
         return view('bermain');
     }
-    
+
 }

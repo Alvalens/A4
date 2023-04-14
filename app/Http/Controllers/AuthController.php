@@ -24,7 +24,7 @@ class AuthController extends Controller
             // Check the role of the authenticated user
             if ($user->role == 'siswa') {
                 // Redirect to home route for siswa
-                return redirect()->url('/');
+                return redirect()->route('index');
             } elseif ($user->role == 'ortu') {
                 // Redirect to report route for ortu
                 return redirect()->route('ortu.index');

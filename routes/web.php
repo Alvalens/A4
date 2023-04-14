@@ -22,7 +22,8 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
+
 // raport
 // Route::get('/raport', function () {
 //     return view('raport');
