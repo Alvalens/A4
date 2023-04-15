@@ -83,8 +83,8 @@
             @forelse ($Siswa as $r)
               <tr>
                 <th>{{ $loop->iteration }}</th>
-                <td> <a href="{{ route('raport', ['nama' => $r->nama]) }}">
-                    {{ $r->nama }}
+                <td> <a href="{{ route('raport', ['nama' => $r->name]) }}">
+                    {{ $r->name }}
                   </a>
                 </td>
               </tr>
