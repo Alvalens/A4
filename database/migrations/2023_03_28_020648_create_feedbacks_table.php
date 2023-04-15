@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('feedbacks', function (Blueprint $table) {
-            //contains id id_user id_materi feedback
+
             $table->id();
-            $table->string('id_user');
-            $table->string('id_materi');
+            $table->string('nama_user');
+            $table->string('nama_materi');
             $table->string('feedback');
         });
     }

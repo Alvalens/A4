@@ -28,6 +28,12 @@ class AuthController extends Controller
             } elseif ($user->role == 'ortu') {
                 // Redirect to report route for ortu
                 return redirect()->route('ortu.index');
+            } elseif ($user->role == 'guru') {
+                // Redirect to report route for guru
+                return redirect()->route('index');
+            } elseif ($user->role == 'admin') {
+                // Redirect to report route for admin
+                return redirect()->route('index');
             }
         }
 

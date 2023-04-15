@@ -116,7 +116,7 @@ section {
   position: relative;
   z-index: 1;
   }
-  
+
   @keyframes zoom {
     0% {
       transform: scale(1);
@@ -128,13 +128,13 @@ section {
       transform: scale(1);
     }
   }
-  
+
   .call-to-action .container {
     background-size: cover;
     border-radius: 15px;
     animation: zoom 2s ease-in-out infinite;
   }
-  
+
 
 @media (max-width: 768px) {
   .call-to-action .container {
@@ -408,7 +408,7 @@ section {
 }
 
 .emoji > svg {
-  margin: 15px 0; 
+  margin: 15px 0;
   width: 70px;
   height: 70px;
   flex-shrink: 0;
@@ -420,10 +420,10 @@ section {
 #rating-4:checked ~ .emoji-wrapper > .emoji { transform: translateY(-400px); }
 #rating-5:checked ~ .emoji-wrapper > .emoji { transform: translateY(-500px); }
 
-.feedback1, 
-.feedback2, 
-.feedback3, 
-.feedback4, 
+.feedback1,
+.feedback2,
+.feedback3,
+.feedback4,
 .feedback5 {
   max-width: 360px;
   background-color: #fff;
@@ -440,7 +440,7 @@ section {
 /*--------------------------------------------------------------
 # Button
 --------------------------------------------------------------*/
-.btn{  
+.btn{
   border-radius: 4px;
   height: 44px;
   font-size: 13px;
@@ -470,20 +470,16 @@ section {
 }
 
 .btn:active,
-.btn:focus{  
+.btn:focus{
   background-color: #102770;
   color: #ffeba7;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
 
-.btn:hover{  
+.btn:hover{
   background-color: #102770;
   color: #ffeba7;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
-}
-
-.container-fluid { 
-  background-color: #C5CAE9
 }
 
 .heading{
@@ -493,6 +489,6 @@ section {
   padding-left: 20px
 }
 
-.card { 
+.card {
   border-radius: 10px !important;
   margin-top: 60px;margin-bottom: 60px}.form-card{margin-left: 20px;margin-right: 20px}.form-card input, .form-card textarea{padding: 10px 15px 5px 15px;border: none;border: 1px solid lightgrey;border-radius: 6px;margin-bottom: 25px;margin-top: 2px;width: 100%;box-sizing: border-box;font-family: arial;color: #2C3E50;font-size: 14px;letter-spacing: 1px}.form-card input:focus, .form-card textarea:focus{-moz-box-shadow: 0px 0px 0px 1.5px skyblue !important;-webkit-box-shadow: 0px 0px 0px 1.5px skyblue !important;box-shadow: 0px 0px 0px 1.5px skyblue !important;font-weight: bold;border: 1px solid #304FFE;outline-width: 0}.input-group{position:relative;width:100%;overflow:hidden}.input-group input{position:relative;height:80px;margin-left: 1px;margin-right: 1px;border-radius:6px;padding-top: 30px;padding-left: 25px}.input-group label{position:absolute;height: 24px;background: none;border-radius: 6px;line-height: 48px;font-size: 15px;color: gray;width:100%;font-weight:100;padding-left: 25px}input:focus + label{color: #304FFE}.btn-pay{background-color: #304FFE;height: 60px;color: #ffffff !important;font-weight: bold}.btn-pay:hover{background-color: #3F51B5}.fit-image{width: 100%;object-fit: cover}img{border-radius: 5px}.radio-group{position: relative;margin-bottom: 25px}.radio{display:inline-block;border-radius: 6px;box-sizing: border-box;border: 2px solid lightgrey;cursor:pointer;margin: 12px 25px 12px 0px}.radio:hover{box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2)}.radio.selected{box-shadow: 0px 0px 0px 1px rgba(0, 0, 155, 0.4);border: 2px solid blue}.label-radio{font-weight: bold;color: #000000}

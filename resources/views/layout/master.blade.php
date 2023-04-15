@@ -169,7 +169,9 @@
         <ul class="dropdown-menu dropdown-menu-end">
           @auth
             <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            @if (auth()->user()->role === 'guru' || auth()->user()->role === 'admin')
+              <li><a class="dropdown-item" href="#">Dashboard</a></li>
+            @endif
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -184,6 +186,7 @@
             <li><a class="dropdown-item" href="{{ route('loginpage') }}">Login</a></li>
           @endauth
         </ul>
+
       </div>
   </nav>
 

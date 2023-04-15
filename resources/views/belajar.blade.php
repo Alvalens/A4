@@ -7,17 +7,6 @@
   background-repeat: no-repeat;
 @endsection
 <style>
-  .circle {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #add8e6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    color: white;
-  }
 
   .circle-del {
     width: 50px;
@@ -96,10 +85,10 @@
 
 
   {{-- jq --}}
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+  {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="{{ url('js/jq.js') }}"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
   <script>
     // Menampilkan kembali modal saat halaman direfresh jika terdapat error
     var hasError = document.querySelector('.is-invalid');

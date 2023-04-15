@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('parents', function (Blueprint $table) {
-            //contains id nama email (primary) password username_anak
+        Schema::create('wali_murids', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('email');
-            $table->string('password');
-            $table->string('username_anak');
+            $table->string('nama_siswa');
+            $table->string('nama_guru');
+            $table->string('orang_tua');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::drop('parents');
+        Schema::dropIfExists('wali_murids');
     }
 };

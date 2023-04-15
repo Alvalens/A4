@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('teacher_notes', function (Blueprint $table) {
             //contains id id_user id_guru note
             $table->id();
-            $table->string('id_user');
-            $table->string('id_guru');
-            $table->string('note');
+            $table->string('nama_user');
+            $table->string('nama_guru');
+            $table->string('catatan');
         });
     }
 
