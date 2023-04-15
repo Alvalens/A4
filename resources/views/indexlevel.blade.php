@@ -6,6 +6,7 @@
   background-image: url(assets/img/bg-sky.jpg);
   background-repeat: no-repeat;
 @endsection
+
 <style>
   .card {
     color: black;
@@ -66,7 +67,7 @@
     content: "Mulai!";
   }
 
-  a:active {
+  .row a:active {
     color: black;
     text-decoration: none;
   }
@@ -76,11 +77,13 @@
 
   </section>
   <div class="container">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-2 justify-content-center align-items-center">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-2 ">
       @for ($level = 1; $level <= $lastLevel; $level++)
+      <div class="wrapper d-flex flex-column justify-content-center align-items-center">
         <a href="{{ route('materi', ['level' => $level]) }}">
           <div class="card">Bagian {{ $level }}</div>
         </a>
+      </div>
       @endfor
     </div>
   </div>

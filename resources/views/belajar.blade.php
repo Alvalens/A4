@@ -6,6 +6,7 @@
   background-image: url({{ url('assets/img/bg-sky.jpg') }});
   background-repeat: no-repeat;
 @endsection
+<link rel="stylesheet" href="{{ url('assets/css/belajar.css') }}">
 <style>
 
   .circle-del {
@@ -92,7 +93,6 @@
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="{{ url('js/jq.js') }}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
-
-
+<!-- Include jQuery library -->
 
 @endsection

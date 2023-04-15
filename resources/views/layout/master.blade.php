@@ -119,7 +119,7 @@
 <body>
   {{-- navbar s --}}
   <nav class="navbar navbar-expand-md fixed-top">
-    <div class="container-fluid">
+    <div class="container-fluid" style="background-color: rgba(0, 0, 0, 0) !important;">
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -209,6 +209,7 @@
     <!-- Copyright -->
   </footer>
 
+
   <!-- Vendor JS Files -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
@@ -225,12 +226,10 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <script></script>
-
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/@yield('js', 'main').js"></script>
-
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 </body>
 
 </html>

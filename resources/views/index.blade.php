@@ -54,8 +54,16 @@
             </div>
             {{-- button --}}
             <div class="button text-start text-md-start">
-              <a href="login" type="button" class="buthon mx-3"> Mulai!</a>
-              <a href="/about" type="button" class="buthon2"> lebih lanjut</a>
+              <!-- Check if user is logged in -->
+              @if(Auth::check())
+                <!-- Show welcome message -->
+                <a href="/about" type="button" class="buthon2">Lebih Lanjut</a>
+              @else
+                <!-- Show "Mulai!" button and "Lebih Lanjut" button -->
+                <a href="login" type="button" class="buthon mx-3">Mulai!</a>
+                <a href="/about" type="button" class="buthon2">Lebih Lanjut</a>
+              @endif
+
             </div>
           </div>
           <div class="col-md-6">
@@ -150,5 +158,6 @@
         });
       });
     </script>
+
 
   @endsection
