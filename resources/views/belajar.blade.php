@@ -3,7 +3,7 @@
 @section('css', 'belajar')
 
 @section('body-style')
-  background-image: url(assets/img/bg-sky.jpg);
+  background-image: url({{ url('assets/img/bg-sky.jpg') }});
   background-repeat: no-repeat;
 @endsection
 <style>
@@ -38,12 +38,15 @@
     border: none;
     color: white;
   }
+  /* remove attribute in all link */
+
+
 </style>
 @section('content')
    <section id="call-to-action" class="call-to-action">
     <div class="section-header-1">
-      <img src="assets/img/header2.png">
-      <img src="assets/img/header3.png">
+      <img src="{{ url('assets/img/header2.png') }}">
+      <img src="{{ url('assets/img/header3.png') }}">
     </div>
     <div class="container text-center" data-aos="zoom-out">
       <a href="https://youtu.be/pUn4kWVm3F0" class="glightbox play-btn"></a>
@@ -57,7 +60,7 @@
 <section class="main">
   <div class="container services" data-aos="fade-up">
     <div class="section-header">
-      <img src="assets/img/header4.png">
+      <img src="{{ url('assets/img/header4.png') }}">
     </div>
     <div id="our-services" class="our-services">
       {{-- main container --}}
@@ -89,15 +92,7 @@
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="{{ url('js/jq.js') }}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
-  <script>
-    // Menampilkan kembali modal saat halaman direfresh jika terdapat error
-    var hasError = document.querySelector('.is-invalid');
-    if (hasError) {
-      var fileModal = new bootstrap.Modal(document.getElementById('fileModal'));
-      // show the modal that has the error
-      fileModal.show();
-    }
-  </script>
+
 
 
 @endsection

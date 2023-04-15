@@ -39,7 +39,9 @@ Route::get('/about', function () {
 });
 
 // belajar controller
-Route::get('/belajar', 'App\Http\Controllers\Siswa@belajar');
+Route::get('/belajar', 'App\Http\Controllers\Siswa@indexlevel')->name('level');
+Route::get('/belajar/{level}', 'App\Http\Controllers\Siswa@materi')->name('materi');
+
 
 // about
 Route::get('/gurubelajar', function () {

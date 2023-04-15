@@ -18,19 +18,19 @@ class MateriSeeder extends Seeder
             'level' => '1',
             'judul' => 'Berhitung',
             'deskripsi' => 'Test',
-            'link' => 'https://www.youtube.com/embed/watch?v=QH2-TGUlwu4',
+            'link' => 'https://www.youtube.com/embed/ZRtdQ81jPUQ',
         ]);
         Materials::create([
             'level' => '1',
             'judul' => 'Membaca',
             'deskripsi' => 'Test',
-            'link' => 'https://www.youtube.com/embed/watch?v=QH2-TGUlwu4',
+            'link' => 'https://www.youtube.com/embed/ZRtdQ81jPUQ',
         ]);
         Materials::create([
             'level' => '2',
             'judul' => 'Menulis',
             'deskripsi' => 'Test',
-            'link' => 'https://www.youtube.com/embed/watch?v=QH2-TGUlwu4',
+            'link' => 'https://www.youtube.com/embed/QH2-TGUlwu4',
         ]);
     }
 }
