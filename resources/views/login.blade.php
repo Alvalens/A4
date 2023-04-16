@@ -43,14 +43,20 @@
                         </select>
                         <label for="user-type" class="mt-2">Masukkan:</label>
                         <div class="form-group mt-2">
-                          <input type="username" name="logusername" class="form-style" placeholder="Nama" id="logpass"
+                          <input type="username" name="logusername" class="form-style" placeholder="Nama" id="logpass" 
                             autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
+                          @error('logusername')
+                            <small class="error text-danger">{{ $message }}</small>
+                          @enderror
                         </div>
                         <div class="form-group mt-2">
                           <input type="password" name="logpass" class="form-style" placeholder="Kata Sandi" id="logpass"
                             autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
+                          @error('logpass')
+                            <small class="error text-danger">{{ $message }}</small>
+                          @enderror
                         </div>
                         {{-- <div class="form-group mt-2">
                         <input type="username" name="logukids" style="display: none;" class="form-style"
@@ -79,24 +85,36 @@
                         </select>
                         <label for="user-type" class="mt-2">Masukkan:</label>
                         <div class="form-group mt-2">
-                          <input type="username" name="logusername" class="form-style" placeholder="Nama" id="logpass"
+                          <input type="username" name="logusername" class="form-style" placeholder="Nama" id="logpass" value="{{ old('logusername')}}"
                             autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
+                          @error('logusername')
+                            <small class="error text-danger">{{ $message }}</small>
+                          @enderror
                         </div>
                         <div class="form-group mt-2">
                           <input type="email" name="logemail" style="display: none;" class="form-style"
-                            placeholder="Alamat Email" id="logemail2" autocomplete="off">
+                            placeholder="Alamat Email" id="logemail2" value="{{ old('logemail')}}" autocomplete="off">
                           <i class="input-icon uil uil-at"></i>
+                          @error('logemail')
+                            <small class="error text-danger">{{ $message }}</small>
+                          @enderror
                         </div>
                         <div class="form-group mt-2">
-                          <input type="password" name="logpass" class="form-style" placeholder="Kata Sandi" id="logpass"
+                          <input type="password" name="logpass" class="form-style" placeholder="Kata Sandi" id="logpass" value="{{ old('logpass')}}"
                             autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
+                          @error('logpass')
+                            <small class="error text-danger">{{ $message }}</small>
+                          @enderror
                         </div>
                         <div class="form-group mt-2">
                           <input type="password" name="confirmpass" class="form-style" placeholder="Konfirmasi Sandi"
-                            id="logpass" autocomplete="off">
+                            id="logpass" value="{{ old('confirmpass')}}" autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
+                          @error('confirmpass')
+                            <small class="error text-danger">{{ $message }}</small>
+                          @enderror
                         </div>
                         {{-- <div class="form-group mt-2">
                         <input type="username" name="logukids" style="display: none;" class="form-style"
