@@ -200,11 +200,21 @@
       transform: rotateY(0deg);
     }
   }
+  #loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7); /* Set the background color and opacity of the loader */
+  z-index: 9999; /* Set the z-index to make sure it appears on top of other elements */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 </style>
-<div class="wrap">
-
-
-<div class="loader" id=loader>
+<div class="loader" id="inner-loader">
   <div>
     <ul>
       <li>
@@ -251,5 +261,4 @@
       </li>
     </ul>
   </div><span>Loading</span>
-</div>
 </div>

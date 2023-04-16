@@ -23,7 +23,7 @@
     font-weight: bold;
     border-radius: 15px;
     cursor: pointer;
-    min-height: 300px;
+    min-height: 220px;
   }
 
   .card::before,
@@ -66,11 +66,14 @@
     text-decoration: none;
     content: "Mulai!";
   }
-
-  .row a:active {
-    color: black;
-    text-decoration: none;
-  }
+a:link {
+  text-decoration: none !important;
+  color: black;
+}
+.card p {
+  text-decoration: none !important;
+  color: black;
+}
 </style>
 @section('content')
   <section>
@@ -81,7 +84,9 @@
       @for ($level = 1; $level <= $lastLevel; $level++)
       <div class="wrapper d-flex flex-column justify-content-center align-items-center">
         <a href="{{ route('materi', ['level' => $level]) }}">
-          <div class="card">Bagian {{ $level }}</div>
+          <div class="card rounded-circle">
+            <p>Bagian {{ $level }}</p>
+          </div>
         </a>
       </div>
       @endfor
