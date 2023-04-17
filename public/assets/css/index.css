@@ -83,11 +83,9 @@
     transform: translate(-50%, -50%);
 }
 
-
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-
 @keyframes moveUpDown {
     0% {
         transform: translateY(0);
@@ -106,6 +104,12 @@
     position: absolute;
     width: 100%;
     animation: movezoom 2s ease-in-out infinite alternate;
+    z-index: -1;
+    /* Set a negative z-index to place it behind other elements */
+}
+
+.img-hero4 {
+    position: absolute;
     z-index: -1;
     /* Set a negative z-index to place it behind other elements */
 }
@@ -247,8 +251,36 @@
 
 .carousel {
     /* make it smaller */
-    width: 80%;
+    width: 70%;
     padding-top: 20px;
     margin: 0 auto;
+    margin-bottom: 200px;
+}
 
+@media (max-width: 600px) {
+    .img-sec,
+    .img-sec2,
+    .img-sec3 {
+        width: 200%;
+    }
+    
+    .img-sec {
+        width: 200% !important;
+    }
+    
+    .img-sec2 {
+        width: 200% !important;
+    }
+    
+    .img-sec3 {
+        width: 150%;
+    }
+
+    .carousel {
+        width: 100%;
+    }
+    
+    .img-c {
+        width: 100%;
+    }
 }

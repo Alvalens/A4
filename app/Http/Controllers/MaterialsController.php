@@ -11,8 +11,15 @@ class MaterialsController extends Controller
     public function index()
     {
         $materies = Materials::all();
-        return view('gurubelajar', compact('materies'));
+        return view('datamateri', compact('materies'));
     }
+
+    public function show($materi)
+    {
+        $result = Materials::find($materi);
+        return view('tampilmateri', ['materi' => $result]);
+    }
+    
     //store
     public function store(Request $request)
     {
@@ -30,40 +37,39 @@ class MaterialsController extends Controller
         $materi->deskripsi = $validatedData['deskripsi'];
         $materi->link = $validatedData['link'];
         $materi->level = $validatedData['level'];
-
         // Save the new Materi to the database
         $materi->save();
 
         // Redirect to a success page or do something else
-        return redirect()->route('gurubelajar')->with('success', 'Materi created successfully!');
+        return redirect()->route('datamateri');
     }
-    // delete
-    public function destroy($id)
-    {
-        $materi = Materials::findOrFail($id);
-        $materi->delete();
 
-        return redirect()->route('gurubelajar')->with('success', 'Materi deleted successfully!');
+    // delete
+    public function destroy(Materials $materi)
+    {
+        $materi->delete();
+        return redirect()->route('datamateri');
     }
+
     // update
-    public function update(Request $request, Materials $material)
+    public function update(Request $request, Materials $materi)
     {
         // validate first
         $validatedData = $request->validate([
-            'judul' => 'required|max:255',
-            'deskripsi' => 'required',
-            'link' => 'required|url',
-            'level' => 'required',
+            'judul' => 'max:255',
+            'link' => 'url',
+            'level' => '',
+            'deskripsi' => '',
         ]);
 
-        // Update the material model with the validated data
-        $material->update($validatedData);
+        // Update only the fields that were included in the validated data
+        foreach ($validatedData as $request => $value) {
+            $materi->{$request} = $value;
+        }
+        $materi->save();
+
         // Redirect to a success page or return a response
         // You can customize this according to your application logic
-        return redirect()->route('gurubelajar')->with('success', 'Material updated successfully.');
+        return redirect()->route('datamateri');
     }
-
-
-
-
 }

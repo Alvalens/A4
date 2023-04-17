@@ -1,67 +1,66 @@
 @extends('layout.master')
 @section('title', 'Yuk, Belajar!')
-@section('css', 'belajar')
+
+@section('css')
+  <link href="{{ url('assets/css/belajar.css') }}" rel="stylesheet">
+  <style>
+    .circle-del {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #bb3232;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      color: white;
+    }
+    .circle-edit {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #adbb32;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      color: white;
+    }
+    /* remove buttonm style in del */
+    .del {
+      background-color: transparent;
+      border: none;
+      color: white;
+    }
+    /* remove attribute in all link */
+  </style>
+@endsection
 
 @section('body-style')
   background-image: url({{ url('assets/img/bg-sky.jpg') }});
   background-repeat: no-repeat;
 @endsection
-<link rel="stylesheet" href="{{ url('assets/css/belajar.css') }}">
-<style>
 
-  .circle-del {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #bb3232;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    color: white;
-  }
-
-  .circle-edit {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #adbb32;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    color: white;
-  }
-
-  /* remove buttonm style in del */
-  .del {
-    background-color: transparent;
-    border: none;
-    color: white;
-  }
-  /* remove attribute in all link */
-
-
-</style>
 @section('content')
+  <!-- Section 1 -->
    <section id="call-to-action" class="call-to-action">
     <div class="section-header-1">
-      <img src="{{ url('assets/img/header2.png') }}">
-      <img src="{{ url('assets/img/header3.png') }}">
+      <img src="{{ url('assets/img/belajar/title-maribelajar.png') }}">
+      <img src="{{ url('assets/img/belajar/title-videopembelajaran.png') }}">
     </div>
     <div class="container text-center" data-aos="zoom-out">
       <a href="https://youtu.be/pUn4kWVm3F0" class="glightbox play-btn"></a>
       <br>
     </div>
   </section>
-  <!-- End Call To Action Section -->
+  <!-- Section 1 -->
 
   <a href="#our-services" class="scroll-arrow"><i class="bi bi-chevron-double-down"></i></a>
   {{-- youtube links --}}
 <section class="main">
   <div class="container services" data-aos="fade-up">
     <div class="section-header">
-      <img src="{{ url('assets/img/header4.png') }}">
+      <img src="{{ url('assets/img/belajar/title-kliktombol.png') }}">
     </div>
     <div id="our-services" class="our-services">
       {{-- main container --}}
@@ -86,13 +85,4 @@
     </div>
   </div>
 </section>
-
-
-  {{-- jq --}}
-  {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  <script src="{{ url('js/jq.js') }}"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
-<!-- Include jQuery library -->
-
 @endsection
