@@ -12,7 +12,7 @@
   @include('layout.asset')
 </head>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
+  @import {{ url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap') }};
 
   h1,
   h2,
@@ -117,6 +117,7 @@
     </div>
   </nav>
 
+
   <section style="background: url({{ url('assets/img/bg.jpg') }}); background-size: cover; padding-top: 80px;" class="vh-100">
     <!-- Your content goes here -->
     <div class="container-fluid">
@@ -124,7 +125,7 @@
         <div class="col-md-7 mt-5 pl-md-5">
           <div class="row">
             <div class="col-md-6 d-flex flex-column justify-content-md-end justify-content-center align-items-center">
-              <img src="{{ url('pictures/guest.jpg') }}" alt=""
+              <img src="{{ url('assets/img/rapor/guest.jpg') }}" alt=""
                 class="img-fluid rounded-circle align-self-md-end" style="max-height: 200px; max-width:200px;">
             </div>
             <div class="col-md-6 d-flex flex-column justify-content-lg-center align-items-start">

@@ -13,12 +13,11 @@
   color: #ffffff;
   overflow: hidden;
   background-size: cover;
-
 @endsection
 
 @section('content')
   <div class="section">
-    <img id="ikon-rumah" src="assets/img/ikon-rumah.png" alt="Ikon Rumah">
+    <img id="ikon-rumah" src="{{ url('assets/img/ikon-rumah.png') }}" alt="Ikon Rumah">
     <div class="container">
       <div class="row full-height justify-content-center">
         <div class="col-12 text-center align-self-center py-5">
