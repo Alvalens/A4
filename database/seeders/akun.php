@@ -40,7 +40,7 @@ class akun extends Seeder
         // create siswa account
         User::create([
             'name' => 'Siswa',
-            'email' => '',
+            'email' => 'ortu@example.com',
             'password' => Hash::make('siswa'),
             'role' => 'siswa', // assuming 'role' is a column in the users table to represent user role
         ]);

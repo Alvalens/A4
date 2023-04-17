@@ -36,6 +36,10 @@ class Siswa extends Controller
 
     public function sendVerif(Request $request)
     {
+        // check email = role ortu in database
+        if (!User::where('email', $request->email)->where('role', 'ortu')->exists()) {
+            return back()->with('error', 'Email tidak terdaftar!');
+        }
         // get the email from the request
         $email = $request->email;
         // Generate a random verification code

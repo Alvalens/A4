@@ -171,7 +171,7 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
           @auth
-            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="/profile">Profile</a></li>
             @if (auth()->user()->role === 'guru' || auth()->user()->role === 'admin')
               <li><a class="dropdown-item" href="#">Dashboard</a></li>
             @endif

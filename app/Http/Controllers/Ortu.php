@@ -33,8 +33,11 @@ class Ortu extends Controller
         }
         // get the level last highest level from userprog where name is name
         $lastLevel = UsersProgress::where('nama_user', $nama_user)->orderBy('level', 'desc')->first();
-        $lastLevel = $lastLevel->level;
-
+        if ($lastLevel == null) {
+            return redirect()->route('ortu.index')->with('error', 'Raport kosong!');
+        } else {
+            $lastLevel = $lastLevel->level;
+        }
         // get the user progress
         $userProgress = UsersProgress::where('nama_user', $nama_user)->get();
         // Pass the $userProgress object to the view
