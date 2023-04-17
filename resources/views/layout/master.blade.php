@@ -30,7 +30,7 @@
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  
+
   <!-- Make Body CSS Style -->
   <style>
     .navbar {
@@ -113,7 +113,7 @@
         </div>
         <div class="offcanvas-body d-flex justify-content-center">
           <ul class="navbar-nav">
-          
+
             <li class="nav-item">
               <a class="nav-link" href="{{ route('beranda') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#0e4168" class="bi bi-house" viewBox="0 0 16 16">
@@ -122,7 +122,7 @@
                 <span class="caption d-block d-md-none">Beranda</span>
               </a>
             </li>
-            
+
             <li class="nav-item">
               <a class="nav-link" href="{{ route('belajar') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#0e4168" class="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
@@ -155,22 +155,18 @@
           </ul>
         </div>
       </div>
-
+      {{-- cicrle account icon --}}
       <div class="d-flex justify-content-center align-items-center profile">
         <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <div class="circle rounded-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#0e4168" class="bi bi-person-video" viewBox="0 0 16 16">
-              <path d="M8 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
-              <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2Zm10.798 11c-.453-1.27-1.76-3-4.798-3-3.037 0-4.345 1.73-4.798 3H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-1.202Z"/>
-            </svg>
+            <i class="fas fa-user"></i>
           </div>
         </a>
-
         <ul class="dropdown-menu dropdown-menu-end">
           @auth
             <li><a class="dropdown-item" href="/profile">Profile</a></li>
             @if (auth()->user()->role === 'guru' || auth()->user()->role === 'admin')
-              <li><a class="dropdown-item" href="#">Dashboard</a></li>
+              <li><a class="dropdown-item" href="{{ route('dasbor') }}">Dashboard</a></li>
             @endif
             <li>
               <hr class="dropdown-divider">
@@ -188,7 +184,6 @@
         </ul>
 
       </div>
-    </div>
   </nav>
   <!-- NAVBAR -->
 
@@ -234,7 +229,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   <!-- Vendor JS Files -->
-  <script src="{{ url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
   <script src="{{ url('assets/vendor/aos/aos.js') }}"></script>
   <script src="{{ url('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
   <script src="{{ url('assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
