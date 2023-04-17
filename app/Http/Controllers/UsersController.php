@@ -60,4 +60,43 @@ class UsersController extends Controller
         // Redirect to login with success message
         return redirect()->route('loginpage')->with('status', 'Register Berhasil! silahkan login');
     }
+
+    // show all user
+    public function show()
+    {
+        $users = User::all();
+        return view('akunpengguna', compact('users'));
+    }
+    // edit
+    public function edit($nama)
+    {
+        $user = User::select('id', 'name', 'role', 'email', 'password')->where('name', $nama)->first();
+        return view('editakun', compact('user'));
+    }
+    // delete
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('akun.index')->with('status', 'Akun berhasil dihapus');
+    }
+    // update
+    public function update(Request $request){
+        $user = User::find($request->id);
+        // validate
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'role' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+        // update
+        $user->name = $validatedData['name'];
+        $user->role = $validatedData['role'];
+        $user->email = $validatedData['email'];
+        $user->password = bcrypt($validatedData['password']);
+        $user->save();
+        return redirect()->route('akun.index')->with('status', 'Akun berhasil diupdate');
+    }
 }
+

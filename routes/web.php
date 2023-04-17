@@ -76,9 +76,18 @@ Route::get('/datatekateki', function () {
 Route::get('/pengaturanakun', function () {
     return view('pengaturanakun');
 })->name('pengaturanakun');
-Route::get('/akunpengguna', function () {
-    return view('akunpengguna');
-})->name('akunpengguna');
+// Route::get('/akunpengguna', function () {
+//     return view('akunpengguna');
+// })->name('akunpengguna');
+
+// ! CRUD AKUN
+Route::get('/akunpengguna', [UsersController::class, 'show'])->name('akun.index');
+// edit
+Route::get('/akunpengguna/{nama}/edit', [UsersController::class, 'edit'])->name('akun.edit');
+// delete
+Route::delete('/akunpengguna/{id}', [UsersController::class, 'destroy'])->name('akun.destroy');
+// update
+Route::patch('/akunpengguna/{id}', [UsersController::class, 'update'])->name('akun.update');
 
 // ! CRUD MATERI
 Route::get('/datamateri', [MaterialsController::class, 'index'])->name('datamateri');
