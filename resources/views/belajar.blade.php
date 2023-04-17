@@ -1,8 +1,8 @@
 @extends('layout.master')
 @section('title', 'Yuk, Belajar!')
 
-@section('css')
   <link href="{{ url('assets/css/belajar.css') }}" rel="stylesheet">
+
   <style>
     .circle-del {
       width: 50px;
@@ -34,7 +34,6 @@
     }
     /* remove attribute in all link */
   </style>
-@endsection
 
 @section('body-style')
   background-image: url({{ url('assets/img/bg-sky.jpg') }});

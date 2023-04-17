@@ -1,10 +1,11 @@
 @extends('layout.master')
 @section('title', 'Selamat Mengerjakan')
-@section('css', 'trivia')
+{{-- teka teki css --}}
+<link rel="stylesheet" href="{{ url('assets/css/trivia.css') }}">
 
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
 <section class=" d-flex flex-column vh-100 justify-content-center align-items-center"
-  style="background: {{ url('assets/img/bg.jpg') }}">
+  style="background: url({{ url('assets/img/bg.jpg') }})">
   <div class="container h-100 d-flex flex-column vh-100 justify-content-center align-items-center">
     <div id="quiz">
       <h1>Teka-teki</h1>

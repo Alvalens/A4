@@ -1,7 +1,7 @@
 @extends('layout.master')
 @section('title', 'Masuk Dulu Yaa!')
-@section('css', 'login')
-
+{{-- login css --}}
+<link rel="stylesheet" href="{{ url('assets/css/login.css') }}">
 @section('body-style')
   background: linear-gradient(to top, rgba(255, 255, 255, 0.3) 100%, rgba(255, 255, 255, 0.3) 100%),
   url(assets/img/bg.jpg);
@@ -144,7 +144,7 @@
     </div>
   </div>
   {{-- jq --}}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
   <script>
     function toggleForm() {
       var x = document.getElementById("user-type").value;

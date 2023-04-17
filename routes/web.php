@@ -95,7 +95,7 @@ Route::get('/datasiswa', [OrdersController::class, 'siswa'])->name('datasiswa');
 
 // account
 // register user controlelr
-Route::get('/register', 'App\Http\Controllers\UsersController@index')->name('loginpage');
+Route::get('/login', 'App\Http\Controllers\UsersController@index')->name('loginpage');
 Route::post('/register', 'App\Http\Controllers\UsersController@store')->name('register.store');
 Route::post('/loginuser', 'App\Http\Controllers\AuthController@login')->name('login');
 Route::post('/logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
