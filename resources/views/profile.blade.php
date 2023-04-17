@@ -26,7 +26,7 @@
       <div class="col-md-6">
         {{-- profile and user name --}}
         <div class="row">
-            <img src="{{ url('/pictures/guest.jpg') }}" alt="" class="rounded-circle img-fluid text-center m-auto" style="max-height: 200px; max-width:200px;">
+            <img src="{{ url('/assets/img/dasbor/user.png') }}" alt="" class="rounded-circle img-fluid text-center m-auto" style="max-height: 200px; max-width:200px;">
              {{-- nama --}}
           <h1 class="text-center">{{ Auth::user()->name}}</h1>
         </div>

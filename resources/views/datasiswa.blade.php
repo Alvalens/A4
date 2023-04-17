@@ -18,19 +18,25 @@
                                         <tr>
                                             <th class="id" name="id">#</th>
                                             <th name="nama">Nama Siswa</th>
-                                            <th name="ortu">Nama OrangTua</th>
-                                            <th name="waktubelajar">Waktu Belajar</th>
+                                            <th name="ortu">Email OrangTua</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @forelse ($data as $row)
                                             <tr>
-                                                <td>{{ $row->id }}</td>
-                                                <td>{{ $row->nama_user }}</td>
-                                                <td>{{ $row->nama }}</td>
-                                                <td>{{ $row->waktu_belajar }}</td>
-                                                <td><span href="rapor.html" class="badge badge-complete">Rapor</span></td>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $row->name }}</td>
+                                                <td>{{ $row->email ?? 'Tidak terhubung' }}</td>
+                                                <td> <a href="{{ route('raport', ['nama' => $row->name]) }}">
+                                                        <button class="btn">
+                                                            <span class="btn-label">
+                                                                <i class="fa fa-eye"></i>
+                                                            </span>
+                                                            Lihat Raport
+                                                        </button>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         @empty
                                             <tr>
@@ -41,8 +47,8 @@
                                 </table>
                             </div>
                         </div>
-                    </div> 
-                </div>  
+                    </div>
+                </div>
             </div>
         </div>
     </div>
