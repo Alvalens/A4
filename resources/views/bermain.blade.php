@@ -18,7 +18,7 @@
 <section class="container d-flex flex-column justify-content-center align-items-center vh-100">
 
 
-  <img id="ikon-rumah" src="assets/img/ikon-rumah.png" alt="Ikon Rumah">
+  <img id="ikon-rumah" src="{{ url('assets/img/ikon-rumah.png') }}" alt="Ikon Rumah">
   <div class="book">
     <div class="button-group">
       <a href="#" class="btn-book mt-4 d-flex justify-content-center" name="puzzle" onclick="toggleFormPuzzle()">Level 1</a>
@@ -26,7 +26,7 @@
     </div>
       <div class="cover">
       <div class="image-group d-flex justify-content-center">
-      <img src="assets/img/mainpuzzle.png" width="90%">
+      <img src="{{ url('assets/img/mainpuzzle.png') }}" width="90%">
     </div>
    </div>
   </div>

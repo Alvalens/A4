@@ -22,8 +22,8 @@
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet">
-    <link href="assets/css/@yield('css', 'main').css" rel="stylesheet">
+    <link href="{{ url('assets/css/main.css') }}" rel="stylesheet">
+    @yield('css')
 
     <!-- Make Body CSS Style -->
     <style>
@@ -35,19 +35,12 @@
 </head>
 <body>
 
-
-
-
   @section('content')
 
   @show
 
-
-
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
   <div id="preloader"></div>
-
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -59,8 +52,8 @@
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/@yield('js', 'main').js"></script>
+  <script src="{{ url('assets/js/main.js') }}"></script>
+  @yield('js')
 
   </body>
   </html>

@@ -20,7 +20,7 @@ class ContentController extends Controller
                 $video_id = substr($link, strrpos($link, "/") + 1);
             }
             $judul_materi = $request->input('judul_materi');
-            return view('gurubelajar', compact('video_id', 'judul_materi'));
+            return view('datamateri', compact('video_id', 'judul_materi'));
         } else {
             return back()->withErrors(['link_youtube' => 'Invalid YouTube link.']);
         }
