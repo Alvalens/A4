@@ -12,6 +12,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+    opacity: 1;
+  transition: opacity 0.5s ease-in-out;
 }
 
   .loader:before,
@@ -211,6 +213,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+/* Add class to loader to control opacity when screen disappears */
+.hidden {
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
 }
 
 </style>
