@@ -29,7 +29,11 @@
                     {{ session('status') }}
                   </div>
                 @endif
-            <input type="checkbox" id="reg-log" class="checkbox">
+            <input type="checkbox" id="reg-log" class="checkbox"
+            @if($errors->has('logusername2') || $errors->has('logemail') || $errors->has('logpass2') || $errors->has('logpass2'))
+                checked
+            @endif
+            >
             <label for="reg-log">
             </label>
             <div class="card-3d-wrap mx-auto">

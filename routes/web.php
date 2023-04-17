@@ -80,4 +80,7 @@ Route::get('/sementara','App\Http\Controllers\Ortu@index')->name('ortu.index');
 // show raport
 Route::get('/raport/{nama}', 'App\Http\Controllers\Ortu@show')->name('raport');
 
-
+// route to profile
+Route::get('/profile', function () {
+    return view('profile');
+});

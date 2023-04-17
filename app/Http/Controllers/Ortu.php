@@ -9,12 +9,21 @@ use App\Models\User;
 class Ortu extends Controller
 {
     // index
+    // index
     public function index()
     {
-        // select user from user that role is siswa
-        $Siswa = User::where('role', 'siswa')->get();
+        // Check if authenticated user has role 'ortu'
+        if (auth()->user()->role == 'ortu') {
+            // Select users with role 'siswa' and matching email
+            $Siswa = User::where('role', 'siswa')->where('email', auth()->user()->email)->get();
+        } else {
+            // Select all users with role 'siswa'
+            $Siswa = User::where('role', 'siswa')->get();
+        }
+
         return view('carianak', compact('Siswa'));
     }
+
     // show data based on id
     public function show($nama_user)
     {
