@@ -40,9 +40,9 @@ Route::get('/guru', function () {
 Route::get('/beranda', function () {
     return view('index');
 })->name('beranda');
-Route::get('/belajar', function () {
-    return view('belajar');
-})->name('belajar');
+// Route::get('/belajar', function () {
+//     return view('belajar');
+// })->name('belajar');
 Route::get('/bermain', function () {
     return view('bermain');
 })->name('bermain');
@@ -56,9 +56,9 @@ Route::get('/login', function () {
     return view('login');
 });
 
-// belajar controller
-//Route::get('/belajar', 'App\Http\Controllers\Siswa@indexlevel')->name('level');
-//Route::get('/belajar/{level}', 'App\Http\Controllers\Siswa@materi')->name('materi');
+//belajar controller
+Route::get('/belajar', 'App\Http\Controllers\Siswa@indexlevel')->name('level');
+Route::get('/belajar/{level}', 'App\Http\Controllers\Siswa@materi')->name('materi');
 
 // ROUTE DASBOR
 Route::get('/dasbor', function () {
