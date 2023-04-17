@@ -20,15 +20,15 @@ class UsersController extends Controller
         // Validate input data
         $validatedData = $request->validate([
             // Validation rules
-            'logusername' => 'required|unique:users,name',
-            'logpass' => 'required',
-            'confirmpass' => 'required|same:logpass',
+            'logusername2' => 'required|unique:users,name',
+            'logpass2' => 'required',
+            'confirmpass' => 'required|same:logpass2',
             'logemail' => $request->input('user-type-back') === 'orangtua2' ? 'required|email' : '', // Optional email validation for Siswa
         ], [
             // Validation error messages
-            'logusername.required' => 'Nama harus diisi',
-            'logusername.unique' => 'Nama telah digunakan',
-            'logpass.required' => 'Password harus diisi',
+            'logusername2.required' => 'Nama harus diisi',
+            'logusername2.unique' => 'Nama telah digunakan',
+            'logpass2.required' => 'Password harus diisi',
             'confirmpass.required' => 'Konfirmasi password anda',
             'confirmpass.same' => 'Password tidak sama',
             'logemail.required' => 'Email harus diisi untuk Orang Tua',
@@ -42,23 +42,22 @@ class UsersController extends Controller
         if ($userType === 'murid2') {
             // For siswa
             $user = new User();
-            $user->name = $validatedData['logusername'];
-            $user->password = bcrypt($validatedData['logpass']);
+            $user->name = $validatedData['logusername2'];
+            $user->password = bcrypt($validatedData['logpass2']);
             $user->role = 'siswa'; // Set role as siswa
             $user->email = ''; //default
             $user->save();
         } elseif ($userType === 'orangtua2') {
             // For ortu
             $user = new User();
-            $user->name = $validatedData['logusername'];
+            $user->name = $validatedData['logusername2'];
             $user->email = $validatedData['logemail'];
-            $user->password = bcrypt($validatedData['logpass']);
+            $user->password = bcrypt($validatedData['logpass2']);
             $user->role = 'ortu'; // Set role as ortu
             $user->save();
         }
 
         // Redirect to login with success message
-        return redirect()->route('loginpage')->with('success', 'User created successfully!');
+        return redirect()->route('loginpage')->with('status', 'Register Berhasil! ilahkan login');
     }
-
 }
