@@ -13,6 +13,12 @@
 @section('content')
   <section>
     <div class="container">
+      {{-- status --}}
+      @if (session('status'))
+        <div class="alert alert-success">
+          {{ session('status') }}
+        </div>
+      @endif
       <div class="col-md-5">
         {{-- profile and user name --}}
         <div class="row">
@@ -26,17 +32,24 @@
             {{-- if email is empty --}}
             @if (Auth::user()->email == null)
               <h3 class="text-center">Sambungkan ke orang tua</h3>
-              <form action="">
+              <form action="{{ route('email.send') }}" method="post">
+                @csrf
                 <input type="text" name="email" id="email" placeholder="Email Orang Tua">
                 <button type="submit">Verifikasi</button>
               </form>
             @else
-              <h3 class="text-center">{{ Auth::user()->email}}</h3>
+              {{-- show and button to delet --}}
+              <form action="{{ route('email.delete') }}" method="post">
+                @csrf
+                @method('DELETE')
+                <h3 class="text-center">{{ Auth::user()->email}}</h3>
+                <button type="submit">Hapus</button>
+              </form>
             @endif
           @elseif (Auth::user()->role == 'orangtua')
             <h3 class="text-center">Nama Anak</h3>
           @else
-            <h3 class="text-center">{{ Auth::user()->email}}</h3>\
+            <h3 class="text-center">{{ Auth::user()->email}}</h3>
           @endif
         </div>
       </div>

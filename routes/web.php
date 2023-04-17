@@ -83,4 +83,10 @@ Route::get('/raport/{nama}', 'App\Http\Controllers\Ortu@show')->name('raport');
 // route to profile
 Route::get('/profile', function () {
     return view('profile');
-});
+})->name('profile');
+// send verification email
+Route::post('/verification', 'App\Http\Controllers\Siswa@sendverif')->name('email.send');
+// verify email
+Route::get('/verify/{code}/{email}', 'App\Http\Controllers\Siswa@verify')->name('email.verify');
+// delete
+Route::delete('/delete/email', 'App\Http\Controllers\Siswa@deleteEmail')->name('email.delete');
