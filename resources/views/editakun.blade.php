@@ -1,5 +1,5 @@
 @extends('layout.dasbormaster')
-@section('datamateri','active')
+@section('akunpengguna','active')
 
 @section('content')
 <div class="content">
@@ -7,48 +7,47 @@
         <div class="orders">
             <div class="row justify-content-center">
                 <div class="col-xl-8">
+                  {{-- status --}}
+                  @if (session('status'))
+                  <div class="alert alert-success">
+                      {{ session('status') }}
+                  </div>
+                  @endif
                     <div class="card">
                         <div class="card-header">
-                            {{$materi->id}}<hr><strong>{{$materi->judul}}</strong>
+                            {{$user->id}}<hr><strong>{{$user->name}}</strong>
                         </div>
                         <div class="card-body card-block">
                             <div class="row form-group">
                                 <div class="col col-md-3">
-                                    <label class=" form-control-label">Level</label>
+                                    <label class=" form-control-label">Role</label>
                                 </div>
                                 <div class="col-12 col-md-9">
-                                    <p class="form-control-static">{{$materi->level}}</p>
+                                    <p class="form-control-static">{{$user->role}}</p>
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3">
-                                    <label class=" form-control-label">Link</label>
+                                    <label class=" form-control-label">email</label>
                                 </div>
                                 <div class="col-12 col-md-9">
-                                    <a href="{{$materi->link}}" class="form-control-static">{{$materi->link}}</a>
+                                    <a href="{{$user->email}}" class="form-control-static">{{$user->email}}</a>
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3">
-                                    <label class=" form-control-label">Deskripsi</label>
+                                    <label class=" form-control-label">Password</label>
                                 </div>
                                 <div class="col-12 col-md-9">
-                                    <p class="form-control-static">{{$materi->deskripsi}}</p>
+                                    <p class="form-control-static">...</p>
                                 </div>
                             </div>
                             <div class="row form-group">
-                                <div class="col col-md-3">
-                                    <label class=" form-control-label">Video</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <p class="form-control-static"><iframe src="{{ $materi->link }}" frameborder="0"
-                                        allowfullscreen></iframe></p>
-                                </div>
                                 <div class="card-footer">
                                     <button data-bs-toggle="modal" data-bs-target="#fileModal" class="btn btn-primary btn-sm">
                                         <i class="fa fa-dot-circle-o"></i> Ubah
                                     </button>
-                                    <form action="{{ route('materials.destroy', ['materi'=>$materi->id]) }}" method="POST">
+                                    <form action="{{ route('akun.destroy', ['id'=>$user->id]) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn btn-danger btn-sm">
@@ -59,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{ route('datamateri') }}" class="badge badge-light" style="float:right;" role="button">Kembali</a>
+                    <a href="{{ route('akun.index') }}" class="badge badge-light" style="float:right;" role="button">Kembali</a>
                 </div>
             </div>
         </div>
@@ -71,27 +70,27 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="fileModalLabel">Ubah Materi</h5>
+                <h5 class="modal-title" id="fileModalLabel">Ubah user</h5>
             </div>
-            <form action="{{ route('materials.update') }}" method="POST">
+            <form action="{{ route('akun.update', ['id' => $user->id]) }}" method="POST">
                 @method('PATCH')
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="judul" class="form-label">Judul</label>
-                        <input type="text" class="form-control" id="judul" name="judul" value="{{ old('judul') ?? $materi->judul }}">
+                        <label for="name" class="form-label">name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name') ?? $user->name }}">
                     </div>
                     <div class="mb-3">
-                        <label for="level" class="form-label">Level</label>
-                        <input type="text" class="form-control" id="level" name="level" value="{{ old('level') ?? $materi->level }}">
+                        <label for="role" class="form-label">role</label>
+                        <input type="text" class="form-control" id="role" name="role" value="{{ old('role') ?? $user->role }}">
                     </div>
                     <div class="mb-3">
-                        <label for="deskripsi" class="form-label">Deskripsi</label>
-                        <input type="text" class="form-control" id="deskripsi" name="deskripsi" value="{{ old('deskripsi') ?? $materi->deskripsi }}">
+                        <label for="email" class="form-label">email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') ?? $user->email }}">
                     </div>
                     <div class="mb-3">
-                        <label for="link" class="form-label">Link</label>
-                        <input type="url" class="form-control" id="link" name="link" value="{{ old('link') ?? $materi->link }}">
+                        <label for="password" class="form-label">password</label>
+                        <input type="password" class="form-control" id="password" name="password" value="{{ old('password') ?? $user->password }}">
                     </div>
                     <input type="hidden" name="action" value="store">
                 </div>

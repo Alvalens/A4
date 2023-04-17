@@ -1,10 +1,3 @@
-
-<div class="card cardr">
-  <div class="container">
-    <div class="judul mb-4 mt-3">
-      <h3 class="text-center">Rapor 1</h3>
-    </div>
-
          <div class="card cardr">
             <div class="container">
               <div class="judul mb-4 mt-3">
@@ -55,3 +48,6 @@
               <div class="more text-center mb-3">
                 <button type="button" class="btn btn-outline-secondary btn-lg btn-block">More</button>
               </div>
+
+            </div>
+          </div>

@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title', 'Yuk, Belajar!')
-@section('css', 'belajar')
+<link rel="stylesheet" href="{{ url('assets/css/belajar.css') }}">
 
 @section('body-style')
   background-image: url(assets/img/bg-sky.jpg);
@@ -76,7 +76,7 @@ a:link {
 }
 </style>
 @section('content')
-  <section>
+  <section class="mt-0 mt-md-5">
 
   </section>
   <div class="container">

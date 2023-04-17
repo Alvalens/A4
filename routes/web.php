@@ -41,9 +41,9 @@ Route::get('/guru', function () {
 Route::get('/beranda', function () {
     return view('index');
 })->name('beranda');
-Route::get('/belajar', function () {
-    return view('belajar');
-})->name('belajar');
+// Route::get('/belajar', function () {
+//     return view('belajar');
+// })->name('belajar');
 Route::get('/bermain', function () {
     return view('bermain');
 })->name('bermain');
@@ -57,9 +57,9 @@ Route::get('/login', function () {
     return view('login');
 });
 
-// belajar controller
-//Route::get('/belajar', 'App\Http\Controllers\Siswa@indexlevel')->name('level');
-//Route::get('/belajar/{level}', 'App\Http\Controllers\Siswa@materi')->name('materi');
+//belajar controller
+Route::get('/belajar', 'App\Http\Controllers\Siswa@indexlevel')->name('level');
+Route::get('/belajar/{level}', 'App\Http\Controllers\Siswa@materi')->name('materi');
 
 // ROUTE DASBOR
 Route::get('/dasbor', function () {
@@ -77,9 +77,18 @@ Route::get('/datatekateki', function () {
 Route::get('/pengaturanakun', function () {
     return view('pengaturanakun');
 })->name('pengaturanakun');
-Route::get('/akunpengguna', function () {
-    return view('akunpengguna');
-})->name('akunpengguna');
+// Route::get('/akunpengguna', function () {
+//     return view('akunpengguna');
+// })->name('akunpengguna');
+
+// ! CRUD AKUN
+Route::get('/akunpengguna', [UsersController::class, 'show'])->name('akun.index');
+// edit
+Route::get('/akunpengguna/{nama}/edit', [UsersController::class, 'edit'])->name('akun.edit');
+// delete
+Route::delete('/akunpengguna/{id}', [UsersController::class, 'destroy'])->name('akun.destroy');
+// update
+Route::patch('/akunpengguna/{id}', [UsersController::class, 'update'])->name('akun.update');
 
 // ! CRUD MATERI
 Route::get('/datamateri', [MaterialsController::class, 'index'])->name('datamateri');
