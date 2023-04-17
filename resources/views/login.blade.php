@@ -1,7 +1,7 @@
 @extends('layout.master')
 @section('title', 'Masuk Dulu Yaa!')
-{{-- login css --}}
-<link rel="stylesheet" href="{{ url('assets/css/login.css') }}">
+@section('css', 'login')
+
 @section('body-style')
   background: linear-gradient(to top, rgba(255, 255, 255, 0.3) 100%, rgba(255, 255, 255, 0.3) 100%),
   url(assets/img/bg.jpg);
@@ -17,17 +17,19 @@
 
 @section('content')
   <div class="section">
-    <img id="ikon-rumah" src="{{ url('assets/img/ikon-rumah.png') }}" alt="Ikon Rumah">
-    <div class="container">
+    <img href="{{ route('beranda') }}" class="mt-5" id="ikon-rumah" src="{{ url('assets/img/ikon-rumah.png') }}" alt="Ikon Rumah">
+    <div class="container mt-3">
       <div class="row full-height justify-content-center">
         <div class="col-12 text-center align-self-center py-5">
           <div class="section pb-5 pt-5 pt-sm-2 text-center">
+
             {{-- flash message if register success --}}
                 @if (session('status'))
                   <div class="alert alert-success">
                     {{ session('status') }}
                   </div>
                 @endif
+                
             <input type="checkbox" id="reg-log" class="checkbox"
             @if($errors->has('logusername2') || $errors->has('logemail') || $errors->has('logpass2') || $errors->has('logpass2'))
                 checked
@@ -66,12 +68,6 @@
                             <small class="error text-danger">{{ $message }}</small>
                           @enderror
                         </div>
-                        {{-- <div class="form-group mt-2">
-                        <input type="username" name="logukids" style="display: none;" class="form-style"
-                          placeholder="Nama Anak" id="logukids" autocomplete="off">
-                        <i class="input-icon uil uil-lock-alt"></i>
-                      </div> --}}
-                        {{-- button --}}
                         <button type="submit" class="btn mt-4">Masuk</button>
                       </form>
                     </div>
@@ -144,7 +140,7 @@
     </div>
   </div>
   {{-- jq --}}
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
     function toggleForm() {
       var x = document.getElementById("user-type").value;
