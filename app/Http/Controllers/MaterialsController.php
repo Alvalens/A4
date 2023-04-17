@@ -7,23 +7,20 @@ use Illuminate\Http\Request;
 
 class MaterialsController extends Controller
 {
-    // index
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
         $materies = Materials::all();
         return view('datamateri', compact('materies'));
     }
-
-    public function show($materi)
-    {
-        $result = Materials::find($materi);
-        return view('tampilmateri', ['materi' => $result]);
-    }
     
-    //store
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
-        // Validate the incoming request data
         $validatedData = $request->validate([
             'judul' => 'required|max:255',
             'deskripsi' => 'required',
@@ -31,30 +28,30 @@ class MaterialsController extends Controller
             'level' => 'required',
         ]);
 
-        // Create a new Materi instance with the validated data
         $materi = new Materials();
         $materi->judul = $validatedData['judul'];
         $materi->deskripsi = $validatedData['deskripsi'];
         $materi->link = $validatedData['link'];
         $materi->level = $validatedData['level'];
-        // Save the new Materi to the database
         $materi->save();
 
-        // Redirect to a success page or do something else
         return redirect()->route('datamateri');
     }
 
-    // delete
-    public function destroy(Materials $materi)
+    /**
+     * Display the specified resource.
+     */
+    public function show($materi)
     {
-        $materi->delete();
-        return redirect()->route('datamateri');
+        $result = Materials::find($materi);
+        return view('tampilmateri', ['materi' => $result]);
     }
 
-    // update
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, Materials $materi)
     {
-        // validate first
         $validatedData = $request->validate([
             'judul' => 'max:255',
             'link' => 'url',
@@ -66,10 +63,17 @@ class MaterialsController extends Controller
         foreach ($validatedData as $request => $value) {
             $materi->{$request} = $value;
         }
-        $materi->save();
 
-        // Redirect to a success page or return a response
-        // You can customize this according to your application logic
+        $materi->save();
+        return redirect()->route('datamateri');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Materials $materi)
+    {
+        $materi->delete();
         return redirect()->route('datamateri');
     }
 }

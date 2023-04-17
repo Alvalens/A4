@@ -6,6 +6,7 @@ use App\Http\Controllers\Siswa;
 use App\Http\Controllers\Ortu;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\MaterialsController;
+use App\Http\Controllers\TekatekisController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AuthController;
@@ -86,6 +87,13 @@ Route::post('/materials', [MaterialsController::class, 'store'])->name('material
 Route::get('/datamateri/{materi}', [MaterialsController::class, 'show'])->name('materials.show');
 Route::patch('/', [MaterialsController::class, 'update'])->name('materials.update');
 Route::delete('/datamateri/{materi}', [MaterialsController::class, 'destroy'])->name('materials.destroy');
+
+// ! CRUD TEKA-TEKI
+Route::get('/datatekateki', [TekatekisController::class, 'index'])->name('datatekateki');
+Route::post('/tekatekis', [TekatekisController::class, 'store'])->name('tekatekis.store');
+Route::get('/datatekateki/{question}', [TekatekisController::class, 'show'])->name('tekatekis.show');
+Route::patch('', [TekatekisController::class, 'update'])->name('tekatekis.update');
+Route::delete('/datatekateki/{question}', [Tekatekiscontroller::class, 'destroy'])->name('tekatekis.destroy');
 
 // ! CRUD SISWA
 Route::get('/datasiswa', [OrdersController::class, 'siswa'])->name('datasiswa');
