@@ -64,6 +64,12 @@
   <div class="container">
     <div class="row height d-flex justify-content-center align-items-center">
       <div class="col-md-6">
+        {{-- recive the error message --}}
+        @if (session('error'))
+          <div class="alert alert-danger">
+            {{ session('error') }}
+          </div>
+        @endif
         <div class="form">
           <i class="fa fa-search"></i>
           <input type="text" class="form-control form-input" placeholder="Search anything...">
@@ -83,8 +89,8 @@
             @forelse ($Siswa as $r)
               <tr>
                 <th>{{ $loop->iteration }}</th>
-                <td> <a href="{{ route('raport', ['nama' => $r->nama]) }}">
-                    {{ $r->nama }}
+                <td> <a href="{{ route('raport', ['nama' => $r->name]) }}">
+                    {{ $r->name }}
                   </a>
                 </td>
               </tr>

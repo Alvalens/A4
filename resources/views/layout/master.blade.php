@@ -93,6 +93,9 @@
       left: auto;
       right: 0;
     }
+    /* Loader styles */
+
+
   </style>
 </head>
 <body>
@@ -207,7 +210,22 @@
       <p><strong>A4 Team | S1 TI A | Universitas Negeri Malang</strong></p>
     </div>
   </footer>
-  <!-- FOOTER -->
+
+  {{-- loader buku --}}
+  <div id="loader">
+    @include('layout.misc.loader')
+  </div>
+
+{{-- loader script --}}
+<script>
+  window.addEventListener('load', function() {
+  // Get the loader element
+  var loader = document.getElementById('loader');
+
+  // Hide the loader
+  loader.style.display = 'none';
+});
+</script>
 
   <!-- Vendor JS Files -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

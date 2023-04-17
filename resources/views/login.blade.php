@@ -22,12 +22,17 @@
       <div class="row full-height justify-content-center">
         <div class="col-12 text-center align-self-center py-5">
           <div class="section pb-5 pt-5 pt-sm-2 text-center">
+            {{-- flash message if register success --}}
+                @if (session('status'))
+                  <div class="alert alert-success">
+                    {{ session('status') }}
+                  </div>
+                @endif
             <input type="checkbox" id="reg-log" class="checkbox">
             <label for="reg-log">
             </label>
             <div class="card-3d-wrap mx-auto">
               <div class="card-3d-wrapper">
-
                 <!-- Start Masuk -->
                 <div class="card-front">
                   <div class="center-wrap">
@@ -45,11 +50,17 @@
                           <input type="username" name="logusername" class="form-style" placeholder="Nama" id="logpass"
                             autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
+                          @error('logusername')
+                            <small class="error text-danger">{{ $message }}</small>
+                          @enderror
                         </div>
                         <div class="form-group mt-2">
                           <input type="password" name="logpass" class="form-style" placeholder="Kata Sandi" id="logpass"
                             autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
+                          @error('logpass')
+                            <small class="error text-danger">{{ $message }}</small>
+                          @enderror
                         </div>
                         {{-- <div class="form-group mt-2">
                         <input type="username" name="logukids" style="display: none;" class="form-style"
@@ -78,24 +89,36 @@
                         </select>
                         <label for="user-type" class="mt-2">Masukkan:</label>
                         <div class="form-group mt-2">
-                          <input type="username" name="logusername" class="form-style" placeholder="Nama" id="logpass"
+                          <input type="username" name="logusername2" class="form-style" placeholder="Nama" id="logpass" value="{{ old('logusername2')}}"
                             autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
+                          @error('logusername2')
+                            <small class="error text-danger">{{ $message }}</small>
+                          @enderror
                         </div>
                         <div class="form-group mt-2">
                           <input type="email" name="logemail" style="display: none;" class="form-style"
-                            placeholder="Alamat Email" id="logemail2" autocomplete="off">
+                            placeholder="Alamat Email" id="logemail2" value="{{ old('logemail')}}" autocomplete="off">
                           <i class="input-icon uil uil-at"></i>
+                          @error('logemail')
+                            <small class="error text-danger">{{ $message }}</small>
+                          @enderror
                         </div>
                         <div class="form-group mt-2">
-                          <input type="password" name="logpass" class="form-style" placeholder="Kata Sandi" id="logpass"
+                          <input type="password" name="logpass2" class="form-style" placeholder="Kata Sandi" id="logpass" value="{{ old('logpass2')}}"
                             autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
+                          @error('logpass2')
+                            <small class="error text-danger">{{ $message }}</small>
+                          @enderror
                         </div>
                         <div class="form-group mt-2">
                           <input type="password" name="confirmpass" class="form-style" placeholder="Konfirmasi Sandi"
-                            id="logpass" autocomplete="off">
+                            id="logpass" value="{{ old('confirmpass')}}" autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
+                          @error('confirmpass')
+                            <small class="error text-danger">{{ $message }}</small>
+                          @enderror
                         </div>
                         {{-- <div class="form-group mt-2">
                         <input type="username" name="logukids" style="display: none;" class="form-style"
@@ -109,7 +132,6 @@
                   </div>
                 </div>
                 <!-- End Daftar -->
-
               </div>
             </div>
           </div>

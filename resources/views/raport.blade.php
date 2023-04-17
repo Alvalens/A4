@@ -113,11 +113,12 @@
   {{-- nav --}}
   <nav class="navbar navbar-expand-lg navbar-light fixed-top mx-5 mt-1">
     <div class="container-fluid">
-      <a class="navbar-brand mx-auto" href="#">raport</a>
+      <a class="navbar-brand mx-auto" href="#">raport {{ $nama_user }}</a>
     </div>
   </nav>
 
-  <section style="background: {{ url('assets/img/bg.jpg') }}; background-size: cover; padding-top: 80px;" class="vh-100">
+
+  <section style="background: url({{ url('assets/img/bg.jpg') }}); background-size: cover; padding-top: 80px;" class="vh-100">
     <!-- Your content goes here -->
     <div class="container-fluid">
       <div class="row">
@@ -129,7 +130,7 @@
             </div>
             <div class="col-md-6 d-flex flex-column justify-content-lg-center align-items-start">
               <h2>
-                Nama Anak
+                {{ $nama_user }}
               </h2>
               <div class="desc">
                 <p>
@@ -173,13 +174,11 @@
             <!-- Slides -->
             <div class="carousel-inner">
               <!-- Raport 1 card -->
+              @for ($level = 1; $level <= $lastLevel; $level++)
               <div class="carousel-item active">
                     @include('layout.raportcard')
               </div>
-              <!-- Raport 2 card -->
-              <div class="carousel-item">
-                    @include('layout.raportcard')
-              </div>
+              @endfor
             <!-- Controls -->
             <a class="carousel-control-prev" href="#raportCarousel" role="button" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>

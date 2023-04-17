@@ -29,5 +29,20 @@ class akun extends Seeder
             'password' => Hash::make('guru'),
             'role' => 'guru', // assuming 'role' is a column in the users table to represent user role
         ]);
+
+        // create ortu account
+        User::create([
+            'name' => 'Ortu',
+            'email' => 'ortu@example.com',
+            'password' => Hash::make('ortu'),
+            'role' => 'ortu', // assuming 'role' is a column in the users table to represent user role
+        ]);
+        // create siswa account
+        User::create([
+            'name' => 'Siswa',
+            'email' => '',
+            'password' => Hash::make('siswa'),
+            'role' => 'siswa', // assuming 'role' is a column in the users table to represent user role
+        ]);
     }
 }

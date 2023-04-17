@@ -18,12 +18,18 @@ class Ortu extends Controller
     // show data based on id
     public function show($nama_user)
     {
-        // get the level from user progress where nama is nama user, distinc
-        $levels = UsersProgress::where('nama_user', $nama_user)->distinct('level')->pluck('level');
-        // Retrieve UsersProgress records for the given nama_user and level 1
-        $materi1 = UsersProgress::where('nama_user', $nama_user)->where('level', 1)->get(['nama_materi', 'progress', 'waktu_belajar']);
+        // if nama user not in database redirect with error
+        if (!User::where('name', $nama_user)->exists()) {
+            return redirect()->route('ortu.index')->with('error', 'Input tidak valid!');
+        }
+        // get the level last highest level from userprog where name is name
+        $lastLevel = UsersProgress::where('nama_user', $nama_user)->orderBy('level', 'desc')->first();
+        $lastLevel = $lastLevel->level;
+
+        // get the user progress
+        $userProgress = UsersProgress::where('nama_user', $nama_user)->get();
         // Pass the $userProgress object to the view
-        return view('raport');
+        return view('raport', compact('lastLevel', 'nama_user', 'userProgress'));
     }
 
 }
