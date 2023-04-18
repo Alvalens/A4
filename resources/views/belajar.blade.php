@@ -86,22 +86,7 @@
                   console.log("Video ID: " + videoId);
 
                   var player{{ $materi->id }} = null;
-                  var duration{{ $materi->id }} = null;
-
-                  function onYouTubeIframeAPIReady() {
-                    player{{ $materi->id }} = new YT.Player('player{{ $materi->id }}', {
-                      height: '196.875',
-                      width: '350',
-                      videoId: videoId,
-                      playerVars: {
-                        'playsinline': 1
-                      },
-                      events: {
-                        'onReady': onPlayerReady{{ $materi->id }},
-                        'onStateChange': onPlayerStateChange{{ $materi->id }}
-                      }
-                    });
-                  }
+                  var duration{{ $materi->id }} = null
 
                   function onPlayerReady{{ $materi->id }}(event) {
                     duration{{ $materi->id }} = player{{ $materi->id }}.getDuration();
@@ -110,7 +95,7 @@
 
                   function onPlayerStateChange{{ $materi->id }}(event) {
                     // Check if the player is playing and get the current time
-                    if (event.data == YT.PlayerState.PLAYING) {
+                    if (event.data == YT.PlayerState.PLAYING || event.data == YT.PlayerState.PAUSED) {
                       var currentTime = player{{ $materi->id }}.getCurrentTime();
                       console.log('Current time: ' + currentTime);
 
@@ -118,16 +103,17 @@
                       var percentWatched = Math.round((currentTime / duration) * 100);
                       console.log('Percent watched: ' + percentWatched);
 
-                      sendWatchTime(currentTime, percentWatched);
+                      sendWatchTime(currentTime, percentWatched, '{{ $materi->id }}');
                     } else if (event.data == YT.PlayerState.ENDED) {
                       var duration = player{{ $materi->id }}.getDuration();
-                      sendWatchTime(duration, 100);
+                      sendWatchTime(duration, 100, '{{ $materi->id }}');
                       console.log('Video has finished playing');
                     }
                   }
+
                   // ajax
-                  function sendWatchTime(currentTime, percentWatched) {
-                    console.log('{{ $materi->id }}')
+                  function sendWatchTime(currentTime, percentWatched, videoId) {
+                    console.log(videoId)
                     $.ajax({
                       url: '/user_progress',
                       headers: {
@@ -135,8 +121,8 @@
                       },
                       type: 'POST',
                       data: {
-                        'video_id': '{{ $materi->id }}',
-                        'user_id': '{{ Auth::user()->id }}',
+                        'video_id': videoId,
+                        'user_id': '{{ Auth::user()->id ?? 0 }}',
                         'watch_time': currentTime,
                         'watch_percent': percentWatched
                       },
@@ -152,12 +138,31 @@
                     });
                   }
                 </script>
-
               </div>
             </div>
           @empty
             <p> No materies available. </p>
           @endforelse
+          <script>
+            function onYouTubeIframeAPIReady() {
+              @foreach ($materies as $materi)
+                var videoLink = "{{ $materi->link }}";
+                var videoId = videoLink.match(/youtube\.com\/embed\/([^\"]+)/)[1];
+                player{{ $materi->id }} = new YT.Player('player{{ $materi->id }}', {
+                  height: '196.875',
+                  width: '350',
+                  videoId: videoId,
+                  playerVars: {
+                    'playsinline': 1
+                  },
+                  events: {
+                    'onReady': onPlayerReady{{ $materi->id }},
+                    'onStateChange': onPlayerStateChange{{ $materi->id }}
+                  }
+                });
+              @endforeach
+            }
+          </script>
         </div>
       </div>
     </div>
