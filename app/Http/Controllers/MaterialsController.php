@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Materials;
 use Illuminate\Http\Request;
+use FFMpeg\FFProbe;
+use App\Models\Video;
 
 class MaterialsController extends Controller
 {
@@ -25,7 +27,7 @@ class MaterialsController extends Controller
             'judul' => 'required|max:255',
             'deskripsi' => 'required',
             'link' => 'required|url',
-            'level' => 'required',
+            'level' => 'required|max:2',
         ]);
 
         $materi = new Materials();
@@ -33,6 +35,10 @@ class MaterialsController extends Controller
         $materi->deskripsi = $validatedData['deskripsi'];
         $materi->link = $validatedData['link'];
         $materi->level = $validatedData['level'];
+        $durasi = FFProbe::create()
+            ->format($validatedData['link'])
+            ->get('durasi');
+        $materi->durasi = $durasi;
         $materi->save();
 
         return redirect()->route('datamateri');
@@ -55,8 +61,9 @@ class MaterialsController extends Controller
         $validatedData = $request->validate([
             'judul' => 'max:255',
             'link' => 'url',
-            'level' => '',
+            'level' => 'max:2',
             'deskripsi' => '',
+            'durasi' => '',
         ]);
 
         // Update only the fields that were included in the validated data
@@ -64,10 +71,24 @@ class MaterialsController extends Controller
             $materi->{$request} = $value;
         }
 
+        // Update the duration of the video
+        $materi->durasi = $validatedData['durasi'];
+
         $materi->save();
         return redirect()->route('datamateri');
     }
 
+    public function updateDuration(Request $request, Materials $materi)
+    {
+        $duration = $request->input('duration');
+
+        // Update the duration of the video
+        $materi->durasi = $duration;
+
+        $materi->save();
+        return response()->json(['success' => true]);
+    }
+    
     /**
      * Remove the specified resource from storage.
      */

@@ -27,6 +27,7 @@ class TekatekisController extends Controller
             'b' => 'required',
             'c' => 'required',
             'kunci' => 'required|in:a,b,c',
+            'level' => 'required|max:2',
         ]);
 
         $question = new Tekatekis;
@@ -35,6 +36,7 @@ class TekatekisController extends Controller
         $question->b = $validatedData['b'];
         $question->c = $validatedData['c'];
         $question->kunci = $validatedData['kunci'];
+        $question->level = $validatedData['level'];
         $question->save();
 
         return redirect()->route('datatekateki');
@@ -59,7 +61,8 @@ class TekatekisController extends Controller
             'a' => '',
             'b' => '',
             'c' => '',
-            'kunci' => ''
+            'kunci' => '',
+            'level' => 'max:2'
         ]);
 
         // Update only the fields that were included in the validated data
