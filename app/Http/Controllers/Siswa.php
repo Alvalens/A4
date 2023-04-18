@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth; // Import the Auth facade
 use Illuminate\Support\Facades\Mail; // Import the Mail facade
 use App\Mail\VerificationEmail; // Import the VerificationEmail Mailable
 use App\Models\User; // Import the User model
+use App\Models\UsersProgress;
 
 
 class Siswa extends Controller
@@ -86,4 +87,50 @@ class Siswa extends Controller
         // Redirect to profile page with an error message
         return(redirect()->route('profile')->with('status', 'Email deleted successfully!'));
     }
+
+    // store user progress based on ajax request
+    public function storeProgress(Request $request)
+    {
+        // check if role is siswa
+        if (Auth::user()->role != 'siswa') {
+            return;
+        }
+        // get user naem
+        $name = Auth::user()->name;
+        // get materi id
+        $materi_id = $request->video_id;
+        // get progress
+        $progress = $request->watch_time;
+
+        $progressPrecent = $request->watch_percent;
+        // get materi
+        $materi = Materials::find($materi_id);
+        $nMateri = $materi->judul ?? 'unknown';
+        $lMateri = $materi->level ?? 0;
+
+        // get usrprg
+        $userProgress = UsersProgress::where('nama_materi', $nMateri)
+        ->where('nama_user', $name)
+        ->first();
+
+        // if user progress is null
+        if ($userProgress == null) {
+            // create new user progress
+            UsersProgress::create([
+                'nama_materi' => $nMateri,
+                'nama_user' => $name,
+                'progress' => $progressPrecent,
+                'level' => $lMateri,
+                'waktu_belajar' => $progress
+            ]);
+        } else {
+            // update user progress
+            $userProgress->update([
+                'progress' => $progressPrecent,
+                'waktu_belajar' => $progress
+            ]);
+        }
+
+    }
+
 }

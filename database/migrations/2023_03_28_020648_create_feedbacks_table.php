@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nama_user');
             $table->string('nama_materi');
             $table->string('feedback');
+            $table->timestamps();
         });
     }
 

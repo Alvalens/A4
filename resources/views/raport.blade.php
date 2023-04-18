@@ -163,14 +163,6 @@
         <div class="col-md-5 m-2 m-md-0">
           <!-- Carousel section -->
           <div id="raportCarousel" class="carousel slide" data-bs-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <li data-bs-target="#raportCarousel" data-bs-slide-to="0" class="active"></li>
-              <li data-bs-target="#raportCarousel" data-bs-slide-to="1"></li>
-              <li data-bs-target="#raportCarousel" data-bs-slide-to="2"></li>
-              <!-- Add more indicators as needed based on your database -->
-            </ol>
-
             <!-- Slides -->
             <div class="carousel-inner">
               <!-- Raport 1 card -->
