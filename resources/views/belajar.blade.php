@@ -90,7 +90,7 @@
 
                   function onPlayerReady{{ $materi->id }}(event) {
                     duration{{ $materi->id }} = player{{ $materi->id }}.getDuration();
-                    event.target.playVideo();
+                    // event.target.playVideo();
                   }
 
                   function onPlayerStateChange{{ $materi->id }}(event) {
