@@ -89,9 +89,13 @@
                 <img class="user-avatar rounded-circle" src="{{ url('assets/img/dasbor/user.png') }}"
                   alt="User Avatar">
               </a>
-
               <div class="user-menu dropdown-menu">
-                <a class="nav-link" href="{{ route('logout') }}"><i class="fa fa-power-off"></i>Keluar</a>
+                <form action="{{ route('logout') }}" method="post">
+                  @csrf
+                  <!-- Include CSRF token for security -->
+                  <button type="submit" class="nav-link" style="border: none;background: none; cursor:pointer;">
+                    <i class="fa fa-power-off"></i>Logout</button>
+                </form>
                 {{-- back to home --}}
                 <a class="nav-link" href="{{ route('index') }}"><i class="fa fa-home"></i>Kembali</a>
               </div>
