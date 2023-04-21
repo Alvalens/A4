@@ -22,29 +22,27 @@
   <img id="ikon-rumah" src="{{ url('assets/img/ikon-rumah.png') }}" alt="Ikon Rumah">
   <div class="book">
     <div class="button-group">
-      <a href="#" class="btn-book mt-4 d-flex justify-content-center" name="puzzle" onclick="toggleFormPuzzle()">Level 1</a>
-      <a href="#" class="btn-book mt-4 d-flex justify-content-center" name="maze" onclick="toggleFormMaze()">Level 2</a>
+      <a href="{{ url('/maze') }}" class="btn-book mt-4 d-flex justify-content-center" name="maze">Maze</a>
     </div>
       <div class="cover">
       <div class="image-group d-flex justify-content-center">
-      <img src="{{ url('assets/img/mainpuzzle.png') }}" width="90%">
+      <img src="{{ url('assets/img/level1.png') }}" width="90%">
     </div>
    </div>
   </div>
 
   <div class="book">
     <div class="button-group">
-      <a href="#" class="btn-book mt-4 d-flex justify-content-center" name="puzzle" onclick="toggleFormPuzzle()">Level 1</a>
-      <a href="#" class="btn-book mt-4 d-flex justify-content-center" name="maze" onclick="toggleFormMaze()">Level 2</a>
+      <a href="{{ url('/puzzle') }}" class="btn-book mt-4 d-flex justify-content-center" name="puzzle">Puzzle</a>
     </div>
       <div class="cover">
       <div class="image-group d-flex justify-content-center">
-      <img src="assets/img/mainmaze.png" width="90%">
+      <img src="assets/img/level2.png" width="90%">
     </div>
    </div>
   </div>
 
-  <div class="game" style="display: none">
+  {{-- <div class="game" style="display: none">
     <div class="grid">
       <button>1</button>
       <button>2</button>
@@ -62,10 +60,10 @@
       <span id="move">Move: 100</span>
       <span id="time">Time: 100</span>
     </div>
-  </div>
+  </div> --}}
 
 
-  <div id="game1" style="display: none; margin-top: 5%">
+  {{-- <div id="game1" style="display: none; margin-top: 5%">
     <div id="center">
       <div id="game">
         <div id="maze">
@@ -82,9 +80,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 </section>
-<script>
+{{-- <script>
 function toggleFormPuzzle() {
   var puzzle = document.querySelector(".game");
   var maze = document.querySelector("#game1");
@@ -114,7 +112,7 @@ function toggleFormMaze() {
 <script src="assets/js/bermain2.js"></script>
 
 
-  </section>
+  </section> --}}
 
 @section('js', 'bermain')
 @endsection
