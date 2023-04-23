@@ -53,6 +53,7 @@
 </div>
 
 <!-- Modal TAMBAH -->
+
 <div class="modal fade" id="fileModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="fileModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -64,19 +65,31 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="judul" class="form-label">Judul</label>
-                        <input type="text" class="form-control" id="judul" name="judul" required>
-                    </div>
+                        <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" value="{{ old('judul') }}" >
+                        @error('judul')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>                                        
                     <div class="mb-3">
                         <label for="level" class="form-label">Level</label>
-                        <input type="text" class="form-control" id="level" name="level" required>
+                        <input type="text" class="form-control @error('level') is-invalid @enderror" id="level" name="level" value="{{ old('level') }}" >
+                        @error('level')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="deskripsi" class="form-label">Deskripsi</label>
-                        <input type="text" class="form-control" id="deskripsi" name="deskripsi" required>
+                        <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" value="{{ old('deskripsi') }}" >
+                        @error('deskripsi')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="link" class="form-label">Link</label>
-                        <input type="url" class="form-control" id="link" name="link" required>
+                        <input type="text" class="form-control @error('link') is-invalid @enderror" id="link" name="link" value="{{ old('link') }}" >
+                        @error('link')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <input type="hidden" name="action" value="store">
                 </div>
@@ -85,6 +98,7 @@
                     <button type="submit" class="btn btn-primary">Tambah</button>
                 </div>
             </form>
+            
         </div>
     </div>
 </div>
