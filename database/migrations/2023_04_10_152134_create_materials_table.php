@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('judul');
             $table->string('deskripsi');
             $table->string('link');
+            $table->integer('durasi')->nullable();
             $table->timestamps();
         });
     }
