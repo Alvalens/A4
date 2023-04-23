@@ -1,40 +1,7 @@
 @extends('layout.master')
 @section('title', 'Tentang')
 
-{{-- css about --}}
 <link href="{{ url('assets/css/about.css') }}" rel="stylesheet">
-
-  <style>
-    h1, h2, h3, h4, h5{
-      font-family: 'Fredoka One';
-      color: white !important;
-      text-shadow: #d8aa47 3px 0 10px;
-      letter-spacing: 1px;
-    }
-    .buthon {
-      background-color: #d8aa47;
-      color: white;
-      border-radius: 10px;
-      font-size: 30px;
-      font-family: 'Fredoka One';
-      text-shadow: #8b723c 3px 0 10px;
-      text-decoration: none;
-      transition: all 0.5s ease;
-    }
-    .buthon:hover {
-      background-color: #2f940000;
-      color: #a3964e;
-      text-shadow: white 3px 0 10px;
-    }
-    @media (max-width: 576px) {
-      img {
-        width: 70%;
-      }
-      .img-title {
-        margin-top: 30px;
-      }
-    }
-  </style>
 
 @section('body-style')
   background-image: url({{ url('assets/img/bg-desert1.png') }});
@@ -44,6 +11,7 @@
 @endsection
 
 @section('content')
+
   <section class="vh-100 d-flex" id="section2">
     <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
     <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
@@ -86,11 +54,11 @@
     </div>
   </section>
 
-@section('js')
   <!-- SCRIPT -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="{{ url('js/jq.js') }}"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="{{ url('js/parallax.js') }}"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- SCRIPT -->
+
 @endsection

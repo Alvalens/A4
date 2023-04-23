@@ -1,15 +1,10 @@
 <?php
 
-use App\Http\Controllers\Guru;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Siswa;
-use App\Http\Controllers\Ortu;
-use App\Http\Controllers\ContentController;
 use App\Http\Controllers\MaterialsController;
 use App\Http\Controllers\TekatekisController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +98,7 @@ Route::post('/tekatekis', [TekatekisController::class, 'store'])->name('tekateki
 Route::get('/datatekateki/{question}', [TekatekisController::class, 'show'])->name('tekatekis.show');
 Route::patch('', [TekatekisController::class, 'update'])->name('tekatekis.update');
 Route::delete('/datatekateki/{question}', [Tekatekiscontroller::class, 'destroy'])->name('tekatekis.destroy');
+Route::get('/teka-teki', [Tekatekiscontroller::class, 'showQuestion']);
 
 // ! CRUD SISWA
 Route::get('/datasiswa', [OrdersController::class, 'siswa'])->name('datasiswa');

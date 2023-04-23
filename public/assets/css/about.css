@@ -1,0 +1,29 @@
+h1, h2, h3, h4, h5{
+    font-family: 'Fredoka One';
+    color: white !important;
+    text-shadow: #d8aa47 3px 0 10px;
+    letter-spacing: 1px;
+  }
+  .buthon {
+    background-color: #d8aa47;
+    color: white;
+    border-radius: 10px;
+    font-size: 30px;
+    font-family: 'Fredoka One';
+    text-shadow: #8b723c 3px 0 10px;
+    text-decoration: none;
+    transition: all 0.5s ease;
+  }
+  .buthon:hover {
+    background-color: #2f940000;
+    color: #a3964e;
+    text-shadow: white 3px 0 10px;
+  }
+  @media (max-width: 576px) {
+    img {
+      width: 70%;
+    }
+    .img-title {
+      margin-top: 30px;
+    }
+  }

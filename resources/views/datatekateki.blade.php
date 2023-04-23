@@ -73,7 +73,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="c" class="form-label">Jawaban C</label>
-                        <input type="url" class="form-control" id="c" name="c" required>
+                        <input type="text" class="form-control" id="c" name="c" required>
                     </div>
                     <div class="mb-3">
                         <label for="kunci" class="form-label">Kunci Jawaban</label>

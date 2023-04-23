@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tekatekis;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TekatekisController extends Controller
 {
@@ -79,4 +80,11 @@ class TekatekisController extends Controller
         $question->delete();
         return redirect()->route('datatekateki');
     }
+
+    public function showQuestion()
+        {
+            $questions = DB::table('tekatekis')->inRandomOrder()->limit(3)->get();
+        
+            return view('teka-teki', compact('questions'));
+        }
 }

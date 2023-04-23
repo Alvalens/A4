@@ -1,6 +1,7 @@
 @extends('layout.masterg')
-@section('title', 'Bermain itu Seru!')
-@section('css', 'guru')
+@section('title', 'Halaman Guru!')
+
+<link rel="stylesheet" href="{{ url('assets/css/guru.css') }}">
 
 @section('content')
 <style>

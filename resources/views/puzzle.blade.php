@@ -1,7 +1,6 @@
 @extends('layout.master')
 @section('title', 'Bermain itu Seru!')
 
-{{-- css bermain --}}
 <link rel="stylesheet" href="{{ url('assets/css/bermain.css') }}">
 
 @section('body-style')
@@ -16,31 +15,36 @@
 @endsection
 
 @section('content')
-<section class="container d-flex flex-column justify-content-center align-items-center vh-100">
-<a href="{{ url('/bermain') }}"><img id="ikon-rumah" src="{{ url('assets/img/ikon-rumah.png') }}" alt="Ikon Rumah"></a>
-  <div class="game">
-    <div class="grid">
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>4</button>
-      <button>5</button>
-      <button>6</button>
-      <button>7</button>
-      <button>8</button>
-      <button></button>
+
+  <section class="container d-flex flex-column justify-content-center align-items-center vh-100">
+  <a href="{{ url('/bermain') }}">
+    <img id="ikon-rumah" src="{{ url('assets/img/ikon-rumah.png') }}" alt="Ikon Rumah"></a>
+    
+    <div class="game">
+      <div class="grid">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+        <button>8</button>
+        <button></button>
+      </div>
+
+      <div class="footer">
+        <button>Play</button>
+        <span id="move">Gerak: 100</span>
+        <span id="time">Waktu: 100</span>
+      </div>
     </div>
 
-    <div class="footer">
-      <button>Play</button>
-      <span id="move">Move: 100</span>
-      <span id="time">Time: 100</span>
-    </div>
-  </div>
-</section>
+  </section>
 
-<script src="assets/js/bermain.js"></script>
-<script src="assets/js/bermain2.js"></script>
+  <!-- SCRIPT -->
+  <script src="{{ url('assets/js/bermain.js') }}"></script>
+  <script src="{{ url('assets/js/bermain2.js') }}"></script>
+  <!-- SCRIPT -->
 
-@section('js', 'bermain')
 @endsection

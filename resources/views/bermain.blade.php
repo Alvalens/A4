@@ -1,7 +1,6 @@
 @extends('layout.master')
 @section('title', 'Bermain itu Seru!')
 
-{{-- css bermain --}}
 <link rel="stylesheet" href="{{ url('assets/css/bermain.css') }}">
 
 @section('body-style')
@@ -16,104 +15,33 @@
 @endsection
 
 @section('content')
-<section class="container d-flex flex-column justify-content-center align-items-center vh-100">
 
+  <section class="container d-flex flex-column justify-content-center align-items-center vh-100">
+    <a href="{{ route('beranda') }}">
+      <img id="ikon-rumah" src="{{ url('assets/img/ikon-rumah.png') }}" alt="Ikon Rumah">
+    </a>
 
-  <img id="ikon-rumah" src="{{ url('assets/img/ikon-rumah.png') }}" alt="Ikon Rumah">
-  <div class="book">
-    <div class="button-group">
-      <a href="{{ url('/maze') }}" class="btn-book mt-4 d-flex justify-content-center" name="maze">Maze</a>
-    </div>
+    <div class="book">
+      <div class="button-group">
+        <a href="{{ url('/maze') }}" class="btn-book mt-4 d-flex justify-content-center" name="maze">Maze</a>
+      </div>
       <div class="cover">
-      <div class="image-group d-flex justify-content-center">
-      <img src="{{ url('assets/img/level1.png') }}" width="90%">
-    </div>
-   </div>
-  </div>
-
-  <div class="book">
-    <div class="button-group">
-      <a href="{{ url('/puzzle') }}" class="btn-book mt-4 d-flex justify-content-center" name="puzzle">Puzzle</a>
-    </div>
-      <div class="cover">
-      <div class="image-group d-flex justify-content-center">
-      <img src="assets/img/level2.png" width="90%">
-    </div>
-   </div>
-  </div>
-
-  {{-- <div class="game" style="display: none">
-    <div class="grid">
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>4</button>
-      <button>5</button>
-      <button>6</button>
-      <button>7</button>
-      <button>8</button>
-      <button></button>
-    </div>
-
-    <div class="footer">
-      <button>Play</button>
-      <span id="move">Move: 100</span>
-      <span id="time">Time: 100</span>
-    </div>
-  </div> --}}
-
-
-  {{-- <div id="game1" style="display: none; margin-top: 5%">
-    <div id="center">
-      <div id="game">
-        <div id="maze">
-          <div id="end"></div>
-        </div>
-        <div id="joystick">
-          <div class="joystick-arrow"></div>
-          <div class="joystick-arrow"></div>
-          <div class="joystick-arrow"></div>
-          <div class="joystick-arrow"></div>
-          <div id="joystick-head"></div>
-        </div>
-        <div id="note">
+        <div class="image-group d-flex justify-content-center">
+          <img src="{{ url('assets/img/level1.png') }}" width="90%">
         </div>
       </div>
     </div>
-  </div> --}}
-</section>
-{{-- <script>
-function toggleFormPuzzle() {
-  var puzzle = document.querySelector(".game");
-  var maze = document.querySelector("#game1");
-  if (puzzle.style.display === "none") {
-    puzzle.style.display = "block";
-    maze.style.display = "none";
-  } else {
-    puzzle.style.display = "none";
-    maze.style.display = "none";
-  }
-}
+    
+    <div class="book">
+      <div class="button-group">
+        <a href="{{ url('/puzzle') }}" class="btn-book mt-4 d-flex justify-content-center" name="puzzle">Puzzle</a>
+      </div>
+      <div class="cover">
+        <div class="image-group d-flex justify-content-center">
+          <img src="{{ url('assets/img/level2.png') }}" width="90%">
+        </div>
+      </div>
+    </div>
+  </section>
 
-function toggleFormMaze() {
-  var puzzle = document.querySelector(".game");
-  var maze = document.querySelector("#game1");
-  if (maze.style.display === "none") {
-    maze.style.display = "block";
-    puzzle.style.display = "none";
-  } else {
-    maze.style.display = "none";
-    puzzle.style.display = "none";
-  }
-}
-</script>
-
-<script src="assets/js/bermain.js"></script>
-<script src="assets/js/bermain2.js"></script>
-
-
-  </section> --}}
-
-@section('js', 'bermain')
 @endsection
-

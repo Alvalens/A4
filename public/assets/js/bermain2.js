@@ -337,11 +337,11 @@ Math.minmax = (value, limit) => {
       `;
   
     if (hardMode) {
-      noteElement.innerHTML = `Click the joystick to start!
-          <p>Hard mode, Avoid black holes. Back to easy mode? Press E</p>`;
+      noteElement.innerHTML = `Klik untuk memulai!
+          <p>Mode Sulit, Hindari bolongan hitam. Klik E untuk Kembali</p>`;
     } else {
-      noteElement.innerHTML = `Click the joystick to start!
-          <p>Move every ball to the center. Ready for hard mode? Press H</p>`;
+      noteElement.innerHTML = `Klik untuk memulai!
+          <p>Pindahkan setiap bola ke tengah. Klik H untuk Mode Sulit</p>`;
     }
     noteElement.style.opacity = 1;
   
