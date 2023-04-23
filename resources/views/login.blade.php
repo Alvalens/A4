@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title', 'Masuk Dulu Yaa!')
-@section('css', 'login')
+<link rel="stylesheet" href="{{ url('assets/css/login.css') }}">
 
 @section('body-style')
   background: linear-gradient(to top, rgba(255, 255, 255, 0.3) 100%, rgba(255, 255, 255, 0.3) 100%),
@@ -29,7 +29,7 @@
                     {{ session('status') }}
                   </div>
                 @endif
-                
+
             <input type="checkbox" id="reg-log" class="checkbox"
             @if($errors->has('logusername2') || $errors->has('logemail') || $errors->has('logpass2') || $errors->has('logpass2'))
                 checked

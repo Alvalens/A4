@@ -13,10 +13,11 @@ class MaterialsController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $materies = Materials::all();
-        return view('datamateri', compact('materies'));
-    }
+{
+    $materies = Materials::all();
+    $validatedData = null; // define this variable to avoid errors in the view
+    return view('datamateri', compact('materies', 'validatedData'));
+}
     
     /**
      * Store a newly created resource in storage.
@@ -27,7 +28,15 @@ class MaterialsController extends Controller
             'judul' => 'required|max:255',
             'deskripsi' => 'required',
             'link' => 'required|url',
+
             'level' => 'required|max:2',
+        ], [
+            'judul.required' => 'Judul materi harus diisi',
+            'judul.max' => 'Judul materi tidak boleh lebih dari :max karakter',
+            'deskripsi.required' => 'Deskripsi materi harus diisi',
+            'link.required' => 'Link materi harus diisi',
+            'link.url' => 'Link materi tidak valid',
+            'level.required' => 'Level materi harus diisi',
         ]);
 
         $materi = new Materials();
@@ -41,7 +50,10 @@ class MaterialsController extends Controller
         $materi->durasi = $durasi;
         $materi->save();
 
-        return redirect()->route('datamateri');
+        return view('datamateri', [
+            'materies' => $materies,
+            'validatedData' => $validatedData
+        ]);
     }
 
     /**
@@ -59,11 +71,17 @@ class MaterialsController extends Controller
     public function update(Request $request, Materials $materi)
     {
         $validatedData = $request->validate([
-            'judul' => 'max:255',
-            'link' => 'url',
-            'level' => 'max:2',
-            'deskripsi' => '',
-            'durasi' => '',
+            'judul' => 'required|max:255',
+            'deskripsi' => 'required',
+            'link' => 'required|url',
+            'level' => 'required',
+        ], [
+            'judul.required' => 'Judul materi harus diisi',
+            'judul.max' => 'Judul materi tidak boleh lebih dari :max karakter',
+            'deskripsi.required' => 'Deskripsi materi harus diisi',
+            'link.required' => 'Link materi harus diisi',
+            'link.url' => 'Link materi tidak valid',
+            'level.required' => 'Level materi harus diisi',
         ]);
 
         // Update only the fields that were included in the validated data
