@@ -14,20 +14,15 @@ body, html {
 }
 
 #quiz {
-background-color: #000000af;
+  background-color: rgba(255, 255, 255, 0.5);
   margin : 0 auto;
   padding-bottom: 60px;
   width: 500px;
   border-radius: 2%;
-  color: #fff;
+  color: rgb(31, 82, 16);
+  font-family: 'Fredoka One';
   text-align: center;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}
-
-#quiz > h1 {
-  text-align: center;
-  padding-top: 25px;
-  font-size: 20px;
 }
 
 .questions {
@@ -37,6 +32,10 @@ background-color: #000000af;
   border-top: 1px solid #FFFFFF;
   border-bottom: 1px solid #FFFFFF;
   padding: 20px;
+}
+
+label {
+  font-size: 20px;
 }
 
 .answers div {
@@ -83,4 +82,27 @@ background-color: #000000af;
 
 .false {
   background-color: #DC4437;
+}
+
+/* CSS */
+.button-33 {
+  background-color: #c2fbd7;
+  border-radius: 100px;
+  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  display: inline-block;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-33:hover {
+  box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
 }

@@ -1,19 +1,18 @@
 @extends('layout.master')
-@section('title', 'Yuk, Belajar!')
-@section('css', 'belajar')
+@section('title', 'Profile Akun!')
+
+<link rel="stylesheet" href="{{ url('assets/css/bermain.css') }}">
 
 @section('body-style')
   background-image: url(assets/img/bg-sky.jpg);
   background-repeat: no-repeat;
 @endsection
 
-<style>
-
-</style>
 @section('content')
+
   <section class="d-flex flex-column justify-content-center align-items-center h-100">
     <div class="container mt-2 mt-md-5 p-2">
-      {{-- status --}}
+
       @if (session('status'))
         <div class="alert alert-success">
           {{ session('status') }}
@@ -23,14 +22,15 @@
           {{ session('error') }}
         </div>
       @endif
+
       <div class="col">
-        {{-- profile and user name --}}
+
         <div class="row">
           <img src="{{ url('/assets/img/dasbor/user.png') }}" alt=""
             class="rounded-circle img-fluid text-center m-auto" style="max-height: 200px; max-width:200px;">
-          {{-- nama --}}
           <h1 class="text-center">{{ Auth::user()->name }}</h1>
         </div>
+
         <div class="row">
           @if (Auth::user()->role == 'siswa')
             {{-- if email is empty --}}
@@ -52,7 +52,6 @@
                 </form>
               </div>
             @else
-              {{-- show and button to delete --}}
               <div class="col-md-6 offset-md-3">
                 <h4 class="text-center">Email Terhubung</h4>
                 <form action="{{ route('email.delete') }}" method="post">
@@ -78,19 +77,8 @@
           @endif
         </div>
 
-
       </div>
     </div>
   </section>
-
-
-
-  {{-- jq --}}
-  {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  <script src="{{ url('js/jq.js') }}"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
-  <script></script>
-
 
 @endsection

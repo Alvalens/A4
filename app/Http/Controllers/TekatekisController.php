@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tekatekis;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TekatekisController extends Controller
 {
@@ -27,7 +28,6 @@ class TekatekisController extends Controller
             'b' => 'required',
             'c' => 'required',
             'kunci' => 'required|in:a,b,c',
-            'level' => 'required|max:2',
         ]);
 
         $question = new Tekatekis;
@@ -36,7 +36,6 @@ class TekatekisController extends Controller
         $question->b = $validatedData['b'];
         $question->c = $validatedData['c'];
         $question->kunci = $validatedData['kunci'];
-        $question->level = $validatedData['level'];
         $question->save();
 
         return redirect()->route('datatekateki');
@@ -61,8 +60,7 @@ class TekatekisController extends Controller
             'a' => '',
             'b' => '',
             'c' => '',
-            'kunci' => '',
-            'level' => 'max:2'
+            'kunci' => ''
         ]);
 
         // Update only the fields that were included in the validated data
@@ -82,4 +80,11 @@ class TekatekisController extends Controller
         $question->delete();
         return redirect()->route('datatekateki');
     }
+
+    public function showQuestion()
+        {
+            $questions = DB::table('tekatekis')->inRandomOrder()->limit(3)->get();
+        
+            return view('teka-teki', compact('questions'));
+        }
 }

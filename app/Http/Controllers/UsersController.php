@@ -71,7 +71,7 @@ class UsersController extends Controller
     public function edit($nama)
     {
         $user = User::select('id', 'name', 'role', 'email', 'password')->where('name', $nama)->first();
-        return view('editakun', compact('user'));
+        return view('tampilakun', compact('user'));
     }
     // delete
     public function destroy($id)

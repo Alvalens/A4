@@ -1,127 +1,98 @@
 @extends('layout.master')
 @section('title', 'Selamat Mengerjakan')
-{{-- teka teki css --}}
-<link rel="stylesheet" href="{{ url('assets/css/trivia.css') }}">
 
-<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-<section class=" d-flex flex-column vh-100 justify-content-center align-items-center"
-  style="background: url({{ url('assets/img/bg.jpg') }})">
-  <div class="container h-100 d-flex flex-column vh-100 justify-content-center align-items-center">
-    <div id="quiz">
-      <h1>Teka-teki</h1>
-      <p class="questions">
-      </p>
-      <div class="answers">
-      </div>
-      <div class="checkAnswers">
-        <h3>benar?</h3>
-        <div class="checker">
+@section('css')
+    <link rel="stylesheet" href="{{ url('assets/css/trivia.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+@section('body-style')
+    background: url('assets/img/bg.jpg');
+@endsection
+
+@section('content')
+    <section class="d-flex flex-column vh-100 justify-content-center align-items-center">
+        <div class="container justify-content-center align-items-center">
+            <div id="quiz">
+    
+                @foreach ($questions as $index => $question)
+                    <div id="question{{ $index }}" @if($index > 0) style="display:none;" @endif>
+                        <p class="questions">{{ $question->pertanyaan }}</p>
+                        <div class="answers">
+                            <label><input type="radio" name="{{ $question->id }}" value="a">{{ $question->a }}</label><br>
+                            <label><input type="radio" name="{{ $question->id }}" value="b">{{ $question->b }}</label><br>
+                            <label><input type="radio" name="{{ $question->id }}" value="c">{{ $question->c }}</label><br>
+                        </div>
+                        <button class="button-33" role="button" onclick="submitAnswer({{ $index }})">Submit</button>
+                    </div>
+                @endforeach
+        
+                <!-- Score Modal -->
+                <div class="modal" id="score-modal" role="dialog">
+                    <div class="modal-dialog modal-notify modal-info" role="document">
+                        <div class="modal-content text-center">
+                            <div class="modal-header d-flex justify-content-center">
+                                <p class="heading">SELAMAT</p>
+                            </div>
+                            <div class="modal-body">
+                                <i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
+                                <p>Kamu Mendapat Skor:</p>
+                                <span id="score" style="font-size: 40px"></span>
+                            </div>
+                            <div class="modal-footer flex-center">
+                                <button class="btn btn-secondary" onclick="backToQuiz()">Kembali</button>
+                                <button class="btn btn-outline-secondary waves-effect" onclick="playAgain()">Main Lagi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Score Modal -->
+
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-<script>
-  window.onload = function() {
+    </section>
 
-    var questionArea = document.getElementsByClassName('questions')[0],
-      answerArea = document.getElementsByClassName('answers')[0],
-      checker = document.getElementsByClassName('checker')[0],
-      current = 0,
+    <!-- SCRIPT -->
+    <script>
+        // Array of answers for each question
+        var answers = @json($questions);
 
-      // An object that holds all the questions + possible answers.
-      // In the array --> last digit gives the right answer position
-      allQuestions = {
-        'Apa Warna Langit?': ['Biru', 'Hitam', 'Merah', 0],
+        // Variables for tracking the current question and score
+        var currentQuestion = 0;
+        var score = 0;
 
-        'Benda apa yang berbentuk lingkaran?': ['Dadu', 'Bola', 'Sendok', 1],
-
-        'Berapakah 1+1? ': ['2', '1', '3', 0]
-      };
-
-    function loadQuestion(curr) {
-      // This function loads all the question into the questionArea
-      // It grabs the current question based on the 'current'-variable
-
-      var question = Object.keys(allQuestions)[curr];
-
-      questionArea.innerHTML = '';
-      questionArea.innerHTML = question;
-    }
-
-    function loadAnswers(curr) {
-      // This function loads all the possible answers of the given question
-      // It grabs the needed answer-array with the help of the current-variable
-      // Every answer is added with an 'onclick'-function
-
-      var answers = allQuestions[Object.keys(allQuestions)[curr]];
-
-      answerArea.innerHTML = '';
-
-      for (var i = 0; i < answers.length - 1; i += 1) {
-        var createDiv = document.createElement('div'),
-          text = document.createTextNode(answers[i]);
-
-        createDiv.appendChild(text);
-        createDiv.addEventListener("click", checkAnswer(i, answers));
-
-
-        answerArea.appendChild(createDiv);
-      }
-    }
-
-    function checkAnswer(i, arr) {
-      // This is the function that will run, when clicked on one of the answers
-      // Check if givenAnswer is sams as the correct one
-      // After this, check if it's the last question:
-      // If it is: empty the answerArea and let them know it's done.
-
-      return function() {
-        var givenAnswer = i,
-          correctAnswer = arr[arr.length - 1];
-
-        if (givenAnswer === correctAnswer) {
-          addChecker(true);
-        } else {
-          addChecker(false);
+        function submitAnswer(index) {
+            var userAnswer = document.querySelector(`input[name="${answers[currentQuestion].id}"]:checked`);
+            if (userAnswer && userAnswer.value === answers[currentQuestion].kunci) {
+                score++;
+            }
+    
+            currentQuestion++;
+            if (currentQuestion < answers.length) {
+                document.getElementById(`question${currentQuestion - 1}`).style.display = 'none';
+                document.getElementById(`question${currentQuestion}`).style.display = 'block';
+            } else {
+                showScoreModal();
+            }
         }
 
-        if (current < Object.keys(allQuestions).length - 1) {
-          current += 1;
-
-          loadQuestion(current);
-          loadAnswers(current);
-        } else {
-          questionArea.innerHTML = 'Selesai';
-          answerArea.innerHTML = '';
+        function showScoreModal() {
+            var modal = document.getElementById("score-modal");
+            var scoreDisplay = document.getElementById("score");
+            scoreDisplay.innerText = score;
+            modal.style.display = "block";
         }
 
-      };
-    }
+        function playAgain() {
+            location.reload();
+        }
+    
+        function backToQuiz() {
+            var modal = document.getElementById("score-modal");
+            modal.style.display = "none";
+            document.getElementById(`question${currentQuestion - 1}`).style.display = 'block';
+        }
+    </script>
+    <!-- SCRIPT -->
 
-    function addChecker(bool) {
-      // This function adds a div element to the page
-      // Used to see if it was correct or false
-
-      var createDiv = document.createElement('div'),
-        txt = document.createTextNode(current + 1);
-
-      createDiv.appendChild(txt);
-
-      if (bool) {
-
-        createDiv.className += 'correct';
-        checker.appendChild(createDiv);
-      } else {
-        createDiv.className += 'false';
-        checker.appendChild(createDiv);
-      }
-    }
-
-
-    // Start the quiz right away
-    loadQuestion(current);
-    loadAnswers(current);
-
-  };
-</script>
+@endsection

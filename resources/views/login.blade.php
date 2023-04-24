@@ -1,10 +1,10 @@
 @extends('layout.master')
 @section('title', 'Masuk Dulu Yaa!')
+
 <link rel="stylesheet" href="{{ url('assets/css/login.css') }}">
 
 @section('body-style')
-  background: linear-gradient(to top, rgba(255, 255, 255, 0.3) 100%, rgba(255, 255, 255, 0.3) 100%),
-  url(assets/img/bg.jpg);
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.3) 100%, rgba(255, 255, 255, 0.3) 100%), url(assets/img/bg.jpg);
   font-family: 'Fredoka One', sans-serif;
   letter-spacing: 1px;
   font-weight: 200;
@@ -17,28 +17,31 @@
 
 @section('content')
   <div class="section">
-    <img href="{{ route('beranda') }}" class="mt-5" id="ikon-rumah" src="{{ url('assets/img/ikon-rumah.png') }}" alt="Ikon Rumah">
+    <a href="{{ route('beranda') }}">
+      <img id="ikon-rumah" src="{{ url('assets/img/ikon-rumah.png') }}" alt="Ikon Rumah">
+    </a>
+    
     <div class="container mt-3">
       <div class="row full-height justify-content-center">
         <div class="col-12 text-center align-self-center py-5">
           <div class="section pb-5 pt-5 pt-sm-2 text-center">
 
-            {{-- flash message if register success --}}
-                @if (session('status'))
-                  <div class="alert alert-success">
-                    {{ session('status') }}
-                  </div>
-                @endif
+            @if (session('status'))
+              <div class="alert alert-success">
+                {{ session('status') }}
+              </div>
+            @endif
 
             <input type="checkbox" id="reg-log" class="checkbox"
             @if($errors->has('logusername2') || $errors->has('logemail') || $errors->has('logpass2') || $errors->has('logpass2'))
                 checked
-            @endif
-            >
-            <label for="reg-log">
-            </label>
+            @endif>
+
+            <label for="reg-log"></label>
+
             <div class="card-3d-wrap mx-auto">
               <div class="card-3d-wrapper">
+
                 <!-- Start Masuk -->
                 <div class="card-front">
                   <div class="center-wrap">
@@ -132,6 +135,7 @@
                   </div>
                 </div>
                 <!-- End Daftar -->
+
               </div>
             </div>
           </div>
@@ -139,7 +143,8 @@
       </div>
     </div>
   </div>
-  {{-- jq --}}
+
+  <!-- SCRIPT -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
     function toggleForm() {
@@ -170,5 +175,6 @@
       }
     }
   </script>
+  <!-- SCRIPT -->
 
 @endsection

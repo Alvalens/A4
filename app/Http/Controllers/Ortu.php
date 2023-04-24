@@ -21,7 +21,7 @@ class Ortu extends Controller
             $Siswa = User::where('role', 'siswa')->get();
         }
 
-        return view('carianak', compact('Siswa'));
+        return view('tampilsiswa', compact('Siswa'));
     }
 
     // show data based on id

@@ -1,5 +1,5 @@
 @extends('layout.dasbormaster')
-@section('datatekateki','active')
+@section('akunpengguna','active')
 
 @section('content')
 
@@ -8,42 +8,41 @@
             <div class="orders">
                 <div class="row justify-content-center">
                     <div class="col-xl-8">
+                    @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                    @endif
                         <div class="card">
                             <div class="card-header">
-                                {{$question->id}}<hr><strong>{{$question->pertanyaan}}</strong> 
+                                {{$user->id}}<hr><strong>{{$user->name}}</strong>
                             </div>
                             <div class="card-body card-block">
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label class=" form-control-label">Jawaban A</label>
+                                        <label class=" form-control-label">Role</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <p class="form-control-static">{{$question->a}}</p>
+                                        <p class="form-control-static">{{$user->role}}</p>
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label class=" form-control-label">Jawaban B</label>
+                                        <label class=" form-control-label">email</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <p class="form-control-static">{{$question->b}}</p>
+                                        <a href="{{$user->email}}" class="form-control-static">{{$user->email}}</a>
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label class=" form-control-label">Jawaban C</label>
+                                        <label class=" form-control-label">Password</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <p class="form-control-static">{{$question->c}}</p>
+                                        <p class="form-control-static">...</p>
                                     </div>
                                 </div>
                                 <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label class=" form-control-label">Kunci Jawaban</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <p class="form-control-static"><strong>{{$question->kunci}}</strong></p>
-                                    </div>
                                     <div class="card-footer">
                                         <button data-bs-toggle="modal" data-bs-target="#fileModal" class="btn btn-primary btn-sm">
                                             <i class="fa fa-dot-circle-o"></i> Ubah
@@ -55,7 +54,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{ route('datatekateki') }}" class="badge badge-light" style="float:right;" role="button">Kembali</a>
+                        <a href="{{ route('akun.index') }}" class="badge badge-light" style="float:right;" role="button">Kembali</a>
                     </div>
                 </div>
             </div>
@@ -67,37 +66,29 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="fileModalLabel">Ubah Teka-Teki</h5>
+                    <h5 class="modal-title" id="fileModalLabel">Ubah Pengguna</h5>
                 </div>
-                <form action="{{ route('tekatekis.update') }}" method="POST">
+                <form action="{{ route('akun.update', ['id' => $user->id]) }}" method="POST">
                     @method('PATCH')
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="pertanyaan" class="form-label">Pertanyaan</label>
-                            <input type="text" class="form-control" id="pertanyaan" name="pertanyaan" value="{{ old('pertanyaan') ?? $question->pertanyaan }}">
+                            <label for="name" class="form-label">name</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') ?? $user->name }}">
                         </div>
                         <div class="mb-3">
-                            <label for="a" class="form-label">Jawaban A</label>
-                            <input type="text" class="form-control" id="a" name="a" value="{{ old('a') ?? $question->a }}">
+                            <label for="role" class="form-label">role</label>
+                            <input type="text" class="form-control" id="role" name="role" value="{{ old('role') ?? $user->role }}">
                         </div>
                         <div class="mb-3">
-                            <label for="b" class="form-label">Jawaban B</label>
-                            <input type="text" class="form-control" id="b" name="b" value="{{ old('b') ?? $question->b }}">
+                            <label for="email" class="form-label">email</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email') ?? $user->email }}">
                         </div>
                         <div class="mb-3">
-                            <label for="c" class="form-label">Jawaban C</label>
-                            <input type="text" class="form-control" id="c" name="c" value="{{ old('c') ?? $question->c }}">
+                            <label for="password" class="form-label">password</label>
+                            <input type="password" class="form-control" id="password" name="password" value="{{ old('password') ?? $user->password }}">
                         </div>
-                        <div class="mb-3">
-                            <label for="kunci" class="form-label">Kunci Jawaban</label>
-                            <select type="radio" class="form-control" id="kunci" name="kunci">
-                            <option value="">Pilih Kunci Jawaban</option>
-                            <option value="a" {{ (old('kunci') ?? $question->kunci) == 'a' ? 'checked':'' }}>a</option>
-                            <option value="b" {{ (old('kunci') ?? $question->kunci) == 'b' ? 'checked':'' }}>b</option>
-                            <option value="c" {{ (old('kunci') ?? $question->kunci) == 'c' ? 'checked':'' }}>c</option>
-                            </select>
-                        </div>
+                        <input type="hidden" name="action" value="store">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
@@ -114,12 +105,12 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="fileModalDeleteLabel">Hapus Soal</h5>
+                    <h5 class="modal-title" id="fileModalDeleteLabel">Hapus Akun</h5>
                     <hr>
-                    <p>Apa kamu yakin ingin menghapus soal ini?</p>
+                    <p>Apa kamu yakin ingin menghapus akun ini?</p>
                 </div>
                 <div class="modal-footer">
-                <form method="POST" action="{{ route('tekatekis.destroy', $materi->id) }}">
+                <form method="POST" action="{{ route('akun.destroy', $user->id) }}">
                     @csrf
                     @method('DELETE')
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
@@ -129,4 +120,5 @@
         </div>
     </div>
     <!-- Modal DELETE -->
+
 @endsection

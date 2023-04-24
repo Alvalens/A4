@@ -36,12 +36,15 @@ Route::get('/guru', function () {
 Route::get('/beranda', function () {
     return view('index');
 })->name('beranda');
-// Route::get('/belajar', function () {
-//     return view('belajar');
-// })->name('belajar');
 Route::get('/bermain', function () {
     return view('bermain');
 })->name('bermain');
+Route::get('/puzzle', function () {
+    return view('puzzle'); 
+});
+Route::get('/maze', function () {
+    return view('maze'); 
+});
 Route::get('/tekateki', function () {
     return view('teka-teki');
 })->name('tekateki');
@@ -72,9 +75,9 @@ Route::get('/datatekateki', function () {
 Route::get('/pengaturanakun', function () {
     return view('pengaturanakun');
 })->name('pengaturanakun');
-// Route::get('/akunpengguna', function () {
-//     return view('akunpengguna');
-// })->name('akunpengguna');
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
 
 // ! CRUD AKUN
 Route::get('/akunpengguna', [UsersController::class, 'show'])->name('akun.index');
@@ -101,30 +104,22 @@ Route::delete('/datatekateki/{question}', [TekatekisController::class, 'destroy'
 Route::get('/datasiswa', [OrdersController::class, 'siswa'])->name('datasiswa');
 
 // ! CRUD REGISTRASI
-Route::get('/login', 'App\Http\Controllers\UsersController@index')->name('loginpage');
-Route::post('/register', 'App\Http\Controllers\UsersController@store')->name('register.store');
-Route::post('/loginuser', 'App\Http\Controllers\AuthController@login')->name('login');
-Route::post('/logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
-
-// bermain controller
-//Route::get('/bermain', 'App\Http\Controllers\Siswa@bermain');
+Route::get('/login', [UsersController::class, 'index'])->name('loginpage');
+Route::post('/register', [UsersController::class, 'store'])->name('register.store');
+Route::post('/loginuser', [UsersController::class, 'login'])->name('login');
+Route::post('/logout', [UsersController::class, 'logout'])->name('logout');
 
 // sementara
 Route::get('/sementara','App\Http\Controllers\Ortu@index')->name('ortu.index');
 // show raport
 Route::get('/raport/{nama}', 'App\Http\Controllers\Ortu@show')->name('raport');
 
-// route to profile
-Route::get('/profile', function () {
-    return view('profile');
-})->name('profile');
-// ! send verification email
+// ! VERIFIKASI EMAIL
 Route::post('/verification', 'App\Http\Controllers\Siswa@sendverif')->name('email.send');
 Route::get('/verify/{code}/{email}', 'App\Http\Controllers\Siswa@verify')->name('email.verify');
-// delete
 Route::delete('/delete/email', 'App\Http\Controllers\Siswa@deleteEmail')->name('email.delete');
 
-// ! user progress
+// ! USER PROGRESS
 Route::post('/user_progress', 'App\Http\Controllers\Siswa@storeProgress')->name('progress.store');
 
 

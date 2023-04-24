@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('title', 'Yuk, Belajar!')
+
 <link rel="stylesheet" href="{{ url('assets/css/belajar.css') }}">
 
 @section('body-style')
