@@ -55,10 +55,6 @@ Route::get('/login', function () {
     return view('login');
 });
 
-//belajar controller
-Route::get('/belajar', 'App\Http\Controllers\Siswa@indexlevel')->name('level');
-Route::get('/belajar/{level}', 'App\Http\Controllers\Siswa@materi')->name('materi');
-
 // ROUTE DASBOR
 Route::get('/dasbor', function () {
     return view('dasbor');
@@ -72,15 +68,17 @@ Route::get('/datamateri', function () {
 Route::get('/datatekateki', function () {
     return view('datatekateki');
 })->name('datatekateki');
-Route::get('/pengaturanakun', function () {
-    return view('pengaturanakun');
-})->name('pengaturanakun');
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
 
+// ! BELAJAR
+Route::get('/belajar', [Siswa::class, 'indexlevel'])->name('level');
+Route::get('/belajar/{level}', [Siswa::class, 'materi'])->name('materi');
+
 // ! CRUD AKUN
 Route::get('/akunpengguna', [UsersController::class, 'show'])->name('akun.index');
+Route::post('/akun', [UsersController::class, 'store'])->name('akun.store');
 Route::get('/akunpengguna/{nama}/edit', [UsersController::class, 'edit'])->name('akun.edit');
 Route::delete('/akunpengguna/{id}', [UsersController::class, 'destroy'])->name('akun.destroy');
 Route::patch('/akunpengguna/{id}', [UsersController::class, 'update'])->name('akun.update');
@@ -91,7 +89,6 @@ Route::post('/materials', [MaterialsController::class, 'store'])->name('material
 Route::get('/datamateri/{materi}', [MaterialsController::class, 'show'])->name('materials.show');
 Route::patch('/datamateri/{materi}', [MaterialsController::class, 'update'])->name('materials.update');
 Route::delete('/datamateri/{materi}', [MaterialsController::class, 'destroy'])->name('materials.destroy');
-Route::post('/datamateri/{materi}', [MaterialsController::class, 'updateDuration']);
 
 // ! CRUD TEKA-TEKI
 Route::get('/datatekateki', [TekatekisController::class, 'index'])->name('datatekateki');
@@ -121,19 +118,3 @@ Route::delete('/delete/email', 'App\Http\Controllers\Siswa@deleteEmail')->name('
 
 // ! USER PROGRESS
 Route::post('/user_progress', 'App\Http\Controllers\Siswa@storeProgress')->name('progress.store');
-
-
-Route::get('/puzzle', function () {
-    return view('puzzle'); // Mengirimkan view bernama 'puzzle' sebagai respons
-});
-Route::get('/maze', function () {
-    return view('maze'); // Mengirimkan view bernama 'maze' sebagai respons
-});
-
-// Route::get('/puzzle', function () {
-//     return view('bermain');
-// });
-
-// Route::get('/maze', function () {
-//     return view('bermain');
-// });

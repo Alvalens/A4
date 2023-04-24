@@ -40,9 +40,6 @@
           <li class=" @yield('akunpengguna')">
             <a href="{{ route('akun.index') }}"> <i class="menu-icon ti-user"></i>Akun Pengguna</a>
           </li>
-          <li class=" @yield('pengaturanakun')">
-            <a href="{{ route('pengaturanakun') }}"> <i class="menu-icon ti-settings"></i>Pengaturan Akun </a>
-          </li>
 
           <li class="menu-title">Data</li>
           <li class="@yield('datasiswa')">

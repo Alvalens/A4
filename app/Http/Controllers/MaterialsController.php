@@ -44,7 +44,7 @@ class MaterialsController extends Controller
         $materi->save();
 
         return view('datamateri', [
-            'materies' => $materies,
+            'materies' => $materi,
             'validatedData' => $validatedData
         ]);
     }

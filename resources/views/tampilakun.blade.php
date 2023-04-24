@@ -77,8 +77,12 @@
                             <input type="text" class="form-control" id="name" name="name" value="{{ old('name') ?? $user->name }}">
                         </div>
                         <div class="mb-3">
-                            <label for="role" class="form-label">role</label>
-                            <input type="text" class="form-control" id="role" name="role" value="{{ old('role') ?? $user->role }}">
+                            <label for="role" class="form-label">Role</label>
+                            <select class="form-control" id="role" name="role" required>
+                              <option value="">Pilih Role</option>
+                              <option value="guru" {{ (old('role') ?? $question->role) == 'guru' ? 'checked':'' }}>Guru</option>
+                              <option value="murid" {{ (old('role') ?? $question->role) == 'murid' ? 'checked':'' }}>Murid</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">email</label>
