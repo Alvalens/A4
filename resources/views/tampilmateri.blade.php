@@ -100,7 +100,8 @@
             </div>
         </div>
     </div>
-
+    <!-- Modal EDIT -->
+    
     <!-- Modal DELETE -->
     <div class="modal fade" id="fileModalDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="fileModalDeleteLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -121,4 +122,42 @@
         </div>
     </div>
     <!-- Modal DELETE -->
+
+<script>
+    var player = null;
+    var startTime = null;
+  
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('video-player', {
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+  
+    function onPlayerReady(event) {
+      event.target.playVideo();
+      startTime = new Date();
+    }
+  
+    function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PAUSED) {
+    var stopTime = new Date();
+    var duration = (stopTime.getTime() - startTime.getTime()) / 1000;
+
+    // Send the updated duration to the server
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/datamateri/' + {{ $materi->id }}, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({ durasi: duration }));
+
+    startTime = null;
+  } else if (event.data == YT.PlayerState.PLAYING) {
+    startTime = new Date();
+  }
+}
+  </script>
+  
+  <script src="https://www.youtube.com/embed/iframe_api"></script>
 @endsection

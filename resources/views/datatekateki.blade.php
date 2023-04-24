@@ -21,6 +21,7 @@
                                             <th class="id" name="id">#</th>
                                             <th name="pertanyaan">Pertanyaan</th>
                                             <th name="kunci">Kunci Jawaban</th>
+                                            <th name="level">Level</th>
                                             <th name="timestamp">Waktu Pengubahan</th>
                                             <th></th>
                                         </tr>
@@ -31,6 +32,7 @@
                                             <td>{{ $question->id }}</td>
                                             <td>{{ $question->pertanyaan }}</td>
                                             <td>{{ $question->kunci }}</td>
+                                            <td>{{ $question->level }}</td>
                                             <td>{{ $question->updated_at }}</td>
                                             <td><a href="{{ route('tekatekis.show', ['question' => $question->id]) }}" class="badge badge-primary" role="button">Lihat</a>
                                         </tr>
@@ -84,7 +86,10 @@
                           <option value="c">c</option>
                         </select>
                       </div>
-                    <input type="hidden" name="action" value="store">
+                    <div class="mb-3">
+                      <label for="level" class="form-label">Level</label>
+                      <input type="number" class="form-control" id="level" name="level" required>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
