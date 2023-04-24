@@ -121,3 +121,19 @@ Route::delete('/delete/email', 'App\Http\Controllers\Siswa@deleteEmail')->name('
 
 // ! USER PROGRESS
 Route::post('/user_progress', 'App\Http\Controllers\Siswa@storeProgress')->name('progress.store');
+
+
+Route::get('/puzzle', function () {
+    return view('puzzle'); // Mengirimkan view bernama 'puzzle' sebagai respons
+});
+Route::get('/maze', function () {
+    return view('maze'); // Mengirimkan view bernama 'maze' sebagai respons
+});
+
+// Route::get('/puzzle', function () {
+//     return view('bermain');
+// });
+
+// Route::get('/maze', function () {
+//     return view('bermain');
+// });
