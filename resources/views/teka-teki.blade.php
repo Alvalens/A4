@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 @section('body-style')
-    background: url('assets/img/bg.jpg');
+    background-image: url('assets/img/bg.jpg');
 @endsection
 
 @section('content')
     <section class="d-flex flex-column vh-100 justify-content-center align-items-center">
         <div class="container justify-content-center align-items-center">
             <div id="quiz">
-    
+                <hr>
                 @foreach ($questions as $index => $question)
                     <div id="question{{ $index }}" @if($index > 0) style="display:none;" @endif>
                         <p class="questions">{{ $question->pertanyaan }}</p>
@@ -23,7 +23,7 @@
                             <label><input type="radio" name="{{ $question->id }}" value="b">{{ $question->b }}</label><br>
                             <label><input type="radio" name="{{ $question->id }}" value="c">{{ $question->c }}</label><br>
                         </div>
-                        <button class="button-33" role="button" onclick="submitAnswer({{ $index }})">Submit</button>
+                        <button class="button-33" role="button" onclick="submitAnswer({{ $index }})">Kirim</button>
                     </div>
                 @endforeach
         

@@ -119,7 +119,7 @@
                     <p>Apa kamu yakin ingin menghapus soal ini?</p>
                 </div>
                 <div class="modal-footer">
-                <form method="POST" action="{{ route('tekatekis.destroy', $materi->id) }}">
+                <form method="POST" action="{{ route('tekatekis.destroy', $question->id) }}">
                     @csrf
                     @method('DELETE')
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>

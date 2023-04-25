@@ -11,9 +11,10 @@
             <div class="card">
 
               <div class="card-body">
-                <h4 class="box-title">Manajemen Pengguna</h4>
+                <h5 class="box-title">Pengaturan Pengguna
+                  <a href="" class="badge badge-success" data-bs-toggle="modal" data-bs-target="#fileModal" style="float:right; font-size: 20px;" role="button">Tambah</a>
+                </h5>
               </div>
-
               <div class="card-body--">
                 <div class="table-stats order-table ov-h">
                   <table class="table">
@@ -40,7 +41,7 @@
                                 <span class="btn-label">
                                   <i class="fa fa-eye"></i>
                                 </span>
-                                Lihat
+                                Lihat Akun
                               </button>
                             </a>
                           </td>
@@ -62,5 +63,49 @@
       </div>
     </div>
   </div>
+
+<!-- Modal TAMBAH -->
+<div class="modal fade" id="fileModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="fileModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="fileModalLabel">Tambah Akun</h5>
+          </div>
+
+          <form action="{{ route('akun.store') }}" method="POST">
+              @csrf
+              <div class="modal-body">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nama</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="mb-3">
+                  <label for="role" class="form-label">Role</label>
+                  <select class="form-control" id="role" name="role" required>
+                    <option value="">Pilih Role</option>
+                    <option value="guru">Guru</option>
+                    <option value="murid">Murid</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <input type="hidden" name="action" value="store">
+            </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                  <button type="submit" class="btn btn-primary">Tambah</button>
+              </div>
+          </form>
+          
+      </div>
+  </div>
+</div>
+<!-- Modal TAMBAH -->
 
 @endsection

@@ -21,7 +21,6 @@
                                             <th class="id" name="id">#</th>
                                             <th name="pertanyaan">Pertanyaan</th>
                                             <th name="kunci">Kunci Jawaban</th>
-                                            <th name="level">Level</th>
                                             <th name="timestamp">Waktu Pengubahan</th>
                                             <th></th>
                                         </tr>
@@ -32,9 +31,15 @@
                                             <td>{{ $question->id }}</td>
                                             <td>{{ $question->pertanyaan }}</td>
                                             <td>{{ $question->kunci }}</td>
-                                            <td>{{ $question->level }}</td>
                                             <td>{{ $question->updated_at }}</td>
-                                            <td><a href="{{ route('tekatekis.show', ['question' => $question->id]) }}" class="badge badge-primary" role="button">Lihat</a>
+                                            <td><a href="{{ route('tekatekis.show', ['question' => $question->id]) }}" role="button">
+                                                <button class="btn">
+                                                    <span class="btn-label">
+                                                      <i class="fa fa-eye"></i>
+                                                    </span>
+                                                    Lihat Soal
+                                                  </button>
+                                                </a>
                                         </tr>
                                     @empty
                                         <tr>
@@ -85,10 +90,6 @@
                           <option value="b">b</option>
                           <option value="c">c</option>
                         </select>
-                      </div>
-                    <div class="mb-3">
-                      <label for="level" class="form-label">Level</label>
-                      <input type="number" class="form-control" id="level" name="level" required>
                     </div>
                 </div>
                 <div class="modal-footer">
