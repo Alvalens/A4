@@ -94,8 +94,9 @@ Route::delete('/datamateri/{materi}', [MaterialsController::class, 'destroy'])->
 Route::get('/datatekateki', [TekatekisController::class, 'index'])->name('datatekateki');
 Route::post('/tekatekis', [TekatekisController::class, 'store'])->name('tekatekis.store');
 Route::get('/datatekateki/{question}', [TekatekisController::class, 'show'])->name('tekatekis.show');
-Route::patch('/datatekateki/{question}', [TekatekisController::class, 'update'])->name('tekatekis.update');
+Route::patch('/', [TekatekisController::class, 'update'])->name('tekatekis.update');
 Route::delete('/datatekateki/{question}', [TekatekisController::class, 'destroy'])->name('tekatekis.destroy');
+Route::get('/teka-teki', [TekatekisController::class, 'showQuestion']);
 
 // ! CRUD SISWA
 Route::get('/datasiswa', [OrdersController::class, 'siswa'])->name('datasiswa');
