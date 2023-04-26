@@ -17,10 +17,10 @@
 
 @section('content')
   <div class="section">
-    <a href="{{ route('beranda') }}">
+    <a href="{{ route('index') }}">
       <img id="ikon-rumah" src="{{ url('assets/img/ikon-rumah.png') }}" alt="Ikon Rumah">
     </a>
-    
+
     <div class="container mt-3">
       <div class="row full-height justify-content-center">
         <div class="col-12 text-center align-self-center py-5">
@@ -46,7 +46,7 @@
                 <div class="card-front">
                   <div class="center-wrap">
                     <div class="section text-center">
-                      <form action="{{ route('login') }}" method="POST">
+                      <form action="{{ route('login.proses') }}" method="POST">
                         @csrf
                         <h4 class="m-2 pb-3 animated">Masuk</h4>
                         <label for="user-type" class="mt-2">Aku Adalah:</label>

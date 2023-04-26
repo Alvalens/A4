@@ -5,6 +5,10 @@ use App\Http\Controllers\MaterialsController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TekatekisController;
+use App\Http\Controllers\Siswa;
+use App\Http\Controllers\AuthController;
+use App\Http\Middleware\CheckRole;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,17 +37,14 @@ Route::get('/guru', function () {
 });
 
 // ROUTE HOME
-Route::get('/beranda', function () {
-    return view('index');
-})->name('beranda');
 Route::get('/bermain', function () {
     return view('bermain');
 })->name('bermain');
 Route::get('/puzzle', function () {
-    return view('puzzle'); 
+    return view('puzzle');
 });
 Route::get('/maze', function () {
-    return view('maze'); 
+    return view('maze');
 });
 Route::get('/tekateki', function () {
     return view('teka-teki');
@@ -51,64 +52,65 @@ Route::get('/tekateki', function () {
 Route::get('/about', function () {
     return view('about');
 })->name('about');
-Route::get('/login', function () {
-    return view('login');
+
+
+
+Route::prefix('/dashboard')->middleware(['auth', 'CheckRole:guru,admin'])->group(function () {
+    Route::get('/', function () {
+        return view('dasbor');
+    })->name('dasbor');
+
+    // ! CRUD AKUN
+    Route::get('/akunpengguna', [UsersController::class, 'show'])->name('akun.index');
+    Route::post('/akun', [UsersController::class, 'store'])->name('akun.store');
+    Route::get('/akunpengguna/{nama}/edit', [UsersController::class, 'edit'])->name('akun.edit');
+    Route::delete('/akunpengguna/{id}', [UsersController::class, 'destroy'])->name('akun.destroy');
+    Route::patch('/akunpengguna/{id}', [UsersController::class, 'update'])->name('akun.update');
+
+    // ! CRUD MATERI
+    Route::get('/datamateri', [MaterialsController::class, 'index'])->name('datamateri');
+    Route::post('/materials', [MaterialsController::class, 'store'])->name('materials.store');
+    Route::get('/datamateri/{materi}', [MaterialsController::class, 'show'])->name('materials.show');
+    Route::patch('/datamateri/{materi}', [MaterialsController::class, 'update'])->name('materials.update');
+    Route::delete('/datamateri/{materi}', [MaterialsController::class, 'destroy'])->name('materials.destroy');
+
+    // ! CRUD TEKA-TEKI
+    Route::get('/datatekateki', [TekatekisController::class, 'index'])->name('datatekateki');
+    Route::post('/tekatekis', [TekatekisController::class, 'store'])->name('tekatekis.store');
+    Route::get('/datatekateki/{question}', [TekatekisController::class, 'show'])->name('tekatekis.show');
+    Route::patch('/', [TekatekisController::class, 'update'])->name('tekatekis.update');
+    Route::delete('/datatekateki/{question}', [TekatekisController::class, 'destroy'])->name('tekatekis.destroy');
+    Route::get('/teka-teki', [TekatekisController::class, 'showQuestion']);
+
+    // ! CRUD SISWA
+    Route::get('/datasiswa', [OrdersController::class, 'siswa'])->name('datasiswa');
 });
 
-// ROUTE DASBOR
-Route::get('/dasbor', function () {
-    return view('dasbor');
-})->name('dasbor');
-Route::get('/datasiswa', function () {
-    return view('datasiswa');
-})->name('datasiswa');
-Route::get('/datamateri', function () {
-    return view('datamateri');
-})->name('datamateri');
-Route::get('/datatekateki', function () {
-    return view('datatekateki');
-})->name('datatekateki');
-Route::get('/profile', function () {
-    return view('profile');
-})->name('profile');
+
+// Route::get('/profile', function () {
+//     return view('profile');
+// })->name('profile');
 
 // ! BELAJAR
 Route::get('/belajar', [Siswa::class, 'indexlevel'])->name('level');
 Route::get('/belajar/{level}', [Siswa::class, 'materi'])->name('materi');
 
-// ! CRUD AKUN
-Route::get('/akunpengguna', [UsersController::class, 'show'])->name('akun.index');
-Route::post('/akun', [UsersController::class, 'store'])->name('akun.store');
-Route::get('/akunpengguna/{nama}/edit', [UsersController::class, 'edit'])->name('akun.edit');
-Route::delete('/akunpengguna/{id}', [UsersController::class, 'destroy'])->name('akun.destroy');
-Route::patch('/akunpengguna/{id}', [UsersController::class, 'update'])->name('akun.update');
-
-// ! CRUD MATERI
-Route::get('/datamateri', [MaterialsController::class, 'index'])->name('datamateri');
-Route::post('/materials', [MaterialsController::class, 'store'])->name('materials.store');
-Route::get('/datamateri/{materi}', [MaterialsController::class, 'show'])->name('materials.show');
-Route::patch('/datamateri/{materi}', [MaterialsController::class, 'update'])->name('materials.update');
-Route::delete('/datamateri/{materi}', [MaterialsController::class, 'destroy'])->name('materials.destroy');
-
-// ! CRUD TEKA-TEKI
-Route::get('/datatekateki', [TekatekisController::class, 'index'])->name('datatekateki');
-Route::post('/tekatekis', [TekatekisController::class, 'store'])->name('tekatekis.store');
-Route::get('/datatekateki/{question}', [TekatekisController::class, 'show'])->name('tekatekis.show');
-Route::patch('/', [TekatekisController::class, 'update'])->name('tekatekis.update');
-Route::delete('/datatekateki/{question}', [TekatekisController::class, 'destroy'])->name('tekatekis.destroy');
-Route::get('/teka-teki', [TekatekisController::class, 'showQuestion']);
-
-// ! CRUD SISWA
-Route::get('/datasiswa', [OrdersController::class, 'siswa'])->name('datasiswa');
 
 // ! CRUD REGISTRASI
-Route::get('/login', [UsersController::class, 'index'])->name('loginpage');
-Route::post('/register', [UsersController::class, 'store'])->name('register.store');
-Route::post('/loginuser', [UsersController::class, 'login'])->name('login');
-Route::post('/logout', [UsersController::class, 'logout'])->name('logout');
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
+    Route::post('/register', [UsersController::class, 'store'])->name('register.store');
+    Route::post('/loginuser', [AuthController::class, 'login'])->name('login.proses');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/logout');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
 
 // sementara
-Route::get('/sementara','App\Http\Controllers\Ortu@index')->name('ortu.index');
+Route::get('/daftarsiswa','App\Http\Controllers\Ortu@index')->name('ortu.index')->middleware('auth');
 // show raport
 Route::get('/raport/{nama}', 'App\Http\Controllers\Ortu@show')->name('raport');
 

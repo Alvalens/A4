@@ -90,16 +90,16 @@
                         'user_id': '{{ Auth::user()->id ?? 0 }}',
                         'watch_time': currentTime,
                         'watch_percent': percentWatched
-                      },
-                      success: function(data) {
-                        alert(data);
-                      },
-                      error: function(xhr, status, error) {
-                        console.log(xhr.responseText);
-                        console.log(status);
-                        console.log(error);
-                        alert("Error: " + error);
                       }
+                      // success: function(data) {
+                      //   alert(data);
+                      // },
+                      // error: function(xhr, status, error) {
+                      //   console.log(xhr.responseText);
+                      //   console.log(status);
+                      //   console.log(error);
+                      //   alert("Error: " + error);
+                      // }
                     });
                   }
                 </script>
@@ -140,5 +140,5 @@
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   </script>
-  
+
 @endsection

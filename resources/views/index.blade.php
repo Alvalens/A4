@@ -20,13 +20,13 @@
             <img src="{{ url('assets/img/beranda/desc.png') }}" alt="" class="img-fluid" width="80%">
           </div>
           <div class="button text-start text-md-start">
-            
+
             @if (Auth::check())
               <a href="{{ route('about') }}" type="button">
                 <img src="{{ url('assets/img/beranda/btn-lebihlanjut.png') }}" alt="" class="img-fluid" width="80%">
               </a>
             @else
-              <a href="{{ route('loginpage') }}" type="button">
+              <a href="{{ route('login') }}" type="button">
                 <img src="{{ url('assets/img/beranda/btn-mulai.png') }}" alt="" class="img-fluid" width="80%">
               </a>
               <a href="{{ route('about') }}" type="button">

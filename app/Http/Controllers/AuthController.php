@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+
+    //login form
+    public function loginForm()
+    {
+        return view('login');
+    }
     // login
     public function login(Request $request)
     {
@@ -45,7 +51,7 @@ class AuthController extends Controller
     //logout
     public function logout(){
         Auth::logout(); // Log out the currently authenticated user
-        return redirect()->route('loginpage'); // Redirect to the login page
+        return redirect()->route('login'); // Redirect to the login page
     }
 
 }

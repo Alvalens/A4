@@ -136,7 +136,7 @@
           <ul class="navbar-nav">
 
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('beranda') }}">
+              <a class="nav-link" href="{{ route('index') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#0e4168" class="bi bi-house"
                   viewBox="0 0 16 16">
                   <path
@@ -210,7 +210,7 @@
               </form>
             </li>
           @else
-            <li><a class="dropdown-item" href="{{ route('loginpage') }}">Login</a></li>
+            <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
           @endauth
         </ul>
       </div>
