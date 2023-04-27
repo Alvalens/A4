@@ -46,13 +46,13 @@ Route::get('/puzzle', function () {
 Route::get('/maze', function () {
     return view('maze');
 });
-Route::get('/tekateki', function () {
-    return view('teka-teki');
-})->name('tekateki');
+Route::get('/teka-teki', [TekatekisController::class, 'showQuestion'])->name('tekateki');
 Route::get('/about', function () {
     return view('about');
 })->name('about');
-
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
 
 
 Route::prefix('/dashboard')->middleware(['auth', 'CheckRole:guru,admin'])->group(function () {
@@ -80,16 +80,11 @@ Route::prefix('/dashboard')->middleware(['auth', 'CheckRole:guru,admin'])->group
     Route::get('/datatekateki/{question}', [TekatekisController::class, 'show'])->name('tekatekis.show');
     Route::patch('/', [TekatekisController::class, 'update'])->name('tekatekis.update');
     Route::delete('/datatekateki/{question}', [TekatekisController::class, 'destroy'])->name('tekatekis.destroy');
-    Route::get('/teka-teki', [TekatekisController::class, 'showQuestion']);
 
     // ! CRUD SISWA
     Route::get('/datasiswa', [OrdersController::class, 'siswa'])->name('datasiswa');
 });
 
-
-// Route::get('/profile', function () {
-//     return view('profile');
-// })->name('profile');
 
 // ! BELAJAR
 Route::get('/belajar', [Siswa::class, 'indexlevel'])->name('level');
