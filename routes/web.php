@@ -110,11 +110,11 @@ Route::middleware('auth')->group(function () {
 
 
 // ! RAPORT
-Route::get('/daftarsiswa','App\Http\Controllers\Ortu@index')->name('ortu.index')->middleware('auth');
+Route::get('/daftarsiswa','App\Http\Controllers\Ortu@index')->name('ortu.index')->middleware(['auth', 'CheckRole:guru,admin']);
 // show raport
-Route::get('/raport/{nama}', 'App\Http\Controllers\Ortu@show')->name('raport');
+Route::get('/raport/{nama}', 'App\Http\Controllers\Ortu@show')->name('raport')->middleware(['auth', 'CheckRole:guru,admin']);
 // update
-Route::post('/raport/update', 'App\Http\Controllers\Siswa@storeRaport')->name('raport.store');
+Route::post('/raport/update', 'App\Http\Controllers\Siswa@storeRaport')->name('raport.store')->middleware(['auth', 'CheckRole:guru,admin']);
 
 // ! VERIFIKASI EMAIL
 Route::post('/verification', 'App\Http\Controllers\Siswa@sendverif')->name('email.send');
