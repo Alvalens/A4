@@ -109,10 +109,12 @@ Route::middleware('auth')->group(function () {
 });
 
 
-// sementara
+// ! RAPORT
 Route::get('/daftarsiswa','App\Http\Controllers\Ortu@index')->name('ortu.index')->middleware('auth');
 // show raport
 Route::get('/raport/{nama}', 'App\Http\Controllers\Ortu@show')->name('raport');
+// update
+Route::post('/raport/update', 'App\Http\Controllers\Siswa@storeRaport')->name('raport.store');
 
 // ! VERIFIKASI EMAIL
 Route::post('/verification', 'App\Http\Controllers\Siswa@sendverif')->name('email.send');

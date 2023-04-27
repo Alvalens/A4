@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Mail; // Import the Mail facade
 use App\Mail\VerificationEmail; // Import the VerificationEmail Mailable
 use App\Models\User; // Import the User model
 use App\Models\UsersProgress;
+use App\Models\Raport;
+
 
 
 class Siswa extends Controller
@@ -131,6 +133,31 @@ class Siswa extends Controller
             ]);
         }
 
+    }
+    // update raport
+    public function storeRaport(Request $request){
+        $nama = $request->nama;
+        $catatan = $request->catatan;
+        $guru = $request->guru_pendamping;
+        $materi = $request->materi_kesukaan;
+        $Raport = Raport::where('nama', $nama)->first();
+        // if null insert is not null update
+        if ($Raport){
+            $Raport->update([
+                'catatan' => $catatan,
+                'guru_pendamping' => $guru,
+                'materi_favorit' => $materi
+        ]);
+        } else {
+            // If the Raport record doesn't exist, create a new one
+            Raport::create([
+                'nama' => $nama,
+                'catatan' => $catatan,
+                'guru_pendamping' => $guru,
+                'materi_favorit' => $materi
+            ]);
+        }
+        return redirect()->back()->with('success', 'Raport berhasil diupdate!');
     }
 
 }

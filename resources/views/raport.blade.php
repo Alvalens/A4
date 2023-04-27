@@ -107,18 +107,61 @@
   ul li:last-child {
     margin-bottom: 40px;
   }
+
+  .tombol-terbang {
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #2872b8;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.329);
+    transition: all 0.3s ease;
+  }
+
+  .edit-terbang {
+    position: fixed;
+    top: 100px;
+    left: 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(255, 166, 0);
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.329);
+    transition: all 0.3s ease;
+  }
 </style>
 
 <body>
   {{-- nav --}}
   <nav class="navbar navbar-expand-lg navbar-light fixed-top mx-5 mt-1">
     <div class="container-fluid">
-      <a class="navbar-brand mx-auto" href="#">raport {{ $nama_user }}</a>
+      <a class="navbar-brand mx-auto" href="#">Raport {{ $nama_user }}</a>
     </div>
   </nav>
 
+  {{-- tombol terbang --}}
+  <div class="tombol">
+    <a href="{{ back() }}" class="tombol-terbang" role="button" type="button">
+      <i class="fa-solid fa-reply"></i></a>
+  </div>
 
-  <section style="background: url({{ url('assets/img/bg.jpg') }}); background-size: cover; padding-top: 80px;" class="vh-100">
+  {{-- tombol edit terbang --}}
+  <div class="tombol">
+    <a class="edit-terbang" role="button" type="button" data-bs-toggle="modal" data-bs-target="#fileModal">
+      <i class="fa-solid fa-pen"></i></a>
+  </div>
+  <section style="background: url({{ url('assets/img/bg.jpg') }}); background-size: cover; padding-top: 80px;"
+    class="vh-100">
     <!-- Your content goes here -->
     <div class="container-fluid">
       <div class="row">
@@ -134,9 +177,7 @@
               </h2>
               <div class="desc">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, voluptatibus praesentium vitae
-                  doloremque, animi odit modi dolores minus error unde rem laborum? Aspernatur, provident voluptates
-                  dignissimos ad repellat sapiente quasi!
+                  {{ $raportUser->catatan ?? '-' }}
                 </p>
               </div>
             </div>
@@ -149,10 +190,10 @@
                   {{-- create a list containing stats with aligned colon --}}
                   <div>
                     <ul class="list">
-                      <li><b>Waktu belajar</b><span>999 jam</span></li>
-                      <li><b>Materi kesukaan</b><span>Berhitung</span></li>
-                      <li><b>Guru pendamping</b><span>Adin S.Pd</span></li>
-                      <li><b>Orang Tua</b><span>Aisyah</span></li>
+                      <li><b>Waktu belajar</b><span>{{ $waktuMenit ?? '0' }} menit</span></li>
+                      <li><b>Materi kesukaan</b><span>{{ $raportUser->materi_favorit ?? '-' }}</span></li>
+                      <li><b>Guru pendamping</b><span>{{ $raportUser->guru_pendamping ?? '-' }}</span></li>
+                      <li><b>Orang Tua</b><span>{{ $namaOrtu ?? '-' }}</span></li>
                     </ul>
                   </div>
                 </div>
@@ -167,25 +208,76 @@
             <div class="carousel-inner">
               <!-- Raport 1 card -->
               @for ($level = 1; $level <= $lastLevel; $level++)
-              <div class="carousel-item active">
-                    @include('layout.raportcard')
-              </div>
+                <div class="carousel-item active">
+                  @include('layout.raportcard')
+                </div>
               @endfor
-            <!-- Controls -->
-            <a class="carousel-control-prev" href="#raportCarousel" role="button" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#raportCarousel" role="button" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </a>
+              <!-- Controls -->
+              <a class="carousel-control-prev" href="#raportCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#raportCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </a>
+            </div>
+
           </div>
+        </div>
+  </section>
+  <section>
+
+    <!-- Modal TAMBAH -->
+    <div class="modal fade" id="fileModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="fileModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="fileModalLabel">Update Raport</h5>
+          </div>
+
+          <form action="{{ route('raport.store') }}" method="POST">
+            @csrf
+            <div class="modal-body">
+              {{-- hidden input --}}
+              <input type="hidden" name="nama" value="{{ $nama_user }}">
+
+              <div class="mb-3">
+                <label for="catatan" class="form-label">catatan</label>
+                <input type="text" class="form-control @error('catatan') is-invalid @enderror" id="catatan"
+                  name="catatan" value="{{ old('catatan') }}">
+                @error('catatan')
+                  <div class="text-danger">{{ $message }}</div>
+                @enderror
+              </div>
+              <div class="mb-3">
+                <label for="materi_kesukaan" class="form-label">materi kesukaan</label>
+                <input type="text" class="form-control @error('materi_kesukaan') is-invalid @enderror"
+                  id="materi_kesukaan" name="materi_kesukaan" value="{{ old('materi_kesukaan') }}">
+                @error('materi_kesukaan')
+                  <div class="text-danger">{{ $message }}</div>
+                @enderror
+              </div>
+              <div class="mb-3">
+                <label for="guru_pendamping" class="form-label">guru pendamping</label>
+                <input type="text" class="form-control @error('guru_pendamping') is-invalid @enderror"
+                  id="guru_pendamping" name="guru_pendamping" value="{{ old('guru_pendamping') }}">
+                @error('guru_pendamping')
+                  <div class="text-danger">{{ $message }}</div>
+                @enderror
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+              <button type="submit" class="btn btn-primary">Tambah</button>
+            </div>
+          </form>
 
         </div>
       </div>
+    </div>
   </section>
-
   {{-- script --}}
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

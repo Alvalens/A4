@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('feedbacks', function (Blueprint $table) {
-
+        Schema::create('raports', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_user');
-            $table->string('nama_materi');
-            $table->string('feedback');
+            $table->string('nama');
+            $table->string('catatan');
+            $table->string('materi_favorit');
+            $table->string('guru_pendamping');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::drop('feedbacks');
+        Schema::dropIfExists('raports');
     }
 };

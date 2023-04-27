@@ -49,11 +49,11 @@
                       <form action="{{ route('login.proses') }}" method="POST">
                         @csrf
                         <h4 class="m-2 pb-3 animated">Masuk</h4>
-                        <label for="user-type" class="mt-2">Aku Adalah:</label>
+                        {{-- <label for="user-type" class="mt-2">Aku Adalah:</label>
                         <select class="form-style" id="user-type" name="user-type" onchange="toggleForm()">
                           <option class="form-style" value="murid">Murid</option>
                           <option class="form-style" value="orangtua">Orang Tua</option>
-                        </select>
+                        </select> --}}
                         <label for="user-type" class="mt-2">Masukkan:</label>
                         <div class="form-group mt-2">
                           <input type="username" name="logusername" class="form-style" placeholder="Nama" id="logpass"

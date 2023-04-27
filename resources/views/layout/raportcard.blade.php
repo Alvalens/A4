@@ -1,3 +1,20 @@
+         @php
+          //  select user all user progress based on level
+          //progress now
+          $progressTotal = $userProgress->where('level', $level)->count();
+          $totalPrecent = $userProgress->where('level', $level)->sum('progress');
+          $progress = round($totalPrecent / $progressTotal);
+          // if progress is more than 80 then green, more than 40 then orange, else red
+          $barColor = '';
+          if ($progress > 80) {
+            $barColor = 'green';
+          } elseif ($progress > 40) {
+            $barColor = 'orange';
+          } else {
+            $barColor = 'red';
+          }
+
+         @endphp
          <div class="card cardr">
             <div class="container">
               <div class="judul mb-4 mt-3">
@@ -8,15 +25,15 @@
                   progress
                 </h4>
                 <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+                  <div class="progress-bar" role="progressbar" style="width: {{ $progress }}%;  background-color: {{ $barColor }};" aria-valuenow="{{ $progress }}" aria-valuemin="0"
                     aria-valuemax="100"></div>
                 </div>
-                <h5>55%</h5>
+                <h5>{{ $progress }} %</h5>
               </div>
               <div class="materi">
                 <h5 class="text-center">Materi</h5>
                 <div
-                  class="materies row row-cols-2 row-cols-md-3 justify-content-center align-items-center gy-5 p-md-5">
+                  class="materies row row-cols-2 row-cols-md-3 justify-content-center align-items-center gy-5 p-md-5" style="max-height: 500px; overflow-y: auto;">
                     @forelse($userProgress as $material)
                       @if($material->level == $level)
                         <div class="mat rounded-circle text-center">
@@ -44,10 +61,5 @@
                     @endforelse
                 </div>
               </div>
-              {{-- grey more button --}}
-              <div class="more text-center mb-3">
-                <button type="button" class="btn btn-outline-secondary btn-lg btn-block">More</button>
-              </div>
-
             </div>
           </div>
