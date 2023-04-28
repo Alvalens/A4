@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{ url('assets/css/siswa.css') }}">
 
 @section('content')
-  
+
   <div class="container">
     <div class="row height d-flex justify-content-center align-items-center">
       <div class="col">
@@ -26,7 +26,7 @@
             </tr>
           </thead>
           <tbody>
-            
+
             @forelse ($Siswa as $r)
               <tr>
                 <th>{{ $loop->iteration }}</th>
@@ -53,7 +53,7 @@
                 </td>
               </tr>
             @empty
-              <td colspan="6" class="text-center">Tidak ada data...</td>
+              <td colspan="6" class="text-center">Tidak ada data, cek apakah akun siswa sudah terhubung...</td>
             @endforelse
 
           </tbody>
@@ -75,8 +75,11 @@
   <script src="{{ url('js/jq.js') }}"></script>
   <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
   <script>
+    $.fn.dataTable.ext.errMode = 'none';
+
     let table = new DataTable('#myTable', {
       // options
+
     });
   </script>
   <!-- SCRIPT -->

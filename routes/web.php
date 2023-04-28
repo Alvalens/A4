@@ -105,7 +105,7 @@ Route::middleware('auth')->group(function () {
 
 
 // ! RAPORT
-Route::get('/daftarsiswa','App\Http\Controllers\Ortu@index')->name('ortu.index')->middleware(['auth', 'CheckRole:guru,admin']);
+Route::get('/daftarsiswa','App\Http\Controllers\Ortu@index')->name('ortu.index')->middleware(['auth', 'CheckRole:guru,admin,ortu']);
 // show raport
 Route::get('/raport/{nama}', 'App\Http\Controllers\Ortu@show')->name('raport')->middleware(['auth', 'CheckRole:guru,admin']);
 // update
