@@ -49,26 +49,20 @@
                       <form action="{{ route('login.proses') }}" method="POST">
                         @csrf
                         <h4 class="m-2 pb-3 animated">Masuk</h4>
-                        {{-- <label for="user-type" class="mt-2">Aku Adalah:</label>
-                        <select class="form-style" id="user-type" name="user-type" onchange="toggleForm()">
-                          <option class="form-style" value="murid">Murid</option>
-                          <option class="form-style" value="orangtua">Orang Tua</option>
-                        </select> --}}
                         <label for="user-type" class="mt-2">Masukkan:</label>
                         <div class="form-group mt-2">
-                          <input type="username" name="logusername" class="form-style" placeholder="Nama" id="logpass"
-                            autocomplete="off">
+                          <input type="username" name="logusername" class="form-style" placeholder="Nama" id="logusername" autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
                           @error('logusername')
                             <small class="error text-danger">{{ $message }}</small>
                           @enderror
                         </div>
                         <div class="form-group mt-2">
-                          <input type="password" name="logpass" class="form-style" placeholder="Kata Sandi" id="logpass"
-                            autocomplete="off">
+                          <input type="password" name="logpass" class="form-style" placeholder="Kata Sandi" id="logpass" autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
+                          <button type="button" class="toggle-password" onclick="togglePassword('logpass')">Lihat Kata Sandi</button>
                           @error('logpass')
-                            <small class="error text-danger">{{ $message }}</small>
+                              <small class="error text-danger">{{ $message }}</small>
                           @enderror
                         </div>
                         <button type="submit" class="btn mt-4">Masuk</button>
@@ -92,7 +86,7 @@
                         </select>
                         <label for="user-type" class="mt-2">Masukkan:</label>
                         <div class="form-group mt-2">
-                          <input type="username" name="logusername2" class="form-style" placeholder="Nama" id="logpass" value="{{ old('logusername2')}}"
+                          <input type="username" name="logusername2" class="form-style" placeholder="Nama" value="{{ old('logusername2')}}"
                             autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
                           @error('logusername2')
@@ -108,27 +102,21 @@
                           @enderror
                         </div>
                         <div class="form-group mt-2">
-                          <input type="password" name="logpass2" class="form-style" placeholder="Kata Sandi" id="logpass" value="{{ old('logpass2')}}"
-                            autocomplete="off">
+                          <input type="password" name="logpass2" class="form-style" placeholder="Kata Sandi" id="logpass2" value="{{ old('logpass2')}}" autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
+                          <button type="button" class="toggle-password" onclick="togglePassword('logpass2')">Lihat Kata Sandi</button>
                           @error('logpass2')
-                            <small class="error text-danger">{{ $message }}</small>
+                              <small class="error text-danger">{{ $message }}</small>
                           @enderror
                         </div>
                         <div class="form-group mt-2">
-                          <input type="password" name="confirmpass" class="form-style" placeholder="Konfirmasi Sandi"
-                            id="logpass" value="{{ old('confirmpass')}}" autocomplete="off">
+                          <input type="password" name="confirmpass" class="form-style" placeholder="Konfirmasi Sandi" id="logpass3" value="{{ old('confirmpass')}}" autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
+                          <button type="button" class="toggle-password" onclick="togglePassword('logpass3')">Lihat Kata Sandi</button>
                           @error('confirmpass')
                             <small class="error text-danger">{{ $message }}</small>
                           @enderror
                         </div>
-                        {{-- <div class="form-group mt-2">
-                        <input type="username" name="logukids" style="display: none;" class="form-style"
-                          placeholder="Nama Anak" id="logukids2" autocomplete="off">
-                        <i class="input-icon uil uil-lock-alt"></i>
-                      </div> --}}
-                        {{-- button --}}
                         <button type="submit" class="btn mt-4">Kirim</button>
                       </form>
                     </div>
@@ -174,6 +162,18 @@
         document.getElementById("logukids2").style.display = "none";
       }
     }
+
+    function togglePassword(fieldId) {
+      var passwordField = document.getElementById(fieldId);
+      var toggleButton = document.querySelector(`#${fieldId} + .toggle-password`);
+      if (passwordField.type === "password") {
+          passwordField.type = "text";
+          toggleButton.innerHTML = "Sembunyikan Kata Sandi";
+      } else {
+          passwordField.type = "password";
+          toggleButton.innerHTML = "Lihat Kata Sandi";
+      }
+  }
   </script>
   <!-- SCRIPT -->
 
