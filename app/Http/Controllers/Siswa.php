@@ -72,7 +72,7 @@ class Siswa extends Controller
             $user->update(['email' => $email]);
 
             // Redirect profile page with a success message
-            return(redirect()->route('profile')->with('status', 'Email verified successfully!'));
+            return(redirect()->route('profile')->with('success', 'Email verified successfully!'));
         } else {
             // Redirect to profile page with an error message
             return(redirect()->route('profile')->with('error', 'Invalid verification code!'));

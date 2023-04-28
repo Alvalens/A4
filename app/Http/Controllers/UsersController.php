@@ -57,7 +57,7 @@ class UsersController extends Controller
         }
 
         // Redirect to login with success message
-        return redirect()->route('loginpage')->with('status', 'Register Berhasil! silahkan login');
+        return redirect()->route('login')->with('status', 'Register Berhasil! silahkan login');
     }
 
     // show all user

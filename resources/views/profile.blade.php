@@ -13,9 +13,9 @@
   <section class="d-flex flex-column justify-content-center align-items-center h-100">
     <div class="container mt-2 mt-md-5 p-2">
 
-      @if (session('status'))
+      @if (session('success'))
         <div class="alert alert-success">
-          {{ session('status') }}
+          {{ session('success') }}
         </div>
       @elseif (session('error'))
         <div class="alert alert-danger">
