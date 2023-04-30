@@ -68,28 +68,43 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="pertanyaan" class="form-label">Pertanyaan</label>
-                        <input type="text" class="form-control" id="pertanyaan" name="pertanyaan" required>
+                        <input type="text" class="form-control" id="pertanyaan" name="pertanyaan" @error('pertanyaan') is-invalid @enderror value="{{ old('pertanyaan') }}">
+                        @error('pertanyaan')
+                                <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="a" class="form-label">Jawaban A</label>
-                        <input type="text" class="form-control" id="a" name="a" required>
+                        <input type="text" class="form-control" id="a" name="a" @error('a') is-invalid @enderror value="{{ old('a') }}">
+                        @error('a')
+                                <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="b" class="form-label">Jawaban B</label>
-                        <input type="text" class="form-control" id="b" name="b" required>
+                        <input type="text" class="form-control" id="b" name="b" @error('b') is-invalid @enderror value="{{ old('b') }}">
+                        @error('b')
+                                <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="c" class="form-label">Jawaban C</label>
-                        <input type="text" class="form-control" id="c" name="c" required>
+                        <input type="text" class="form-control" id="c" name="c" @error('c') is-invalid @enderror value="{{ old('c') }}">
+                        @error('c')
+                                <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="kunci" class="form-label">Kunci Jawaban</label>
-                        <select class="form-control" id="kunci" name="kunci" required>
+                        <select class="form-control" id="kunci" name="kunci" @error('kunci') is-invalid @enderror value="{{ old('kunci') }}">
                           <option value="">Pilih Kunci Jawaban</option>
                           <option value="a">a</option>
                           <option value="b">b</option>
                           <option value="c">c</option>
                         </select>
+                        @error('kunci')
+                                <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer">
