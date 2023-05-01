@@ -10,6 +10,9 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  {{-- icon --}}
+  <link rel="icon" href="{{ url('assets/img/beranda/title-a4.png') }}">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+  {{-- icon --}}
+  <link rel="icon" href="{{ url('assets/img/beranda/title-a4.png') }}">
   <title>Dasbor Admin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -35,11 +36,12 @@
           <li class="@yield('dasbor')">
             <a href="{{ route('dasbor') }}"><i class="menu-icon fa fa-laptop"></i>Dasbor </a>
           </li>
-
+            @if (auth()->user()->role === 'admin')
           <li class="menu-title">Akun</li>
           <li class=" @yield('akunpengguna')">
             <a href="{{ route('akun.index') }}"> <i class="menu-icon ti-user"></i>Akun Pengguna</a>
           </li>
+            @endif
 
           <li class="menu-title">Data</li>
           <li class="@yield('datasiswa')">

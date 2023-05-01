@@ -61,11 +61,13 @@ Route::prefix('/dashboard')->middleware(['auth', 'CheckRole:guru,admin'])->group
     })->name('dasbor');
 
     // ! CRUD AKUN
-    Route::get('/akunpengguna', [UsersController::class, 'show'])->name('akun.index');
-    Route::post('/akun', [UsersController::class, 'store'])->name('akun.store');
-    Route::get('/akunpengguna/{nama}/edit', [UsersController::class, 'edit'])->name('akun.edit');
-    Route::delete('/akunpengguna/{id}', [UsersController::class, 'destroy'])->name('akun.destroy');
-    Route::patch('/akunpengguna/{id}', [UsersController::class, 'update'])->name('akun.update');
+    Route::middleware('CheckRole:admin')->group(function () {
+        Route::get('/akunpengguna', [UsersController::class, 'show'])->name('akun.index');
+        Route::post('/akun', [UsersController::class, 'store'])->name('akun.store');
+        Route::get('/akunpengguna/{nama}/edit', [UsersController::class, 'edit'])->name('akun.edit');
+        Route::delete('/akunpengguna/{id}', [UsersController::class, 'destroy'])->name('akun.destroy');
+        Route::patch('/akunpengguna/{id}', [UsersController::class, 'update'])->name('akun.update');
+    });
 
     // ! CRUD MATERI
     Route::get('/datamateri', [MaterialsController::class, 'index'])->name('datamateri');
@@ -102,7 +104,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
-
 
 // ! RAPORT
 Route::get('/daftarsiswa','App\Http\Controllers\Ortu@index')->name('ortu.index')->middleware(['auth', 'CheckRole:guru,admin,ortu']);

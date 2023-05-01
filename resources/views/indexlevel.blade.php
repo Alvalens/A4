@@ -9,71 +9,83 @@
 @endsection
 
 <style>
-  .card {
-    color: black;
-    text-decoration: none;
-
+  .book {
     position: relative;
-    width: 220px;
-    height: 320px;
-    background: mediumturquoise;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    background-color: whitesmoke;
+    -webkit-box-shadow: 1px 1px 12px #000;
+    box-shadow: 1px 1px 12px #000;
+    -webkit-transform: preserve-3d;
+    -ms-transform: preserve-3d;
+    transform: preserve-3d;
+    -webkit-perspective: 2000px;
+    perspective: 2000px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
-    font-size: 25px;
-    font-weight: bold;
-    border-radius: 15px;
-    cursor: pointer;
-    min-height: 220px;
+    color: #000;
   }
 
-  .card::before,
-  .card::after {
-    position: absolute;
-    content: "";
-    width: 20%;
-    height: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 25px;
-    font-weight: bold;
-    background-color: lightblue;
-    transition: all 0.5s;
-  }
-
-  .card::before {
+  .cover {
     top: 0;
-    right: 0;
-    border-radius: 0 15px 0 100%;
-  }
-
-  .card::after {
-    bottom: 0;
-    left: 0;
-    border-radius: 0 100% 0 15px;
-  }
-
-  .card:hover::before,
-  .card:hover:after {
+    position: absolute;
+    background-color: rgb(103, 198, 230);
     width: 100%;
     height: 100%;
-    border-radius: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-transition: all 0.5s;
     transition: all 0.5s;
+    -webkit-transform-origin: 0;
+    -ms-transform-origin: 0;
+    transform-origin: 0;
+    -webkit-box-shadow: 1px 1px 12px #000;
+    box-shadow: 1px 1px 12px #000;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
   }
 
-  .card:hover:after {
-    color: black;
-    text-decoration: none;
-    content: "Mulai!";
+  .book:hover .cover {
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    -webkit-transform: rotatey(-80deg);
+    -ms-transform: rotatey(-80deg);
+    transform: rotatey(-80deg);
   }
-a:link {
-  text-decoration: none !important;
-  color: black;
+
+  p {
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: bolder;
+  }
+
+  a:link {
+    text-decoration: none !important;
+    color: black;
+  }
+.outer {
+  font-family: 'Irish Grover', sans-serif;
+  font-size: 25px;
+  font-weight: bolder;
 }
-.card p {
+.inner {
+  font-family: 'Irish Grover', sans-serif;
+  font-size: 25px;
+  font-weight: bolder;
   text-decoration: none !important;
-  color: black;
 }
 </style>
 @section('content')
@@ -83,13 +95,16 @@ a:link {
   <div class="container">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-2 ">
       @for ($level = 1; $level <= $lastLevel; $level++)
-      <div class="wrapper d-flex flex-column justify-content-center align-items-center">
-        <a href="{{ route('materi', ['level' => $level]) }}">
-          <div class="card rounded-circle">
-            <p>Bagian {{ $level }}</p>
+      <div class="wrap d-flex flex-column justify-content-center align-items-center">
+        <div class="book">
+          <a href="{{ route('materi', ['level' => $level]) }}">
+            <p class="inner">Mulai!</p>
+          </a>
+          <div class="cover">
+            <p class="outer">Bagian {{ $level }}</p>
           </div>
-        </a>
-      </div>
+        </div>
+    </div>
       @endfor
     </div>
   </div>

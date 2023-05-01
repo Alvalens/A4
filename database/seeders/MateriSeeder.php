@@ -16,21 +16,33 @@ class MateriSeeder extends Seeder
         //create naterial
         Materials::create([
             'level' => '1',
-            'judul' => 'Berhitung',
-            'deskripsi' => 'Test',
-            'link' => 'https://www.youtube.com/embed/ZRtdQ81jPUQ',
+            'judul' => 'Belajar Huruf',
+            'deskripsi' => '',
+            'link' => 'https://www.youtube.com/embed/1qhJqFk7wUc',
         ]);
         Materials::create([
             'level' => '1',
-            'judul' => 'Membaca',
-            'deskripsi' => 'Test',
-            'link' => 'https://www.youtube.com/embed/ZRtdQ81jPUQ',
+            'judul' => 'Belajar Angka',
+            'deskripsi' => '',
+            'link' => 'https://www.youtube.com/embed/Rc1S4h2dJ0s',
+        ]);
+        Materials::create([
+            'level' => '1',
+            'judul' => 'Menulis Huruf',
+            'deskripsi' => '',
+            'link' => 'https://www.youtube.com/embed/cQKKRKhC1Yw',
+        ]);
+        Materials::create([
+            'level' => '1',
+            'judul' => 'Menulis Angka',
+            'deskripsi' => '',
+            'link' => 'https://www.youtube.com/embed/SzehfSmzQpY',
         ]);
         Materials::create([
             'level' => '2',
-            'judul' => 'Menulis',
-            'deskripsi' => 'Test',
-            'link' => 'https://www.youtube.com/embed/QH2-TGUlwu4',
+            'judul' => 'Berhitung',
+            'deskripsi' => '',
+            'link' => 'https://www.youtube.com/embed/Rc1S4h2dJ0s&t=1s',
         ]);
     }
 }
