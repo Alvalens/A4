@@ -28,6 +28,13 @@ class TekatekisController extends Controller
             'b' => 'required',
             'c' => 'required',
             'kunci' => 'required|in:a,b,c',
+        ], [
+            'pertanyaan.required' => 'Pertanyaan harus diisi',
+            'a.required' => 'Jawaban A harus diisi',
+            'b.required' => 'Jawaban B harus diisi',
+            'c.required' => 'Jawaban C harus diisi',
+            'kunci.required' => 'Kunci jawaban harus dipilih',
+            'kunci.in' => 'Kunci jawaban harus diantara A, B, atau C'
         ]);
 
         $question = new Tekatekis;
@@ -61,6 +68,8 @@ class TekatekisController extends Controller
             'b' => '',
             'c' => '',
             'kunci' => ''
+        ], [
+            'kunci.in' => 'Kunci jawaban harus diantara A, B, atau C'
         ]);
 
         // Update only the fields that were included in the validated data
