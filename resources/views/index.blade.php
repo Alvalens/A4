@@ -1,44 +1,52 @@
 @extends('layout.master')
 @section('title', 'Selamat datang!')
 
-<link href="{{ url('assets/css/index.css') }}" rel="stylesheet">
 
 @section('body-style')
   overflow-x: hidden;
 @endsection
 
+<link href="{{ url('assets/css/index.css') }}" rel="stylesheet">
 @section('content')
 
-  <section data-bss-parallax-bg="true" style="background: url({{ url('assets/img/bg-sky.jpg') }}); background-size: cover;" class="vh-100" class="img-hero2">
+  <section data-bss-parallax-bg="true" style="background: url({{ url('assets/img/bg-sky.jpg') }}); background-size: cover;"
+    class="vh-100" class="img-hero2">
     <div class="container d-flex flex-column justify-content-center align-items-center h-100">
       <div class="row">
         <div class="col-md-6">
           <div class="img text-center text-md-start">
-            <img src="{{ url('assets/img/beranda/title-a4.png') }}" alt="" class="img-fluid" width="90%" style="margin-top: -10%">
+            <img src="{{ url('assets/img/beranda/title-a4.png') }}" alt="" class="img-fluid" width="90%"
+              style="margin-top: -10%">
           </div>
-          <div class="desc text-center text-md-start">
-            <img src="{{ url('assets/img/beranda/desc.png') }}" alt="" class="img-fluid" width="80%">
+          {{-- sub h --}}
+          <div class="subh text-center text-md-start px-2 px-md-3">
+            <p style="font-size: 28px">(Aksesibilitas, Atraktif, Antusias, Akademik)</p>
           </div>
-          <div class="button text-start text-md-start">
-
+          {{-- desc --}}
+          <div class=" text-center text-md-start jtq px-1 px-md-3">
+            <p class="desc">Platform media pembelajaran interaktif dengan game-based education dan trivia berbasis
+              website untuk anak
+              tunagrahita ringan, memiliki mengedepankan pada aksesibiltas, atraktif, dan antusias akademik.</p>
+          </div>
+          {{-- button --}}
+          <div class="button text-center text-md-start">
+            <!-- Check if user is logged in -->
             @if (Auth::check())
-              <a href="{{ route('about') }}" type="button">
-                <img src="{{ url('assets/img/beranda/btn-lebihlanjut.png') }}" alt="" class="img-fluid" width="80%">
-              </a>
+              <!-- Show welcome message -->
+              <a href="{{ route('about') }}" type="button" class="buthon2">Lebih Lanjut</a>
             @else
-              <a href="{{ route('login') }}" type="button">
-                <img src="{{ url('assets/img/beranda/btn-mulai.png') }}" alt="" class="img-fluid" width="80%">
-              </a>
-              <a href="{{ route('about') }}" type="button">
-                <img src="{{ url('assets/img/beranda/btn-lebihlanjut.png') }}" alt="" class="img-fluid" width="80%">
-              </a>
+              <!-- Show "Mulai!" button and "Lebih Lanjut" button -->
+              <a href="{{ route('login') }}" type="button" class="buthon mx-3">Mulai!</a>
+              <a href="{{ route('about') }}" type="button" class="buthon2">Lebih Lanjut</a>
             @endif
 
           </div>
+
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 img-main">
           <div class="img-main text-center text-md-start">
-            <img src="{{ url('assets/img/beranda/kids.png') }}" draggable="false" class="img-fluid" style="width: 560px; margin-top: 100px;">
+            <img src="{{ url('assets/img/beranda/kids.png') }}" draggable="false" class="img-fluid"
+              style="width: 560px; margin-top: 100px;">
           </div>
         </div>
       </div>
@@ -51,11 +59,13 @@
     </a>
   </div>
 
-  <section style="background: url({{ url('assets/img/bg.jpg') }}); background-size: cover;" class="vh-100 d-flex" id="section2">
+  <section style="background: url({{ url('assets/img/bg.jpg') }}); background-size: cover;" class="vh-100 d-flex"
+    id="section2">
     <div class="container d-flex flex-column justify-content-center align-items-center h-100">
       <div class="row d-flex flex-column justify-content-center align-items-center">
         <div class="head">
-          <img src="{{ url('assets/img/beranda/title-ayokitamulai.png') }}" alt="" class="img-fluid img-sec" style="margin-top: 10%">
+          <img src="{{ url('assets/img/beranda/title-ayokitamulai.png') }}" alt="" class="img-fluid img-sec"
+            style="margin-top: 10%">
           <img src="{{ url('assets/img/beranda/title-geser.png') }}" alt="" class="img-fluid img-sec2">
         </div>
         <div class="col">
@@ -63,15 +73,18 @@
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <a href="/belajar">
-                  <img src="{{ url('assets/img/beranda/pilih-belajar.png') }}" class="img-fluid text-center img-c" alt="..."></a>
+                  <img src="{{ url('assets/img/beranda/pilih-belajar.png') }}" class="img-fluid text-center img-c"
+                    alt="..."></a>
               </div>
               <div class="carousel-item">
                 <a href="/bermain">
-                  <img src="{{ url('assets/img/beranda/pilih-bermain.png') }}" class="img-fluid text-center img-c" alt="..."></a>
+                  <img src="{{ url('assets/img/beranda/pilih-bermain.png') }}" class="img-fluid text-center img-c"
+                    alt="..."></a>
               </div>
               <div class="carousel-item">
                 <a href="/teka-teki">
-                  <img src="{{ url('assets/img/beranda/pilih-tekateki.png') }}" class="img-fluid text-center img-c" alt="..."></a>
+                  <img src="{{ url('assets/img/beranda/pilih-tekateki.png') }}" class="img-fluid text-center img-c"
+                    alt="..."></a>
               </div>
             </div>
 

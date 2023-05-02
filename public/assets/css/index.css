@@ -1,12 +1,12 @@
 .subh {
-    font-size: 20px;
+    font-size: 28px !important;
     color: #2f9400;
 }
 
 .desc {
-    font-size: 15px;
+    font-size: 22px;
     color: #4b4b4b;
-    text-align: justify;
+    text-align: justify !important;
 }
 
 /* anim */
@@ -184,13 +184,13 @@
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     .hero h2 {
         font-size: 36px;
     }
 
     .img-main {
-        display: none;
+        display: none !important;
     }
 
     .fa-chevron-left {
@@ -282,5 +282,29 @@
 
     .img-c {
         width: 100%;
+    }
+}
+/* media query on sm smaller the font size in .desc to 20px */
+@media (max-width: 576px) {
+    .desc {
+        font-size: 15px !important;
+        padding: 0 20px 0 20px !important;
+    }
+}
+
+/* media query on 992 smaller the font size in .desc to 18px */
+@media (max-width: 992px) {
+    .subhead {
+        font-size: 25px !important;
+    }
+    .desc {
+        font-size: 18px !important;
+    }
+    .img-main{
+        /* set flesx center */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 }
