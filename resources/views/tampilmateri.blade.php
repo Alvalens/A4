@@ -70,7 +70,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="fileModalLabel">Ubah Materi</h5>
                 </div>
-                <form action="{{ route('materials.update') }}" method="POST">
+                <form action="{{ route('materials.update',$materi->id) }}" method="POST">
                     @method('PATCH')
                     @csrf
                     <div class="modal-body">
@@ -101,7 +101,7 @@
         </div>
     </div>
     <!-- Modal EDIT -->
-    
+
     <!-- Modal DELETE -->
     <div class="modal fade" id="fileModalDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="fileModalDeleteLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -126,7 +126,7 @@
 <script>
     var player = null;
     var startTime = null;
-  
+
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('video-player', {
         events: {
@@ -135,12 +135,12 @@
         }
       });
     }
-  
+
     function onPlayerReady(event) {
       event.target.playVideo();
       startTime = new Date();
     }
-  
+
     function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.PAUSED) {
     var stopTime = new Date();
@@ -158,6 +158,6 @@
   }
 }
   </script>
-  
+
   <script src="https://www.youtube.com/embed/iframe_api"></script>
 @endsection

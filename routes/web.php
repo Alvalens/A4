@@ -73,7 +73,7 @@ Route::prefix('/dashboard')->middleware(['auth', 'CheckRole:guru,admin'])->group
     Route::get('/datamateri', [MaterialsController::class, 'index'])->name('datamateri');
     Route::post('/materials', [MaterialsController::class, 'store'])->name('materials.store');
     Route::get('/datamateri/{materi}', [MaterialsController::class, 'show'])->name('materials.show');
-    Route::patch('/datamateri/{materi}', [MaterialsController::class, 'update'])->name('materials.update');
+    Route::patch('/datamateri/{materi}/update', [MaterialsController::class, 'update'])->name('materials.update');
     Route::delete('/datamateri/{materi}', [MaterialsController::class, 'destroy'])->name('materials.destroy');
 
     // ! CRUD TEKA-TEKI
@@ -119,3 +119,9 @@ Route::delete('/delete/email', 'App\Http\Controllers\Siswa@deleteEmail')->name('
 
 // ! USER PROGRESS
 Route::post('/user_progress', 'App\Http\Controllers\Siswa@storeProgress')->name('progress.store');
+
+
+// route test
+Route::get('/test', function () {
+    return view('test');
+});

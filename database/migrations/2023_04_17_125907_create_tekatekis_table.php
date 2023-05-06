@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('b');
             $table->string('c');
             $table->string('kunci');
-            $table->string('level')->unique;
             $table->timestamps();
         });
     }

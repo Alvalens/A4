@@ -59,6 +59,11 @@
     </a>
   </div>
 
+  {{-- feauture --}}
+  <section class="feauture">
+
+  </section>
+  {{-- carousel menu --}}
   <section style="background: url({{ url('assets/img/bg.jpg') }}); background-size: cover;" class="vh-100 d-flex"
     id="section2">
     <div class="container d-flex flex-column justify-content-center align-items-center h-100">

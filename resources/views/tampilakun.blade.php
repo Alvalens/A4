@@ -80,8 +80,8 @@
                             <label for="role" class="form-label">Role</label>
                             <select class="form-control" id="role" name="role" required>
                               <option value="">Pilih Role</option>
-                              <option value="guru" {{ (old('role') ?? $question->role) == 'guru' ? 'checked':'' }}>Guru</option>
-                              <option value="murid" {{ (old('role') ?? $question->role) == 'murid' ? 'checked':'' }}>Murid</option>
+                              <option value="guru" {{ (old('role') ?? $user->role) == 'guru' ? 'checked':'' }}>Guru</option>
+                              <option value="murid" {{ (old('role') ?? $user->role) == 'murid' ? 'checked':'' }}>Murid</option>
                             </select>
                         </div>
                         <div class="mb-3">

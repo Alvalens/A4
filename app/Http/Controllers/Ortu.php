@@ -10,7 +10,6 @@ use App\Models\Raport;
 class Ortu extends Controller
 {
     // index
-    // index
     public function index()
     {
         // Check if authenticated user has role 'ortu'
