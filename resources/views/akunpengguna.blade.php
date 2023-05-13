@@ -2,7 +2,7 @@
 @section('akunpengguna', 'active')
 
 @section('content')
-  
+
 <div class="content">
     <div class="animated fadeIn">
       <div class="orders">
@@ -17,7 +17,7 @@
               </div>
               <div class="card-body--">
                 <div class="table-stats order-table ov-h">
-                  <table class="table">
+                  <table id="bootstrap-data-table" class="table">
                     <thead>
                       <tr>
                         <th class="id" name="id">#</th>
@@ -47,16 +47,14 @@
                           </td>
                         </tr>
                       @empty
-                        <tr>
-                          <td colspan="5">Data tidak ditemukan.</td>
-                        </tr>
+
                       @endforelse
 
                     </tbody>
                   </table>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>
@@ -102,10 +100,33 @@
                   <button type="submit" class="btn btn-primary">Tambah</button>
               </div>
           </form>
-          
+
       </div>
   </div>
 </div>
 <!-- Modal TAMBAH -->
 
+@endsection
+
+@section('js')
+    <script src="{{ url('assets/js/dasbor/lib/data-table/datatables.min.js') }}"></script>
+        <script src="{{ url('assets/js/dasbor/lib/data-table/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ url('assets/js/dasbor/lib/data-table/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ url('assets/js/dasbor/lib/data-table/buttons.bootstrap.min.js') }}"></script>
+    <script src="{{ url('assets/js/dasbor/lib/data-table/jszip.min.js') }}"></script>
+    <script src="{{ url('assets/js/dasbor/lib/data-table/vfs_fonts.js') }}"></script>
+    <script src="{{ url('assets/js/dasbor/lib/data-table/buttons.html5.min.js') }}"></script>
+    <script src="{{ url('assets/js/dasbor/lib/data-table/buttons.print.min.js') }}"></script>
+    <script src="{{ url('assets/js/dasbor/lib/data-table/buttons.colVis.min.js') }}"></script>
+    <script src="{{ url('assets/js/dasbor/init/datatables-init.js') }}"></script>
+
+    <script type="text/javascript">
+      $.fn.dataTable.ext.errMode = 'none';
+      $(document).ready(function() {
+        $('#bootstrap-data-table-export').DataTable(
+        // disable the error warn
+
+        );
+      });
+    </script>
 @endsection

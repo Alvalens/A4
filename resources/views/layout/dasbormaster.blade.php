@@ -8,7 +8,7 @@
   <link rel="icon" href="{{ url('assets/img/beranda/title-a4.png') }}">
   <title>Dasbor Admin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -18,12 +18,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
   <link rel="stylesheet" href="{{ url('assets/css/dasbor/cs-skin-elastic.css') }}">
   <link rel="stylesheet" href="{{ url('assets/css/dasbor/style.css') }}">
+  <link rel="stylesheet" href="{{ url('assets/css/dasbor/table.css') }}">
+  {{-- <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet"> --}}
 
-  <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
+  {{-- <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" /> --}}
 
-  <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
+
+  @yield('css')
+
+    <script src="{{ url('js/jq.js') }}"></script>
 </head>
 
 <body>
@@ -36,12 +40,12 @@
           <li class="@yield('dasbor')">
             <a href="{{ route('dasbor') }}"><i class="menu-icon fa fa-laptop"></i>Dasbor </a>
           </li>
-            @if (auth()->user()->role === 'admin')
-          <li class="menu-title">Akun</li>
-          <li class=" @yield('akunpengguna')">
-            <a href="{{ route('akun.index') }}"> <i class="menu-icon ti-user"></i>Akun Pengguna</a>
-          </li>
-            @endif
+          @if (auth()->user()->role === 'admin')
+            <li class="menu-title">Akun</li>
+            <li class=" @yield('akunpengguna')">
+              <a href="{{ route('akun.index') }}"> <i class="menu-icon ti-user"></i>Akun Pengguna</a>
+            </li>
+          @endif
 
           <li class="menu-title">Data</li>
           <li class="@yield('datasiswa')">
@@ -118,17 +122,8 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
-    <script src="{{ url('assets/js/dasbor/init/fullcalendar-init.js') }}"></script>
     <script src="{{ url('assets/js/dasbor/main.js') }}"></script>
-    <script src="{{ url('assets/js/dasbor/init/todolist-init.js') }}"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script src="{{ url('js/jq.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
       // Menampilkan kembali modal saat halaman direfresh jika terdapat error
       var hasError = document.querySelector('.is-invalid');
@@ -138,6 +133,9 @@
         fileModal.show();
       }
     </script>
+
+    {{-- js each page to resolve conflict --}}
+        @yield('js')
 
 </body>
 

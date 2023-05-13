@@ -8,6 +8,7 @@ use App\Http\Controllers\TekatekisController;
 use App\Http\Controllers\Siswa;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\CheckRole;
+use App\Http\Controllers\TodoController;
 
 
 /*
@@ -108,7 +109,7 @@ Route::middleware('auth')->group(function () {
 // ! RAPORT
 Route::get('/daftarsiswa','App\Http\Controllers\Ortu@index')->name('ortu.index')->middleware(['auth', 'CheckRole:guru,admin,ortu']);
 // show raport
-Route::get('/raport/{nama}', 'App\Http\Controllers\Ortu@show')->name('raport')->middleware(['auth', 'CheckRole:guru,admin']);
+Route::get('/raport/{nama}', 'App\Http\Controllers\Ortu@show')->name('raport')->middleware(['auth', 'CheckRole:guru,admin,ortu']);
 // update
 Route::post('/raport/update', 'App\Http\Controllers\Siswa@storeRaport')->name('raport.store')->middleware(['auth', 'CheckRole:guru,admin']);
 
@@ -124,4 +125,11 @@ Route::post('/user_progress', 'App\Http\Controllers\Siswa@storeProgress')->name(
 // route test
 Route::get('/test', function () {
     return view('test');
+});
+
+//route TodoController ajax /todos/store
+Route::controller(TodoController::class)->group(function () {
+    Route::get('fullcalender', 'index');
+    Route::post('fullcalenderAjax', 'ajax');
+    Route::get('kegiatan', 'getKegiatan');
 });
