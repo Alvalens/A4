@@ -22,6 +22,7 @@ class AuthController extends Controller
             'logpass' => 'required',
         ]);
 
+
         // login logic
         if (auth()->attempt(['name' => $validatedData['logusername'], 'password' => $validatedData['logpass']])) {
             $request->session()->regenerate();
@@ -36,16 +37,17 @@ class AuthController extends Controller
                 return redirect()->route('ortu.index');
             } elseif ($user->role == 'guru') {
                 // Redirect to report route for guru
-                return redirect()->route('index');
+                return redirect()->route('dasbor');
             } elseif ($user->role == 'admin') {
                 // Redirect to report route for admin
-                return redirect()->route('index');
+                return redirect()->route('dasbor');
             }
         }
 
         // Redirect back if login fails
         return back()->withInput()->withErrors([
             'logusername' => 'Username or password is incorrect.',
+            'logpass' => 'Username or password is incorrect.'
         ]);
     }
     //logout

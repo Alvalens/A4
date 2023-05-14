@@ -9,6 +9,7 @@ use App\Http\Controllers\Siswa;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\CheckRole;
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\UsersProgressController;
 
 
 /*
@@ -41,12 +42,6 @@ Route::get('/guru', function () {
 Route::get('/bermain', function () {
     return view('bermain');
 })->name('bermain');
-Route::get('/puzzle', function () {
-    return view('puzzle');
-});
-Route::get('/maze', function () {
-    return view('maze');
-});
 Route::get('/teka-teki', [TekatekisController::class, 'showQuestion'])->name('tekateki');
 Route::get('/about', function () {
     return view('about');
@@ -119,8 +114,7 @@ Route::get('/verify/{code}/{email}', 'App\Http\Controllers\Siswa@verify')->name(
 Route::delete('/delete/email', 'App\Http\Controllers\Siswa@deleteEmail')->name('email.delete');
 
 // ! USER PROGRESS
-Route::post('/user_progress', 'App\Http\Controllers\Siswa@storeProgress')->name('progress.store');
-
+Route::post('/user_progress', [UsersProgressController::class, 'storeProgress'])->name('progress.store');
 
 // route test
 Route::get('/test', function () {
@@ -132,4 +126,29 @@ Route::controller(TodoController::class)->group(function () {
     Route::get('fullcalender', 'index');
     Route::post('fullcalenderAjax', 'ajax');
     Route::get('kegiatan', 'getKegiatan');
+});
+
+// prototype
+
+// group route bermain
+Route::prefix('/bermain')->group(function () {
+    Route::get('/', function () {
+        return view('bermain');
+    })->name('bermain');
+    Route::get('/tower-block', function () {
+        return view('games.towerBlock');
+    })->name('tower');
+    Route::get('/menja', function () {
+        return view('games.menja');
+    })->name('menja');
+    Route::get('/coloron', function () {
+        return view('games.coloron');
+    })->name('coloron');
+    Route::get('/memory', function () {
+        return view('games.memory');
+    })->name('memory');
+    Route::get('/puzzle', function () {
+        return view('games.puzzle');
+    })->name('puzzle');
+
 });

@@ -63,11 +63,12 @@ class TekatekisController extends Controller
     public function update(Request $request, Tekatekis $question)
     {
         $validatedData = $request->validate([
-            'pertanyaan' => '',
-            'a' => '',
-            'b' => '',
-            'c' => '',
-            'kunci' => ''
+            'pertanyaan' => 'required',
+            'a' => 'required',
+            'b' => 'required',
+            'c' => 'required',
+            // kunci must be one of a, b, or c
+            'kunci' => 'required|in:a,b,c',
         ], [
             'kunci.in' => 'Kunci jawaban harus diantara A, B, atau C'
         ]);
@@ -93,7 +94,7 @@ class TekatekisController extends Controller
     public function showQuestion()
         {
             $questions = DB::table('tekatekis')->inRandomOrder()->limit(3)->get();
-        
+
             return view('teka-teki', compact('questions'));
         }
 }

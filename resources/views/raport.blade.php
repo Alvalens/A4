@@ -149,16 +149,22 @@
   </nav>
 
   {{-- tombol terbang --}}
-  <div class="tombol">
-    <a href="{{ back() }}" class="tombol-terbang" role="button" type="button">
-      <i class="fa-solid fa-reply"></i></a>
-  </div>
+  @if (Auth::user()->role == 'admin' || Auth::user()->role == 'guru')
 
   {{-- tombol edit terbang --}}
   <div class="tombol">
     <a class="edit-terbang" role="button" type="button" data-bs-toggle="modal" data-bs-target="#fileModal">
       <i class="fa-solid fa-pen"></i></a>
   </div>
+  @else
+
+  @endif
+  <div class="tombol">
+    <a href="{{ url()->previous() }}" class="tombol-terbang" role="button" type="button">
+      <i class="fa-solid fa-reply"></i></a>
+  </div>
+
+
   <section style="background: url({{ url('assets/img/bg.jpg') }}); background-size: cover; padding-top: 80px;"
     class="vh-100">
     <!-- Your content goes here -->
@@ -189,7 +195,7 @@
                   {{-- create a list containing stats with aligned colon --}}
                   <div>
                     <ul class="list">
-                      <li><b>Waktu belajar</b><span>{{ $waktuMenit ?? '0' }} menit</span></li>
+                      <li><b>Waktu belajar</b><span>{{ $totalMenit ?? '0' }} menit</span></li>
                       <li><b>Materi kesukaan</b><span>{{ $raportUser->materi_favorit ?? '-' }}</span></li>
                       <li><b>Guru pendamping</b><span>{{ $raportUser->guru_pendamping ?? '-' }}</span></li>
                       <li><b>Orang Tua</b><span>{{ $namaOrtu ?? '-' }}</span></li>

@@ -45,6 +45,7 @@ class Ortu extends Controller
         // get time and convert to hour from user progress
         $totalSeconds = UsersProgress::where('nama_user', $nama_user)->sum('waktu_belajar');
         $totalMenit = $totalSeconds / 60;
+        $totalMenit = round($totalMenit, 2);
 
         // nama orang tua
         $Siswa = User::where('name', $nama_user)->get()->first();

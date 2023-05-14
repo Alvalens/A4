@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
-class akun extends Seeder
+class AkunSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -42,6 +42,18 @@ class akun extends Seeder
             'name' => 'Siswa',
             'email' => 'ortu@example.com',
             'password' => Hash::make('siswa'),
+            'role' => 'siswa', // assuming 'role' is a column in the users table to represent user role
+        ]);
+        User::create([
+            'name' => 'JokoSatrio10',
+            'email' => 'ortu@example.com',
+            'password' => Hash::make('Satrio123'),
+            'role' => 'siswa', // assuming 'role' is a column in the users table to represent user role
+        ]);
+        User::create([
+            'name' => 'Amirul17',
+            'email' => 'ortu@example.com',
+            'password' => Hash::make('Amirul123'),
             'role' => 'siswa', // assuming 'role' is a column in the users table to represent user role
         ]);
     }

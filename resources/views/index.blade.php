@@ -31,14 +31,14 @@
           {{-- button --}}
           <div class="button text-center text-md-start">
             <!-- Check if user is logged in -->
-            @if (Auth::check())
+            @auth
               <!-- Show welcome message -->
               <a href="{{ route('about') }}" type="button" class="buthon2">Lebih Lanjut</a>
             @else
               <!-- Show "Mulai!" button and "Lebih Lanjut" button -->
               <a href="{{ route('login') }}" type="button" class="buthon mx-3">Mulai!</a>
               <a href="{{ route('about') }}" type="button" class="buthon2">Lebih Lanjut</a>
-            @endif
+            @endauth
 
           </div>
 

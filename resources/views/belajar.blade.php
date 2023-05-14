@@ -59,6 +59,7 @@
                   }
 
                   function onPlayerStateChange{{ $materi->id }}(event) {
+                    var userRole = '{{ Auth::user()->role ?? "guest" }}';
                     // Check if the player is playing and get the current time
                     if (event.data == YT.PlayerState.PLAYING || event.data == YT.PlayerState.PAUSED) {
                       var currentTime = player{{ $materi->id }}.getCurrentTime();
@@ -67,11 +68,15 @@
                       var duration = player{{ $materi->id }}.getDuration();
                       var percentWatched = Math.round((currentTime / duration) * 100);
                       console.log('Percent watched: ' + percentWatched);
-
-                      sendWatchTime(currentTime, percentWatched, '{{ $materi->id }}');
+                      // check if auth role is siswa
+                      if (userRole == 'siswa') {
+                        sendWatchTime(currentTime, percentWatched, '{{ $materi->id }}');
+                      }
                     } else if (event.data == YT.PlayerState.ENDED) {
                       var duration = player{{ $materi->id }}.getDuration();
+                      if (userRole == 'siswa') {
                       sendWatchTime(duration, 100, '{{ $materi->id }}');
+                    }
                       console.log('Video has finished playing');
                     }
                   }
