@@ -16,8 +16,9 @@ class CheckRole
     public function handle($request, Closure $next, ...$roles)
     {
         if (!$request->user() || !in_array($request->user()->role, $roles)) {
-            // redirect to login
-            return redirect()->route('index');
+            // return error 403 default
+            return abort(Response::HTTP_FORBIDDEN);
+
         }
 
         return $next($request);
