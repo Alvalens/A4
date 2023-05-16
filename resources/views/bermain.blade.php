@@ -9,10 +9,6 @@
   background-size: cover;
   justify-content: center;
   align-items: center;
-  --wall-color: var(--color-default);
-  --joystick-color: black;
-  --joystick-head-color: var(--color-secondary);
-  --ball-color: #f06449;
 @endsection
 
 @section('content')
@@ -21,10 +17,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
+      padding: 8px;
       margin: 10vmin;
       overflow: hidden;
-      transform: skew(5deg);
+      transform: skew(0deg);
     }
 
     .containerC .cardc {
@@ -51,22 +47,29 @@
     }
 
     .containerC .cardc:hover {
-      flex-grow: 10;
+      flex-grow: 3;
     }
 
     .containerC .cardc:hover img {
       filter: grayscale(0);
+
     }
 
     .containerC .cardc:hover .cardc__head {
       text-align: center;
       top: calc(100% - 2em);
-      color: white;
-      background: rgba(0, 0, 0, 0.057);
+      color: rgb(0, 0, 0);
+      background: rgb(255, 255, 255);
       font-size: 2em;
-      transform: rotate(0deg) skew(-5deg);
-    }
+      transform: rotate(0deg) skew(0);
+      /* add bold and outline */
+      font-weight: bold;
 
+    }
+    .cardc {
+      /* add shadow */
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.39);
+    }
     .containerC .cardc img {
       width: 100%;
       height: 100%;
@@ -78,7 +81,9 @@
     .containerC .cardc:not(:nth-child(5)) {
       margin-right: 1em;
     }
-
+    section {
+      padding: 5px
+    }
     @media (max-width: 900px) {
       section {
         margin-top: 30px;
