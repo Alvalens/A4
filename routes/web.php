@@ -10,6 +10,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Middleware\CheckRole;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\UsersProgressController;
+use App\Http\Controllers\WelcomeController;
+
 
 
 /*
@@ -152,3 +154,6 @@ Route::prefix('/bermain')->group(function () {
     })->name('puzzle');
 
 });
+
+Route::get('/start', [WelcomeController::class, 'index'])->name('start');
+Route::post('/start', [WelcomeController::class, 'index'])->name('start');

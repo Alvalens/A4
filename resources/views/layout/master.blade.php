@@ -122,6 +122,10 @@
 </head>
 
 <body>
+  {{-- loader buku --}}
+  <div id="loader">
+    @include('layout.misc.loader')
+  </div>
 
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-md fixed-top">
@@ -238,26 +242,46 @@
     <!-- Copyright -->
   </footer>
 
-  {{-- loader buku --}}
-  <div id="loader">
-    @include('layout.misc.loader')
-  </div>
-
   {{-- loader script --}}
   <script>
-    window.addEventListener('load', function() {
-      // Get the loader element
-      var loader = document.getElementById('loader');
+window.addEventListener('load', function() {
+  // Get the loader element
+  var loader = document.getElementById('loader');
+  // show the html element after the page is loaded
 
-      // Hide with fade out effect after 1 second
-      setTimeout(function() {
-        loader.classList.add('hidden'); // Add 'hidden' class to apply fade effect
-        // display none after fade out effect
-        setTimeout(function() {
-          loader.style.display = 'none';
-        }, 500);
-      }, 1000);
-    });
+  // Show the loader with fade-in effect
+  loader.style.display = 'block';
+  setTimeout(function() {
+    loader.classList.remove('hidden');
+  }, 10); // Adjust the duration to match your CSS animation duration
+
+  // Hide with fade-out effect after 1 second
+  setTimeout(function() {
+    loader.classList.add('hidden'); // Add 'hidden' class to apply fade effect
+    // display none after fade out effect
+    setTimeout(function() {
+      loader.style.display = 'none';
+    }, 500);
+  }, 1000);
+});
+
+window.addEventListener('beforeunload', function() {
+  // Get the loader element
+  var loader = document.getElementById('loader');
+
+  // Show the loader with fade-in effect
+  loader.style.display = 'block';
+  setTimeout(function() {
+    loader.classList.remove('hidden');
+  }, 10); // Adjust the duration to match your CSS animation duration
+
+  //delay the page load for the loader fade in effect
+  setTimeout(function() {
+    loader.classList.remove('hidden');
+    loader.style.display = 'block';
+  }, 500);
+});
+
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
