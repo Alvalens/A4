@@ -53,7 +53,7 @@ Route::get('/profile', function () {
 })->name('profile');
 
 
-Route::prefix('/dashboard')->middleware(['auth', 'CheckRole:guru,admin'])->group(function () {
+Route::prefix('/dashboard')->middleware(['check.login', 'CheckRole:guru,admin'])->group(function () {
     Route::get('/', function () {
         return view('dasbor');
     })->name('dasbor');
@@ -98,17 +98,17 @@ Route::middleware('guest')->group(function () {
     Route::post('/loginuser', [AuthController::class, 'login'])->name('login.proses');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('check.login')->group(function () {
     Route::get('/logout');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 // ! RAPORT
-Route::get('/daftarsiswa','App\Http\Controllers\Ortu@index')->name('ortu.index')->middleware(['auth', 'CheckRole:guru,admin,ortu']);
+Route::get('/daftarsiswa','App\Http\Controllers\Ortu@index')->name('ortu.index')->middleware(['check.login', 'CheckRole:guru,admin,ortu']);
 // show raport
-Route::get('/raport/{nama}', 'App\Http\Controllers\Ortu@show')->name('raport')->middleware(['auth', 'CheckRole:guru,admin,ortu']);
+Route::get('/raport/{nama}', 'App\Http\Controllers\Ortu@show')->name('raport')->middleware(['check.login', 'CheckRole:guru,admin,ortu']);
 // update
-Route::post('/raport/update', 'App\Http\Controllers\Siswa@storeRaport')->name('raport.store')->middleware(['auth', 'CheckRole:guru,admin']);
+Route::post('/raport/update', 'App\Http\Controllers\Siswa@storeRaport')->name('raport.store')->middleware(['check.login', 'CheckRole:guru,admin']);
 
 // ! VERIFIKASI EMAIL
 Route::post('/verification', 'App\Http\Controllers\Siswa@sendverif')->name('email.send');
