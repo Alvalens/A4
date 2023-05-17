@@ -14,6 +14,7 @@ body {
   width: 100vw;
   overflow: hidden;
 }
+
 body {
   font-family: 'Montserrat', sans-serif;
   background: #fff;
@@ -5555,4 +5556,9 @@ body {
   <div class="particle particle79"></div>
   <div class="particle particle710"></div>
   <div class="particle particle711"></div>
+</div>
+<div id="introAud" style="opacity: 0;">
+<audio id="aud" autoplay controls>
+  <source src="{{ url('assets/audio/intro.mp3') }}" type="audio/mpeg">
+</audio>
 </div>

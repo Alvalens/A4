@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Raport;
+use App\Models\UsersProgress;
+use App\Models\TodoList;
+
 
 class UsersController extends Controller
 {
@@ -84,12 +88,31 @@ class UsersController extends Controller
         $user = User::find($request->id);
         // validate
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'role' => 'required',
+            'name' => 'required|unique:users,name,' . $user->id,
+            // role field only accept siswa, guru, admin, ortu
+            'role' => 'required|in:siswa,guru,admin,ortu',
             'email' => 'required|email',
             'password' => 'required',
         ]);
         // update
+        if ($user->role === 'siswa') {
+            $raport = Raport::where('nama', $user->name)->first();
+            if ($raport) {
+                $raport->nama = $request->name;
+                $raport->save();
+            }
+            $userProgress = UsersProgress::where('nama_user', $user->name);
+            if ($userProgress) {
+                // update all user progress with new name
+                $userProgress->update(['nama_user' => $request->name]);
+            } else if ($user->guru || $user->admin) {
+                $todo = TodoList::where('user', $user->name);
+                if ($todo) {
+                    // update all todo list with new name
+                    $todo->update(['user' => $request->name]);
+                }
+            }
+        }
         $user->name = $validatedData['name'];
         $user->role = $validatedData['role'];
         $user->email = $validatedData['email'];

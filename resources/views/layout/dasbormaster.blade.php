@@ -26,8 +26,8 @@
 
 
   @yield('css')
-
-    <script src="{{ url('js/jq.js') }}"></script>
+  {{-- jquery --}}
+  <script src="{{ url('js/jq.js') }}"></script>
 </head>
 
 <body>
@@ -123,7 +123,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
     <script src="{{ url('assets/js/dasbor/main.js') }}"></script>
-
+    {{-- bootstrap js --}}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script>
       // Menampilkan kembali modal saat halaman direfresh jika terdapat error
       var hasError = document.querySelector('.is-invalid');
@@ -135,7 +137,7 @@
     </script>
 
     {{-- js each page to resolve conflict --}}
-        @yield('js')
+    @yield('js')
 
 </body>
 
