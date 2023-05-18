@@ -132,7 +132,7 @@ section{
 }
 
 </style>
-<section class="d-flex flex-column justify-content-center align-items-center vh-100">
+<section class="d-flex flex-column justify-content-center align-items-center vh-100 px-3">
 {{--  form --}}
 {{-- seession msg success --}}
 @if (session('success'))

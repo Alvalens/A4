@@ -24,10 +24,9 @@ class UsersController extends Controller
         $validatedData = $request->validate([
             // Validation rules
             'regname' => 'required|unique:users,name',
-            // password must be at least 8 characters long, contain at least 1 uppercase letter, 1 lowercase letter, and 1 number
             'regpass' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',
             'confirmpass' => 'required|same:regpass',
-            'regmail' => $request->input('user-type-back') === 'ortu' ? 'required|email' : '', 
+            'regmail' => $request->input('user-type-back') === 'ortu' ? 'required|email' : '',
         ], [
             // Validation error messages
             'regname.required' => 'Nama harus diisi',

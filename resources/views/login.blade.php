@@ -45,6 +45,13 @@
       border-color: green !important;
       box-shadow: 0 0 0 0.4rem rgba(40, 167, 69, 0.344) !important;
     }
+
+    /* on btn small set the font smaller */
+    @media (max-width: 576px) {
+      .btn{
+        font-size: 0.7rem;
+      }
+    }
   </style>
   <div class="section">
     <a href="{{ route('index') }}">
@@ -82,8 +89,9 @@
                       <form action="{{ route('login.proses') }}" method="POST">
                         @csrf
                         <h4 class="m-2 pb-3 animated">Masuk</h4>
-                        <label for="user-type" class="mt-2">Masukkan:</label>
+                        <span class="mt-2">Masukkan:</span>
                         <div class="form-group mt-2">
+                          <label for="logusername" class="sr-only">Nama</label>
                           <input type="username" name="logusername"
                             class="form-style @error('logusername') is-invalid @enderror" value="{{ old('logusername') }}"
                             placeholder="Nama" id="logusername" autocomplete="off">
@@ -93,6 +101,7 @@
                           @enderror
                         </div>
                         <div class="form-group mt-2">
+                          <label for="logpass" class="sr-only">Kata Sandi</label>
                           <input type="password" name="logpass" class="form-style @error('logpass') is-invalid @enderror"
                             placeholder="Kata Sandi" id="logpass" autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
@@ -102,7 +111,13 @@
                             <small class="error text-danger">{{ $message }}</small>
                           @enderror
                         </div>
-                        <button type="submit" class="btn mt-4">Masuk</button>
+                        <button type="submit" class="btn my-4">Masuk</button>
+                        <div class="mt-5" >
+                        <small>
+                          <a href="{{ route('lupa.password') }}" class="mt-3" style="color: rgb(255, 255, 255) !important;">Lupa Kata Sandi?</a> <br>
+                          <a role="button" onclick="changeForm()" class="mt-3" style="color: rgb(255, 255, 255) !important;">Belum punya akun?</a>
+                        </small>
+                        </div>
                       </form>
                     </div>
                   </div>
@@ -116,14 +131,15 @@
                       <form action="{{ route('register.store') }}" method="POST">
                         @csrf
                         <h4 class="m-2 pb-3 animated">Daftar</h4>
-                        <label for="user-type" class="mt-2">Aku Adalah:</label>
+                        <label for="user-type-back" class="mt-2">Aku Adalah:</label>
                         <select class="form-style" id="user-type-back" name="user-type-back" onchange="toggleFormBack()">
                           <option class="form-style" value="siswa">siswa</option>
                           <option class="form-style" value="ortu">Orang Tua</option>
                         </select>
-                        <label for="user-type" class="mt-2">Masukkan:</label>
+                        <span>Masukkan:</span>
                         <div class="form-group mt-2">
-                          <input type="username" name="regname" class="form-style @error('regname') is-invalid @enderror"
+                          <label for="regname" class="sr-only">Nama</label>
+                          <input type="username" name="regname" class="form-style @error('regname') is-invalid @enderror" id="regname"
                             placeholder="Nama" value="{{ old('regname') }}" autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
                           @error('regname')
@@ -131,6 +147,7 @@
                           @enderror
                         </div>
                         <div class="form-group mt-2">
+                          <label for="regmail" class="sr-only">Alamat Email</label>
                           <input type="email" name="regmail" style="display: none;"
                             class="form-style @error('regmail') is-invalid @enderror" placeholder="Alamat Email"
                             id="regmail" value="{{ old('regmail') }}" autocomplete="off">
@@ -140,6 +157,7 @@
                           @enderror
                         </div>
                         <div class="form-group mt-2">
+                          <label for="regpass" class="sr-only">Kata Sandi</label>
                           <input type="password" name="regpass"
                             class="form-style  @error('regpass') is-invalid @enderror" placeholder="Kata Sandi"
                             id="regpass" value="{{ old('regpass') }}" autocomplete="off">
@@ -151,6 +169,7 @@
                           </small>
                         </div>
                         <div class="form-group mt-2">
+                          <label for="confirmpass" class="sr-only">Konfirmasi Sandi</label>
                           <input type="password" name="confirmpass"
                             class="form-style  @error('confirmpass') is-invalid @enderror"
                             placeholder="Konfirmasi Sandi" id="confirmpass" value="{{ old('confirmpass') }}"
@@ -182,6 +201,13 @@
   <!-- SCRIPT -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
+    //click to toggle form checkbox reguster
+    function changeForm() {
+      // add checked to "reg-log
+      var reglog = document.getElementById("reg-log");
+      reglog.checked = true;
+    }
+
 function validatePassword() {
   var regpass = document.getElementById("regpass");
   var confirmpass = document.getElementById("confirmpass");
@@ -210,7 +236,6 @@ function validatePassword() {
     document.getElementById("confirerr").style.display = "block";
     document.getElementById("confirerr").innerHTML = "Kata sandi tidak sama";
   }
-
 }
 
 var regpass = document.getElementById("regpass");

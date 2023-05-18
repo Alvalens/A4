@@ -62,7 +62,7 @@
 .form-style {
   padding: 13px 20px;
   height: 48px;
-  width: 100%;
+  width: 300px;
   font-weight: 500;
   border-radius: 4px;
   font-size: 14px;
@@ -130,9 +130,36 @@ section{
   color: #ffeba7;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
+    .is-invalid {
+      border: 2px solid red !important;
+      padding-right: calc(1.5em + 0.75rem);
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right calc(0.375em + 0.1875rem) center;
+      background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    }
+
+    .is-invalid:focus {
+      border-color: red !important;
+      box-shadow: 0 0 0 0.4rem rgba(220, 53, 70, 0.344) !important;
+    }
+
+    .is-valid {
+      border: 2px solid green !important;
+      padding-right: calc(1.5em + 0.75rem);
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%2328a745'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M3.5 6l2 2 4.5-4.5'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right calc(0.375em + 0.1875rem) center;
+      background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    }
+
+    .is-valid:focus {
+      border-color: green !important;
+      box-shadow: 0 0 0 0.4rem rgba(40, 167, 69, 0.344) !important;
+    }
 
 </style>
-<section class="d-flex flex-column justify-content-center align-items-center vh-100">
+<section class="d-flex flex-column justify-content-center align-items-center vh-100 px-3">
 {{--  form --}}
 {{-- seession msg success --}}
 @if (session('success'))
@@ -155,20 +182,26 @@ section{
         <h4 class="m-2 pb-3 animated">Reset password</h4>
         <div class="form-group mt-2">
           <label for="newpass" class="sr-only">newpass</label>
-          <input type="text" name="newpass" class="form-style is-invalid" placeholder="password baru" id="newpass"
+          <input type="password" name="newpass" class="form-style" placeholder="password baru" id="newpass"
             autocomplete="off">
+            <small class="error text-danger" id="passerr">
           @error('newpass')
-            <small class="error text-danger">{{ $message }}</small>
+            {{ $message }}
           @enderror
+          </small>
         </div>
         <div class="form-group mt-2">
           <label for="confirmpass" class="sr-only">confirmpass</label>
-          <input type="confirmpass" name="confirmpass" class="form-style is-invalid" placeholder="konfirmasi password" id="confirmpass"
+          <input type="password" name="confirmpass" class="form-style " placeholder="konfirmasi password" id="confirmpass"
             autocomplete="off">
           @error('confirmpass')
-            <small class="error text-danger">{{ $message }}</small>
+          <small class="error text-danger" id="confierr">
+            {{ $message }}
           @enderror
+          </small>
         </div>
+                                  <button type="button" class="btn btn-secondary toggle-password mt-3" id="showpass" onclick="togglepass2()">Lihat
+                            Kata Sandi</button> <br>
         {{-- also send the token --}}
 
         <button type="submit" class="btn mt-5">Ubah</button>
@@ -178,4 +211,56 @@ section{
 </div>
 </div>
 </section>
+<script>
+  function validatePassword() {
+  var newpass = document.getElementById("newpass");
+  var confirmpass = document.getElementById("confirmpass");
+  var newpassValue = newpass.value;
+  var confirmpassValue = confirmpass.value;
+  var newpassRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+  if (newpassRegex.test(newpassValue)) {
+    newpass.classList.remove("is-invalid");
+    newpass.classList.add("is-valid");
+    document.getElementById("passerr").style.display = "none";
+  } else {
+    newpass.classList.remove("is-valid");
+    newpass.classList.add("is-invalid");
+    document.getElementById("passerr").style.display = "block";
+    document.getElementById("passerr").innerHTML = "Kata sandi minimal 8 karakter, 1 huruf besar, 1 huruf kecil, 1 angka";
+  }
+
+  if (confirmpassValue === newpassValue) {
+    confirmpass.classList.remove("is-invalid");
+    confirmpass.classList.add("is-valid");
+    document.getElementById("confirerr").style.display = "none";
+  } else {
+    confirmpass.classList.remove("is-valid");
+    confirmpass.classList.add("is-invalid");
+    document.getElementById("confirerr").style.display = "block";
+    document.getElementById("confirerr").innerHTML = "Kata sandi tidak sama";
+  }
+}
+
+var newpass = document.getElementById("newpass");
+newpass.addEventListener("keyup", validatePassword);
+
+var confirmpass = document.getElementById("confirmpass");
+confirmpass.addEventListener("keyup", validatePassword);
+
+pass = document.getElementById("newpass");
+confirmpass = document.getElementById("confirmpass");
+    function togglepass2() {
+      if (pass.type === "password" && confirmpass.type === "password") {
+        pass.type = "text";
+        confirmpass.type = "text";
+        btn.innerHTML = "Sembunyikan Kata Sandi";
+
+      } else {
+        pass.type = "password";
+        confirmpass.type = "password";
+        btn.innerHTML = "Lihat Kata Sandi";
+      }
+    }
+</script>
 @endsection
