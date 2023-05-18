@@ -50,7 +50,7 @@ Route::get('/about', function () {
 })->name('about');
 Route::get('/profile', function () {
     return view('profile');
-})->name('profile');
+})->name('profile')->middleware('check.login');
 
 
 Route::prefix('/dashboard')->middleware(['check.login', 'CheckRole:guru,admin'])->group(function () {

@@ -115,7 +115,7 @@
 
     /* fix for background color in offcanvas menu */
     .offcanvas {
-      background-color: #add8e6;
+      background-color: #69c0cc;
     }
 
     .profile .dropdown-menu-end {
@@ -126,7 +126,7 @@
     background-color: #ffffff !important;
     margin: 5px 20px 0 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
-    
+
     border-radius: 50px;
     transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
@@ -145,6 +145,8 @@
   outline: none;
   box-shadow: none;
 }
+
+
   </style>
   <script src="{{ url('js/jq.js') }}"></script>
 </head>
