@@ -44,6 +44,7 @@
     .navbar {
       background-color: #add8e683;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease-in-out;
     }
 
     #navbar {
@@ -115,8 +116,30 @@
       left: auto;
       right: 0;
     }
+    .navbar.scrolled {
+    background-color: #ffffff;
+    margin: 5px 20px 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    }
+    /* change navbar toggkler button outline delete */
+    .navbar-toggler {
+      border: none !important;
+      border-radius: 100%;
+    }
+    .navbar-toggler:hover {
+      background-color: #add8e6 !important;
+      border: none !important;
+    }
+.custom-toggler:focus,
+.custom-toggler:hover {
+  outline: none;
+  box-shadow: none;
+}
 
-    /* Loader styles */
+
   </style>
   <script src="{{ url('js/jq.js') }}"></script>
 </head>
@@ -130,9 +153,9 @@
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-md fixed-top">
     <div class="container-fluid" style="background-color: rgba(0, 0, 0, 0) !important;">
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
+      <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+          <i class="fa-solid fa-bars-staggered py-2"></i>
       </button>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarNav" aria-labelledby="navbarNavLabel">
         <div class="offcanvas-header">
@@ -244,7 +267,10 @@
 
   {{-- loader script --}}
   <script>
-
+window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    navbar.classList.toggle("scrolled", window.scrollY > 0);
+});
 
 window.addEventListener('load', function() {
 
@@ -259,7 +285,7 @@ window.addEventListener('load', function() {
 
   setTimeout(function() {
     loader.classList.remove('hidden');
-  }, 10); 
+  }, 10);
 
   setTimeout(function() {
     loader.classList.add('hidden');

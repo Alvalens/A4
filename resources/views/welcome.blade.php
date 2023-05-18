@@ -354,14 +354,9 @@
     </form>
     <canvas id="canvas" class="canvas"></canvas>
   </section>
+
 </body>
 <script>
-  // every 200px of screen width change refresh the page
-  window.addEventListener('resize', function() {
-    if (window.innerWidth % 200 === 0) {
-      window.location.reload();
-    }
-  });
   setTimeout(function() {
     document.querySelector('section').classList.add('show');
   }, 8000);
@@ -652,6 +647,12 @@
   }
 
   init();
+
+  window.addEventListener('resize', function() {
+    resizeCanvas(cvs);
+    init();
+  });
+
 </script>
 <script>
   // Add event listener for beforeunload

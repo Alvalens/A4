@@ -26,10 +26,10 @@
                         <button class="button-33" role="button" onclick="submitAnswer({{ $index }})">Kirim</button>
                     </div>
                 @endforeach
-        
+
                 <!-- Score Modal -->
                 <div class="modal" id="score-modal" role="dialog">
-                    <div class="modal-dialog modal-notify modal-info" role="document">
+                    <div class="modal-dialog modal-dialog-centered modal-notify modal-info" role="document">
                         <div class="modal-content text-center">
                             <div class="modal-header d-flex justify-content-center">
                                 <p class="heading">SELAMAT</p>
@@ -40,8 +40,7 @@
                                 <span id="score" style="font-size: 40px"></span>
                             </div>
                             <div class="modal-footer flex-center">
-                                <button class="btn btn-secondary" onclick="backToQuiz()">Kembali</button>
-                                <button class="btn btn-outline-secondary waves-effect" onclick="playAgain()">Main Lagi</button>
+                                <button class="btn btn-outline-secondary waves-effect" onclick="playAgain()">Ok</button>
                             </div>
                         </div>
                     </div>
@@ -63,10 +62,10 @@
 
         function submitAnswer(index) {
             var userAnswer = document.querySelector(`input[name="${answers[currentQuestion].id}"]:checked`);
-            if (userAnswer && userAnswer.value === answers[currentQuestion].kunci) {
+            if (userAnswer.value === answers[currentQuestion].kunci) {
                 score++;
             }
-    
+
             currentQuestion++;
             if (currentQuestion < answers.length) {
                 document.getElementById(`question${currentQuestion - 1}`).style.display = 'none';
@@ -86,12 +85,7 @@
         function playAgain() {
             location.reload();
         }
-    
-        function backToQuiz() {
-            var modal = document.getElementById("score-modal");
-            modal.style.display = "none";
-            document.getElementById(`question${currentQuestion - 1}`).style.display = 'block';
-        }
+
     </script>
     <!-- SCRIPT -->
 

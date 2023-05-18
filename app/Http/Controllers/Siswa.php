@@ -43,16 +43,12 @@ class Siswa extends Controller
         if (!User::where('email', $request->email)->where('role', 'ortu')->exists()) {
             return back()->with('error', 'Email tidak terdaftar!');
         }
-        // get the email from the request
         $email = $request->email;
-        // Generate a random verification code
-        $verificationCode = rand(100000, 999999); // Generates a random 6-digit number
 
-        // select user where name = auth()->user()->name and update verification_code
+        $verificationCode = rand(100000, 999999);
+        
         User::where('name', auth()->user()->name)->update(['verification_code' => $verificationCode]);
-        //  set email as email
 
-        // Send verification email with the generated verification code
         Mail::to($email)->send(new EmailVerificationRequest($verificationCode));
 
         // Return a response indicating that the verification email has been sent

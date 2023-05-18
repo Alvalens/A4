@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Raport;
+use App\Models\UsersProgress;
+use App\Models\TodoList;
+
 
 class UsersController extends Controller
 {
@@ -19,39 +23,40 @@ class UsersController extends Controller
         // Validate input data
         $validatedData = $request->validate([
             // Validation rules
-            'logusername2' => 'required|unique:users,name',
-            'logpass2' => 'required',
-            'confirmpass' => 'required|same:logpass2',
-            'logemail' => $request->input('user-type-back') === 'orangtua2' ? 'required|email' : '', // Optional email validation for Siswa
+            'regname' => 'required|unique:users,name',
+            'regpass' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',
+            'confirmpass' => 'required|same:regpass',
+            'regmail' => $request->input('user-type-back') === 'ortu' ? 'required|email' : '',
         ], [
             // Validation error messages
-            'logusername2.required' => 'Nama harus diisi',
-            'logusername2.unique' => 'Nama telah digunakan',
-            'logpass2.required' => 'Password harus diisi',
+            'regname.required' => 'Nama harus diisi',
+            'regname.unique' => 'Nama telah digunakan',
+            'regpass.required' => 'Password harus diisi',
+            'regpass.regex' => 'Password harus mengandung 1 huruf besar, 1 huruf kecil, dan 1 angka',
             'confirmpass.required' => 'Konfirmasi password anda',
             'confirmpass.same' => 'Password tidak sama',
-            'logemail.required' => 'Email harus diisi untuk Orang Tua',
-            'logemail.email' => 'Email tidak valid',
+            'regmail.required' => 'Email harus diisi untuk Orang Tua',
+            'regmail.email' => 'Email tidak valid',
         ]);
 
         // Determine user type based on selected user type
         $userType = $request->input('user-type-back');
 
         // Create new user record based on user type
-        if ($userType === 'murid2') {
+        if ($userType === 'siswa') {
             // For siswa
             $user = new User();
-            $user->name = $validatedData['logusername2'];
-            $user->password = bcrypt($validatedData['logpass2']);
+            $user->name = $validatedData['regname'];
+            $user->password = bcrypt($validatedData['regpass']);
             $user->role = 'siswa'; // Set role as siswa
             $user->email = ''; //default
             $user->save();
-        } elseif ($userType === 'orangtua2') {
+        } elseif ($userType === 'ortu') {
             // For ortu
             $user = new User();
-            $user->name = $validatedData['logusername2'];
-            $user->email = $validatedData['logemail'];
-            $user->password = bcrypt($validatedData['logpass2']);
+            $user->name = $validatedData['regname'];
+            $user->email = $validatedData['regmail'];
+            $user->password = bcrypt($validatedData['regpass']);
             $user->role = 'ortu'; // Set role as ortu
             $user->save();
         }
@@ -84,12 +89,31 @@ class UsersController extends Controller
         $user = User::find($request->id);
         // validate
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'role' => 'required',
+            'name' => 'required|unique:users,name,' . $user->id,
+            // role field only accept siswa, guru, admin, ortu
+            'role' => 'required|in:siswa,guru,admin,ortu',
             'email' => 'required|email',
             'password' => 'required',
         ]);
         // update
+        if ($user->role === 'siswa') {
+            $raport = Raport::where('nama', $user->name)->first();
+            if ($raport) {
+                $raport->nama = $request->name;
+                $raport->save();
+            }
+            $userProgress = UsersProgress::where('nama_user', $user->name);
+            if ($userProgress) {
+                // update all user progress with new name
+                $userProgress->update(['nama_user' => $request->name]);
+            } else if ($user->guru || $user->admin) {
+                $todo = TodoList::where('user', $user->name);
+                if ($todo) {
+                    // update all todo list with new name
+                    $todo->update(['user' => $request->name]);
+                }
+            }
+        }
         $user->name = $validatedData['name'];
         $user->role = $validatedData['role'];
         $user->email = $validatedData['email'];

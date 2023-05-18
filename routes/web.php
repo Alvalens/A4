@@ -157,3 +157,9 @@ Route::prefix('/bermain')->group(function () {
 
 Route::get('/start', [WelcomeController::class, 'index'])->name('start');
 Route::post('/start', [WelcomeController::class, 'index'])->name('start');
+
+// ! route lupa password
+Route::get('/lupa-password', [AuthController::class, 'lupaPassword'])->name('lupa.password');
+Route::post('/lupa-password/proses', [AuthController::class, 'lupaPasswordProses'])->name('lupa.proses');
+Route::get('/lupa-password/reset-password/{token}/{name}', [AuthController::class, 'resetPassword'])->name('password.reset');
+Route::post('/lupa-password/reset-password/proses', [AuthController::class, 'resetPasswordProses'])->name('reset.proses');
