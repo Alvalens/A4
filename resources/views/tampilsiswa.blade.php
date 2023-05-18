@@ -1,13 +1,41 @@
-@extends('layout.mastero')
-@include('layout.asset')
+@extends('layout.master')
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css">
-<link rel="stylesheet" href="{{ url('assets/css/siswa.css') }}">
+@section('css')
+  <link rel="stylesheet" href="{{ url('assets/css/dasbor/table.css') }}">
+  <style>
+    /* remove a link all attribute */
+    a {
+      color: black;
+      text-decoration: none;
+      color: inherit;
+    }
+  .col {
+    display: flex;
+    flex-direction: column;
+    min-height: 88vh;
+    justify-content: center;
+    align-items: center;
+  }
+  .card {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+  }
+  /* on mobile small the font btn size */
+  @media (max-width: 576px) {
+    .btn {
+      font-size: 12px;
+    }
+  }
+  </style>
 
+@endsection
 @section('content')
 
   <div class="container">
-    <div class="row height d-flex justify-content-center align-items-center">
       <div class="col">
 
         @if (session('error'))
@@ -15,14 +43,15 @@
             {{ session('error') }}
           </div>
         @endif
-
-        <h2 class="my-3">Daftar Siswa</h2>
-        <table class="display" id="myTable">
+          <div class="card">
+        <h2 class="my-3 text-center">Daftar Siswa</h2>
+        <div class="table-stats order-table ov-h">
+        <table id="bootstrap-data-table" class="table">
           <thead>
             <tr>
               <th>No</th>
               <th>Nama</th>
-              <th>Raport</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -34,20 +63,13 @@
                     {{ $r->name }}
                   </a>
                 </td>
-                <td>
+                <td class="text-end">
                   <a href="{{ route('raport', ['nama' => $r->name]) }}">
-                    <button>
-                      <div class="svg-wrapper-1">
-                        <div class="svg-wrapper">
-                          <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0 0h24v24H0z" fill="none"></path>
-                            <path
-                              d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
-                              fill="currentColor"></path>
-                          </svg>
-                        </div>
-                      </div>
-                      <span>Lihat Raport</span>
+                    <button class="btn">
+                      <span class="btn-label">
+                        <i class="fa fa-eye"></i>
+                      </span>
+                      Lihat Raport
                     </button>
                   </a>
                 </td>
@@ -57,31 +79,33 @@
             @endforelse
 
           </tbody>
-          <tfoot>
-            <tr>
-              <th>No</th>
-              <th>Nama</th>
-              <th>Raport</th>
-            </tr>
-          </tfoot>
         </table>
+         </div>
       </div>
       <div>
       </div>
+      </div>
     </div>
-  </div>
-
+  @endsection
   <!-- SCRIPT -->
-  <script src="{{ url('js/jq.js') }}"></script>
-  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-  <script>
+  @section('js')
+  <script src="{{ url('assets/js/dasbor/lib/data-table/datatables.min.js') }}"></script>
+  <script src="{{ url('assets/js/dasbor/lib/data-table/dataTables.bootstrap.min.js') }}"></script>
+  <script src="{{ url('assets/js/dasbor/lib/data-table/dataTables.buttons.min.js') }}"></script>
+  <script src="{{ url('assets/js/dasbor/lib/data-table/buttons.bootstrap.min.js') }}"></script>
+  <script src="{{ url('assets/js/dasbor/lib/data-table/jszip.min.js') }}"></script>
+  <script src="{{ url('assets/js/dasbor/lib/data-table/vfs_fonts.js') }}"></script>
+  <script src="{{ url('assets/js/dasbor/lib/data-table/buttons.html5.min.js') }}"></script>
+  <script src="{{ url('assets/js/dasbor/lib/data-table/buttons.print.min.js') }}"></script>
+  <script src="{{ url('assets/js/dasbor/lib/data-table/buttons.colVis.min.js') }}"></script>
+  <script src="{{ url('assets/js/dasbor/init/datatables-init.js') }}"></script>
+
+  <script type="text/javascript">
     $.fn.dataTable.ext.errMode = 'none';
-
-    let table = new DataTable('#myTable', {
-      // options
-
+    $(document).ready(function() {
+      $('#bootstrap-data-table-export').DataTable(
+      );
     });
   </script>
   <!-- SCRIPT -->
-
 @endsection

@@ -40,6 +40,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <!-- Make Body CSS Style -->
+  @yield('css')
   <style>
     .navbar {
       background-color: #add8e683;
@@ -105,6 +106,11 @@
         text-align: center;
         font-size: 14px;
       }
+      .profile-picture {
+        display: block;
+        width: 50px;
+        height: 50px;
+      }
     }
 
     /* fix for background color in offcanvas menu */
@@ -138,8 +144,6 @@
   outline: none;
   box-shadow: none;
 }
-
-
   </style>
   <script src="{{ url('js/jq.js') }}"></script>
 </head>
@@ -164,9 +168,21 @@
         </div>
         <div class="offcanvas-body d-flex justify-content-center">
           <ul class="navbar-nav">
-
+            {{-- new item to hold profile  --}}
+            <li class="nav-item profile-picture d-block d-md-none">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="{{ route('profile') }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#0e4168" class="bi bi-person"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0
+                    1a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0
+                    1c2.67 0 8 1.34 8 4v1H0v-1c0-2.66
+                    5.33-4 8-4z" />
+                </svg>
+                <span class="caption  d-block d-md-none">Profile</span>
+              </a>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('index') }}">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="{{ route('index') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#0e4168" class="bi bi-house"
                   viewBox="0 0 16 16">
                   <path
@@ -177,7 +193,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('level') }}">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="{{ route('level') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#0e4168"
                   class="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z" />
@@ -191,7 +207,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('bermain') }}">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="{{ route('bermain') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#0e4168"
                   class="bi bi-puzzle" viewBox="0 0 16 16" transform="rotate(90)">
                   <path
@@ -202,7 +218,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('tekateki') }}">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="{{ route('tekateki') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#0e4168"
                   class="bi bi-lightbulb" viewBox="0 0 16 16">
                   <path
@@ -211,7 +227,6 @@
                 <span class="caption d-block d-md-none">Teka-teki</span>
               </a>
             </li>
-
           </ul>
         </div>
 
@@ -228,6 +243,9 @@
             <li><a class="dropdown-item" href="/profile">Profile</a></li>
             @if (auth()->user()->role === 'guru' || auth()->user()->role === 'admin')
               <li><a class="dropdown-item" href="{{ route('dasbor') }}">Dashboard</a></li>
+              {{-- else if ortu show raport --}}
+            @elseif (auth()->user()->role === 'ortu')
+              <li><a class="dropdown-item" href="{{ route('ortu.index') }}">Raport</a></li>
             @endif
             <li>
               <hr class="dropdown-divider">
@@ -322,10 +340,7 @@ window.addEventListener('beforeunload', function() {
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-  {{-- jq --}}
 
-
-  <!-- Vendor JS Files -->
 
   <script src="{{ url('assets/vendor/aos/aos.js') }}"></script>
   <script src="{{ url('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
@@ -336,7 +351,7 @@ window.addEventListener('beforeunload', function() {
 
   <!-- Template Main JS File -->
   <script src="{{ url('assets/js/main.js') }}"></script>
-  -
+  @yield('js')
 </body>
 
 </html>

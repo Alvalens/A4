@@ -17,7 +17,7 @@ class RaportSeeder extends Seeder
         //
         Raport::create([
             'nama' => 'JokoSatrio10',
-            'catatan' => 'Siswa yang rajin mengikuti pembelajaran, namun masih perlu ditingkatkan lagi agar lebih untuk menyimak materi yang diberikan',
+            'catatan' => 'Siswa sangat rajin dalam mengikuti kegiatan pembelajaran, namun masih perlu ditingkatkan lagi agar lebih untuk menyimak materi yang diberikan',
             'materi_favorit' => 'Belajar Huruf',
             'guru_pendamping' => 'Pak Budi P.hD',
         ]);

@@ -68,7 +68,16 @@
 
     .cardl {
       margin-top: 0;
-
+    }
+    .list {
+      font-size: 14px !important;
+      margin-left: -10px;
+    }
+    h5 {
+      font-size: 18px !important;
+    }
+    .desc {
+      font-size: 16px !important;
     }
   }
 
@@ -79,6 +88,15 @@
   .desc {
     /* align rata kanan */
     text-align: justify;
+    text-justify: inter-word;
+    /* font  */
+    font-size: 18px;
+    font-weight: 600;
+    /* white bg */
+    background-color: #ffffff4e;
+    padding: 8px;
+    border-radius: 5px;
+
   }
 
   .list {
@@ -121,6 +139,7 @@
     line-height: 50px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.329);
     transition: all 0.3s ease;
+    z-index: 999090;
   }
 
   .edit-terbang {
@@ -137,7 +156,18 @@
     line-height: 50px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.329);
     transition: all 0.3s ease;
+        z-index: 999090;
   }
+.fa-chevron-right, .fa-chevron-left {
+  /* size */
+  font-size: 40px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
 </style>
 
 <body>
@@ -165,9 +195,8 @@
   </div>
 
 
-  <section style="background: url({{ url('assets/img/bg.jpg') }}); background-size: cover; padding-top: 80px;"
-    class="vh-100">
-    <!-- Your content goes here -->
+<section style="background: linear-gradient(to top, rgba(0, 0, 0, 0.172) 100%, rgba(0, 0, 0, 0.493) 100%), url({{ url('assets/img/bg.jpg') }}); background-size: cover; padding-top: 80px;"
+    class="min-vh-100 px-md-0">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-7 mt-5 pl-md-5">
@@ -206,7 +235,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5 m-2 m-md-0">
+        <div class="col-md-5 mt-2 mt-md-0">
           <!-- Carousel section -->
           <div id="raportCarousel" class="carousel slide" data-bs-ride="carousel">
             <!-- Slides -->
@@ -219,11 +248,11 @@
               @endfor
               <!-- Controls -->
               <a class="carousel-control-prev" href="#raportCarousel" role="button" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <i class="fa-solid fa-chevron-left" style="color: #000000;"></i>
                 <span class="visually-hidden">Previous</span>
               </a>
               <a class="carousel-control-next" href="#raportCarousel" role="button" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <i class="fa-solid fa-chevron-right"  style="color: #000000;""></i>
                 <span class="visually-hidden">Next</span>
               </a>
             </div>
