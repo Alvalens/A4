@@ -22,7 +22,7 @@ class TekaTekiSeeder extends Seeder
             'kunci' => 'a'
         ]);
         Tekatekis::create([
-            'pertanyaan' => 'Apa nama hewan yang memiliki 2 kaki dan bertelur?',
+            'pertanyaan' => 'Apa nama hewan yang memiliki 2 kaki, bertelur dan tidak bisa terbang?',
             'a' => 'Kucing',
             'b' => 'Burung',
             'c' => 'Ayam',

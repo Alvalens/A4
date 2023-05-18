@@ -359,25 +359,6 @@
       }
     }
 
-    .support {
-      position: absolute;
-      right: 10px;
-      bottom: 10px;
-      padding: 10px;
-      display: flex;
-    }
-
-    .support a {
-      margin: 0 10px;
-      color: #fff;
-      font-size: 1.8rem;
-      backface-visibility: hidden;
-      transition: all 150ms ease;
-    }
-
-    .support a:hover {
-      transform: scale(1.1);
-    }
   </style>
 </head>
 
@@ -477,10 +458,6 @@
           style='fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px' />
       </symbol>
     </svg>
-    <div class="support">
-      <a href="https://twitter.com/DevLoop01" target="_blank"><i class="fab fa-twitter-square"></i></a>
-      <a href="https://dribbble.com/devloop01" target="_blank"><i class="fab fa-dribbble"></i></a>
-    </div>
 
   <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
