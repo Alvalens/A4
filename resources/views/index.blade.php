@@ -1,146 +1,342 @@
-@extends('layout.master')
-@section('title', 'Selamat datang!')
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
 
+  <title>Selamat Datang!</title>
 
-@section('body-style')
-  overflow-x: hidden;
-@endsection
+  <!-- Bootstrap Core CSS -->
+  <link href="{{ url('assets/css/beranda/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ url('assets/css/beranda/style.css') }}" rel="stylesheet" />
+  <link href="{{ url('assets/css/beranda/responsive.css') }}" rel="stylesheet" />
 
-<link href="{{ url('assets/css/index.css') }}" rel="stylesheet">
-@section('content')
-
-  <section data-bss-parallax-bg="true" style="background: url({{ url('assets/img/bg-sky.jpg') }}); background-size: cover;"
-    class="vh-100" class="img-hero2">
-    <div class="container d-flex flex-column justify-content-center align-items-center h-100">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="img text-center text-md-start">
-            <img src="{{ url('assets/img/beranda/title-a4.png') }}" alt="" class="img-fluid" width="90%"
-              style="margin-top: -10%">
+  <!-- Fonts Style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="hero_area">
+    
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="index.html">
+            <img src="{{ url('assets/img/beranda/title-a4.png') }}" alt="">
+          </a>
+          <div class="" id="">
           </div>
-          {{-- sub h --}}
-          <div class="subh text-center text-md-start px-2 px-md-3">
-            <p style="font-size: 28px">(Aksesibilitas, Atraktif, Antusias, Akademik)</p>
-          </div>
-          {{-- desc --}}
-          <div class=" text-center text-md-start jtq px-1 px-md-3">
-            <p class="desc">Platform media pembelajaran interaktif dengan game-based education dan trivia berbasis
-              website untuk anak
-              tunagrahita ringan, memiliki mengedepankan pada aksesibiltas, atraktif, dan antusias akademik.</p>
-          </div>
-          {{-- button --}}
-          <div class="button text-center text-md-start">
-            <!-- Check if user is logged in -->
-            @auth
-              <!-- Show welcome message -->
-              <a href="{{ route('about') }}" type="button" class="buthon2">Lebih Lanjut</a>
-            @else
-              <!-- Show "Mulai!" button and "Lebih Lanjut" button -->
-              <a href="{{ route('login') }}" type="button" class="buthon mx-3">Mulai!</a>
-              <a href="{{ route('about') }}" type="button" class="buthon2">Lebih Lanjut</a>
-            @endauth
-
-          </div>
-
-        </div>
-        <div class="col-md-6 img-main">
-          <div class="img-main text-center text-md-start">
-            <img src="{{ url('assets/img/beranda/kids.png') }}" draggable="false" class="img-fluid"
-              style="width: 560px; margin-top: 100px;">
-          </div>
-        </div>
+        </nav>
       </div>
-    </div>
-  </section>
+    </header>
+    <!-- end header section -->
 
-  <div class="text-center">
-    <a class="btn-down">
-      <i class="fa-solid fa-arrow-down"></i>
-    </a>
-  </div>
-
-  {{-- feauture --}}
-  <section class="feauture">
-
-  </section>
-  {{-- carousel menu --}}
-  <section style="background: url({{ url('assets/img/bg.jpg') }}); background-size: cover;" class="vh-100 d-flex"
-    id="section2">
-    <div class="container d-flex flex-column justify-content-center align-items-center h-100">
-      <div class="row d-flex flex-column justify-content-center align-items-center">
-        <div class="head">
-          <img src="{{ url('assets/img/beranda/title-ayokitamulai.png') }}" alt="" class="img-fluid img-sec"
-            style="margin-top: 10%">
-          <img src="{{ url('assets/img/beranda/title-geser.png') }}" alt="" class="img-fluid img-sec2">
-        </div>
-        <div class="col">
-          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <a href="/belajar">
-                  <img src="{{ url('assets/img/beranda/pilih-belajar.png') }}" class="img-fluid text-center img-c"
-                    alt="..."></a>
-              </div>
-              <div class="carousel-item">
-                <a href="/bermain">
-                  <img src="{{ url('assets/img/beranda/pilih-bermain.png') }}" class="img-fluid text-center img-c"
-                    alt="..."></a>
-              </div>
-              <div class="carousel-item">
-                <a href="/teka-teki">
-                  <img src="{{ url('assets/img/beranda/pilih-tekateki.png') }}" class="img-fluid text-center img-c"
-                    alt="..."></a>
+    <!-- slider section -->
+    <section class="slider_section">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-5 offset-md-1">
+                  <div class="detail-box">
+                    <h1><img src="{{ url('assets/img/beranda/title-a4.png') }}" alt="" class="img-fluid" width="80%" style="margin-top:-100px"></h1>
+                    <p>
+                      Platform media pembelajaran interaktif dengan game-based education dan trivia berbasis website untuk anak tunagrahita ringan, memiliki mengedepankan pada aksesibiltas, atraktif, dan antusias akademik.
+                    </p>
+                    <div class="btn-box">
+                      <a type="button" href="{{ route('login') }}" class="button-menu button-1">
+                        Mulai
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="{{ url('assets/img/home.png') }}" alt=""class="img-fluid" width="80%">
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-5 offset-md-1">
+                  <div class="detail-box">
+                    <div class="number">
+                      <h5>
+                        01
+                      </h5>
+                    </div>
+                    <h1>
+                      Yuk, <br>
+                      <span>
+                        Belajar!
+                      </span>
+                    </h1>
+                    <p>
+                      Belajar dengan seru dan menyenangkan di sini. <br> Yuk, klik Mulai!
+                    </p>
+                    <div class="btn-box">
+                      <a href="/belajar" class="button-menu button-2">
+                        Pilih
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="{{ url('assets/img/belajar.png') }}" alt=""class="img-fluid mb-5" width="70%">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-5 offset-md-1">
+                  <div class="detail-box">
+                    <div class="number">
+                      <h5>
+                        02
+                      </h5>
+                    </div>
+                    <h1>
+                      Yuk, <br>
+                      <span>
+                        Bermain!
+                      </span>
+                    </h1>
+                    <p>
+                      Temukan permainan yang asyik disini. <br> Yuk, klik Mulai!
+                    </p>
+                    <div class="btn-box">
+                      <a href="/bermain" class="button-menu button-2">
+                        Pilih
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="{{ url('assets/img/bermain.png') }}" alt=""class="img-fluid mb-5" width="70%">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-5 offset-md-1">
+                  <div class="detail-box">
+                    <div class="number">
+                      <h5>
+                        03
+                      </h5>
+                    </div>
+                    <h1>
+                      Yuk, <br>
+                      <span>
+                        Menebak!
+                      </span>
+                    </h1>
+                    <p>
+                      Tebak jawabanmu disini, apakah benar? <br> Yuk, klik Mulai!
+                    </p>
+                    <div class="btn-box">
+                      <a href="/teka-teki" class="button-menu button-2">
+                        Pilih
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="{{ url('assets/img/trivia.png') }}" alt=""class="img-fluid mb-5" width="70%">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end slider section -->
+  </div>
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-              data-bs-slide="prev">
-              <span class="carousel-control-prevs-icon" style="font-size: 8rem" aria-hidden="true"><i
-                  class="fa-solid fa-chevron-left"></i>
-              </span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-              data-bs-slide="next">
-              <span class="carousel-control-nexst-icon" style="font-size: 8rem"aria-hidden="true"><i
-                  class="fa-solid fa-chevron-right"></i></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+  <!-- about section -->
 
+  <section class="about_section layout_padding">
+    <div class="container">
+      <div class="detail-box">
+        <div class="heading_container">
+          <h2>
+            Deskripsi
+          </h2>
+        </div>
+        <p>
+          Sebuah website yang dikembangkan oleh Kelompok 4 Matakuliah Pemrograman Web sebagai bentuk peduli atas aksesibilitas dengan menekankan pada atraktif dan antusiasme akademik.
+        </p>
+        <div class="btn-box">
+          <a href="#us_section">
+            <span>
+              Lihat Keunggulan
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+  <!-- animal section -->
+
+  <section class="profile_section layout_padding">
+    <div class="container">
+      <div class="profile_container">
+        <div class="box b1">
+          <div class="img-box">
+            <img src="{{ url('assets/img/profile/p1.png') }}" alt="">
+          </div>
+          <div class="detail-box">
+            <p> <strong> A D I N D A </strong> <br> Dinia Alexandra </p>
+          </div>
+        </div>
+        <div class="box b2">
+          <div class="img-box">
+            <img src="{{ url('assets/img/profile/p2.png') }}" alt="">
+          </div>
+          <div class="detail-box">
+            <p> Ahfas Zein <br> <strong> A Z Z I D A N </strong> </p>
+          </div>
+        </div>
+        <div class="box b1">
+          <div class="img-box">
+            <img src="{{ url('assets/img/profile/p3.png') }}" alt="">
+          </div>
+          <div class="detail-box">
+            <p> <strong> A I S Y A H </strong> </p>
+          </div>
+        </div>
+        <div class="box b2">
+          <div class="img-box">
+            <img src="{{ url('assets/img/profile/p4.png') }}" alt="">
+          </div>
+          <div class="detail-box">
+            <p> <strong> A L V A L E N </strong> <br> Shafelbilyunazra </p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SCRIPT -->
-  <script src="{{ url('js/jq.js') }}"></script>
-  <script src="{{ url('js/parallax.js') }}"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- end animal section -->
+
+  <!-- us section -->
+
+  <section class="us_section layout_padding-bottom" id="us_section">
+    <div class="container">
+      <div class="heading_container">
+        <img src="images/heading-img.png" alt="">
+        <h2>
+          Kenapa Memilih Kami?
+        </h2>
+        <p>
+          Web pembelajaran ini memiliki banyak keunggulan dari web lain:
+        </p>
+      </div>
+      <div class="us_container">
+        <div class="box">
+          <div class="img1-box">
+            <img src="{{ url('assets/img/aksesibilitas.png') }}" alt="">
+          </div>
+          <div class="detail-box">
+            <h6 style="text-align: center">
+              AKSESIBILITAS
+            </h6>
+            <p style="text-align: center"> 
+              Menyediakan media <br> pembelajaran berbasis web <br> yang ramah akses bagi <br> tunagrahita
+            </p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="img1-box">
+            <img src="{{ url('assets/img/antusias.png') }}" alt="">
+          </div>
+          <div class="detail-box">
+            <h6 style="text-align: center">
+              ANTUSIASME
+            </h6>
+            <p style="text-align: center"> 
+              Memberi pengalaman <br> pembelajaran berbasis web <br> yang seru & asyik
+            </p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="img1-box">
+            <img src="{{ url('assets/img/attraktif.png') }}" alt="">
+          </div>
+          <div class="detail-box">
+            <h6 style="text-align: center">
+              ATRAKTIVITAS
+            </h6>
+            <p style="text-align: center"> 
+              Memberi tampilan <br> pembelajaran berbasis web <br> yang memikat mata
+            </p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="img1-box">
+            <img src="{{ url('assets/img/akademik.png') }}" alt="">
+          </div>
+          <div class="detail-box">
+            <h6 style="text-align: center">
+              AKADEMIK
+            </h6>
+            <p style="text-align: center"> 
+              Menyediakan media <br> pembelajaran berbasis web <br> yang meningkatkan prestasi <br> dan kinerja akademik
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end us section -->
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section ">
+    <footer>
+      <div class="text-center">
+        <p>© 2023 Copyright: <br> A4 Team | S1 TI A | Universitas Negeri Malang</p>
+      </div>
+    </footer>
+  </section>
+  <!-- end  footer section -->
+
+
+  <script type="text/javascript" src="{{ url('assets/js/beranda/jquery-3.4.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url('assets/js/beranda/bootstrap.js') }}"></script>
   <script>
-    // hide btn-down on scroll
-    $(document).ready(function() {
-      var lastScrollTop = 0;
-      $(window).scroll(function() {
-        var scrollTop = $(this).scrollTop();
-        if (scrollTop > lastScrollTop) {
-          $('.btn-down').fadeOut('slow');
-        } else {
-          $('.btn-down').fadeIn('slow');
-        }
-        lastScrollTop = scrollTop;
-      });
-    });
-    // make btn-down scroll to the next section
-    const btnDown = $('.btn-down');
-    const section2 = document.getElementById('section2');
-
-    btnDown.on('click', () => {
-      section2.scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
+    function openNav() {
+      document.getElementById("myNav").classList.toggle("menu_width")
+      document.querySelector(".custom_menu-btn").classList.toggle("menu_btn-style")
+    }
   </script>
-  <!-- SCRIPT -->
 
-@endsection
+</body>
+</html>
