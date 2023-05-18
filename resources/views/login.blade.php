@@ -48,16 +48,12 @@
 
     /* on btn small set the font smaller */
     @media (max-width: 576px) {
-      .btn{
+      .btn {
         font-size: 0.7rem;
       }
     }
   </style>
   <div class="section">
-    <a href="{{ route('index') }}">
-      <img id="ikon-rumah" src="{{ url('assets/img/ikon-rumah.png') }}" alt="Ikon Rumah">
-    </a>
-
     <div class="container mt-3">
       <div class="row full-height justify-content-center">
         <div class="col-12 text-center align-self-center py-5">
@@ -105,18 +101,21 @@
                           <input type="password" name="logpass" class="form-style @error('logpass') is-invalid @enderror"
                             placeholder="Kata Sandi" id="logpass" autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
-                          <button type="button" class="toggle-password btn btn-secondary mt-3" onclick="togglePassword('logpass')">Lihat Kata
-                            Sandi</button>
                           @error('logpass')
                             <small class="error text-danger">{{ $message }}</small>
                           @enderror
+                          <button type="button" class="toggle-password btn btn-secondary my-3"
+                            onclick="togglePassword('logpass')">Lihat Kata
+                            Sandi</button>
                         </div>
                         <button type="submit" class="btn my-4">Masuk</button>
-                        <div class="mt-5" >
-                        <small>
-                          <a href="{{ route('lupa.password') }}" class="mt-3" style="color: rgb(255, 255, 255) !important;">Lupa Kata Sandi?</a> <br>
-                          <a role="button" onclick="changeForm()" class="mt-3" style="color: rgb(255, 255, 255) !important;">Belum punya akun?</a>
-                        </small>
+                        <div class="mt-5">
+                          <small>
+                            <a href="{{ route('lupa.password') }}" class="mt-3"
+                              style="color: rgb(255, 255, 255) !important;">Lupa Kata Sandi?</a> <br>
+                            <a role="button" onclick="changeForm()" class="mt-3"
+                              style="color: rgb(255, 255, 255) !important;">Belum punya akun?</a>
+                          </small>
                         </div>
                       </form>
                     </div>
@@ -139,8 +138,9 @@
                         <span>Masukkan:</span>
                         <div class="form-group mt-2">
                           <label for="regname" class="sr-only">Nama</label>
-                          <input type="username" name="regname" class="form-style @error('regname') is-invalid @enderror" id="regname"
-                            placeholder="Nama" value="{{ old('regname') }}" autocomplete="off">
+                          <input type="username" name="regname"
+                            class="form-style @error('regname') is-invalid @enderror" id="regname" placeholder="Nama"
+                            value="{{ old('regname') }}" autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
                           @error('regname')
                             <small class="error text-danger">{{ $message }}</small>
@@ -180,10 +180,11 @@
                               {{ $message }}
                             @enderror
                           </small>
-                          <button type="button" class="btn btn-secondary toggle-password mt-3" id="showpass" onclick="togglepass2()">Lihat
+                          <button type="button" class="btn btn-secondary toggle-password my-3" id="showpass"
+                            onclick="togglepass2()">Lihat
                             Kata Sandi</button>
                         </div>
-                        <button type="submit" id="submit"  class="btn mt-4">Kirim</button>
+                        <button type="submit" id="submit" class="btn mt-4">Kirim</button>
                       </form>
                     </div>
                   </div>
@@ -208,42 +209,42 @@
       reglog.checked = true;
     }
 
-function validatePassword() {
-  var regpass = document.getElementById("regpass");
-  var confirmpass = document.getElementById("confirmpass");
-  var regpassValue = regpass.value;
-  var confirmpassValue = confirmpass.value;
-  var regpassRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    function validatePassword() {
+      var regpass = document.getElementById("regpass");
+      var confirmpass = document.getElementById("confirmpass");
+      var regpassValue = regpass.value;
+      var confirmpassValue = confirmpass.value;
+      var regpassRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 
-  if (regpassRegex.test(regpassValue)) {
-    regpass.classList.remove("is-invalid");
-    regpass.classList.add("is-valid");
-    document.getElementById("passerr").style.display = "none";
-  } else {
-    regpass.classList.remove("is-valid");
-    regpass.classList.add("is-invalid");
-    document.getElementById("passerr").style.display = "block";
-    document.getElementById("passerr").innerHTML = "Kata sandi minimal 8 karakter, 1 huruf besar, 1 huruf kecil, 1 angka";
-  }
+      if (regpassRegex.test(regpassValue)) {
+        regpass.classList.remove("is-invalid");
+        regpass.classList.add("is-valid");
+        document.getElementById("passerr").style.display = "none";
+      } else {
+        regpass.classList.remove("is-valid");
+        regpass.classList.add("is-invalid");
+        document.getElementById("passerr").style.display = "block";
+        document.getElementById("passerr").innerHTML =
+          "Kata sandi minimal 8 karakter, 1 huruf besar, 1 huruf kecil, 1 angka";
+      }
 
-  if (confirmpassValue === regpassValue) {
-    confirmpass.classList.remove("is-invalid");
-    confirmpass.classList.add("is-valid");
-    document.getElementById("confirerr").style.display = "none";
-  } else {
-    confirmpass.classList.remove("is-valid");
-    confirmpass.classList.add("is-invalid");
-    document.getElementById("confirerr").style.display = "block";
-    document.getElementById("confirerr").innerHTML = "Kata sandi tidak sama";
-  }
-}
+      if (confirmpassValue === regpassValue) {
+        confirmpass.classList.remove("is-invalid");
+        confirmpass.classList.add("is-valid");
+        document.getElementById("confirerr").style.display = "none";
+      } else {
+        confirmpass.classList.remove("is-valid");
+        confirmpass.classList.add("is-invalid");
+        document.getElementById("confirerr").style.display = "block";
+        document.getElementById("confirerr").innerHTML = "Kata sandi tidak sama";
+      }
+    }
 
-var regpass = document.getElementById("regpass");
-regpass.addEventListener("keyup", validatePassword);
+    var regpass = document.getElementById("regpass");
+    regpass.addEventListener("keyup", validatePassword);
 
-var confirmpass = document.getElementById("confirmpass");
-confirmpass.addEventListener("keyup", validatePassword);
-
+    var confirmpass = document.getElementById("confirmpass");
+    confirmpass.addEventListener("keyup", validatePassword);
   </script>
   <script>
     function toggleForm() {

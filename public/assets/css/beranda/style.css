@@ -492,7 +492,7 @@ a:focus {
 
 .profile_section {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(90%, #fffaef), color-stop(90%, transparent));
-  background: linear-gradient(to bottom, #fffaef 90%, transparent 90%);
+  background: linear-gradient(to bottom, #fffaef 100%, transparent 100%);
   background-size: cover;
   color: #ffffff;
 }
@@ -564,6 +564,10 @@ a:focus {
     -webkit-transform: translateY(45px);
             transform: translateY(45px);
   }
+  100% {
+    -webkit-transform: translateY(45px);
+            transform: translateY(45px);
+  }
 }
 
 @keyframes odd-box-animate {
@@ -579,6 +583,10 @@ a:focus {
     -webkit-transform: translateY(45px);
             transform: translateY(45px);
   }
+  100% {
+    -webkit-transform: translateY(45px);
+            transform: translateY(45px);
+  }
 }
 
 @-webkit-keyframes even-box-animate {
@@ -586,11 +594,19 @@ a:focus {
     -webkit-transform: translateY(-45px);
             transform: translateY(-45px);
   }
+  25% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
   50% {
     -webkit-transform: translateY(45px);
             transform: translateY(45px);
   }
-  90% {
+  75% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
     -webkit-transform: translateY(-45px);
             transform: translateY(-45px);
   }
@@ -601,15 +617,24 @@ a:focus {
     -webkit-transform: translateY(-45px);
             transform: translateY(-45px);
   }
+  25% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
   50% {
     -webkit-transform: translateY(45px);
             transform: translateY(45px);
   }
-  90% {
+  75% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
     -webkit-transform: translateY(-45px);
             transform: translateY(-45px);
   }
 }
+
 
 .us_section .us_container {
   display: -webkit-box;
