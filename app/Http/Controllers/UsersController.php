@@ -23,39 +23,41 @@ class UsersController extends Controller
         // Validate input data
         $validatedData = $request->validate([
             // Validation rules
-            'logusername2' => 'required|unique:users,name',
-            'logpass2' => 'required',
-            'confirmpass' => 'required|same:logpass2',
-            'logemail' => $request->input('user-type-back') === 'orangtua2' ? 'required|email' : '', // Optional email validation for Siswa
+            'regname' => 'required|unique:users,name',
+            // password must be at least 8 characters long, contain at least 1 uppercase letter, 1 lowercase letter, and 1 number
+            'regpass' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',
+            'confirmpass' => 'required|same:regpass',
+            'regmail' => $request->input('user-type-back') === 'ortu' ? 'required|email' : '', 
         ], [
             // Validation error messages
-            'logusername2.required' => 'Nama harus diisi',
-            'logusername2.unique' => 'Nama telah digunakan',
-            'logpass2.required' => 'Password harus diisi',
+            'regname.required' => 'Nama harus diisi',
+            'regname.unique' => 'Nama telah digunakan',
+            'regpass.required' => 'Password harus diisi',
+            'regpass.regex' => 'Password harus mengandung 1 huruf besar, 1 huruf kecil, dan 1 angka',
             'confirmpass.required' => 'Konfirmasi password anda',
             'confirmpass.same' => 'Password tidak sama',
-            'logemail.required' => 'Email harus diisi untuk Orang Tua',
-            'logemail.email' => 'Email tidak valid',
+            'regmail.required' => 'Email harus diisi untuk Orang Tua',
+            'regmail.email' => 'Email tidak valid',
         ]);
 
         // Determine user type based on selected user type
         $userType = $request->input('user-type-back');
 
         // Create new user record based on user type
-        if ($userType === 'murid2') {
+        if ($userType === 'siswa') {
             // For siswa
             $user = new User();
-            $user->name = $validatedData['logusername2'];
-            $user->password = bcrypt($validatedData['logpass2']);
+            $user->name = $validatedData['regname'];
+            $user->password = bcrypt($validatedData['regpass']);
             $user->role = 'siswa'; // Set role as siswa
             $user->email = ''; //default
             $user->save();
-        } elseif ($userType === 'orangtua2') {
+        } elseif ($userType === 'ortu') {
             // For ortu
             $user = new User();
-            $user->name = $validatedData['logusername2'];
-            $user->email = $validatedData['logemail'];
-            $user->password = bcrypt($validatedData['logpass2']);
+            $user->name = $validatedData['regname'];
+            $user->email = $validatedData['regmail'];
+            $user->password = bcrypt($validatedData['regpass']);
             $user->role = 'ortu'; // Set role as ortu
             $user->save();
         }

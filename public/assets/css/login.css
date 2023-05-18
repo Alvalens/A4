@@ -172,9 +172,8 @@ h6 span{
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 100%;
   width: 400px;
-  height: 530px;
+  height: 600px !important;
   margin: 0 auto;
   position: relative;
   width: 440px;

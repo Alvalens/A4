@@ -17,6 +17,35 @@
 @endsection
 
 @section('content')
+  <style>
+    .is-invalid {
+      border: 2px solid red !important;
+      padding-right: calc(1.5em + 0.75rem);
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right calc(0.375em + 0.1875rem) center;
+      background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    }
+
+    .is-invalid:focus {
+      border-color: red !important;
+      box-shadow: 0 0 0 0.4rem rgba(220, 53, 70, 0.344) !important;
+    }
+
+    .is-valid {
+      border: 2px solid green !important;
+      padding-right: calc(1.5em + 0.75rem);
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%2328a745'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M3.5 6l2 2 4.5-4.5'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right calc(0.375em + 0.1875rem) center;
+      background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    }
+
+    .is-valid:focus {
+      border-color: green !important;
+      box-shadow: 0 0 0 0.4rem rgba(40, 167, 69, 0.344) !important;
+    }
+  </style>
   <div class="section">
     <a href="{{ route('index') }}">
       <img id="ikon-rumah" src="{{ url('assets/img/ikon-rumah.png') }}" alt="Ikon Rumah">
@@ -39,7 +68,7 @@
               </div>
             @endif
 
-            <input type="checkbox" id="reg-log" class="checkbox" @if ($errors->has('logusername2') || $errors->has('logemail') || $errors->has('logpass2') || $errors->has('logpass2')) checked @endif>
+            <input type="checkbox" id="reg-log" class="checkbox" @if ($errors->has('regname') || $errors->has('regmail') || $errors->has('regpass') || $errors->has('regpass')) checked @endif>
 
             <label for="reg-log"></label>
 
@@ -55,18 +84,19 @@
                         <h4 class="m-2 pb-3 animated">Masuk</h4>
                         <label for="user-type" class="mt-2">Masukkan:</label>
                         <div class="form-group mt-2">
-                          <input type="username" name="logusername" class="form-style" placeholder="Nama" id="logusername"
-                            autocomplete="off">
+                          <input type="username" name="logusername"
+                            class="form-style @error('logusername') is-invalid @enderror" value="{{ old('logusername') }}"
+                            placeholder="Nama" id="logusername" autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
                           @error('logusername')
                             <small class="error text-danger">{{ $message }}</small>
                           @enderror
                         </div>
                         <div class="form-group mt-2">
-                          <input type="password" name="logpass" class="form-style" placeholder="Kata Sandi" id="logpass"
-                            autocomplete="off">
+                          <input type="password" name="logpass" class="form-style @error('logpass') is-invalid @enderror"
+                            placeholder="Kata Sandi" id="logpass" autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
-                          <button type="button" class="toggle-password" onclick="togglePassword('logpass')">Lihat Kata
+                          <button type="button" class="toggle-password btn btn-secondary mt-3" onclick="togglePassword('logpass')">Lihat Kata
                             Sandi</button>
                           @error('logpass')
                             <small class="error text-danger">{{ $message }}</small>
@@ -88,47 +118,53 @@
                         <h4 class="m-2 pb-3 animated">Daftar</h4>
                         <label for="user-type" class="mt-2">Aku Adalah:</label>
                         <select class="form-style" id="user-type-back" name="user-type-back" onchange="toggleFormBack()">
-                          <option class="form-style" value="murid2">Murid</option>
-                          <option class="form-style" value="orangtua2">Orang Tua</option>
+                          <option class="form-style" value="siswa">siswa</option>
+                          <option class="form-style" value="ortu">Orang Tua</option>
                         </select>
                         <label for="user-type" class="mt-2">Masukkan:</label>
                         <div class="form-group mt-2">
-                          <input type="username" name="logusername2" class="form-style" placeholder="Nama"
-                            value="{{ old('logusername2') }}" autocomplete="off">
+                          <input type="username" name="regname" class="form-style @error('regname') is-invalid @enderror"
+                            placeholder="Nama" value="{{ old('regname') }}" autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
-                          @error('logusername2')
+                          @error('regname')
                             <small class="error text-danger">{{ $message }}</small>
                           @enderror
                         </div>
                         <div class="form-group mt-2">
-                          <input type="email" name="logemail" style="display: none;" class="form-style"
-                            placeholder="Alamat Email" id="logemail2" value="{{ old('logemail') }}" autocomplete="off">
+                          <input type="email" name="regmail" style="display: none;"
+                            class="form-style @error('regmail') is-invalid @enderror" placeholder="Alamat Email"
+                            id="regmail" value="{{ old('regmail') }}" autocomplete="off">
                           <i class="input-icon uil uil-at"></i>
-                          @error('logemail')
+                          @error('regmail')
                             <small class="error text-danger">{{ $message }}</small>
                           @enderror
                         </div>
                         <div class="form-group mt-2">
-                          <input type="password" name="logpass2" class="form-style" placeholder="Kata Sandi"
-                            id="logpass2" value="{{ old('logpass2') }}" autocomplete="off">
+                          <input type="password" name="regpass"
+                            class="form-style  @error('regpass') is-invalid @enderror" placeholder="Kata Sandi"
+                            id="regpass" value="{{ old('regpass') }}" autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
-                          <button type="button" class="toggle-password" onclick="togglePassword('logpass2')">Lihat Kata
-                            Sandi</button>
-                          @error('logpass2')
-                            <small class="error text-danger">{{ $message }}</small>
-                          @enderror
+                          <small class="error text-danger" id="passerr">
+                            @error('regpass')
+                              {{ $message }}
+                            @enderror
+                          </small>
                         </div>
                         <div class="form-group mt-2">
-                          <input type="password" name="confirmpass" class="form-style" placeholder="Konfirmasi Sandi"
-                            id="logpass3" value="{{ old('confirmpass') }}" autocomplete="off">
+                          <input type="password" name="confirmpass"
+                            class="form-style  @error('confirmpass') is-invalid @enderror"
+                            placeholder="Konfirmasi Sandi" id="confirmpass" value="{{ old('confirmpass') }}"
+                            autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
-                          <button type="button" class="toggle-password" onclick="togglePassword('logpass3')">Lihat
+                          <small class="error text-danger" id="confirerr">
+                            @error('confirmpass')
+                              {{ $message }}
+                            @enderror
+                          </small>
+                          <button type="button" class="btn btn-secondary toggle-password mt-3" id="showpass" onclick="togglepass2()">Lihat
                             Kata Sandi</button>
-                          @error('confirmpass')
-                            <small class="error text-danger">{{ $message }}</small>
-                          @enderror
                         </div>
-                        <button type="submit" class="btn mt-4">Kirim</button>
+                        <button type="submit" id="submit"  class="btn mt-4">Kirim</button>
                       </form>
                     </div>
                   </div>
@@ -146,31 +182,64 @@
   <!-- SCRIPT -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
+function validatePassword() {
+  var regpass = document.getElementById("regpass");
+  var confirmpass = document.getElementById("confirmpass");
+  var regpassValue = regpass.value;
+  var confirmpassValue = confirmpass.value;
+  var regpassRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+  if (regpassRegex.test(regpassValue)) {
+    regpass.classList.remove("is-invalid");
+    regpass.classList.add("is-valid");
+    document.getElementById("passerr").style.display = "none";
+  } else {
+    regpass.classList.remove("is-valid");
+    regpass.classList.add("is-invalid");
+    document.getElementById("passerr").style.display = "block";
+    document.getElementById("passerr").innerHTML = "Kata sandi minimal 8 karakter, 1 huruf besar, 1 huruf kecil, 1 angka";
+  }
+
+  if (confirmpassValue === regpassValue) {
+    confirmpass.classList.remove("is-invalid");
+    confirmpass.classList.add("is-valid");
+    document.getElementById("confirerr").style.display = "none";
+  } else {
+    confirmpass.classList.remove("is-valid");
+    confirmpass.classList.add("is-invalid");
+    document.getElementById("confirerr").style.display = "block";
+    document.getElementById("confirerr").innerHTML = "Kata sandi tidak sama";
+  }
+
+}
+
+var regpass = document.getElementById("regpass");
+regpass.addEventListener("keyup", validatePassword);
+
+var confirmpass = document.getElementById("confirmpass");
+confirmpass.addEventListener("keyup", validatePassword);
+
+  </script>
+  <script>
     function toggleForm() {
       var x = document.getElementById("user-type").value;
-      if (x === "murid") {
-        document.getElementById("logemail").style.display = "none";
-        document.getElementById("logukids").style.display = "none";
+      if (x === "siswa") {
+        document.getElementById("regmail").style.display = "none";
       } else if (x === "orangtua") {
-        document.getElementById("logemail").style.display = "block";
-        document.getElementById("logukids").style.display = "block";
+        document.getElementById("regmail").style.display = "block";
       } else {
-        document.getElementById("logemail").style.display = "block";
-        document.getElementById("logukids").style.display = "none";
+        document.getElementById("regmail").style.display = "block";
       }
     }
 
     function toggleFormBack() {
       var y = document.getElementById("user-type-back").value;
-      if (y === "murid2") {
-        document.getElementById("logemail2").style.display = "none";
-        document.getElementById("logukids2").style.display = "none";
-      } else if (y === "orangtua2") {
-        document.getElementById("logemail2").style.display = "block";
-        document.getElementById("logukids2").style.display = "block";
+      if (y === "siswa") {
+        document.getElementById("regmail").style.display = "none";
+      } else if (y === "ortu") {
+        document.getElementById("regmail").style.display = "block";
       } else {
-        document.getElementById("logemail2").style.display = "block";
-        document.getElementById("logukids2").style.display = "none";
+        document.getElementById("regmail").style.display = "block";
       }
     }
 
@@ -183,6 +252,23 @@
       } else {
         passwordField.type = "password";
         toggleButton.innerHTML = "Lihat Kata Sandi";
+      }
+    }
+    // toggle password multi regpass and confirmpass
+    var regpass = document.getElementById("regpass");
+    var confirmpass = document.getElementById("confirmpass");
+    var btn = document.getElementById("showpass");
+
+    function togglepass2() {
+      if (regpass.type === "password" && confirmpass.type === "password") {
+        regpass.type = "text";
+        confirmpass.type = "text";
+        btn.innerHTML = "Sembunyikan Kata Sandi";
+
+      } else {
+        regpass.type = "password";
+        confirmpass.type = "password";
+        btn.innerHTML = "Lihat Kata Sandi";
       }
     }
   </script>

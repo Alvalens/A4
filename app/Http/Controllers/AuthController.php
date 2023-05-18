@@ -29,6 +29,10 @@ class AuthController extends Controller
         $validatedData = $request->validate([
             'logusername' => 'required',
             'logpass' => 'required',
+        ],
+        [
+            'logusername.required' => 'Username harus diisi',
+            'logpass.required' => 'Password harus diisi',
         ]);
 
 
@@ -53,11 +57,11 @@ class AuthController extends Controller
             }
         }
 
-        // Redirect back if login fails
-        return back()->withInput()->withErrors([
-            'logusername' => 'Username or password is incorrect.',
-            'logpass' => 'Username or password is incorrect.'
-        ]);
+        // Redirect back if login fails with errors and old input
+        return back()->withErrors([
+            'logusername' => 'Username atau password salah',
+            'logpass' => 'Username atau password salah',
+        ])->withInput();
     }
     //logout
     public function logout(){
