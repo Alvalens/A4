@@ -123,9 +123,10 @@
       right: 0;
     }
     .navbar.scrolled {
-    background-color: #ffffff;
+    background-color: #ffffff !important;
     margin: 5px 20px 0 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    
     border-radius: 50px;
     transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;

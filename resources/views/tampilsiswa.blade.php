@@ -34,7 +34,6 @@
 
 @endsection
 @section('content')
-
   <div class="container">
       <div class="col">
 
@@ -109,3 +108,4 @@
   </script>
   <!-- SCRIPT -->
 @endsection
+
