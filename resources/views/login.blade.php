@@ -18,6 +18,24 @@
 
 @section('content')
   <style>
+    .error {
+      font-size: 12px;
+    }
+    .password-input-container {
+      position: relative;
+    }
+
+    .toggle-password-button {
+      position: absolute;
+      top: 50%;
+      right: 30px;
+      transform: translateY(-50%);
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
     .is-invalid {
       border: 2px solid red !important;
       padding-right: calc(1.5em + 0.75rem);
@@ -98,15 +116,14 @@
                         </div>
                         <div class="form-group mt-2">
                           <label for="logpass" class="sr-only">Kata Sandi</label>
-                          <input type="password" name="logpass" class="form-style @error('logpass') is-invalid @enderror"
-                            placeholder="Kata Sandi" id="logpass" autocomplete="off">
-                          <i class="input-icon uil uil-lock-alt"></i>
+                          <div class="password-input-container">
+                            <input type="password" name="logpass" class="form-style @error('logpass') is-invalid @enderror"
+                              placeholder="Kata Sandi" id="logpass" autocomplete="off">
+                              <button type="button" class="toggle-password-button" onclick="togglePassword('logpass')">Lihat Kata Sandi</button>
+                          </div>
                           @error('logpass')
                             <small class="error text-danger">{{ $message }}</small>
                           @enderror
-                          <button type="button" class="toggle-password btn btn-secondary my-3"
-                            onclick="togglePassword('logpass')">Lihat Kata
-                            Sandi</button>
                         </div>
                         <button type="submit" class="btn my-4">Masuk</button>
                         <div class="mt-5">
@@ -132,7 +149,7 @@
                         <h4 class="m-2 pb-3 animated">Daftar</h4>
                         <label for="user-type-back" class="mt-2">Aku Adalah:</label>
                         <select class="form-style" id="user-type-back" name="user-type-back" onchange="toggleFormBack()">
-                          <option class="form-style" value="siswa">siswa</option>
+                          <option class="form-style" value="siswa">Siswa</option>
                           <option class="form-style" value="ortu">Orang Tua</option>
                         </select>
                         <span>Masukkan:</span>
@@ -156,11 +173,13 @@
                             <small class="error text-danger">{{ $message }}</small>
                           @enderror
                         </div>
+
                         <div class="form-group mt-2">
                           <label for="regpass" class="sr-only">Kata Sandi</label>
-                          <input type="password" name="regpass"
-                            class="form-style  @error('regpass') is-invalid @enderror" placeholder="Kata Sandi"
-                            id="regpass" value="{{ old('regpass') }}" autocomplete="off">
+                          <div class="password-input-container">
+                            <input type="password" name="regpass" class="form-style @error('regpass') is-invalid @enderror" placeholder="Kata Sandi" id="regpass" value="{{ old('regpass') }}" autocomplete="off">
+                            <button type="button" class="toggle-password-button" onclick="togglePassword('regpass')">Lihat Kata Sandi</button>
+                          </div>
                           <i class="input-icon uil uil-lock-alt"></i>
                           <small class="error text-danger" id="passerr">
                             @error('regpass')
@@ -170,20 +189,18 @@
                         </div>
                         <div class="form-group mt-2">
                           <label for="confirmpass" class="sr-only">Konfirmasi Sandi</label>
-                          <input type="password" name="confirmpass"
-                            class="form-style  @error('confirmpass') is-invalid @enderror"
-                            placeholder="Konfirmasi Sandi" id="confirmpass" value="{{ old('confirmpass') }}"
-                            autocomplete="off">
+                          <div class="password-input-container">
+                            <input type="password" name="confirmpass" class="form-style @error('confirmpass') is-invalid @enderror" placeholder="Konfirmasi Sandi" id="confirmpass" value="{{ old('confirmpass') }}" autocomplete="off">
+                            <button type="button" class="toggle-password-button" onclick="togglePassword('confirmpass')">Lihat Kata Sandi</button>
+                          </div>
                           <i class="input-icon uil uil-lock-alt"></i>
                           <small class="error text-danger" id="confirerr">
                             @error('confirmpass')
                               {{ $message }}
                             @enderror
                           </small>
-                          <button type="button" class="btn btn-secondary toggle-password my-3" id="showpass"
-                            onclick="togglepass2()">Lihat
-                            Kata Sandi</button>
                         </div>
+
                         <button type="submit" id="submit" class="btn mt-4">Kirim</button>
                       </form>
                     </div>
@@ -270,16 +287,16 @@
     }
 
     function togglePassword(fieldId) {
-      var passwordField = document.getElementById(fieldId);
-      var toggleButton = document.querySelector(`#${fieldId} + .toggle-password`);
-      if (passwordField.type === "password") {
-        passwordField.type = "text";
-        toggleButton.innerHTML = "Sembunyikan Kata Sandi";
-      } else {
-        passwordField.type = "password";
-        toggleButton.innerHTML = "Lihat Kata Sandi";
-      }
+    var passwordField = document.getElementById(fieldId);
+    var toggleButton = document.querySelector(`#${fieldId} + .toggle-password-button`);
+    if (passwordField.type === "password") {
+      passwordField.type = "text";
+      toggleButton.innerHTML = "Sembunyikan Kata Sandi";
+    } else {
+      passwordField.type = "password";
+      toggleButton.innerHTML = "Lihat Kata Sandi";
     }
+  }
     // toggle password multi regpass and confirmpass
     var regpass = document.getElementById("regpass");
     var confirmpass = document.getElementById("confirmpass");
