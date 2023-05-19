@@ -18,7 +18,7 @@
          <div class="card cardr">
             <div class="container">
               <div class="judul mb-4 mt-3">
-                <h3 class="text-center"><strong>MATERI {{ $level }}</strong></h3>
+                <h3 class="text-center"><strong> MATERI {{ $level }}</strong></h3>
               </div>
               <div class="progress-bar mx-5 mb-5 mt-2">
                 <h4 class="mb-2">
