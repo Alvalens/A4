@@ -45,7 +45,11 @@ class TekatekisController extends Controller
         $question->kunci = $validatedData['kunci'];
         $question->save();
 
-        return redirect()->route('datatekateki');
+        if ($question) {
+            return redirect()->route('datatekateki')->with('status', 'Teka-teki berhasil ditambahkan');
+        } else {
+            return redirect()->route('datatekateki')->with('error', 'Teka-teki gagal ditambahkan');
+        }
     }
 
     /**
@@ -79,7 +83,12 @@ class TekatekisController extends Controller
         }
 
         $question->save();
-        return redirect()->route('datatekateki');
+        // redirect with flash data to /datatekateki
+        if ($question) {
+            return redirect()->route('datatekateki')->with('status', 'Teka-teki berhasil diubah');
+        } else {
+            return redirect()->route('datatekateki')->with('error', 'Teka-teki gagal diubah');
+        }
     }
 
     /**
