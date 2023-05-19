@@ -1,8 +1,9 @@
 @extends('layout.master')
 @section('title', 'Masuk Dulu Yaa!')
 
+@section('css')
 <link rel="stylesheet" href="{{ url('assets/css/login.css') }}">
-
+@endsection
 @section('body-style')
   background: linear-gradient(to top, rgba(255, 255, 255, 0.3) 100%, rgba(255, 255, 255, 0.3) 100%),
   url(assets/img/bg.jpg);
@@ -17,42 +18,6 @@
 @endsection
 
 @section('content')
-  <style>
-    .is-invalid {
-      border: 2px solid red !important;
-      padding-right: calc(1.5em + 0.75rem);
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right calc(0.375em + 0.1875rem) center;
-      background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
-    }
-
-    .is-invalid:focus {
-      border-color: red !important;
-      box-shadow: 0 0 0 0.4rem rgba(220, 53, 70, 0.344) !important;
-    }
-
-    .is-valid {
-      border: 2px solid green !important;
-      padding-right: calc(1.5em + 0.75rem);
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%2328a745'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M3.5 6l2 2 4.5-4.5'/%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right calc(0.375em + 0.1875rem) center;
-      background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
-    }
-
-    .is-valid:focus {
-      border-color: green !important;
-      box-shadow: 0 0 0 0.4rem rgba(40, 167, 69, 0.344) !important;
-    }
-
-    /* on btn small set the font smaller */
-    @media (max-width: 576px) {
-      .btn {
-        font-size: 0.7rem;
-      }
-    }
-  </style>
   <div class="section">
     <div class="container mt-3">
       <div class="row full-height justify-content-center">
@@ -190,7 +155,6 @@
                   </div>
                 </div>
                 <!-- End Daftar -->
-
               </div>
             </div>
           </div>
@@ -199,105 +163,8 @@
     </div>
   </div>
 
-  <!-- SCRIPT -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-    //click to toggle form checkbox reguster
-    function changeForm() {
-      // add checked to "reg-log
-      var reglog = document.getElementById("reg-log");
-      reglog.checked = true;
-    }
-
-    function validatePassword() {
-      var regpass = document.getElementById("regpass");
-      var confirmpass = document.getElementById("confirmpass");
-      var regpassValue = regpass.value;
-      var confirmpassValue = confirmpass.value;
-      var regpassRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-
-      if (regpassRegex.test(regpassValue)) {
-        regpass.classList.remove("is-invalid");
-        regpass.classList.add("is-valid");
-        document.getElementById("passerr").style.display = "none";
-      } else {
-        regpass.classList.remove("is-valid");
-        regpass.classList.add("is-invalid");
-        document.getElementById("passerr").style.display = "block";
-        document.getElementById("passerr").innerHTML =
-          "Kata sandi minimal 8 karakter, 1 huruf besar, 1 huruf kecil, 1 angka";
-      }
-
-      if (confirmpassValue === regpassValue) {
-        confirmpass.classList.remove("is-invalid");
-        confirmpass.classList.add("is-valid");
-        document.getElementById("confirerr").style.display = "none";
-      } else {
-        confirmpass.classList.remove("is-valid");
-        confirmpass.classList.add("is-invalid");
-        document.getElementById("confirerr").style.display = "block";
-        document.getElementById("confirerr").innerHTML = "Kata sandi tidak sama";
-      }
-    }
-
-    var regpass = document.getElementById("regpass");
-    regpass.addEventListener("keyup", validatePassword);
-
-    var confirmpass = document.getElementById("confirmpass");
-    confirmpass.addEventListener("keyup", validatePassword);
-  </script>
-  <script>
-    function toggleForm() {
-      var x = document.getElementById("user-type").value;
-      if (x === "siswa") {
-        document.getElementById("regmail").style.display = "none";
-      } else if (x === "orangtua") {
-        document.getElementById("regmail").style.display = "block";
-      } else {
-        document.getElementById("regmail").style.display = "block";
-      }
-    }
-
-    function toggleFormBack() {
-      var y = document.getElementById("user-type-back").value;
-      if (y === "siswa") {
-        document.getElementById("regmail").style.display = "none";
-      } else if (y === "ortu") {
-        document.getElementById("regmail").style.display = "block";
-      } else {
-        document.getElementById("regmail").style.display = "block";
-      }
-    }
-
-    function togglePassword(fieldId) {
-      var passwordField = document.getElementById(fieldId);
-      var toggleButton = document.querySelector(`#${fieldId} + .toggle-password`);
-      if (passwordField.type === "password") {
-        passwordField.type = "text";
-        toggleButton.innerHTML = "Sembunyikan Kata Sandi";
-      } else {
-        passwordField.type = "password";
-        toggleButton.innerHTML = "Lihat Kata Sandi";
-      }
-    }
-    // toggle password multi regpass and confirmpass
-    var regpass = document.getElementById("regpass");
-    var confirmpass = document.getElementById("confirmpass");
-    var btn = document.getElementById("showpass");
-
-    function togglepass2() {
-      if (regpass.type === "password" && confirmpass.type === "password") {
-        regpass.type = "text";
-        confirmpass.type = "text";
-        btn.innerHTML = "Sembunyikan Kata Sandi";
-
-      } else {
-        regpass.type = "password";
-        confirmpass.type = "password";
-        btn.innerHTML = "Lihat Kata Sandi";
-      }
-    }
-  </script>
-  <!-- SCRIPT -->
+  @section('js')
+  <script src="{{ url('assets/js/login.js') }}"></script>
+  @endsection
 
 @endsection

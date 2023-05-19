@@ -6,52 +6,6 @@
   <link href="{{ url('assets/css/beranda/bootstrap.css') }}" rel="stylesheet" type="text/css" />
   <link href="{{ url('assets/css/beranda/style.css') }}" rel="stylesheet" />
   <link href="{{ url('assets/css/beranda/responsive.css') }}" rel="stylesheet" />
-  <style>
-    .navbar {
-      /* delete color and shadow box */
-      background-color: transparent !important;
-      box-shadow: none !important;
-    }
-
-    /* on md delete .first */
-    @media (max-width: 768px) {
-      .first {
-        display: none;
-      }
-    }
-
-    .carousel-inner {
-      min-height: 700px;
-    }
-
-    /* on md and upper set row-center margin top 100px */
-    @media (min-width: 768px) {
-      .row-center {
-        margin-top: 100px;
-      }
-    }
-
-    /* on 900 and loweer set margin top 100 px on class row-first */
-    @media (max-width: 900px) {
-      .row-first {
-        margin-top: 100px;
-      }
-    }
-
-    /* on betweem 700 and 900 set img-box margin top 100px */
-    @media (min-width: 768px) and (max-width: 1000px) {
-      .img-box {
-        margin-top: 100px;
-      }
-    }
-
-    .rotate {
-      transform: rotate(180deg);
-    }
-    footer {
-      background-color: #f9f6ef;
-    }
-  </style>
 @endsection
 
 @section('content')
@@ -388,7 +342,7 @@
       </div>
     </div>
   </section>
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 2400 800" opacity="1">
     <g fill="#f9f6ef " transform="matrix(1,0,0,1,8.7225341796875,186.77722930908203)">
       <path

@@ -151,7 +151,7 @@ footer:hover, footer:active {
 
 /* fix for background color in offcanvas menu */
 .offcanvas {
-    background-color: #69c0cc;
+    background-color: #69c0cc !important;
 }
 
 .profile .dropdown-menu-end {
