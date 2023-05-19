@@ -67,7 +67,7 @@
                             placeholder="Kata Sandi" id="logpass" autocomplete="off">
                           <i class="input-icon uil uil-lock-alt"></i>
                           @error('logpass')
-                            <small class="error text-danger">{{ $message }}</small>
+                            <small class="error text-danger">{{ $message }}</small> <br>
                           @enderror
                           <button type="button" class="toggle-password btn btn-secondary my-3"
                             onclick="togglePassword('logpass')">Lihat Kata
@@ -144,7 +144,7 @@
                             @error('confirmpass')
                               {{ $message }}
                             @enderror
-                          </small>
+                          </small> <br>
                           <button type="button" class="btn btn-secondary toggle-password my-3" id="showpass"
                             onclick="togglepass2()">Lihat
                             Kata Sandi</button>
