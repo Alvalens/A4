@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('level');
             $table->string('judul');
-            $table->string('deskripsi');
+            $table->string('deskripsi')->nullable();
             $table->string('link');
             $table->integer('durasi')->nullable();
             $table->timestamps();

@@ -61,7 +61,7 @@ Route::prefix('/dashboard')->middleware(['check.login', 'CheckRole:guru,admin'])
     // ! CRUD AKUN
     Route::middleware('CheckRole:admin')->group(function () {
         Route::get('/akunpengguna', [UsersController::class, 'show'])->name('akun.index');
-        Route::post('/akun', [UsersController::class, 'store'])->name('akun.store');
+        Route::post('/akunpengguna/store', [UsersController::class, 'store'])->name('akun.store');
         Route::get('/akunpengguna/{nama}/edit', [UsersController::class, 'edit'])->name('akun.edit');
         Route::delete('/akunpengguna/{id}', [UsersController::class, 'destroy'])->name('akun.destroy');
         Route::patch('/akunpengguna/{id}', [UsersController::class, 'update'])->name('akun.update');
@@ -94,7 +94,7 @@ Route::get('/belajar/{level}', [Siswa::class, 'materi'])->name('materi');
 // ! CRUD REGISTRASI
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
-    Route::post('/register', [UsersController::class, 'store'])->name('register.store');
+    Route::post('/register', [AuthController::class, 'register'])->name('register.store');
     Route::post('/loginuser', [AuthController::class, 'login'])->name('login.proses');
 });
 

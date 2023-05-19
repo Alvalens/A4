@@ -168,4 +168,53 @@ class AuthController extends Controller
             return redirect()->route('lupa.password')->with('error', 'Token tidak ditemukan');
         }
     }
+
+    // register
+    public function register(Request $request)
+    {
+        // Validate input data
+        $validatedData = $request->validate([
+            // Validation rules
+            'regname' => 'required|unique:users,name',
+            'regpass' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',
+            'confirmpass' => 'required|same:regpass',
+            'regmail' => $request->input('user-type-back') === 'ortu' ? 'required|email' : '',
+        ], [
+            // Validation error messages
+            'regname.required' => 'Nama harus diisi',
+            'regname.unique' => 'Nama telah digunakan',
+            'regpass.required' => 'Password harus diisi',
+            'regpass.regex' => 'Password harus mengandung 1 huruf besar, 1 huruf kecil, dan 1 angka',
+            'confirmpass.required' => 'Konfirmasi password anda',
+            'confirmpass.same' => 'Password tidak sama',
+            'regmail.required' => 'Email harus diisi untuk Orang Tua',
+            'regmail.email' => 'Email tidak valid',
+        ]);
+
+        // Determine user type based on selected user type
+        $userType = $request->input('user-type-back');
+
+        // Create new user record based on user type
+        if ($userType === 'siswa') {
+            // For siswa
+            $user = new User();
+            $user->name = $validatedData['regname'];
+            $user->password = bcrypt($validatedData['regpass']);
+            $user->role = 'siswa'; // Set role as siswa
+            $user->email = ''; //default
+            $user->save();
+        } elseif ($userType === 'ortu') {
+            // For ortu
+            $user = new User();
+            $user->name = $validatedData['regname'];
+            $user->email = $validatedData['regmail'];
+            $user->password = bcrypt($validatedData['regpass']);
+            $user->role = 'ortu'; // Set role as ortu
+            $user->save();
+        }
+
+        // Redirect to login with success message
+        return redirect()->route('login')->with('status', 'Register Berhasil! silahkan login');
+    }
+
 }

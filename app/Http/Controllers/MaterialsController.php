@@ -13,26 +13,26 @@ class MaterialsController extends Controller
     public function index()
 {
     $materies = Materials::all();
-    $validatedData = null; // define this variable to avoid errors in the view
-    return view('datamateri', compact('materies', 'validatedData'));
+    return view('datamateri', compact('materies'));
 }
-    
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'judul' => 'required|max:255',
-            'deskripsi' => 'required',
-            'link' => 'required|url',
-            'level' => 'required',
+            'judul' => 'required|max:20',
+            'deskripsi' => 'nullable|max:50',
+            'link' => 'required|url|regex:/embed/',
+            'level' => 'required|numeric',
         ], [
             'judul.required' => 'Judul materi harus diisi',
             'judul.max' => 'Judul materi tidak boleh lebih dari :max karakter',
             'deskripsi.required' => 'Deskripsi materi harus diisi',
             'link.required' => 'Link materi harus diisi',
             'link.url' => 'Link materi tidak valid',
+            'link.regex' => 'Link materi tidak valid',
             'level.required' => 'Level materi harus diisi',
         ]);
 
@@ -43,10 +43,12 @@ class MaterialsController extends Controller
         $materi->level = $validatedData['level'];
         $materi->save();
 
-        return view('datamateri', [
-            'materies' => $materi,
-            'validatedData' => $validatedData
-        ]);
+        // redirect with flash data to /datamateri
+        if ($materi) {
+            return redirect()->route('datamateri')->with('status', 'Materi berhasil ditambahkan');
+        } else {
+            return redirect()->route('datamateri')->with('error', 'Materi gagal ditambahkan');
+        }
     }
 
     /**
@@ -64,16 +66,17 @@ class MaterialsController extends Controller
     public function update(Request $request, Materials $materi)
     {
         $validatedData = $request->validate([
-            'judul' => 'required|max:255',
-            'deskripsi' => 'required',
-            'link' => 'required|url',
-            'level' => 'required',
+            'judul' => 'required|max:20',
+            'deskripsi' => 'nullable|max:50',
+            'link' => 'required|url|regex:/embed/',
+            'level' => 'required|numeric',
         ], [
             'judul.required' => 'Judul materi harus diisi',
             'judul.max' => 'Judul materi tidak boleh lebih dari :max karakter',
             'deskripsi.required' => 'Deskripsi materi harus diisi',
             'link.required' => 'Link materi harus diisi',
             'link.url' => 'Link materi tidak valid',
+            'link.regex' => 'Link materi tidak valid',
             'level.required' => 'Level materi harus diisi',
         ]);
 
@@ -83,7 +86,11 @@ class MaterialsController extends Controller
         }
 
         $materi->save();
-        return redirect()->route('datamateri');
+        if ($materi) {
+            return redirect()->route('datamateri')->with('status', 'Materi berhasil diubah');
+        } else {
+            return redirect()->route('datamateri')->with('error', 'Materi gagal diubah');
+        }
     }
 
     /**

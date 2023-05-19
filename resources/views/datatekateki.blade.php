@@ -7,6 +7,18 @@
       <div class="orders">
         <div class="row">
           <div class="col-xl-12">
+            {{-- session --}}
+            @if (session('status'))
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('status') }}
+                <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close">x</button>
+              </div>
+            @elseif (session('error'))
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close">x</button>
+              </div>
+            @endif
             <div class="card">
               <div class="card-body">
                 <h5 class="box-title">Data Teka-Teki
@@ -43,6 +55,7 @@
                             </a>
                         </tr>
                       @empty
+                      
                       @endforelse
                     </tbody>
                   </table>

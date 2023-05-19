@@ -8,6 +8,18 @@
       <div class="orders">
         <div class="row">
           <div class="col-xl-12">
+            {{-- session  --}}
+            @if (session('status'))
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('status') }}
+                <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close">x</button>
+              </div>
+            @elseif (session('error'))
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close">x</button>
+              </div>
+            @endif
             <div class="card">
               <div class="card-body">
                 <h5 class="box-title">Data Materi
@@ -77,7 +89,7 @@
             <div class="modal-body">
               <div class="mb-3">
                 <label for="judul" class="form-label">Judul</label>
-                <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul"
+                <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" required placeholder="Judul Materi"
                   name="judul" value="{{ old('judul') }}">
                 @error('judul')
                   <div class="text-danger">{{ $message }}</div>
@@ -85,7 +97,7 @@
               </div>
               <div class="mb-3">
                 <label for="level" class="form-label">Level</label>
-                <input type="text" class="form-control @error('level') is-invalid @enderror" id="level"
+                <input type="text" class="form-control @error('level') is-invalid @enderror" id="level" required placeholder="Level Materi"
                   name="level" value="{{ old('level') }}">
                 @error('level')
                   <div class="text-danger">{{ $message }}</div>
@@ -93,7 +105,7 @@
               </div>
               <div class="mb-3">
                 <label for="deskripsi" class="form-label">Deskripsi</label>
-                <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi"
+                <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" placeholder="Deskripsi Materi (Opsional)"
                   name="deskripsi" value="{{ old('deskripsi') }}">
                 @error('deskripsi')
                   <div class="text-danger">{{ $message }}</div>
@@ -101,7 +113,7 @@
               </div>
               <div class="mb-3">
                 <label for="link" class="form-label">Link</label>
-                <input type="text" class="form-control @error('link') is-invalid @enderror" id="link"
+                <input type="text" class="form-control @error('link') is-invalid @enderror" id="link" required placeholder="https://www.youtube.com/embed/..."
                   name="link" value="{{ old('link') }}">
                 @error('link')
                   <div class="text-danger">{{ $message }}</div>
