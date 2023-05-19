@@ -15,39 +15,52 @@
       style="min-height: 100vh; display: flex; justify-content: center; align-items: center;">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+          @auth
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          @else
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+          @endauth
         </ol>
+
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="container-fluid">
-              <div class="row row-first">
-                <div class="col-md-5 offset-md-1">
-                  <div class="detail-box">
-                    <h1><img src="{{ url('assets/img/beranda/title-a4.png') }}" alt="" class="img-fluid"
-                        width="80%"></h1>
-                    <p>
-                      Platform media pembelajaran interaktif dengan game-based education dan trivia berbasis website untuk
-                      anak tunagrahita ringan, memiliki mengedepankan pada aksesibiltas, atraktif, dan antusias akademik.
-                    </p>
-                    <div class="btn-box">
-                      <a type="button" href="{{ route('login') }}" class="button-menu button-1">
-                        Mulai
-                      </a>
+          @auth
+          @else
+            <div class="carousel-item active">
+              <div class="container-fluid">
+                <div class="row row-first">
+                  <div class="col-md-5 offset-md-1">
+                    <div class="detail-box">
+                      <h1><img src="{{ url('assets/img/beranda/title-a4.png') }}" alt="" class="img-fluid"
+                          width="80%"></h1>
+                      <p>
+                        Platform media pembelajaran interaktif dengan game-based education dan trivia berbasis website untuk
+                        anak tunagrahita ringan, memiliki mengedepankan pada aksesibiltas, atraktif, dan antusias akademik.
+                      </p>
+                      <div class="btn-box">
+                        <a type="button" href="{{ route('login') }}" class="button-menu button-1">
+                          Mulai
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-md-6  order-first order-md-last first">
-                  <div class="img-box my-5" style="display: flex; justify-content: center; align-items: center;">
-                    <img src="{{ url('assets/img/home.png') }}" alt=""class="img-fluid" width="80%">
+                  <div class="col-md-6  order-first order-md-last first">
+                    <div class="img-box my-5" style="display: flex; justify-content: center; align-items: center;">
+                      <img src="{{ url('assets/img/home.png') }}" alt=""class="img-fluid" width="80%">
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="carousel-item">
+          @endauth
+
+
+          <div class="carousel-item @auth
+active @endauth">
             <div class="container-fluid">
               <div class="row row-center">
                 <div class="col-md-5 offset-md-1">
@@ -67,7 +80,7 @@
                       Belajar dengan seru dan menyenangkan di sini. <br> Yuk, klik Mulai!
                     </p>
                     <div class="btn-box">
-                      <a href="href="{{ route('level') }}"" class="button-menu button-2">
+                      <a href="{{ route('level') }}" class="button-menu button-2">
                         Pilih
                       </a>
                     </div>
@@ -135,7 +148,7 @@
                       Tebak jawabanmu disini, apakah benar? <br> Yuk, klik Mulai!
                     </p>
                     <div class="btn-box">
-                      <a href="href="{{ route('tekateki') }}"" class="button-menu button-2">
+                      <a href="{{ route('tekateki') }}" class="button-menu button-2">
                         Pilih
                       </a>
                     </div>
