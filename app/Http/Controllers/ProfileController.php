@@ -34,9 +34,9 @@ class ProfileController extends Controller
             $user->picture = $filename;
             $user->save();
 
-            return redirect()->route('profile')->with('success', 'Avatar berhasil diubah');
+            return redirect()->route('profile')->with('success', 'gambar berhasil diubah');
         } else {
-            return redirect()->route('profile')->with('error', 'Avatar gagal diubah');
+            return redirect()->route('profile')->with('error', 'gambar gagal diubah');
         }
     }
 

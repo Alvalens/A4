@@ -505,7 +505,7 @@ class TentativeTypes
             'connect' => 'bool',
             'dump_debug_info' => 'bool',
             'get_charset' => '?object',
-            'get_rapor_info' => 'string',
+            'get_client_info' => 'string',
             'get_connection_stats' => 'array',
             'get_server_info' => 'string',
             'get_warnings' => 'mysqli_warning|false',

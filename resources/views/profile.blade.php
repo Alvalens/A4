@@ -51,7 +51,7 @@
       font-family: 'FontAwesome';
       color: #757575;
       position: absolute;
-      top: 10px;
+      top: 6px;
       left: 0;
       right: 0;
       text-align: center;
@@ -75,10 +75,20 @@
       background-repeat: no-repeat;
       background-position: center;
     }
+
+    .pic-invalid {
+      border: 6px solid red !important;
+    }
   </style>
   <section class="d-flex flex-column justify-content-center align-items-center h-100">
     <div class="container mt-2 mt-md-5 p-2">
 
+      @error('avatar')
+        {{-- alert --}}
+        <div class="alert alert-danger">
+          {{ $message }}
+        </div>
+      @enderror
       @if (session('success'))
         <div class="alert alert-success">
           {{ session('success') }}
@@ -95,14 +105,15 @@
           @csrf
           <div class="avatar-upload">
             <div class="avatar-edit">
-              <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" name="avatar" />
+              <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" name="avatar" />
               <label for="imageUpload"></label>
             </div>
-            <div class="avatar-preview">
+
+            <div class="avatar-preview @error('avatar') pic-invalid @enderror">
               @if (Auth::user()->picture)
                 <div id="imagePreview"
                   style="background-image: url({{ url('/storage/avatars/' . Auth::user()->picture) }});"></div>
-                  <button type="submit" class="btn btn-secondary btn-upload">Upload</button>
+                <button type="submit" class="btn btn-secondary btn-upload">Upload</button>
               @else
                 <div id="imagePreview" style="background-image: url({{ url('/assets/img/dasbor/user.png') }});"></div>
                 <div class="text-center btn-upload">
@@ -117,14 +128,12 @@
           <form action="{{ route('profile.delete') }}" method="POST">
             @csrf
             <div class="text-center">
-                  <button type="submit" class="button-333" role="button">Hapus</button>
-                </div>
+              <button type="submit" class="button-333" role="button">Hapus</button>
+            </div>
           </form>
         @endif
         <h1 class="text-center">
           {{ Auth::user()->name }}
-          <i class="fas fa-pencil-alt" style="cursor: pointer;" data-bs-toggle="modal"
-            data-bs-target="#editNameModal"></i>
         </h1>
       </div>
 
@@ -160,15 +169,36 @@
 
             </div>
           @endif
-        @elseif (Auth::user()->role == 'orangtua')
-          <div class="col-md-6 offset-md-3">
-            <h3 class="text-center">Nama Anak</h3>
-            {{-- Add content for displaying child's name --}}
-          </div>
         @else
           <div class="col-md-6 offset-md-3">
+            <div class="mail">
             <h3 class="text-center">{{ Auth::user()->email }}</h3>
+            <div class="green-circle">
+              <i class="fas fa-pencil-alt" style="cursor: pointer;" data-bs-toggle="modal"
+                data-bs-target="#editNameModal"></i>
+                </div>
             {{-- Add content for displaying other user details --}}
+            </div>
+            <style>
+              .mail {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+              }
+              .fa-pencil-alt {
+                margin-left: 10px;
+                font-size: 18px;
+              }
+              .green-circle {
+                background-color: #00b894;
+                border-radius: 50%;
+                padding: 2px;
+                margin-left: 10px;
+                height: 30px;
+                width: 30px;
+              }
+            </style>
           </div>
         @endif
       </div>
@@ -208,43 +238,42 @@
   <!-- Modal EDIT -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script>
-function readURL(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
-      $('#imagePreview').hide();
-      $('#imagePreview').fadeIn(650);
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+          $('#imagePreview').hide();
+          $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
     }
-    reader.readAsDataURL(input.files[0]);
-  }
-}
 
-$(document).ready(function() {
-  // Hide the upload button initially if there is no image selected
-  if (!$('#imageUpload').val()) {
-    $('.btn-upload').hide();
-  }
-});
+    $(document).ready(function() {
+      // Hide the upload button initially if there is no image selected
+      if (!$('#imageUpload').val()) {
+        $('.btn-upload').hide();
+      }
+    });
 
-// Show or hide the upload button based on the image upload status
-$('#imageUpload').change(function() {
-  if ($(this).val()) {
-    $('.btn-upload').show();
-  } else {
-    $('.btn-upload').hide();
-  }
-});
+    // Show or hide the upload button based on the image upload status
+    $('#imageUpload').change(function() {
+      if ($(this).val()) {
+        $('.btn-upload').show();
+      } else {
+        $('.btn-upload').hide();
+      }
+    });
 
-// Hide the upload button after it is clicked
-$('.btn-upload').click(function() {
-  $('.btn-upload').hide();
-});
+    // Hide the upload button after it is clicked
+    $('.btn-upload').click(function() {
+      $('.btn-upload').hide();
+    });
 
-// Trigger the image preview when a file is selected
-$("#imageUpload").change(function() {
-  readURL(this);
-});
-
+    // Trigger the image preview when a file is selected
+    $("#imageUpload").change(function() {
+      readURL(this);
+    });
   </script>
 @endsection

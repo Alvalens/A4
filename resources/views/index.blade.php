@@ -375,7 +375,7 @@ active @endauth">
 @endsection
 
 @section('js')
-  <script type="text/javascript" src="{{ url('assets/js/beranda/jquery-3.4.1.min.js') }}"></script>
+
   <script type="text/javascript" src="{{ url('assets/js/beranda/bootstrap.js') }}"></script>
   <script>
     function openNav() {

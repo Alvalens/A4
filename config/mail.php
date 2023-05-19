@@ -41,8 +41,15 @@ return [
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
-            'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
+            'sender_domain' => env('MAIL_FROM_DOMAIN'),
+            'timeout' => null,
+            'auth_mode' => null,
+            // for development
+            'verify_peer' => false,
+            // default verify_peer
+            // 'verify_peer' => env('MAIL_VERIFY_PEER', true),
+
         ],
 
         'ses' => [

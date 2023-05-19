@@ -1,10 +1,12 @@
 @extends('layout.master')
 @section('title', 'Bermain itu Seru!')
 
+@section('css')
 <link rel="stylesheet" href="{{ url('assets/css/bermain.css') }}">
+@endsection
 
 @section('body-style')
-  background: linear-gradient(to top, rgba(255, 255, 255, 0.3) 100%, rgba(255, 255, 255, 0.3) 100%), url(assets/img/bg.jpg);
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.3) 100%, rgba(255, 255, 255, 0.3) 100%);
   background-size: cover;
   justify-content: center;
   align-items: center;
@@ -17,9 +19,7 @@
 @section('content')
 
   <section class="container d-flex flex-column justify-content-center align-items-center vh-100">
-  <a href="{{ url('/bermain') }}">
-    <img id="ikon-rumah" src="{{ url('assets/img/ikon-rumah.png') }}" alt="Ikon Rumah"></a>
-    
+
     <div class="game">
       <div class="grid">
         <button>1</button>
@@ -42,9 +42,9 @@
 
   </section>
 
-  <!-- SCRIPT -->
-  <script src="{{ url('assets/js/bermain.js') }}"></script>
-  <script src="{{ url('assets/js/bermain2.js') }}"></script>
-  <!-- SCRIPT -->
+@endsection
 
+@section('js')
+
+<script src="{{ url('assets/js/bermain.js') }}"></script>
 @endsection

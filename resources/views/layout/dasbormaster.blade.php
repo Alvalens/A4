@@ -97,7 +97,7 @@
                       alt="User Avatar">
                   @endif
               </a>
-
+            
               <div class="user-menu dropdown-menu">
                 <form action="{{ route('logout') }}" method="post">
                   @csrf

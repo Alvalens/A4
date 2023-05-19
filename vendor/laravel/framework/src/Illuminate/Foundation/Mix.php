@@ -32,7 +32,7 @@ class Mix
         if (is_file(public_path($manifestDirectory.'/hot'))) {
             $url = rtrim(file_get_contents(public_path($manifestDirectory.'/hot')));
 
-            $customUrl = app('config')->get('app.mix_info_proxy_url');
+            $customUrl = app('config')->get('app.mix_hot_proxy_url');
 
             if (! empty($customUrl)) {
                 return new HtmlString("{$customUrl}{$path}");

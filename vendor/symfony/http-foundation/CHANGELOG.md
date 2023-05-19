@@ -156,13 +156,13 @@ CHANGELOG
 
  * the `Request::setTrustedHeaderName()` and `Request::getTrustedHeaderName()`
    methods have been removed
- * the `Request::HEADER_rapor_IP` constant has been removed, use
+ * the `Request::HEADER_CLIENT_IP` constant has been removed, use
    `Request::HEADER_X_FORWARDED_FOR` instead
- * the `Request::HEADER_rapor_HOST` constant has been removed, use
+ * the `Request::HEADER_CLIENT_HOST` constant has been removed, use
    `Request::HEADER_X_FORWARDED_HOST` instead
- * the `Request::HEADER_rapor_PROTO` constant has been removed, use
+ * the `Request::HEADER_CLIENT_PROTO` constant has been removed, use
    `Request::HEADER_X_FORWARDED_PROTO` instead
- * the `Request::HEADER_rapor_PORT` constant has been removed, use
+ * the `Request::HEADER_CLIENT_PORT` constant has been removed, use
    `Request::HEADER_X_FORWARDED_PORT` instead
  * checking for cacheable HTTP methods using the `Request::isMethodSafe()`
    method (by not passing `false` as its argument) is not supported anymore and

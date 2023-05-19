@@ -29,7 +29,7 @@ trait DetectsLostConnections
             'Error writing data to the connection',
             'Resource deadlock avoided',
             'Transaction() on null',
-            'child connection forced to terminate due to rapor_idle_limit',
+            'child connection forced to terminate due to client_idle_limit',
             'query_wait_timeout',
             'reset by peer',
             'Physical connection is not usable',

@@ -31,7 +31,6 @@
 @endsection
 
 @section('js')
-<script src="https://codepen.io/steveg3003/pen/zBVakw.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 <script src="{{ url('assets/js/games/tower.js') }}"></script>

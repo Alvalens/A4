@@ -55,7 +55,7 @@
                           <label for="logusername" class="sr-only">Nama</label>
                           <input type="username" name="logusername"
                             class="form-style @error('logusername') is-invalid @enderror" value="{{ old('logusername') }}"
-                            placeholder="Nama" id="logusername" autocomplete="off">
+                            placeholder="Nama" id="logusername" autocomplete="on">
                           <i class="input-icon uil uil-lock-alt"></i>
                           @error('logusername')
                             <small class="error text-danger">{{ $message }}</small>
@@ -64,7 +64,7 @@
                         <div class="form-group mt-2">
                           <label for="logpass" class="sr-only">Kata Sandi</label>
                           <input type="password" name="logpass" class="form-style @error('logpass') is-invalid @enderror"
-                            placeholder="Kata Sandi" id="logpass" autocomplete="off">
+                            placeholder="Kata Sandi" id="logpass" autocomplete="on">
                           <i class="input-icon uil uil-lock-alt"></i>
                           @error('logpass')
                             <small class="error text-danger">{{ $message }}</small> <br>
@@ -105,7 +105,7 @@
                           <label for="regname" class="sr-only">Nama</label>
                           <input type="username" name="regname"
                             class="form-style @error('regname') is-invalid @enderror" id="regname" placeholder="Nama"
-                            value="{{ old('regname') }}" autocomplete="off">
+                            value="{{ old('regname') }}" autocomplete="on">
                           <i class="input-icon uil uil-lock-alt"></i>
                           @error('regname')
                             <small class="error text-danger">{{ $message }}</small>
@@ -115,7 +115,7 @@
                           <label for="regmail" class="sr-only">Alamat Email</label>
                           <input type="email" name="regmail" style="display: none;"
                             class="form-style @error('regmail') is-invalid @enderror" placeholder="Alamat Email"
-                            id="regmail" value="{{ old('regmail') }}" autocomplete="off">
+                            id="regmail" value="{{ old('regmail') }}" autocomplete="on">
                           <i class="input-icon uil uil-at"></i>
                           @error('regmail')
                             <small class="error text-danger">{{ $message }}</small>
@@ -125,7 +125,7 @@
                           <label for="regpass" class="sr-only">Kata Sandi</label>
                           <input type="password" name="regpass"
                             class="form-style  @error('regpass') is-invalid @enderror" placeholder="Kata Sandi"
-                            id="regpass" value="{{ old('regpass') }}" autocomplete="off">
+                            id="regpass" value="{{ old('regpass') }}" autocomplete="on">
                           <i class="input-icon uil uil-lock-alt"></i>
                           <small class="error text-danger" id="passerr">
                             @error('regpass')
@@ -138,7 +138,7 @@
                           <input type="password" name="confirmpass"
                             class="form-style  @error('confirmpass') is-invalid @enderror"
                             placeholder="Konfirmasi Sandi" id="confirmpass" value="{{ old('confirmpass') }}"
-                            autocomplete="off">
+                            autocomplete="on">
                           <i class="input-icon uil uil-lock-alt"></i>
                           <small class="error text-danger" id="confirerr">
                             @error('confirmpass')
