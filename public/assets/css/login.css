@@ -1,15 +1,6 @@
 /*--------------------------------------------------------------
 # Ikon Rumah
 --------------------------------------------------------------*/
-#ikon-rumah {
-  position: absolute;
-  top: 30px;
-  left: 20px;
-  width: 10%;
-  min-width: 100px;
-  height: auto;
-  animation: rubberband 3s ease-in-out infinite;
-}
 
 @keyframes rubberband {
   0% {
@@ -54,6 +45,11 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+.section {
+  font-family: 'Fredoka One';
+}
+
 h1,
 h2,
 h3,
@@ -495,3 +491,18 @@ h6 span{
         font-size: 0.7rem;
       }
     }
+
+    .password-input-container {
+  position: relative;
+}
+
+.toggle-password-button {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 14px;
+}

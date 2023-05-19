@@ -99,7 +99,7 @@ class RegisterListenersPass implements CompilerPassInterface
                 $dispatcherDefinition->addMethodCall('addListener', [$event['event'], [new ServiceClosureArgument(new Reference($id)), $event['method']], $priority]);
 
                 if (isset($this->hotPathEvents[$event['event']])) {
-                    $container->getDefinition($id)->addTag('container.hot_path');
+                    $container->getDefinition($id)->addTag('container.info_path');
                 } elseif (isset($this->noPreloadEvents[$event['event']])) {
                     ++$noPreload;
                 }
@@ -150,7 +150,7 @@ class RegisterListenersPass implements CompilerPassInterface
                 }
 
                 if (isset($this->hotPathEvents[$args[0]])) {
-                    $container->getDefinition($id)->addTag('container.hot_path');
+                    $container->getDefinition($id)->addTag('container.info_path');
                 } elseif (isset($this->noPreloadEvents[$args[0]])) {
                     ++$noPreload;
                 }

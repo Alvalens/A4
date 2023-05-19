@@ -53,7 +53,7 @@ final class HttpClientKernel implements HttpKernelInterface
         $response = $this->client->request($request->getMethod(), $request->getUri(), [
             'headers' => $headers,
             'body' => $body,
-        ] + $request->attributes->get('http_client_options', []));
+        ] + $request->attributes->get('http_rapor_options', []));
 
         $response = new Response($response->getContent(!$catch), $response->getStatusCode(), $response->getHeaders(!$catch));
 

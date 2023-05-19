@@ -11,7 +11,7 @@
 @section('content')
   <div class="hero_area">
     <!-- slider section -->
-    <section class="slider_section pt-5"
+    <section class="menu_section pt-5"
       style="min-height: 100vh; display: flex; justify-content: center; align-items: center;">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">

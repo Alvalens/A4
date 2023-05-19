@@ -314,7 +314,7 @@ a:focus {
 
 /*end header section*/
 /* slider section */
-.slider_section {
+.menu_section {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -330,11 +330,11 @@ a:focus {
   position: relative;
 }
 
-.slider_section .detail-box {
+.menu_section .detail-box {
   margin: 45px 5% 0 5%;
 }
 
-.slider_section .detail-box h1 {
+.menu_section .detail-box h1 {
   font-weight: bold;
   color: #010001;
   font-size: 3rem;
@@ -342,16 +342,16 @@ a:focus {
   position: relative;
 }
 
-.slider_section .detail-box h5 {
+.menu_section .detail-box h5 {
   font-weight: bold;
   color: #010001;
 }
 
-.slider_section .detail-box h1 span {
+.menu_section .detail-box h1 span {
   color: #69c0cc;
 }
 
-.slider_section .detail-box .btn-box {
+.menu_section .detail-box .btn-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -360,13 +360,13 @@ a:focus {
       flex-wrap: wrap;
 }
 
-.slider_section .detail-box .btn-box a {
+.menu_section .detail-box .btn-box a {
   margin: 5px;
   width: 165px;
   text-align: center;
 }
 
-.slider_section .detail-box .btn-box .btn-1 {
+.menu_section .detail-box .btn-box .btn-1 {
   display: inline-block;
   padding: 10px 0px;
   background-color: #0a2050;
@@ -377,12 +377,12 @@ a:focus {
   border-radius: 0;
 }
 
-.slider_section .detail-box .btn-box .btn-1:hover {
+.menu_section .detail-box .btn-box .btn-1:hover {
   background-color: transparent;
   color: #0a2050;
 }
 
-.slider_section .detail-box .btn-box .btn-2 {
+.menu_section .detail-box .btn-box .btn-2 {
   display: inline-block;
   padding: 10px 0px;
   background-color: #69c0cc;
@@ -393,27 +393,27 @@ a:focus {
   border-radius: 0;
 }
 
-.slider_section .detail-box .btn-box .btn-2:hover {
+.menu_section .detail-box .btn-box .btn-2:hover {
   background-color: transparent;
   color: #69c0cc;
 }
 
-.slider_section .img-box img {
+.menu_section .img-box img {
   max-width: 90%;
   animation: odd-box-animate 3s infinite;
 }
 
-.slider_section #carouselExampleIndicators {
+.menu_section #carouselExampleIndicators {
   width: 90%;
 }
 
-.slider_section .carousel-indicators {
+.menu_section .carousel-indicators {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.slider_section .carousel-indicators li {
+.menu_section .carousel-indicators li {
   width: 12px;
   height: 12px;
   opacity: 1;
@@ -425,12 +425,12 @@ a:focus {
   border-radius: 90%;
 }
 
-.slider_section .carousel-indicators li.active {
+.menu_section .carousel-indicators li.active {
   width: 18px;
   height: 18px;
 }
 
-.slider_section .li_before::before {
+.menu_section .li_before::before {
   content: "";
   position: absolute;
   left: -5px;

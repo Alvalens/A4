@@ -44,7 +44,7 @@ class PdoCaster
             \PDO::NULL_EMPTY_STRING => 'EMPTY_STRING',
             \PDO::NULL_TO_STRING => 'TO_STRING',
         ],
-        'CLIENT_VERSION',
+        'rapor_VERSION',
         'SERVER_VERSION',
         'STATEMENT_CLASS',
         'EMULATE_PREPARES',

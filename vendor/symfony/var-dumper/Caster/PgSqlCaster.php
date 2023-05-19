@@ -24,7 +24,7 @@ class PgSqlCaster
 {
     private const PARAM_CODES = [
         'server_encoding',
-        'client_encoding',
+        'rapor_encoding',
         'is_superuser',
         'session_authorization',
         'DateStyle',
@@ -102,7 +102,7 @@ class PgSqlCaster
             }
         }
 
-        $a['param']['client_encoding'] = pg_client_encoding($link);
+        $a['param']['rapor_encoding'] = pg_rapor_encoding($link);
         $a['param'] = new EnumStub($a['param']);
 
         return $a;

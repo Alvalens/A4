@@ -2,12 +2,14 @@
 @section('title', 'Masuk Dulu Yaa!')
 
 @section('css')
-<link rel="stylesheet" href="{{ url('assets/css/login.css') }}">
+  <link rel="stylesheet" href="{{ url('assets/css/login.css') }}">
 @endsection
+
 @section('body-style')
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
   background: linear-gradient(to top, rgba(255, 255, 255, 0.3) 100%, rgba(255, 255, 255, 0.3) 100%),
   url(assets/img/bg.jpg);
-  font-family: 'Fredoka One', sans-serif;
+  font-family: 'Fredoka One';
   letter-spacing: 1px;
   font-weight: 200;
   font-size: 15px;
@@ -18,57 +20,6 @@
 @endsection
 
 @section('content')
-  <style>
-    .password-input-container {
-      position: relative;
-    }
-
-    .toggle-password-button {
-      position: absolute;
-      top: 50%;
-      right: 30px;
-      transform: translateY(-50%);
-      border: none;
-      background-color: transparent;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    
-    .is-invalid {
-      border: 2px solid red !important;
-      padding-right: calc(1.5em + 0.75rem);
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right calc(0.375em + 0.1875rem) center;
-      background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
-    }
-
-    .is-invalid:focus {
-      border-color: red !important;
-      box-shadow: 0 0 0 0.4rem rgba(220, 53, 70, 0.344) !important;
-    }
-
-    .is-valid {
-      border: 2px solid green !important;
-      padding-right: calc(1.5em + 0.75rem);
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%2328a745'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M3.5 6l2 2 4.5-4.5'/%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right calc(0.375em + 0.1875rem) center;
-      background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
-    }
-
-    .is-valid:focus {
-      border-color: green !important;
-      box-shadow: 0 0 0 0.4rem rgba(40, 167, 69, 0.344) !important;
-    }
-
-    /* on btn small set the font smaller */
-    @media (max-width: 576px) {
-      .btn {
-        font-size: 0.7rem;
-      }
-    }
-  </style>
   <div class="section">
     <div class="container mt-3">
       <div class="row full-height justify-content-center">
@@ -126,9 +77,9 @@
                         <button type="submit" class="btn my-4">Masuk</button>
                         <div class="mt-5">
                           <small>
-                            <a href="{{ route('lupa.password') }}" class="mt-3"
+                            <a href="{{ route('lupa.password') }}" class="mt-3 button"
                               style="color: rgb(255, 255, 255) !important;">Lupa Kata Sandi?</a> <br>
-                            <a role="button" onclick="changeForm()" class="mt-3"
+                            <a role="button" onclick="changeForm()" class="mt-3 button"
                               style="color: rgb(255, 255, 255) !important;">Belum punya akun?</a>
                           </small>
                         </div>

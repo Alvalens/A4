@@ -27,9 +27,11 @@
       <div class="col">
 
         <div class="row">
-          <img src="{{ url('/assets/img/dasbor/user.png') }}" alt=""
-            class="rounded-circle img-fluid text-center m-auto" style="max-height: 200px; max-width:200px;">
-          <h1 class="text-center">{{ Auth::user()->name }}</h1>
+          <img src="{{ url('/assets/img/dasbor/user.png') }}" alt="" class="rounded-circle img-fluid text-center m-auto" style="max-height: 200px; max-width:200px;">
+          <h1 class="text-center">
+            {{ Auth::user()->name }}
+            <i class="fas fa-pencil-alt" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#editNameModal"></i>
+          </h1>
         </div>
 
         <div class="row">
@@ -80,5 +82,35 @@
       </div>
     </div>
   </section>
+
+<!-- Modal EDIT -->
+<div class="modal" id="editNameModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ubah Profil</h5>
+          </div>
+          <form action="" method="POST">
+              @method('PATCH')
+              @csrf
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="nama" class="form-label">Nama</label>
+                  <input type="text" class="form-control" id="nama" name="nama" value="">
+                </div>
+                <div class="mb-3">
+                  <label for="foto" class="form-label">Foto Profil</label>
+                  <input type="file" class="form-control" id="foto" name="foto" accept="image/*">
+                </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                  <button type="submit" class="btn btn-primary">Ubah</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+<!-- Modal EDIT -->
 
 @endsection

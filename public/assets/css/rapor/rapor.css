@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  /* potta one */
+  font-family: 'Potta One', cursive;
+}
+
+h2 {
+  color: #ffffff;
+  /* shadow */
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.navbar.scrolled {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin: 0 0 20px 0;
+}
+
+/* Change navbar color */
+.navbar {
+  background-color: #add8e683;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.cardr {
+  background-color: #ffffff86;
+  border-radius: 20px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.26);
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.cardl {
+  background-color: #ffffff86;
+  border-radius: 20px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.26);
+  max-width: 800px;
+
+}
+
+.cardl {
+  min-width: 700px;
+  margin-top: 150px
+}
+
+@media (max-width: 1024px) {
+  .card {
+    min-width: auto;
+  }
+
+  .cardl {
+    margin-top: 0;
+  }
+  .list {
+    font-size: 14px !important;
+    margin-left: -10px;
+  }
+  h5 {
+    font-size: 18px !important;
+  }
+  .desc {
+    font-size: 16px !important;
+  }
+}
+
+.progress-bar .progress-bar {
+  background-color: #00ff00;
+}
+
+.desc {
+  /* align rata kanan */
+  text-align: justify;
+  text-justify: inter-word;
+  /* font  */
+  font-size: 18px;
+  font-weight: 600;
+  /* white bg */
+  background-color: #ffffff4e;
+  padding: 8px;
+  border-radius: 5px;
+
+}
+
+.list {
+  list-style-type: none;
+  font-size: 18px
+}
+
+ul.list li b {
+  position: relative;
+  display: inline-block;
+  min-width: 180px;
+  margin-right: 20px;
+}
+
+.list b::after {
+  content: ":";
+  position: absolute;
+  right: 10px;
+}
+
+ul li {
+  margin-bottom: 18px;
+}
+
+ul li:last-child {
+  margin-bottom: 40px;
+}
+
+.tombol-terbang {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #2872b8;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  line-height: 50px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.329);
+  transition: all 0.3s ease;
+  z-index: 999090;
+}
+
+.edit-terbang {
+  position: fixed;
+  top: 100px;
+  left: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(255, 166, 0);
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  line-height: 50px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.329);
+  transition: all 0.3s ease;
+      z-index: 999090;
+}
+.fa-chevron-right, .fa-chevron-left {
+/* size */
+font-size: 40px;
+font-weight: 800;
+text-decoration: none;
+}
+
+a {
+text-decoration: none;
+}
