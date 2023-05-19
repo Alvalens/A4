@@ -14,11 +14,11 @@
     -webkit-user-select: none;
     touch-action: manipulation;
   }
-  
+
   .button-333:hover {
     transform: scale(0.85);
   }
-  
+
   .button-3333 {
     background-color: #c2ddfb;
     border-radius: 100px;
@@ -35,11 +35,11 @@
     -webkit-user-select: none;
     touch-action: manipulation;
   }
-  
+
   .button-3333:hover {
     transform: scale(0.85);
   }
-  
+
   #email {
     border-radius: 25px;
     box-shadow: rgba(44, 115, 187, 0.35) 0 -25px 18px -14px inset,rgba(44, 137, 187, 0.25) 0 1px 2px,rgba(44, 146, 187, 0.25) 0 2px 4px,rgba(44, 137, 187, 0.25) 0 4px 8px,rgba(44, 146, 187, 0.25) 0 8px 16px,rgba(44, 137, 187, 0.25) 0 16px 32px;
@@ -48,7 +48,7 @@
     display: inline-block;
     padding: 7px 20px;
   }
-  
+
   .custom-search {
     position: relative;
     width: 300px;
@@ -56,14 +56,14 @@
   .custom-search-input {
     width: 100%;
     border-radius: 100px;
-    padding: 10px 100px 10px 20px; 
+    padding: 10px 100px 10px 20px;
     line-height: 1;
     box-sizing: border-box;
     outline: none;
   }
   .custom-search-botton {
     position: absolute;
-    right: 3px; 
+    right: 3px;
     top: 3px;
     bottom: 3px;
     border: 0;

@@ -143,13 +143,45 @@
         </div>
 
       </div>
+      <style>
+        .wrap-icon {
+          position: relative;
+          width: 50px;
+          height: 50px;
+        }
+
+        .icon {
+          width: 100%;
+          height: 100%;
+          border-radius: 100%;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+          /* add white border */
+          border: 2px solid #fff;
+        }
+      </style>
       {{-- cicrle account icon --}}
       <div class="d-flex justify-content-center align-items-center profile">
         <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <div class="circle rounded-circle">
-            <i class="fas fa-user"></i>
+            @auth
+              @if (Auth::user()->picture)
+                {{-- wrap the img --}}
+                <div class="wrap-icon">
+                  <img src="{{ asset('storage/avatars/' . Auth::user()->picture) }}" alt="User Picture"
+                    class="img-fluid icon">
+                </div>
+              @else
+                <i class="fas fa-user"></i>
+              @endif
+            @else
+              <i class="fas fa-user"></i>
+            @endauth
+
           </div>
         </a>
+
         <ul class="dropdown-menu dropdown-menu-end">
           @auth
             <li><a class="dropdown-item" href="/profile">Profile</a></li>
@@ -184,7 +216,7 @@
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i>
   </a>
-    {{-- footer --}}
+  {{-- footer --}}
   <footer>
     <div class="text-center p-3">
       © 2023 Copyright:
@@ -201,6 +233,11 @@
   <script src="{{ url('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
   <script src="{{ url('assets/js/main.js') }}"></script>
   @yield('js')
+  <script>
+    setTimeout(function() {
+      $('.alert').fadeOut('slow');
+    }, 5000);
+  </script>
 </body>
 
 </html>

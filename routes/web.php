@@ -11,6 +11,7 @@ use App\Http\Middleware\CheckRole;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\UsersProgressController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\ProfileController;
 
 
 
@@ -51,6 +52,9 @@ Route::get('/about', function () {
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile')->middleware('check.login');
+// profile upload
+Route::post('/profile/upload', [ProfileController::class, 'upload'])->name('profile.upload')->middleware('check.login');
+Route::post('/profile/delete', [ProfileController::class, 'delete'])->name('profile.delete')->middleware('check.login');
 
 
 Route::prefix('/dashboard')->middleware(['check.login', 'CheckRole:guru,admin'])->group(function () {

@@ -89,9 +89,15 @@
             <div class="user-area dropdown float-right">
               <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-                <img class="user-avatar rounded-circle" src="{{ url('assets/img/dasbor/user.png') }}"
-                  alt="User Avatar">
+                  @if (Auth::user()->picture)
+                    <img class="user-avatar rounded-circle" src="{{ asset('storage/avatars/' . Auth::user()->picture) }}"
+                      alt="User Avatar">
+                  @else
+                    <img class="user-avatar rounded-circle" src="{{ url('assets/img/dasbor/user.png') }}"
+                      alt="User Avatar">
+                  @endif
               </a>
+
               <div class="user-menu dropdown-menu">
                 <form action="{{ route('logout') }}" method="post">
                   @csrf
@@ -102,8 +108,6 @@
                 {{-- back to home --}}
                 <a class="nav-link" href="{{ route('index') }}"><i class="fa fa-home"></i>Kembali</a>
               </div>
-
-
             </div>
 
           </div>
@@ -124,8 +128,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
     <script src="{{ url('assets/js/dasbor/main.js') }}"></script>
     {{-- bootstrap js --}}
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script>
       // Menampilkan kembali modal saat halaman direfresh jika terdapat error
       var hasError = document.querySelector('.is-invalid');
@@ -138,7 +142,11 @@
 
     {{-- js each page to resolve conflict --}}
     @yield('js')
-
+    <script>
+      setTimeout(function() {
+        $('.alert').fadeOut('slow');
+      }, 5000);
+    </script>
 </body>
 
 </html>
