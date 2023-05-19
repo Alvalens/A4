@@ -9,144 +9,48 @@
   <title>@yield('title', 'Beranda')</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
-  {{-- icon --}}
+  {{-- web icon --}}
   <link rel="icon" href="{{ url('assets/img/beranda/title-a4.png') }}">
-
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
     rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- CSS Files -->
   <link href="{{ url('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ url('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
   <link href="{{ url('assets/vendor/aos/aos.css') }}" rel="stylesheet">
   <link href="{{ url('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
   <link href="{{ url('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-
-
-  <!-- Template Main CSS File -->
   <link href="{{ url('assets/css/main.css') }}" rel="stylesheet">
-
   {{-- icon --}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-
   {{-- bootstrap --}}
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <!-- Make Body CSS Style -->
+  <!--  CSS Style -->
   @yield('css')
   <style>
-    .navbar {
-      background-color: #add8e683;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      transition: all 0.3s ease-in-out;
-    }
-
-    #navbar {
-      transition: top 0.3s ease-in-out;
-    }
-
-    .navbar {
-      background-color: #add8e683;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    }
-
-    #navbar.navbar-hide {
-      top: -100px;
-    }
-
     body {
       @yield('body-style')
+
+      font-family: -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      "Helvetica Neue",
+      Arial,
+      "Noto Sans",
+      sans-serif,
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol",
+      "Noto Color Emoji";
     }
-
-    @media (min-width: 768px) {
-      .navbar-nav {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-grow: 1;
-      }
-
-      .navbar-nav .nav-item {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 1rem;
-        /* gap each  item*/
-        margin: 0 3rem;
-      }
-    }
-
-    .profile {
-      margin-right: 30px !important;
-    }
-
-    /* gap each  item y in mobie view*/
-    @media (max-width: 768px) {
-
-      .navbar-nav .nav-item {
-        margin: 3rem 3rem;
-
-      }
-    }
-
-    .caption {
-      display: none;
-    }
-
-    @media (max-width: 767.98px) {
-      .caption {
-        display: block;
-        text-align: center;
-        font-size: 14px;
-      }
-      .profile-picture {
-        display: block;
-        width: 50px;
-        height: 50px;
-      }
-    }
-
-    /* fix for background color in offcanvas menu */
-    .offcanvas {
-      background-color: #69c0cc;
-    }
-
-    .profile .dropdown-menu-end {
-      left: auto;
-      right: 0;
-    }
-    .navbar.scrolled {
-    background-color: #ffffff !important;
-    margin: 5px 20px 0 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
-
-    border-radius: 50px;
-    transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-    }
-    /* change navbar toggkler button outline delete */
-    .navbar-toggler {
-      border: none !important;
-      border-radius: 100%;
-    }
-    .navbar-toggler:hover {
-      background-color: #add8e6 !important;
-      border: none !important;
-    }
-.custom-toggler:focus,
-.custom-toggler:hover {
-  outline: none;
-  box-shadow: none;
-}
-
-
   </style>
   <script src="{{ url('js/jq.js') }}"></script>
 </head>
@@ -160,9 +64,9 @@
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-md fixed-top">
     <div class="container-fluid" style="background-color: rgba(0, 0, 0, 0) !important;">
-      <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fa-solid fa-bars-staggered py-2"></i>
+      <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars-staggered py-2"></i>
       </button>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarNav" aria-labelledby="navbarNavLabel">
         <div class="offcanvas-header">
@@ -173,9 +77,10 @@
           <ul class="navbar-nav">
             {{-- new item to hold profile  --}}
             <li class="nav-item profile-picture d-block d-md-none">
-              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="{{ route('profile') }}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#0e4168" class="bi bi-person"
-                  viewBox="0 0 16 16">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center"
+                href="{{ route('profile') }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#0e4168"
+                  class="bi bi-person" viewBox="0 0 16 16">
                   <path
                     d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0
                     1a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0
@@ -185,7 +90,8 @@
                 <span class="caption  d-block d-md-none">Profile</span>
               </a>
             <li class="nav-item">
-              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="{{ route('index') }}">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center"
+                href="{{ route('index') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#0e4168" class="bi bi-house"
                   viewBox="0 0 16 16">
                   <path
@@ -196,7 +102,8 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="{{ route('level') }}">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center"
+                href="{{ route('level') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#0e4168"
                   class="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z" />
@@ -210,7 +117,8 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="{{ route('bermain') }}">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center"
+                href="{{ route('bermain') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#0e4168"
                   class="bi bi-puzzle" viewBox="0 0 16 16" transform="rotate(90)">
                   <path
@@ -221,7 +129,8 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="{{ route('tekateki') }}">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center"
+                href="{{ route('tekateki') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#0e4168"
                   class="bi bi-lightbulb" viewBox="0 0 16 16">
                   <path
@@ -267,92 +176,29 @@
       </div>
     </div>
   </nav>
-  <!-- NAVBAR -->
-
 
   @section('content')
 
   @show
 
-  {{-- footer --}}
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i>
   </a>
+    {{-- footer --}}
   <footer>
     <div class="text-center p-3">
       © 2023 Copyright:
       <p><strong>A4 Team | S1 TI A | Universitas Negeri Malang</strong></p>
     </div>
-    <!-- Copyright -->
   </footer>
 
-  {{-- loader script --}}
-  <script>
-window.addEventListener("scroll", function () {
-    const navbar = document.querySelector(".navbar");
-    navbar.classList.toggle("scrolled", window.scrollY > 0);
-});
-
-window.addEventListener('load', function() {
-
-  // Get the loader element
-  var loader = document.getElementById('loader');
-  // show the html element after the page is loaded
-  if (performance.navigation.type === 2) {
-    loader.style.display = 'none'; // Hide the loader immediately
-  } else {
-  // Show the loader with fade-in effect
-  loader.style.display = 'block';
-
-  setTimeout(function() {
-    loader.classList.remove('hidden');
-  }, 10);
-
-  setTimeout(function() {
-    loader.classList.add('hidden');
-    // display none after fade out effect
-    setTimeout(function() {
-      loader.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }, 500);
-  }, 1000);
-}
-});
-    window.addEventListener('unload', function() {
-  // Get the loader element
-  var loader = document.getElementById('loader');
-  // hide the loader
-  loader.style.display = 'none';
-
-
-});
-window.addEventListener('beforeunload', function() {
-  var loader = document.getElementById('loader');
-  // Show the loader with fade-in effect
-  loader.style.display = 'block';
-  setTimeout(function() {
-    loader.classList.remove('hidden');
-  }, 10);
-  //delay the page load for the loader fade in effect
-  setTimeout(function() {
-    loader.classList.remove('hidden');
-    loader.style.display = 'block';
-  }, 500);
-});
-
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
-
   <script src="{{ url('assets/vendor/aos/aos.js') }}"></script>
   <script src="{{ url('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
   <script src="{{ url('assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
   <script src="{{ url('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
   <script src="{{ url('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-
-
-  <!-- Template Main JS File -->
   <script src="{{ url('assets/js/main.js') }}"></script>
   @yield('js')
 </body>

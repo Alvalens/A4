@@ -1,8 +1,9 @@
 @extends('layout.master')
 @section('title', 'Masuk Dulu Yaa!')
 
+@section('css')
 <link rel="stylesheet" href="{{ url('assets/css/login.css') }}">
-
+@endsection
 @section('body-style')
   background: linear-gradient(to top, rgba(255, 255, 255, 0.3) 100%, rgba(255, 255, 255, 0.3) 100%),
   url(assets/img/bg.jpg);
@@ -18,9 +19,6 @@
 
 @section('content')
   <style>
-    .error {
-      font-size: 12px;
-    }
     .password-input-container {
       position: relative;
     }

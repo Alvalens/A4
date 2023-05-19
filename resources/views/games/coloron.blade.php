@@ -1,33 +1,19 @@
 @extends('layout.master')
 @section('title', 'Bermain itu Seru!')
 
-
-@section('content')
+@section('css')
+  <link rel="stylesheet" href="{{ url('assets/css/bermain.css') }}">
   <link rel="stylesheet" href="{{ url('assets/css/games/coloron.css') }}">
-  <style>
+    <style>
     footer {
       display: none;
     }
-    .tombol-terbang {
-      position: fixed;
-      bottom: 50px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: #2872b8;
-      color: #fff;
-      font-size: 20px;
-      text-align: center;
-      line-height: 50px;
-      box-shadow: 0 0 6px rgba(0, 0, 0, 0.329);
-      transition: all 0.3s ease;
-      z-index: 99999;
-    }
-    .fa-reply {
-      margin-top: 16px;
-    }
   </style>
+@endsection
+
+@section('content')
+
+
   <section>
       <div class="tombol">
     <a href="{{ url()->previous() }}" class="tombol-terbang" role="button" type="button">

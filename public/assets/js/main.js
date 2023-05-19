@@ -5,6 +5,56 @@
  * Author: BootstrapMade.com
  * License: https://bootstrapmade.com/license/
  */
+
+window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    navbar.classList.toggle("scrolled", window.scrollY > 0);
+});
+
+window.addEventListener("load", function () {
+    // Get the loader element
+    var loader = document.getElementById("loader");
+    // show the html element after the page is loaded
+    if (performance.navigation.type === 2) {
+        loader.style.display = "none"; // Hide the loader immediately
+    } else {
+        // Show the loader with fade-in effect
+        loader.style.display = "block";
+
+        setTimeout(function () {
+            loader.classList.remove("hidden");
+        }, 10);
+
+        setTimeout(function () {
+            loader.classList.add("hidden");
+            // display none after fade out effect
+            setTimeout(function () {
+                loader.style.display = "none";
+                document.body.style.overflow = "auto";
+            }, 500);
+        }, 1000);
+    }
+});
+window.addEventListener("unload", function () {
+    // Get the loader element
+    var loader = document.getElementById("loader");
+    // hide the loader
+    loader.style.display = "none";
+});
+window.addEventListener("beforeunload", function () {
+    var loader = document.getElementById("loader");
+    // Show the loader with fade-in effect
+    loader.style.display = "block";
+    setTimeout(function () {
+        loader.classList.remove("hidden");
+    }, 10);
+    //delay the page load for the loader fade in effect
+    setTimeout(function () {
+        loader.classList.remove("hidden");
+        loader.style.display = "block";
+    }, 500);
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 

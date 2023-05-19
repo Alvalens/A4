@@ -6,92 +6,201 @@
 @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
 
 :root {
-  --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-primary: "Montserrat", sans-serif;
-  --font-secondary: "Poppins", sans-serif;
+    --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-primary: "Montserrat", sans-serif;
+    --font-secondary: "Poppins", sans-serif;
 }
 
 :root {
-  --color-default: #006E7F;
-  --color-primary: #96BB7C;
-  --color-secondary: #99C4C8;
+    --color-default: #006E7F;
+    --color-primary: #96BB7C;
+    --color-secondary: #99C4C8;
 }
 
 :root {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+    width: 10px;
 }
+
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px #e9f2fa;
-  border-radius: 10px;
+    box-shadow: inset 0 0 5px #e9f2fa;
+    border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(#006E7F,#99C4C8);
-  border-radius: 10px;
+    background: linear-gradient(#006E7F, #99C4C8);
+    border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffffff;
+    background: #ffffff;
 }
 
 /*--------------------------------------------------------------
 # Scroll top button
 --------------------------------------------------------------*/
 .scroll-top {
-  position: fixed;
-  visibility: hidden;
-  opacity: 0;
-  right: 15px;
-  bottom: -15px;
-  z-index: 99999;
-  background: var(--color-secondary);
-  width: 44px;
-  height: 44px;
-  border-radius: 50px;
-  transition: all 0.4s;
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    right: 15px;
+    bottom: -15px;
+    z-index: 99999;
+    background: var(--color-secondary);
+    width: 44px;
+    height: 44px;
+    border-radius: 50px;
+    transition: all 0.4s;
 }
 
 .scroll-top i {
-  font-size: 24px;
-  color: #fff;
-  line-height: 0;
+    font-size: 24px;
+    color: #fff;
+    line-height: 0;
 }
 
 .scroll-top:hover {
-  background: rgba(248, 90, 64, 0.8);
-  color: #fff;
+    background: rgba(248, 90, 64, 0.8);
+    color: #fff;
 }
 
 .scroll-top.active {
-  visibility: visible;
-  opacity: 1;
-  bottom: 15px;
+    visibility: visible;
+    opacity: 1;
+    bottom: 15px;
 }
 
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
 @media screen and (max-width: 768px) {
-  [data-aos-delay] {
-    transition-delay: 0 !important;
-  }
+    [data-aos-delay] {
+        transition-delay: 0 !important;
+    }
 }
 
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
 footer {
-  box-shadow: none;
+    box-shadow: none;
 }
 
 footer:hover, footer:active {
-  box-shadow: 0 2px 10px rgba(156, 172, 196, 0.474);
+    box-shadow: 0 2px 10px rgba(156, 172, 196, 0.474);
 }
 
 @media only screen and (max-width: 768px) {
-  footer {
-    padding: 20px;
-  }
+    footer {
+        padding: 20px;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .navbar-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+    }
+
+    .navbar-nav .nav-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 1rem;
+        /* gap each  item*/
+        margin: 0 3rem;
+    }
+}
+
+.profile {
+    margin-right: 30px !important;
+}
+
+/* gap each  item y in mobie view*/
+@media (max-width: 768px) {
+
+    .navbar-nav .nav-item {
+        margin: 3rem 3rem;
+
+    }
+}
+
+.caption {
+    display: none;
+}
+
+@media (max-width: 767.98px) {
+    .caption {
+        display: block;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .profile-picture {
+        display: block;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* fix for background color in offcanvas menu */
+.offcanvas {
+    background-color: #69c0cc !important;
+}
+
+.profile .dropdown-menu-end {
+    left: auto;
+    right: 0;
+}
+
+.navbar.scrolled {
+    background-color: #ffffff !important;
+    margin: 5px 20px 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+
+/* change navbar toggkler button outline delete */
+.navbar-toggler {
+    border: none !important;
+    border-radius: 100%;
+}
+
+.navbar-toggler:hover {
+    background-color: #add8e6 !important;
+    border: none !important;
+}
+
+.custom-toggler:focus,
+.custom-toggler:hover {
+    outline: none;
+    box-shadow: none;
+}
+
+.navbar {
+    background-color: #add8e683;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+#navbar {
+    transition: top 0.3s ease-in-out;
+}
+
+.navbar {
+    background-color: #add8e683;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#navbar.navbar-hide {
+    top: -100px;
 }
