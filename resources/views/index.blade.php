@@ -6,7 +6,6 @@
   <link href="{{ url('assets/css/beranda/bootstrap.css') }}" rel="stylesheet" type="text/css" />
   <link href="{{ url('assets/css/beranda/style.css') }}" rel="stylesheet" />
   <link href="{{ url('assets/css/beranda/responsive.css') }}" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins:400,700&display=swap" rel="stylesheet">
   <style>
     .navbar {
       /* delete color and shadow box */
