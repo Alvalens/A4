@@ -87,7 +87,20 @@ body {
   min-width: 150px;
   height: 100%;
   background: -webkit-gradient(linear, left top, right top, from(#51b5ef), to(#436bf1));
-  background: linear-gradient(to right, #93ffe4, #00c292);
+  background: linear-gradient(to right, #ade6cf, #72cda8);
+}
+
+.hero_area2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45%;
+  height: 88%;
+  background-image: url(../../img/home1.png);
+  background-size: cover;
+  background-position: left bottom;
+  background-repeat: no-repeat;
 }
 
 .sub_page .hero_area {

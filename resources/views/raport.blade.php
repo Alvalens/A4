@@ -42,6 +42,7 @@
       <i class="fa-solid fa-reply"></i></a>
   </div>
   <div class="hero_area">
+    <div class="hero_area2">
 
     <!-- header section strats -->
     <header class="header_section">
@@ -118,7 +119,7 @@
     <div class="container">
       <div class="wrap">
         <div class="heading_container">
-          <h2>
+          <h2 style="margin-top: 100px">
             INFORMASI
           </h2>
           <hr>

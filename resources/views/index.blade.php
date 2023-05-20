@@ -230,7 +230,7 @@ active @endauth">
   <section class="profile_section">
     <div class="container">
       <div>
-        <h2 class="text-center text-dark md-3 fw-bold"> Meet The Team </h2>
+        <h2 class="text-center text-dark md-3 mb-3 fw-bold"> Tim Kami </h2>
       </div>
       <div class="profile_container">
         <div class="box b1">
