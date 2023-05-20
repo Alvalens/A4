@@ -4,7 +4,26 @@
   <link rel="stylesheet" href="{{ url('assets/css/dasbor/table.css') }}">
   <style>
     /* remove a link all attribute */
-    a {
+    /*header section*/
+.hero_area {
+  min-height: 100vh;
+  position: relative;
+  background-color: #fbf3eb;
+}
+
+.hero_area::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45%;
+  height: 88%;
+  background-image: url(assets/img/menu3.png);
+  background-size: cover;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+}
+a {
       color: black;
       text-decoration: none;
       color: inherit;
@@ -34,7 +53,9 @@
 
 @endsection
 @section('content')
-  <div class="container">
+  
+    <div class="hero_area">
+      <div class="container">
       <div class="col">
 
         @if (session('error'))
@@ -84,6 +105,7 @@
       <div>
       </div>
       </div>
+    </div>
     </div>
   @endsection
   <!-- SCRIPT -->
