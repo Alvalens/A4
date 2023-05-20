@@ -86,7 +86,7 @@
                 <div class="btn-box">
                   <a href="" role="button" type="button" class="btn-1" data-bs-toggle="modal"
                     data-bs-target="#fileModal">
-                    Ubah
+                    Ubah Raport
                   </a>
                 </div>
               @else
@@ -198,11 +198,10 @@
           <div class="modal-body">
             {{-- hidden input --}}
             <input type="hidden" name="nama" value="{{ $nama_user }}">
-
             <div class="mb-3">
               <label for="catatan" class="form-label">Catatan</label>
               <input type="text" class="form-control @error('catatan') is-invalid @enderror" id="catatan"
-                name="catatan" value="{{ old('catatan') }}">
+                name="catatan" value="{{ old('catatan', $raportUser->catatan ?? '-') }}">
               @error('catatan')
                 <div class="text-danger">{{ $message }}</div>
               @enderror
@@ -210,7 +209,7 @@
             <div class="mb-3">
               <label for="materi_kesukaan" class="form-label">Materi Favorit</label>
               <input type="text" class="form-control @error('materi_kesukaan') is-invalid @enderror"
-                id="materi_kesukaan" name="materi_kesukaan" value="{{ old('materi_kesukaan') }}">
+                id="materi_kesukaan" name="materi_kesukaan" value="{{ old('materi_kesukaan', $raportUser->materi_favorit ?? '-') }}">
               @error('materi_kesukaan')
                 <div class="text-danger">{{ $message }}</div>
               @enderror
@@ -218,7 +217,7 @@
             <div class="mb-3">
               <label for="guru_pendamping" class="form-label">Guru Pendamping</label>
               <input type="text" class="form-control @error('guru_pendamping') is-invalid @enderror"
-                id="guru_pendamping" name="guru_pendamping" value="{{ old('guru_pendamping') }}">
+                id="guru_pendamping" name="guru_pendamping" value="{{ old('guru_pendamping', $raportUser->guru_pendamping ?? '-') }}">
               @error('guru_pendamping')
                 <div class="text-danger">{{ $message }}</div>
               @enderror
