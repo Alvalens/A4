@@ -76,12 +76,21 @@ class UsersController extends Controller
     public function update(Request $request){
         $user = User::find($request->id);
         // validate
+        // Validate input data
         $validatedData = $request->validate([
-            'name' => 'required|unique:users,name,' . $user->id,
-            // role field only accept siswa, guru, admin, ortu
+            // Validation rules
+            'nama' => 'required|unique:users,name',
+            'password' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',
             'role' => 'required|in:siswa,guru,admin,ortu',
-            'email' => 'required|email',
-            'password' => 'required',
+            'email' => $request->input('role') === 'ortu' || 'admin' || 'guru' ? 'required|email' : '',
+        ], [
+            // Validation error messages
+            'nama.required' => 'Nama harus diisi',
+            'nama.unique' => 'Nama telah digunakan',
+            'password.required' => 'Password harus diisi',
+            'password.regex' => 'Password harus mengandung 1 huruf besar, 1 huruf kecil, dan 1 angka',
+            'email.required' => 'Email harus diisi',
+            'email.email' => 'Email tidak valid',
         ]);
         // update
         if ($user->role === 'siswa') {

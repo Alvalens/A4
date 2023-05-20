@@ -14,7 +14,7 @@ use App\Models\Raport;
 
 
 
-class Siswa extends Controller
+class SiswaController extends Controller
 {
     //index level
     public function indexlevel()
@@ -46,7 +46,7 @@ class Siswa extends Controller
         $email = $request->email;
 
         $verificationCode = rand(100000, 999999);
-        
+
         User::where('name', auth()->user()->name)->update(['verification_code' => $verificationCode]);
 
         Mail::to($email)->send(new EmailVerificationRequest($verificationCode));
@@ -111,6 +111,89 @@ class Siswa extends Controller
             ]);
         }
         return redirect()->back()->with('success', 'Raport berhasil diupdate!');
+    }
+    public function show()
+    {
+        // select user where role is siswa, select name and email
+        $data = User::where('role', 'siswa')->select('name', 'email')->get();
+
+        return view('datasiswa', ['data' => $data]);
+    }
+    // store siswa
+    public function store(Request $request){
+        // validate request
+        $request->validate([
+            'name' => 'required|unique:users',
+            'email' => 'nullable|email|',
+            'password' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',
+        ],
+        [
+            'name.required' => 'Nama tidak boleh kosong!',
+            'name.unique' => 'Nama sudah terdaftar!',
+            'email.email' => 'Email tidak valid!',
+            'password.required' => 'Password tidak boleh kosong!',
+            'password.regex' => 'Password minimal 8 karakter, mengandung huruf besar, huruf kecil dan angka!',
+        ]);
+        // save
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => 'siswa',
+            'password' => bcrypt($request->password),
+        ]);
+        // if success redirect back with success message if not redirect back with error message
+        return redirect()->back()->with('success', 'Siswa berhasil ditambahkan!');
+    }
+    // show edit
+    public function edit($nama)
+    {
+        // select user where id = $id
+        $data = User::where('name', $nama)->first();
+        return view('editsiswa', ['siswa' => $data]);
+    }
+    // update
+    public function update(Request $request, $id)
+    {
+        // validate request
+        $request->validate(
+            [
+                'name' => 'required|unique:users,name,',
+                'email' => 'nullable|email|',
+                'password' => 'nullable|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',
+            ],
+            [
+                'name.required' => 'Nama tidak boleh kosong!',
+                'name.unique' => 'Nama sudah terdaftar!',
+                'email.email' => 'Email tidak valid!',
+                'password.regex' => 'Password minimal 8 karakter, mengandung huruf besar, huruf kecil, dan angka!',
+            ]
+        );
+        // get user where id = $id
+        $user = User::where('id', $id)->first();
+        // if not null update nama_user in userprogress and nama in raport
+        if ($user->name != $request->name) {
+            UsersProgress::where('nama_user', $user->name)->update(['nama_user' => $request->name]);
+            Raport::where('nama', $user->name)->update(['nama' => $request->name]);
+        }
+        // update
+        User::where('id', $id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+        // also update nama_user in userprogress
+
+
+        return redirect()->route('datasiswa')->with('success', 'Siswa berhasil diupdate!');
+    }
+
+    // delete
+    public function destroy($id)
+    {
+        // delete user where id = $id
+        User::where('id', $id)->delete();
+        // if success redirect back to data siswa with success message
+        return redirect()->route('datasiswa')->with('success', 'Siswa berhasil dihapus!');
     }
 
 }

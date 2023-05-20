@@ -87,7 +87,7 @@
           <div class="modal-body">
             <div class="mb-3">
               <label for="nama" class="form-label">Nama</label>
-              <input type="text" class="form-control @error('name') is-invalid @enderror" id="nama" name="nama" required placeholder="Masukkan nama"
+              <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" required placeholder="Masukkan nama"
                 value="{{ old('nama') }}">
               @error('nama')
                 <div class="invalid-feedback">

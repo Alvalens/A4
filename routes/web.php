@@ -5,7 +5,7 @@ use App\Http\Controllers\MaterialsController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TekatekisController;
-use App\Http\Controllers\Siswa;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\CheckRole;
 use App\Http\Controllers\TodoController;
@@ -86,13 +86,17 @@ Route::prefix('/dashboard')->middleware(['check.login', 'CheckRole:guru,admin'])
     Route::delete('/datatekateki/{question}', [TekatekisController::class, 'destroy'])->name('tekatekis.destroy');
 
     // ! CRUD SISWA
-    Route::get('/datasiswa', [OrdersController::class, 'siswa'])->name('datasiswa');
+    Route::get('/datasiswa', [SiswaController::class, 'show'])->name('datasiswa');
+    Route::post('/datasiswa/store', [SiswaController::class, 'store'])->name('siswa.store');
+    Route::get('/datasiswa/{nama}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
+    Route::delete('/datasiswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+    Route::patch('/datasiswa/{id}', [SiswaController::class, 'update'])->name('siswa.update');
 });
 
 
 // ! BELAJAR
-Route::get('/belajar', [Siswa::class, 'indexlevel'])->name('level');
-Route::get('/belajar/{level}', [Siswa::class, 'materi'])->name('materi');
+Route::get('/belajar', [SiswaController::class, 'indexlevel'])->name('level');
+Route::get('/belajar/{level}', [SiswaController::class, 'materi'])->name('materi');
 
 
 // ! CRUD REGISTRASI
@@ -112,12 +116,12 @@ Route::get('/daftarsiswa','App\Http\Controllers\Ortu@index')->name('ortu.index')
 // show raport
 Route::get('/raport/{nama}', 'App\Http\Controllers\Ortu@show')->name('raport')->middleware(['check.login', 'CheckRole:guru,admin,ortu']);
 // update
-Route::post('/raport/update', 'App\Http\Controllers\Siswa@storeRaport')->name('raport.store')->middleware(['check.login', 'CheckRole:guru,admin']);
+Route::post('/raport/update', [SiswaController::class, 'storeRaport'])->name('raport.store')->middleware(['check.login', 'CheckRole:guru,admin']);
 
 // ! VERIFIKASI EMAIL
-Route::post('/verification', 'App\Http\Controllers\Siswa@sendverif')->name('email.send');
-Route::get('/verify/{code}/{email}', 'App\Http\Controllers\Siswa@verify')->name('email.verify');
-Route::delete('/delete/email', 'App\Http\Controllers\Siswa@deleteEmail')->name('email.delete');
+Route::post('/verification', [SiswaController::class, 'sendverif'])->name('email.send');
+Route::get('/verify/{code}/{email}', [SiswaController::class, 'verify'])->name('email.verify');
+Route::delete('/delete/email', [SiswaController::class, 'deleteEmail'])->name('email.delete');
 
 // ! USER PROGRESS
 Route::post('/user_progress', [UsersProgressController::class, 'storeProgress'])->name('progress.store');
