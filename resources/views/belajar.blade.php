@@ -20,7 +20,7 @@
       <img src="{{ url('assets/img/belajar/title-videopembelajaran.png') }}">
     </div>
     <div class="container text-center" data-aos="zoom-out">
-      <a href="https://youtu.be/pUn4kWVm3F0" class="glightbox play-btn"></a>
+      <a href="https://youtu.be/hEGFgZy5RVY" class="glightbox play-btn"></a>
       <br>
     </div>
   </section>
@@ -119,20 +119,41 @@
                 var videoLink = "{{ $materi->link }}";
                 var videoId = videoLink.match(/youtube\.com\/embed\/([^\"]+)/)[1];
                 player{{ $materi->id }} = new YT.Player('player{{ $materi->id }}', {
-                  height: '196.875',
-                  width: '350',
                   videoId: videoId,
                   playerVars: {
                     'playsinline': 1
                   },
                   events: {
-                    'onReady': onPlayerReady{{ $materi->id }},
+                    'onReady': function(event) {
+                      onPlayerReady{{ $materi->id }}(event);
+                      adjustPlayerSize{{ $materi->id }}();
+                    },
                     'onStateChange': onPlayerStateChange{{ $materi->id }}
                   }
                 });
+          
+                function adjustPlayerSize{{ $materi->id }}() {
+                  var playerElement = document.getElementById('player{{ $materi->id }}');
+                  var containerWidth = playerElement.parentNode.offsetWidth;
+                  var aspectRatio = 9 / 16; // Assuming 16:9 aspect ratio for the player
+          
+                  var playerHeight = containerWidth * aspectRatio;
+                  playerElement.style.width = containerWidth + 'px';
+                  playerElement.style.height = playerHeight + 'px';
+          
+                  // Resize to 50% on viewport width <= 667px
+                  if (window.innerWidth <= 667) {
+                    playerElement.style.width = (containerWidth / 1.5) + 'px';
+                    playerElement.style.height = (playerHeight / 1.5) + 'px';
+                  }
+                }
+          
+                // Adjust player size on window resize
+                window.addEventListener('resize', adjustPlayerSize{{ $materi->id }});
               @endforeach
             }
           </script>
+          
 
         </div>
       </div>

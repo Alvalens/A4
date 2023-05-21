@@ -1,5 +1,9 @@
 @extends('layout.master')
 
+@section('body-style')
+background-color: #fbf3eb;
+@endsection
+
 @section('css')
   <link rel="stylesheet" href="{{ url('assets/css/dasbor/table.css') }}">
   <style>
@@ -48,6 +52,9 @@ a {
     .btn {
       font-size: 12px;
     }
+  }
+  .card {
+    background-color: #ffffff94;
   }
   </style>
 
