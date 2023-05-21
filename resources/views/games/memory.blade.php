@@ -31,7 +31,7 @@
         <li><i class="fa fa-star"></i></li>
         <li><i class="fa fa-star"></i></li>
       </ul>
-      <span class="moves">0</span> Moves
+      <span class="moves">0</span> gerakan
       <div class="restart">
         <i class="fa fa-repeat"></i>
       </div>

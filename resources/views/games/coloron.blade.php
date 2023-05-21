@@ -38,19 +38,19 @@
           <span>o</span>
           <span>n</span>
         </p>
-        <a class="play-button" href="#" onclick="game.start()">Play</a>
-        <h4 class="hint">hint: <span>red</span> color always comes first</h4>
+        <a class="play-button" href="#" onclick="game.start()">Mulai</a>
+        <h4 class="hint">petunjuk: <span>merah</span> warna yang keluar pertama</h4>
       </div>
 
       <div class="how-to-play">
         <div class="section section-1">
-          <h4>Bouncing ball<br>changes color</h4>
+          <h4>ketika bola terpantul<br>akan berganti warna</h4>
           <div class="content">
             <div class="ball-demo" id="ball-demo"></div>
           </div>
         </div>
         <div class="section section-2">
-          <h4>Tap on the bar to switch the colors<br>(Red, Yellow, Purple)</h4>
+          <h4>klik pada tiang untuk mengganti warna<br>(Merah, Kuning, Ungu)</h4>
           <div class="content">
             <div class="bar bar-1" data-index="0"></div>
             <div class="bar bar-2"></div>
@@ -58,7 +58,7 @@
           </div>
         </div>
         <div class="section section-3">
-          <h4>Always match the<br>ball and bar colors</h4>
+          <h4>Selalu cocokan<br>warna bola dan tiang</h4>
           <div class="content">
             <div class="ball-demo" id="ball-demo"></div>
             <div class="bar bar-1"></div>
@@ -77,16 +77,8 @@
         <div class="final-score"></div>
         <div class="result"></div>
 
-        <h4>Tweet to challenge friends</h4>
-
-        <p>
-          <a class="tweet" href="#" onclick="game.generateTweet()">
-            <i class="fa fa-twitter" aria-hidden="true"></i> Tweet
-          </a>
-        </p>
-
         <div>
-          <a class="play-again" href="#" onclick="game.start()">Play Again</a>
+          <a class="play-again" href="#" onclick="game.start()">Mulai lagi</a>
           <a class="main-menu" href="#" onclick="game.intro()">Menu</a>
         </div>
 
@@ -116,7 +108,7 @@
     <div class="clouds"></div>
 
     <div class="scene">
-      <div class="learn-to-play">Click on the bars to change the color!</div>
+      <div class="learn-to-play">Klik pada tiang untuk mengganti warna!</div>
       <div class="score" id="score"></div>
       <div class="ball-holder"></div>
       <div class="sticks" id="sticks"></div>
