@@ -80,14 +80,22 @@
             <li class="nav-item profile-picture d-block d-md-none">
               <a class="nav-link d-flex flex-column justify-content-center align-items-center"
                 href="{{ route('profile') }}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#0e4168"
-                  class="bi bi-person" viewBox="0 0 16 16">
-                  <path
-                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0
-                    1a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0
-                    1c2.67 0 8 1.34 8 4v1H0v-1c0-2.66
-                    5.33-4 8-4z" />
-                </svg>
+          <div class="circle rounded-circle">
+            @auth
+              @if (Auth::user()->picture)
+                {{-- wrap the img --}}
+                <div class="wrap-icon">
+                  <img src="{{ asset('storage/avatars/' . Auth::user()->picture) }}" alt="User Picture"
+                    class="img-fluid icon">
+                </div>
+              @else
+                <i class="fas fa-user"></i>
+              @endif
+            @else
+              <i class="fas fa-user"></i>
+            @endauth
+
+          </div>
                 <span class="caption  d-block d-md-none">Profile</span>
               </a>
             <li class="nav-item">

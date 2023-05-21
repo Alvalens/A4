@@ -26,14 +26,14 @@ class TekaTekiSeeder extends Seeder
             'a' => 'Kucing',
             'b' => 'Burung',
             'c' => 'Ayam',
-            'kunci' => 'b'
+            'kunci' => 'c'
         ]);
         Tekatekis::create([
             'pertanyaan' => 'Apa nama hewan yang memiliki 2 kaki dan bisa terbang?',
             'a' => 'Pingguin',
             'b' => 'Burung',
             'c' => 'Tikus',
-            'kunci' => 'c'
+            'kunci' => 'b'
         ]);
 
     }

@@ -1,12 +1,13 @@
 @extends('layout.master')
 @section('title', 'Yuk, Belajar!')
 
-<link href="{{ url('assets/css/belajar.css') }}" rel="stylesheet">
-<script src="https://www.youtube.com/iframe_api"></script>
-
 @section('body-style')
   background-image: url({{ url('assets/img/bg-sky.jpg') }});
   background-repeat: no-repeat;
+@endsection
+
+@section('css')
+  <link rel="stylesheet" href="{{ url('assets/css/belajar.css') }}">
 @endsection
 
 @section('content')
@@ -44,30 +45,28 @@
                 </div>
                 <h3>{{ $materi->judul }}</h3>
                 <p>{{ $materi->deskripsi }}</p>
-                <div id="player{{ $materi->id }}"></div>
+                <div class="player img-fluid">
+                  <div id="player{{ $materi->id }}"></div>
+                </div>
                 <script>
                   var videoLink = "{{ $materi->link }}";
                   var videoId = videoLink.match(/youtube\.com\/embed\/([^\"]+)/)[1];
-                  console.log("Video ID: " + videoId);
 
                   var player{{ $materi->id }} = null;
                   var duration{{ $materi->id }} = null
 
                   function onPlayerReady{{ $materi->id }}(event) {
                     duration{{ $materi->id }} = player{{ $materi->id }}.getDuration();
-                    // event.target.playVideo();
                   }
 
                   function onPlayerStateChange{{ $materi->id }}(event) {
-                    var userRole = '{{ Auth::user()->role ?? "guest" }}';
+                    var userRole = '{{ Auth::user()->role ?? 'guest' }}';
                     // Check if the player is playing and get the current time
                     if (event.data == YT.PlayerState.PLAYING || event.data == YT.PlayerState.PAUSED) {
                       var currentTime = player{{ $materi->id }}.getCurrentTime();
-                      console.log('Current time: ' + currentTime);
 
                       var duration = player{{ $materi->id }}.getDuration();
                       var percentWatched = Math.round((currentTime / duration) * 100);
-                      console.log('Percent watched: ' + percentWatched);
                       // check if auth role is siswa
                       if (userRole == 'siswa') {
                         sendWatchTime(currentTime, percentWatched, '{{ $materi->id }}');
@@ -75,15 +74,13 @@
                     } else if (event.data == YT.PlayerState.ENDED) {
                       var duration = player{{ $materi->id }}.getDuration();
                       if (userRole == 'siswa') {
-                      sendWatchTime(duration, 100, '{{ $materi->id }}');
-                    }
-                      console.log('Video has finished playing');
+                        sendWatchTime(duration, 100, '{{ $materi->id }}');
+                      }
                     }
                   }
 
                   // ajax
                   function sendWatchTime(currentTime, percentWatched, videoId) {
-                    console.log(videoId)
                     $.ajax({
                       url: '/user_progress',
                       headers: {
@@ -96,15 +93,6 @@
                         'watch_time': currentTime,
                         'watch_percent': percentWatched
                       }
-                      // success: function(data) {
-                      //   alert(data);
-                      // },
-                      // error: function(xhr, status, error) {
-                      //   console.log(xhr.responseText);
-                      //   console.log(status);
-                      //   console.log(error);
-                      //   alert("Error: " + error);
-                      // }
                     });
                   }
                 </script>
@@ -131,40 +119,45 @@
                     'onStateChange': onPlayerStateChange{{ $materi->id }}
                   }
                 });
-          
+
                 function adjustPlayerSize{{ $materi->id }}() {
                   var playerElement = document.getElementById('player{{ $materi->id }}');
                   var containerWidth = playerElement.parentNode.offsetWidth;
                   var aspectRatio = 9 / 16; // Assuming 16:9 aspect ratio for the player
-          
+
                   var playerHeight = containerWidth * aspectRatio;
                   playerElement.style.width = containerWidth + 'px';
                   playerElement.style.height = playerHeight + 'px';
-          
+
                   // Resize to 50% on viewport width <= 667px
                   if (window.innerWidth <= 667) {
                     playerElement.style.width = (containerWidth / 1.5) + 'px';
                     playerElement.style.height = (playerHeight / 1.5) + 'px';
                   }
                 }
-          
+
                 // Adjust player size on window resize
                 window.addEventListener('resize', adjustPlayerSize{{ $materi->id }});
               @endforeach
             }
           </script>
-          
+
 
         </div>
       </div>
     </div>
   </section>
 
+@endsection
+@section('js')
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script>
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    $(document).ready(function() {
+      $('.scroll-arrow').click(function() {
+        $('html, body').animate({
+          scrollTop: $('#our-services').offset().top
+        }, 1000);
+      });
+    });
   </script>
-
 @endsection

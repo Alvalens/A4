@@ -50,5 +50,21 @@ class ProfileController extends Controller
         Storage::delete('public/avatars/' . $picture);
         return redirect()->route('profile')->with('success', 'Avatar berhasil dihapus');
     }
+    // edit email
+    public function editEmail(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|unique:users,email',
+        ], [
+            'email.required' => 'Email harus diisi',
+            'email.email' => 'Email harus berupa email',
+            'email.unique' => 'Email sudah terdaftar',
+        ]);
 
+        $user = User::find(auth()->user()->id);
+        $user->email = $request->email;
+        $user->save();
+
+        return redirect()->route('profile')->with('success', 'Email berhasil diubah');
+    }
 }

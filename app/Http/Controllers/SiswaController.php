@@ -158,7 +158,7 @@ class SiswaController extends Controller
         $request->validate(
             [
                 'name' => 'required|unique:users,name,',
-                'email' => 'nullable|email|',
+                'email' => 'nullable|email',
                 'password' => 'nullable|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',
             ],
             [

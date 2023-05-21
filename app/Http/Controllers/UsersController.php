@@ -26,7 +26,7 @@ class UsersController extends Controller
             'nama' => 'required|unique:users,name',
             'password' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',
             'role' => 'required|in:siswa,guru,admin,ortu',
-            'email' => $request->input('role') === 'ortu' || 'admin' || 'guru' ? 'required|email' : '',
+            'email' => $request->input('role') === 'ortu' || 'admin' || 'guru' ? 'required|email|unique:users,email' : '',
         ], [
             // Validation error messages
             'nama.required' => 'Nama harus diisi',
@@ -35,6 +35,7 @@ class UsersController extends Controller
             'password.regex' => 'Password harus mengandung 1 huruf besar, 1 huruf kecil, dan 1 angka',
             'email.required' => 'Email harus diisi',
             'email.email' => 'Email tidak valid',
+            'email.unique' => 'Email telah digunakan',
         ]);
         // Create new user
         $user = new User;
@@ -82,7 +83,9 @@ class UsersController extends Controller
             'nama' => 'required|unique:users,name',
             'password' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',
             'role' => 'required|in:siswa,guru,admin,ortu',
-            'email' => $request->input('role') === 'ortu' || 'admin' || 'guru' ? 'required|email' : '',
+            // email required if role is ortu, admin, or guru and email must be valid email must be unique for guru admin and ortu not for siswa
+            'email' => $request->input('role') === 'ortu' || 'admin' || 'guru' ? 'required|email|unique:users,email' : '',
+
         ], [
             // Validation error messages
             'nama.required' => 'Nama harus diisi',
@@ -91,6 +94,7 @@ class UsersController extends Controller
             'password.regex' => 'Password harus mengandung 1 huruf besar, 1 huruf kecil, dan 1 angka',
             'email.required' => 'Email harus diisi',
             'email.email' => 'Email tidak valid',
+            'email.unique' => 'Email telah digunakan',
         ]);
         // update
         if ($user->role === 'siswa') {

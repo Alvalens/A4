@@ -31,30 +31,46 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-// raport
-Route::get('/raport', function () {
-     return view('raport');
+
+// ! ROUTE HOME
+Route::prefix('/')->middleware(['check.login'])->group(function () {
+    // ! BERMAIN
+    Route::prefix('/bermain')->group(function () {
+        Route::get('/', function () {
+            return view('bermain');
+        })->name('bermain');
+        Route::get('/tower-block', function () {
+            return view('games.towerBlock');
+        })->name('tower');
+        Route::get('/menja', function () {
+            return view('games.menja');
+        })->name('menja');
+        Route::get('/coloron', function () {
+            return view('games.coloron');
+        })->name('coloron');
+        Route::get('/memory', function () {
+            return view('games.memory');
+        })->name('memory');
+        Route::get('/puzzle', function () {
+            return view('games.puzzle');
+        })->name('puzzle');
+    });
+    // ! TEKA TEKI
+    Route::get('/teka-teki', [TekatekisController::class, 'showQuestion'])->name('tekateki');
+
+    // ! profile
+    Route::get('/profile', function () {
+        return view('profile');
+    })->name('profile');
+    Route::post('/profile/upload', [ProfileController::class, 'upload'])->name('profile.upload');
+    Route::post('/profile/delete', [ProfileController::class, 'delete'])->name('profile.delete');
+    Route::post('/profile/email', [ProfileController::class, 'editEmail'])->name('profile.email');
+
+    // ! BELAJAR
+    Route::get('/belajar', [SiswaController::class, 'indexlevel'])->name('level');
+    Route::get('/belajar/{level}', [SiswaController::class, 'materi'])->name('materi');
 });
 
-// guru
-Route::get('/guru', function () {
-    return view('guru');
-});
-
-// ROUTE HOME
-Route::get('/bermain', function () {
-    return view('bermain');
-})->name('bermain');
-Route::get('/teka-teki', [TekatekisController::class, 'showQuestion'])->name('tekateki');
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-Route::get('/profile', function () {
-    return view('profile');
-})->name('profile')->middleware('check.login');
-// profile upload
-Route::post('/profile/upload', [ProfileController::class, 'upload'])->name('profile.upload')->middleware('check.login');
-Route::post('/profile/delete', [ProfileController::class, 'delete'])->name('profile.delete')->middleware('check.login');
 
 
 Route::prefix('/dashboard')->middleware(['check.login', 'CheckRole:guru,admin'])->group(function () {
@@ -91,12 +107,14 @@ Route::prefix('/dashboard')->middleware(['check.login', 'CheckRole:guru,admin'])
     Route::get('/datasiswa/{nama}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
     Route::delete('/datasiswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
     Route::patch('/datasiswa/{id}', [SiswaController::class, 'update'])->name('siswa.update');
+
+    // ! TODO LIST
+    Route::controller(TodoController::class)->group(function () {
+        Route::get('fullcalender', 'index');
+        Route::post('fullcalenderAjax', 'ajax');
+        Route::get('kegiatan', 'getKegiatan');
+    });
 });
-
-
-// ! BELAJAR
-Route::get('/belajar', [SiswaController::class, 'indexlevel'])->name('level');
-Route::get('/belajar/{level}', [SiswaController::class, 'materi'])->name('materi');
 
 
 // ! CRUD REGISTRASI
@@ -106,68 +124,36 @@ Route::middleware('guest')->group(function () {
     Route::post('/loginuser', [AuthController::class, 'login'])->name('login.proses');
 });
 
-Route::middleware('check.login')->group(function () {
+Route::middleware('auth')->group(function () {
     Route::get('/logout');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 // ! RAPORT
-Route::get('/daftarsiswa','App\Http\Controllers\Ortu@index')->name('ortu.index')->middleware(['check.login', 'CheckRole:guru,admin,ortu']);
+Route::get('/daftarsiswa', 'App\Http\Controllers\RaportController@index')->name('ortu.index')->middleware(['check.login', 'CheckRole:guru,admin,ortu']);
 // show raport
-Route::get('/raport/{nama}', 'App\Http\Controllers\Ortu@show')->name('raport')->middleware(['check.login', 'CheckRole:guru,admin,ortu']);
+Route::get('/raport/{nama}', 'App\Http\Controllers\RaportController@show')->name('raport')->middleware(['check.login', 'CheckRole:guru,admin,ortu']);
 // update
 Route::post('/raport/update', [SiswaController::class, 'storeRaport'])->name('raport.store')->middleware(['check.login', 'CheckRole:guru,admin']);
 
-// ! VERIFIKASI EMAIL
-Route::post('/verification', [SiswaController::class, 'sendverif'])->name('email.send');
+// ! VERIFIKASI EMAIL siswa
+Route::prefix('/profil')->middleware(['check.login', 'CheckRole:siswa'])->group(function () {
+    Route::post('/verification', [SiswaController::class, 'sendverif'])->name('email.send');
+    Route::delete('/delete/email', [SiswaController::class, 'deleteEmail'])->name('email.delete');
+});
 Route::get('/verify/{code}/{email}', [SiswaController::class, 'verify'])->name('email.verify');
-Route::delete('/delete/email', [SiswaController::class, 'deleteEmail'])->name('email.delete');
 
 // ! USER PROGRESS
-Route::post('/user_progress', [UsersProgressController::class, 'storeProgress'])->name('progress.store');
-
-// route test
-Route::get('/test', function () {
-    return view('test');
-});
-
-//route TodoController ajax /todos/store
-Route::controller(TodoController::class)->group(function () {
-    Route::get('fullcalender', 'index');
-    Route::post('fullcalenderAjax', 'ajax');
-    Route::get('kegiatan', 'getKegiatan');
-});
-
-// prototype
-
-// group route bermain
-Route::prefix('/bermain')->group(function () {
-    Route::get('/', function () {
-        return view('bermain');
-    })->name('bermain');
-    Route::get('/tower-block', function () {
-        return view('games.towerBlock');
-    })->name('tower');
-    Route::get('/menja', function () {
-        return view('games.menja');
-    })->name('menja');
-    Route::get('/coloron', function () {
-        return view('games.coloron');
-    })->name('coloron');
-    Route::get('/memory', function () {
-        return view('games.memory');
-    })->name('memory');
-    Route::get('/puzzle', function () {
-        return view('games.puzzle');
-    })->name('puzzle');
-
-});
+Route::post('/user_progress', [UsersProgressController::class, 'storeProgress'])->name('progress.store')->middleware(['check.login', 'CheckRole:siswa']);
 
 Route::get('/start', [WelcomeController::class, 'index'])->name('start');
 Route::post('/start', [WelcomeController::class, 'index'])->name('start');
 
-// ! route lupa password
-Route::get('/lupa-password', [AuthController::class, 'lupaPassword'])->name('lupa.password');
-Route::post('/lupa-password/proses', [AuthController::class, 'lupaPasswordProses'])->name('lupa.proses');
-Route::get('/lupa-password/reset-password/{token}/{name}', [AuthController::class, 'resetPassword'])->name('password.reset');
-Route::post('/lupa-password/reset-password/proses', [AuthController::class, 'resetPasswordProses'])->name('reset.proses');
+    // ! route lupa password
+Route::middleware('guest')->group(function () {
+    Route::get('/lupa-password', [AuthController::class, 'lupaPassword'])->name('lupa.password');
+    Route::post('/lupa-password/proses', [AuthController::class, 'lupaPasswordProses'])->name('lupa.proses');
+    Route::get('/lupa-password/reset-password/{token}/{name}', [AuthController::class, 'resetPassword'])->name('password.reset');
+    Route::post('/lupa-password/reset-password/proses', [AuthController::class, 'resetPasswordProses'])->name('reset.proses');
+});
+

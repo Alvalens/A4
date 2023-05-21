@@ -7,7 +7,7 @@ use App\Models\UsersProgress;
 use App\Models\User;
 use App\Models\Raport;
 
-class Ortu extends Controller
+class RaportController extends Controller
 {
     // index
     public function index()

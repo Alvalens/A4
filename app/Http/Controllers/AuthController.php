@@ -178,7 +178,7 @@ class AuthController extends Controller
             'regname' => 'required|unique:users,name',
             'regpass' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',
             'confirmpass' => 'required|same:regpass',
-            'regmail' => $request->input('user-type-back') === 'ortu' ? 'required|email' : '',
+            'regmail' => 'required_if:user-type-back,ortu|email|unique:user,email',
         ], [
             // Validation error messages
             'regname.required' => 'Nama harus diisi',
