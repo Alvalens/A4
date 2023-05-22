@@ -30,6 +30,34 @@ class UserProgressSeeder extends Seeder
             'level' => '1',
             'waktu_belajar' => '960'
         ]);
+        UsersProgress::create([
+            'nama_user' => 'Amirul17',
+            'nama_materi' => 'Belajar Angka',
+            'progress' => '100',
+            'level' => '1',
+            'waktu_belajar' => '960'
+        ]);
+        UsersProgress::create([
+            'nama_user' => 'Amirul17',
+            'nama_materi' => 'Belajar Huruf',
+            'progress' => '99',
+            'level' => '1',
+            'waktu_belajar' => '700'
+        ]);
+        UsersProgress::create([
+            'nama_user' => 'Amirul17',
+            'nama_materi' => 'Menulis Angka',
+            'progress' => '100',
+            'level' => '2',
+            'waktu_belajar' => '600'
+        ]);
+        UsersProgress::create([
+            'nama_user' => 'Amirul17',
+            'nama_materi' => 'Kaligrafi',
+            'progress' => '55',
+            'level' => '4',
+            'waktu_belajar' => '700'
+        ]);
 
     }
 }

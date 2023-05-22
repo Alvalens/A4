@@ -18,43 +18,55 @@ class AkunSeeder extends Seeder
         User::create([
             'name' => 'Admin',
             'email' => 'admin@example.com',
-            'password' => Hash::make('admin'),
-            'role' => 'admin', // assuming 'role' is a column in the users table to represent user role
+            'password' => Hash::make('Admin123'),
+            'role' => 'admin',
         ]);
 
         // Create guru account
         User::create([
-            'name' => 'Guru',
-            'email' => 'guru@example.com',
-            'password' => Hash::make('guru'),
-            'role' => 'guru', // assuming 'role' is a column in the users table to represent user role
+            'name' => 'Aisyah123',
+            'email' => 'aisyah@example.com',
+            'password' => Hash::make('Guru1234'),
+            'role' => 'guru',
         ]);
 
         // create ortu account
         User::create([
-            'name' => 'Ortu',
+            'name' => 'Orangtua',
             'email' => 'ortu@example.com',
-            'password' => Hash::make('ortu'),
-            'role' => 'ortu', // assuming 'role' is a column in the users table to represent user role
+            'password' => Hash::make('Ortu1234'),
+            'role' => 'ortu',
+        ]);
+        User::create([
+            'name' => 'PakBudi',
+            'email' => 'budi@example.com',
+            'password' => Hash::make('Budi1234'),
+            'role' => 'ortu',
         ]);
         // create siswa account
         User::create([
             'name' => 'Siswa',
             'email' => 'ortu@example.com',
-            'password' => Hash::make('siswa'),
-            'role' => 'siswa', // assuming 'role' is a column in the users table to represent user role
+            'password' => Hash::make('Siswa123'),
+            'role' => 'siswa',
         ]);
         User::create([
             'name' => 'JokoSatrio10',
             'email' => 'ortu@example.com',
             'password' => Hash::make('Satrio123'),
-            'role' => 'siswa', // assuming 'role' is a column in the users table to represent user role
+            'role' => 'siswa',
         ]);
         User::create([
             'name' => 'Amirul17',
             'email' => 'ortu@example.com',
             'password' => Hash::make('Amirul123'),
-            'role' => 'siswa', // assuming 'role' is a column in the users table to represent user role
+            'role' => 'siswa',
+        ]);
+        User::create([
+            'name' => 'Erpan1140',
+            'email' => 'budi@example.com',
+            'password' => Hash::make('Erpn123'),
+            'role' => 'siswa',
         ]);
     }
 }

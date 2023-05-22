@@ -18,7 +18,6 @@
 }
 
 .bg{
-    background-image: url('image/bg1.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

@@ -3,6 +3,9 @@
           //progress now
           $progressTotal = $userProgress->where('level', $level)->count();
           $totalPrecent = $userProgress->where('level', $level)->sum('progress');
+          if (!$progressTotal) {
+            $progressTotal = 1;
+          }
           $progress = round($totalPrecent / $progressTotal);
           // if progress is more than 80 then green, more than 40 then orange, else red
           $barColor = '';
