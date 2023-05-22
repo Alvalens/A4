@@ -12,12 +12,9 @@ class RaportController extends Controller
     // index
     public function index()
     {
-        // Check if authenticated user has role 'ortu'
         if (auth()->user()->role == 'ortu') {
-            // Select users with role 'siswa' and matching email
             $Siswa = User::where('role', 'siswa')->where('email', auth()->user()->email)->get();
         } else {
-            // Select all users with role 'siswa'
             $Siswa = User::where('role', 'siswa')->get();
         }
 
@@ -38,23 +35,18 @@ class RaportController extends Controller
         } else {
             $lastLevel = $lastLevel->level;
         }
-        // get the user progress
         $userProgress = UsersProgress::where('nama_user', $nama_user)->get();
-        // get the raport of the user
         $raportUser = Raport::where('nama', $nama_user)->get()->first();
-        // get time and convert to hour from user progress
         $totalSeconds = UsersProgress::where('nama_user', $nama_user)->sum('waktu_belajar');
         $totalMenit = $totalSeconds / 60;
         $totalMenit = round($totalMenit, 2);
 
-        // nama orang tua
         $Siswa = User::where('name', $nama_user)->get()->first();
         $ortu = User::where('email', $Siswa->email)
             ->where('role', 'ortu')
             ->first();
         $namaOrtu = $ortu->name;
 
-        // Pass the $userProgress object to the view
         return view('raport', compact('lastLevel', 'nama_user', 'userProgress', 'raportUser', 'totalMenit', 'namaOrtu'));
     }
 

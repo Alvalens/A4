@@ -2,12 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MaterialsController;
-use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TekatekisController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AuthController;
-use App\Http\Middleware\CheckRole;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\UsersProgressController;
 use App\Http\Controllers\WelcomeController;

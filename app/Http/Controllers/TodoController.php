@@ -69,7 +69,6 @@ class TodoController extends Controller
                 break;
 
             default:
-                # code...
                 break;
         }
     }

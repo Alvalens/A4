@@ -26,7 +26,6 @@ class AuthController extends Controller
     // login
     public function login(Request $request)
     {
-        // validate input data
         $validatedData = $request->validate([
             'logusername' => 'required',
             'logpass' => 'required',
@@ -37,28 +36,20 @@ class AuthController extends Controller
         ]);
 
 
-        // login logic
         if (auth()->attempt(['name' => $validatedData['logusername'], 'password' => $validatedData['logpass']])) {
             $request->session()->regenerate();
-            // Get the authenticated user
             $user = auth()->user();
-            // Check the role of the authenticated user
             if ($user->role == 'siswa') {
-                // Redirect to home route for siswa
                 return redirect()->route('index');
             } elseif ($user->role == 'ortu') {
-                // Redirect to report route for ortu
                 return redirect()->route('ortu.index');
             } elseif ($user->role == 'guru') {
-                // Redirect to report route for guru
                 return redirect()->route('dasbor');
             } elseif ($user->role == 'admin') {
-                // Redirect to report route for admin
                 return redirect()->route('dasbor');
             }
         }
 
-        // Redirect back if login fails with errors and old input
         return back()->withErrors([
             'logusername' => 'Username atau password salah',
             'logpass' => 'Username atau password salah',
@@ -66,8 +57,8 @@ class AuthController extends Controller
     }
     //logout
     public function logout(){
-        Auth::logout(); // Log out the currently authenticated user
-        return redirect()->route('login'); // Redirect to the login page
+        Auth::logout();
+        return redirect()->route('login');
     }
     // lupa password
     public function lupaPassword()
@@ -78,7 +69,6 @@ class AuthController extends Controller
 
     public function lupaPasswordProses(Request $request)
     {
-        // Validate input email
         $validatedData = $request->validate([
             'email' => 'required|email',
             'nama' => 'required',
@@ -87,12 +77,9 @@ class AuthController extends Controller
             'email.email' => 'Email tidak valid',
             'nama.required' => 'Nama harus diisi',
         ]);
-
-        // Check if user email and name exist in the user table
         $user = User::where('email', $validatedData['email'])->where('name', $validatedData['nama'])->first();
 
         if ($user) {
-            // Check if email and name exist in password reset token
             $emailExist = PasswordResetToken::where('email', $validatedData['email'])
             ->where('nama', $validatedData['nama'])
             ->first();
@@ -105,19 +92,14 @@ class AuthController extends Controller
                 if ($tokenCreatedAt->diffInMinutes($currentDateTime) <= 5) {
                     return redirect()->route('lupa.password')->with('error', 'Permintaan reset password sudah dilakukan dalam 5 menit terakhir');
                 }
-
-                // Delete the previous token
                 $emailExist->delete();
             }
-
-            // Create a new token
             $token = new PasswordResetToken();
             $token->email = $validatedData['email'];
             $token->nama = $validatedData['nama'];
             $token->token = Str::random(40);
             $token->save();
 
-            // Send the reset password email
             $resetEmail = new ResetPass($token->token, $validatedData['nama']);
             Mail::to($validatedData['email'])->send($resetEmail);
 
@@ -131,7 +113,6 @@ class AuthController extends Controller
     // reset password
     public function resetPassword($token, $nama)
     {
-        // check if token is exist
         $token = PasswordResetToken::where('token', $token)->where('nama', $nama)->first();
         if ($token){
             return view('auth.pass-reset', ['token' => $token]);
@@ -142,7 +123,6 @@ class AuthController extends Controller
     // reset password proses
     public function resetPasswordProses(Request $request)
     {
-        // validate input password
         $validatedData = $request->validate([
             'newpass' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',
             'confirmpass' => 'required|same:newpass',
@@ -156,11 +136,9 @@ class AuthController extends Controller
         // check if token is exist
         $token = PasswordResetToken::where('token', $request->token)->first();
         if ($token){
-            // update password
             $user = User::where('email', $token->email)->first();
             $user->password = Hash::make($validatedData['newpass']);
             $user->save();
-            // delete token
             $token->delete();
             // redirect
             return redirect()->route('login')->with('success', 'Password berhasil diubah');
@@ -172,15 +150,12 @@ class AuthController extends Controller
     // register
     public function register(Request $request)
     {
-        // Validate input data
         $validatedData = $request->validate([
-            // Validation rules
             'regname' => 'required|unique:users,name',
             'regpass' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',
             'confirmpass' => 'required|same:regpass',
             'regmail' => 'required_if:user-type-back,ortu|email|unique:user,email',
         ], [
-            // Validation error messages
             'regname.required' => 'Nama harus diisi',
             'regname.unique' => 'Nama telah digunakan',
             'regpass.required' => 'Password harus diisi',
@@ -191,17 +166,15 @@ class AuthController extends Controller
             'regmail.email' => 'Email tidak valid',
         ]);
 
-        // Determine user type based on selected user type
         $userType = $request->input('user-type-back');
 
-        // Create new user record based on user type
         if ($userType === 'siswa') {
             // For siswa
             $user = new User();
             $user->name = $validatedData['regname'];
             $user->password = bcrypt($validatedData['regpass']);
-            $user->role = 'siswa'; // Set role as siswa
-            $user->email = ''; //default
+            $user->role = 'siswa';
+            $user->email = '';
             $user->save();
         } elseif ($userType === 'ortu') {
             // For ortu
@@ -209,7 +182,7 @@ class AuthController extends Controller
             $user->name = $validatedData['regname'];
             $user->email = $validatedData['regmail'];
             $user->password = bcrypt($validatedData['regpass']);
-            $user->role = 'ortu'; // Set role as ortu
+            $user->role = 'ortu'; 
             $user->save();
         }
 

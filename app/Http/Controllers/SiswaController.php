@@ -27,7 +27,6 @@ class SiswaController extends Controller
 
     // materi
     public function materi($level){
-        // select all materi where level = $level
         $materies = Materials::where('level', $level)->get();
         return view('belajar', compact('materies'));
     }
@@ -39,7 +38,6 @@ class SiswaController extends Controller
 
     public function sendVerif(Request $request)
     {
-        // check email = role ortu in database
         if (!User::where('email', $request->email)->where('role', 'ortu')->exists()) {
             return back()->with('error', 'Email tidak terdaftar!');
         }
@@ -51,12 +49,11 @@ class SiswaController extends Controller
 
         Mail::to($email)->send(new EmailVerificationRequest($verificationCode));
 
-        // Return a response indicating that the verification email has been sent
         return back()->with('success', 'Verification email has been sent. Please check your email for further instructions.');
     }
     public function verify($code, $email)
     {
-        // Find the user by the verification code
+
         $user = User::where('verification_code', $code)->first();
 
         if ($user) {
@@ -64,7 +61,6 @@ class SiswaController extends Controller
             $user->verification_code = null;
             $user->save();
 
-            // Update user email field with the passed email value
             $user->update(['email' => $email]);
 
             // Redirect profile page with a success message
@@ -80,9 +76,7 @@ class SiswaController extends Controller
     {
         // delete user email
         User::where('name', auth()->user()->name)->update(['email' => null]);
-        // also delete verification date
         User::where('name', auth()->user()->name)->update(['email_verified_at' => null]);
-        // Redirect to profile page with an error message
         return(redirect()->route('profile')->with('status', 'Email deleted successfully!'));
     }
 
@@ -94,7 +88,6 @@ class SiswaController extends Controller
         $guru = $request->guru_pendamping;
         $materi = $request->materi_kesukaan;
         $Raport = Raport::where('nama', $nama)->first();
-        // if null insert is not null update
         if ($Raport){
             $Raport->update([
                 'catatan' => $catatan,
@@ -102,7 +95,6 @@ class SiswaController extends Controller
                 'materi_favorit' => $materi
         ]);
         } else {
-            // If the Raport record doesn't exist, create a new one
             Raport::create([
                 'nama' => $nama,
                 'catatan' => $catatan,
@@ -147,7 +139,7 @@ class SiswaController extends Controller
     // show edit
     public function edit($nama)
     {
-        // select user where id = $id
+
         $data = User::where('name', $nama)->first();
         return view('editsiswa', ['siswa' => $data]);
     }
@@ -170,7 +162,6 @@ class SiswaController extends Controller
         );
         // get user where id = $id
         $user = User::where('id', $id)->first();
-        // if not null update nama_user in userprogress and nama in raport
         if ($user->name != $request->name) {
             UsersProgress::where('nama_user', $user->name)->update(['nama_user' => $request->name]);
             Raport::where('nama', $user->name)->update(['nama' => $request->name]);
@@ -181,8 +172,6 @@ class SiswaController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
-        // also update nama_user in userprogress
-
 
         return redirect()->route('datasiswa')->with('success', 'Siswa berhasil diupdate!');
     }

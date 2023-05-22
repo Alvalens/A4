@@ -22,8 +22,6 @@ class ProfileController extends Controller
 
         if ($request->hasFile('avatar')) {
             $user = User::find(auth()->user()->id);
-
-            // Delete the old profile picture from storage if it exists
             if ($user->picture) {
                 Storage::delete('public/avatars/' . $user->picture);
             }

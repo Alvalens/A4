@@ -80,7 +80,6 @@ class MaterialsController extends Controller
             'level.required' => 'Level materi harus diisi',
         ]);
 
-        // Update only the fields that were included in the validated data
         foreach ($validatedData as $request => $value) {
             $materi->{$request} = $value;
         }

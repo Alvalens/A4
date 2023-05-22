@@ -20,15 +20,14 @@ class UsersController extends Controller
     // store
     public function store(Request $request)
     {
-        // Validate input data
+
         $validatedData = $request->validate([
-            // Validation rules
             'nama' => 'required|unique:users,name',
             'password' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',
             'role' => 'required|in:siswa,guru,admin,ortu',
             'email' => $request->input('role') === 'ortu' || 'admin' || 'guru' ? 'required|email|unique:users,email' : '',
         ], [
-            // Validation error messages
+
             'nama.required' => 'Nama harus diisi',
             'nama.unique' => 'Nama telah digunakan',
             'password.required' => 'Password harus diisi',
@@ -37,7 +36,7 @@ class UsersController extends Controller
             'email.email' => 'Email tidak valid',
             'email.unique' => 'Email telah digunakan',
         ]);
-        // Create new user
+
         $user = new User;
         $user->name = $validatedData['nama'];
         $user->password = bcrypt($validatedData['password']);
@@ -77,17 +76,14 @@ class UsersController extends Controller
     public function update(Request $request){
         $user = User::find($request->id);
         // validate
-        // Validate input data
+
         $validatedData = $request->validate([
-            // Validation rules
             'nama' => 'required|unique:users,name',
             'password' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',
             'role' => 'required|in:siswa,guru,admin,ortu',
-            // email required if role is ortu, admin, or guru and email must be valid email must be unique for guru admin and ortu not for siswa
             'email' => $request->input('role') === 'ortu' || 'admin' || 'guru' ? 'required|email|unique:users,email' : '',
 
         ], [
-            // Validation error messages
             'nama.required' => 'Nama harus diisi',
             'nama.unique' => 'Nama telah digunakan',
             'password.required' => 'Password harus diisi',
@@ -105,12 +101,10 @@ class UsersController extends Controller
             }
             $userProgress = UsersProgress::where('nama_user', $user->name);
             if ($userProgress) {
-                // update all user progress with new name
                 $userProgress->update(['nama_user' => $request->name]);
             } else if ($user->guru || $user->admin) {
                 $todo = TodoList::where('user', $user->name);
                 if ($todo) {
-                    // update all todo list with new name
                     $todo->update(['user' => $request->name]);
                 }
             }
