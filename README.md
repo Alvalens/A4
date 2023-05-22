@@ -1,66 +1,59 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# A4 learning
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Website ini adalah sebuah platform edukasi yang dikembangkan oleh Kelompok 4 Matakuliah Pemrograman Web. Website ini ditujukan untuk anak-anak dengan IQ rendah, dengan fokus pada aksesibilitas, atraktif, dan antusiasme akademik. Berikut adalah penjelasan tentang fitur-fitur utama yang tersedia dalam website ini:
 
-## About Laravel
+## Fitur Utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 1. Video Pembelajaran
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Website ini menyediakan koleksi video pembelajaran yang dirancang khusus untuk anak-anak dengan IQ rendah. Video pembelajaran tersebut membahas berbagai topik pelajaran dengan gaya yang menarik dan interaktif.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 2. Games
 
-## Learning Laravel
+Website ini menyediakan berbagai jenis permainan edukatif yang dirancang untuk membantu anak-anak dengan IQ rendah dalam mempelajari konsep-konsep pelajaran dengan cara yang menyenangkan. Games ini didesain untuk meningkatkan pemahaman dan keterampilan anak-anak dalam berbagai bidang.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 3. Quiz
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Website ini juga menyediakan kuis interaktif yang memungkinkan anak-anak untuk menguji pemahaman mereka terhadap materi pembelajaran. Kuis ini dilengkapi dengan pertanyaan-pertanyaan menarik dan pilihan jawaban yang bervariasi.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 4. Fitur Raport
 
-## Laravel Sponsors
+Website ini dilengkapi dengan fitur raport yang memungkinkan orang tua atau pengajar untuk memantau perkembangan siswa. Fitur raport ini memberikan informasi tentang kemajuan belajar siswa dalam setiap topik pelajaran serta memberikan rekomendasi untuk pengembangan lebih lanjut.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 5. Fitur CRUD
 
-### Premium Partners
+Dalam website ini juga terdapat fitur-fitur CRUD (create, read, update, delete) untuk mamajemen, quiz, hingga pengguna agar lebih mudah. Dengan ada fitur ini konten yang berada di dalam web ini dinamis dan dapat disesuaikan sesuai kebutuhan
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### 6. Admin dan guru Dashbard
 
-## Contributing
+Website Edukasi ini juga dilengkapi dengan fitur Admin dan Guru Dashboard yang memungkinkan pengelola dan pengajar untuk mengelola dan memantau kegiatan pembelajaran siswa. Juga mempermudah guru dan admin dalam memnajemen konten di dalam website ini.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Teknologi yang Digunakan
 
-## Code of Conduct
+Website ini dikembangkan menggunakan Laravel, sebuah framework PHP yang powerful dan efisien untuk pengembangan aplikasi web. Selain itu, website ini juga menggunakan Bootstrap untuk mempercepat proses pengembangan antarmuka pengguna yang responsif dan menarik. Data Tabels dan komponen-komponen lainnya juga digunakan untuk meningkatkan tampilan dan fungsionalitas website.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Website ini merupakan hasil dari kerja keras dan kolaborasi dari Kelompok 4 Matakuliah Pemrograman Web. Kami berharap bahwa website ini dapat memberikan manfaat dan kontribusi yang positif bagi anak-anak dengan IQ rendah dalam proses pembelajaran mereka.
 
-## Security Vulnerabilities
+Terima kasih atas perhatian dan dukungannya!
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
+## Clone projek
 
-## License
+Untuk menjalankan project ini di lokal pastikan sudah menyiapkan software pendukung yang dibutuhkan seperti kode eidtor dan XAMPP untuk server lokal.
+```
+git clone https://github.com/Alvalens/A4.git
+```
+jangan lupa untuk melakukan composer update untuk mengupdate dependensi yang ada
+```
+composer update
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Setelah Anda menjalankan langkah-langkah di atas, proyek ini siap untuk dijalankan secara lokal. Pastikan Anda telah mengonfigurasi XAMPP atau server lokal lainnya untuk menjalankan projek Laravel.
+
+---
+
+special thanks to
+@Adinda
+@Zidan
+@Aisyah
+@Alvalen
