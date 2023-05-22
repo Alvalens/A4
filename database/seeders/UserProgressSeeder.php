@@ -53,6 +53,13 @@ class UserProgressSeeder extends Seeder
         ]);
         UsersProgress::create([
             'nama_user' => 'Amirul17',
+            'nama_materi' => 'Menggambar',
+            'progress' => 80,
+            'level' => '3',
+            'waktu_belajar' => '700'
+        ]);
+        UsersProgress::create([
+            'nama_user' => 'Amirul17',
             'nama_materi' => 'Kaligrafi',
             'progress' => '55',
             'level' => '4',

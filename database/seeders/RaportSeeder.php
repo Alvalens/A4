@@ -19,7 +19,14 @@ class RaportSeeder extends Seeder
             'nama' => 'JokoSatrio10',
             'catatan' => 'Siswa sangat rajin dalam mengikuti kegiatan pembelajaran, namun masih perlu ditingkatkan lagi agar lebih untuk menyimak materi yang diberikan',
             'materi_favorit' => 'Belajar Huruf',
-            'guru_pendamping' => 'Pak Budi P.hD',
+            'guru_pendamping' => 'Pak Jamiar P.hD',
+        ]);
+        //
+        Raport::create([
+            'nama' => 'Amirul17',
+            'catatan' => 'Siswa sangat rajin dalam mengikuti kegiatan pembelajaran, namun masih perlu ditingkatkan lagi agar lebih untuk menyimak materi yang diberikan',
+            'materi_favorit' => 'kaligrafi',
+            'guru_pendamping' => 'Pak Joko P.hD',
         ]);
     }
 }

@@ -108,14 +108,14 @@ Route::prefix('/dashboard')->middleware(['check.login', 'CheckRole:guru,admin'])
     Route::delete('/datasiswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
     Route::patch('/datasiswa/{id}', [SiswaController::class, 'update'])->name('siswa.update');
 
-    // ! TODO LIST
-    Route::controller(TodoController::class)->group(function () {
-        Route::get('fullcalender', 'index');
-        Route::post('fullcalenderAjax', 'ajax');
-        Route::get('kegiatan', 'getKegiatan');
-    });
-});
 
+});
+// ! TODO LIST
+Route::controller(TodoController::class)->group(function () {
+    Route::get('fullcalender', 'index');
+    Route::post('fullcalenderAjax', 'ajax');
+    Route::get('kegiatan', 'getKegiatan');
+})->middleware(['check.login', 'CheckRole:guru,admin']);
 
 // ! CRUD REGISTRASI
 Route::middleware('guest')->group(function () {

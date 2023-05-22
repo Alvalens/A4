@@ -24,8 +24,8 @@ class AkunSeeder extends Seeder
 
         // Create guru account
         User::create([
-            'name' => 'Aisyah123',
-            'email' => 'aisyah@example.com',
+            'name' => 'Guru',
+            'email' => 'guru@example.com',
             'password' => Hash::make('Guru1234'),
             'role' => 'guru',
         ]);
