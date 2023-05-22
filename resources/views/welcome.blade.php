@@ -256,8 +256,8 @@
 
 <body>
   <div id="intro">
-  {{-- include intro --}}
-  @include('layout.misc.intro')
+    {{-- include intro --}}
+
   </div>
   <section>
     <div id="leftDiv"></div>
@@ -354,15 +354,45 @@
     </form>
     <canvas id="canvas" class="canvas"></canvas>
   </section>
-
+  <div id="introAud" style="opacity: 0;">
+    <audio id="aud" autoplay controls>
+      <source src="{{ url('assets/audio/intro.mp3') }}" type="audio/mpeg">
+    </audio>
+  </div>
+  <style>
+        .tap {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      color: #333;
+      cursor: pointer;
+    }
+  </style>
+  <div>
+    <p class="tap" id="tap">Sentuh sekali di manapun untuk memulai</p>
+  </div>
 </body>
 <script>
-  setTimeout(function() {
-    document.querySelector('section').classList.add('show');
-  }, 8000);
-  setTimeout(function() {
-    document.querySelector('#intro').innerHTML = '';
-  }, 7500);
+  document.addEventListener('click', playOnce);
+
+  function playOnce() {
+    var intro = document.getElementById('intro');
+    intro.innerHTML = `{!! view('layout.misc.intro') !!}`;
+    document.getElementById('aud').play();
+    document.getElementById('tap').style.display = 'none';
+
+    setTimeout(function() {
+      document.querySelector('section').classList.add('show');
+    }, 8000);
+
+    setTimeout(function() {
+      document.querySelector('#intro').innerHTML = '';
+    }, 7500);
+
+    document.removeEventListener('click', playOnce);
+  }
 </script>
 <script>
   'use strict';
@@ -652,7 +682,6 @@
     resizeCanvas(cvs);
     init();
   });
-
 </script>
 <script>
   // Add event listener for beforeunload

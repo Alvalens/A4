@@ -5557,8 +5557,4 @@ body {
   <div class="particle particle710"></div>
   <div class="particle particle711"></div>
 </div>
-<div id="introAud" style="opacity: 0;">
-<audio id="aud" autoplay controls>
-  <source src="{{ url('assets/audio/intro.mp3') }}" type="audio/mpeg">
-</audio>
-</div>
+
