@@ -45,7 +45,7 @@ class RaportController extends Controller
         $ortu = User::where('email', $Siswa->email)
             ->where('role', 'ortu')
             ->first();
-        $namaOrtu = $ortu->name;
+        $namaOrtu = $ortu->name ?? '-';
 
         return view('raport', compact('lastLevel', 'nama_user', 'userProgress', 'raportUser', 'totalMenit', 'namaOrtu'));
     }

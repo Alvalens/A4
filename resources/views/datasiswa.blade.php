@@ -80,7 +80,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="fileModalLabel">Tambah Materi</h5>
+          <h5 class="modal-title" id="fileModalLabel">Tambah Siswa</h5>
         </div>
         <form action="{{ route('siswa.store') }}" method="POST">
           @csrf
