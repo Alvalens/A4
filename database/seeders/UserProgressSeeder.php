@@ -24,6 +24,13 @@ class UserProgressSeeder extends Seeder
             'waktu_belajar' => '300'
         ]);
         UsersProgress::create([
+            'nama_user' => 'Siswa',
+            'nama_materi' => 'Belajar Huruf',
+            'progress' => '66',
+            'level' => '1',
+            'waktu_belajar' => '300'
+        ]);
+        UsersProgress::create([
             'nama_user' => 'JokoSatrio10',
             'nama_materi' => 'Belajar Angka',
             'progress' => '100',
@@ -32,6 +39,13 @@ class UserProgressSeeder extends Seeder
         ]);
         UsersProgress::create([
             'nama_user' => 'Amirul17',
+            'nama_materi' => 'Belajar Angka',
+            'progress' => '100',
+            'level' => '1',
+            'waktu_belajar' => '960'
+        ]);
+        UsersProgress::create([
+            'nama_user' => 'Siswa',
             'nama_materi' => 'Belajar Angka',
             'progress' => '100',
             'level' => '1',
