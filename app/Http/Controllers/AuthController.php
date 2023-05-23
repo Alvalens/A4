@@ -94,11 +94,19 @@ class AuthController extends Controller
                 }
                 $emailExist->delete();
             }
-            $token = new PasswordResetToken();
-            $token->email = $validatedData['email'];
-            $token->nama = $validatedData['nama'];
-            $token->token = Str::random(40);
-            $token->save();
+            // if there updatee if not crate new
+            if ($emailExist) {
+                $emailExist->update([
+                'nama' => $validatedData['nama'],
+                'token' => Str::random(40),
+            ]);
+            } else {
+                $token = new PasswordResetToken();
+                $token->email = $validatedData['email'];
+                $token->nama = $validatedData['nama'];
+                $token->token = Str::random(40);
+                $token->save();
+            }
 
             $resetEmail = new ResetPass($token->token, $validatedData['nama']);
             Mail::to($validatedData['email'])->send($resetEmail);
@@ -154,7 +162,7 @@ class AuthController extends Controller
             'regname' => 'required|unique:users,name',
             'regpass' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',
             'confirmpass' => 'required|same:regpass',
-            'regmail' => 'required_if:user-type-back,ortu|email|unique:user,email',
+            'regmail' =>  $request->input('user-type-back') === 'ortu' ? 'required|email|unique:user,email' : '',
         ], [
             'regname.required' => 'Nama harus diisi',
             'regname.unique' => 'Nama telah digunakan',
@@ -182,7 +190,7 @@ class AuthController extends Controller
             $user->name = $validatedData['regname'];
             $user->email = $validatedData['regmail'];
             $user->password = bcrypt($validatedData['regpass']);
-            $user->role = 'ortu'; 
+            $user->role = 'ortu';
             $user->save();
         }
 

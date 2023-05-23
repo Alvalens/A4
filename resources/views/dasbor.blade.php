@@ -13,13 +13,16 @@
       color: #000000;
       margin-bottom: 10px;
     }
+    body {
+      overflow: hidden;
+    }
   </style>
 @endsection
 
 @section('content')
   {{-- src --}}
 
-  <div class="content"></div>
+  <div class="content">
   <div class="animated fadeIn">
     <div class="row">
 
@@ -49,23 +52,15 @@
           </div>
         </div>
         <script>
-          // Get the clock element
           var clock = document.getElementById('clock');
-
-          // Update the clock every second
           setInterval(function() {
-            // Get the current time
             var date = new Date();
             var hours = date.getHours();
             var minutes = date.getMinutes();
             var seconds = date.getSeconds();
-
-            // Format the time to two digits
             if (hours < 10) hours = '0' + hours;
             if (minutes < 10) minutes = '0' + minutes;
             if (seconds < 10) seconds = '0' + seconds;
-
-            // Update the clock element's text content
             clock.textContent = hours + ':' + minutes + ':' + seconds;
           }, 1000);
         </script>
@@ -98,6 +93,7 @@
 
     </div>
   </div>
+  </div>
   <div class="clearfix"></div>
   {{-- jquery --}}
 
@@ -117,7 +113,6 @@
             kegiatanList.empty();
           }
 
-          // loop through each kegiatan object and create HTML elements
           $.each(response.kegiatan, function(index, kegiatan) {
             var kegiatanItem = $('<li>');
             var kegiatanContent = $('<div>').addClass('kegiatan');
@@ -127,9 +122,7 @@
             kegiatanContent.append(tanggal).append(judul);
             kegiatanItem.append(kegiatanContent);
             kegiatanList.append(kegiatanItem);
-            // style the tanggal element to be more readable, also add a fixed space between the tanggal and judul elements
             tanggal.css('margin-right', '10px');
-            // style the judul element to be more readable
             judul.css('font-weight', 'bold');
           });
         },

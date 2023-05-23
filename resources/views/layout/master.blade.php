@@ -8,7 +8,7 @@
   <!-- Title -->
   <title>@yield('title', 'Beranda')</title>
   <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta content="A4 Learning, " name="keywords">
   {{-- web icon --}}
   <link rel="icon" href="{{ url('assets/img/beranda/title-a4.png') }}">
   <!-- Google Fonts -->
@@ -51,9 +51,26 @@
       "Segoe UI Symbol",
       "Noto Color Emoji";
     }
+
+    .wrap-icon {
+      position: relative;
+      width: 50px;
+      height: 50px;
+    }
+
+    .icon {
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      /* add white border */
+      border: 2px solid #fff;
+    }
   </style>
   <script src="{{ url('js/jq.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -74,28 +91,28 @@
           <h5 class="offcanvas-title" id="navbarNavLabel">Menu</h5>
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body d-flex justify-content-center">
+        <div class="offcanvas-body d-flex justify-content-center" style="z-index:999999;">
           <ul class="navbar-nav">
             {{-- new item to hold profile  --}}
             <li class="nav-item profile-picture d-block d-md-none">
               <a class="nav-link d-flex flex-column justify-content-center align-items-center"
                 href="{{ route('profile') }}">
-          <div class="circle rounded-circle">
-            @auth
-              @if (Auth::user()->picture)
-                {{-- wrap the img --}}
-                <div class="wrap-icon">
-                  <img src="{{ asset('storage/avatars/' . Auth::user()->picture) }}" alt="User Picture"
-                    class="img-fluid icon">
-                </div>
-              @else
-                <i class="fas fa-user"></i>
-              @endif
-            @else
-              <i class="fas fa-user"></i>
-            @endauth
+                <div class="circle rounded-circle">
+                  @auth
+                    @if (Auth::user()->picture)
+                      {{-- wrap the img --}}
+                      <div class="wrap-icon">
+                        <img src="{{ asset('storage/avatars/' . Auth::user()->picture) }}" alt="User Picture"
+                          class="img-fluid icon">
+                      </div>
+                    @else
+                      <i class="fas fa-user"></i>
+                    @endif
+                  @else
+                    <i class="fas fa-user"></i>
+                  @endauth
 
-          </div>
+                </div>
                 <span class="caption  d-block d-md-none">Profile</span>
               </a>
             <li class="nav-item">
@@ -152,24 +169,6 @@
         </div>
 
       </div>
-      <style>
-        .wrap-icon {
-          position: relative;
-          width: 50px;
-          height: 50px;
-        }
-
-        .icon {
-          width: 100%;
-          height: 100%;
-          border-radius: 100%;
-          background-size: cover;
-          background-repeat: no-repeat;
-          background-position: center;
-          /* add white border */
-          border: 2px solid #fff;
-        }
-      </style>
       {{-- cicrle account icon --}}
       <div class="d-flex justify-content-center align-items-center profile">
         <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">

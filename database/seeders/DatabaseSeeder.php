@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserProgressSeeder::class);
         $this->call(RaportSeeder::class);
         $this->call(TekaTekiSeeder::class);
+        $this->call(TodoListSeeder::class);
     }
 }
